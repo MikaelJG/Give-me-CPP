@@ -37,6 +37,27 @@ int main(){} // defines a function called main.
 A C++ program must have exactly one global function named main().
 The program starts by executing the main function.
 
+The value the main function returns (int, if any) is returned to the system.
+If main() doesn't return a value, the system will receive a value nonetheless. A value indicating success.
+If main() returns a nonzero value, it indicates failure.
+
+Not every system  make use of that return value. Linux/Unix often do, Windows rarely do.
+
+// Code start
+
+in hello.cpp
+
+#include <iostream>
+
+int main(0
+{
+    std::cout << "Hello, World!\n";
+}
+
+// Code end
+
+
+
 
 notation
 
