@@ -18,6 +18,24 @@ C++ is a statically typed language.
 The type of every entity (object, value, name and expression) must be given to compile.
 The type of an object determine the set of operations applicable to it.
 
+// Code start
+
+in hello.cpp
+
+int main(){} // defines a function called main. 
+// main takes no arguments and does nothing.
+
+{} // expresses groupings. 
+// they indicate the stat and end of the function.
+
+// comments in cpp
+// comments are ignored by the compiler
+
+
+// Code end
+
+A C++ program must have exactly one global function named main().
+The program starts by executing the main function.
 
 
 notation
@@ -38,3 +56,10 @@ CHAPTER 6 (SYSTEMATIC PRESENTATION) (if 2nd is confusing)
 
 machine code
 context switching
+static typing
+dynamic typing
+compiler
+garbage management
+scripting
+memory allocation
+
