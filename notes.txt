@@ -1,0 +1,28 @@
+CHAPTER 2 (short sightseeing tout of a city)
+
+C++ is a compiled language (necessity).
+Compilers produce object files. These are linked, yielding an executable program.
+
+A C++ programhas many source code files, calles "source files".
+
+An executable program is not portable. Yet, the source code can be compiled and run on a variety of systems.
+
+The ISO C++ standard defines two kinds of entities:
+    - Core language features (char, int, etc.) and loops (for and while)
+    - Standard-library components (containers [vector, map, etc] and I/O operations [<<, getline(), etc.])
+
+
+
+notation
+
+model of memory
+
+model of computation
+
+code organization (procedural programming)
+
+CHAPTER 3
+
+abstraction mechanism
+
+CHAPTER 6 (SYSTEMATIC PRESENTATION) (if 2nd is confusing)
