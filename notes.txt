@@ -41,7 +41,9 @@ The value the main function returns (int, if any) is returned to the system.
 If main() doesn't return a value, the system will receive a value nonetheless. A value indicating success.
 If main() returns a nonzero value, it indicates failure.
 
-Not every system  make use of that return value. Linux/Unix often do, Windows rarely do.
+Not every system make use of that return value. Linux/Unix often do, Windows rarely do.
+
+
 
 // Code start
 
@@ -51,11 +53,15 @@ in hello.cpp
 
 int main(0
 {
-    std::cout << "Hello, World!\n";
+    std::cout << "Hello, World!\n"; // "Hello, World!\n" is a string literal
+    // << is the operator ("put to")
+    // the string is written to the standard output stream [std::cout]
 }
 
 // Code end
 
+#include <iostream> instructs the compiler to include standard stream I/O facilities, found in iostream.
+The operator << ("put to") writes its second argument to its first.
 
 
 
