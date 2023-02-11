@@ -97,9 +97,17 @@ An object is some memory holding a value of some type.
 A value is a set of bits interpreted to a type.
 A variable is a named object.
 
+Fondamental types correspond to hardware facilities.
+    - bool // Boolean, true and false
+    - char // character, 'a', 'x' and '9'
+    - int // integer, 1, 42, 1066
+    - double // double-precision folating-point number, 3.14, 2667.0
 
+Fondamental types set a range of values to be stored in them or precision of values.
+A char has an 8-bit byte machine size.
+The size of other types are multiples of the char size (how many char?)
 
-
+the sizeof operator provides the size of a variable. sizeof(char) equals 1 and sizeof(int) is often 4.
 
 
 notation
