@@ -43,8 +43,6 @@ If main() returns a nonzero value, it indicates failure.
 
 Not every system make use of that return value. Linux/Unix often do, Windows rarely do.
 
-
-
 // Code start
 
 in hello.cpp
@@ -62,6 +60,12 @@ int main(0
 
 #include <iostream> instructs the compiler to include standard stream I/O facilities, found in iostream.
 The operator << ("put to") writes its second argument to its first.
+
+std::cout is the standard output stream. (std - standard, c language, out - output)
+std:: specifies the name cout is found in the standard-library namespace.
+
+all code is placed in function and called from main()
+
 
 
 
