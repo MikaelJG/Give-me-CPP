@@ -88,6 +88,15 @@ int main()
     print_square(5.555); // "the square of 5.555 is 30.858"
 }
 
+Every name, every expression, has a type. The type determines possible operations on it.
+int inch; // inch is of type int, an integer variable.
+
+Intrucing a name is a Declaration. Declare a type for the named entitity.
+A type is a set of possible values and operations.
+An object is some memory holding a value of some type. 
+A value is a set of bits interpreted to a type.
+A variable is a named object.
+
 
 
 
