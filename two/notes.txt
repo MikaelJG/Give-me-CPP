@@ -104,10 +104,29 @@ Fondamental types correspond to hardware facilities.
     - double // double-precision folating-point number, 3.14, 2667.0
 
 Fondamental types set a range of values to be stored in them or precision of values.
-A char has an 8-bit byte machine size.
+Both a char and a bool has an 8-bit byte machine size.
 The size of other types are multiples of the char size (how many char?)
 
 the sizeof operator provides the size of a variable. sizeof(char) equals 1 and sizeof(int) is often 4.
+
+Arithmetic operators
+    x+y // plus
+    +x // unary plus 
+    x-y // minus 
+    -x // unary minus
+    x*y // multiply 
+    x/y // dividw 
+    x%y // remainder (modulus) for integers 
+
+Comparison operators
+    x==y // equal
+    x!=y // not equal
+    x<y // less than
+    x>y // greater than
+    x<=y // less than or equal
+    x>=y // greater than or equal
+
+
 
 
 notation
