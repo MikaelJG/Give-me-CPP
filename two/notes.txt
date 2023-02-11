@@ -64,8 +64,19 @@ The operator << ("put to") writes its second argument to its first.
 std::cout is the standard output stream. (std - standard, c language, out - output)
 std:: specifies the name cout is found in the standard-library namespace.
 
-all code is placed in function and called from main()
+all code is placed in function and called from main();
 
+// in code
+
+# include <iostream>
+
+double square(double x) // a function named square, taking one argument: a double precision floating-point number
+{
+    return x*x
+}
+
+void print_square(double x) // a function named print_square, taking one argument.
+// void is a return type. It indicates that a function does not return a value.
 
 
 
