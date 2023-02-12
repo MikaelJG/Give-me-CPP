@@ -138,7 +138,11 @@ void some_function() // function that doesn't return a value
 
 double d1 = 2.3;
 double d1 = {2.3}; // is a long form of curly brace initialization
-double d2 {2.3} // initializes the var in the same way
+double d2 {2.3}; // initializes the var in the same way
+
+complex<double> z = 1; // a complex number with double-precision folating-point scalars
+complex<double> z2 = {d1.d2}; 
+complex<double> z3 {1.2}; // the = is optional with {...}
 
 
 notation
