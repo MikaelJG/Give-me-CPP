@@ -126,6 +126,7 @@ Comparison operators
     x<=y // less than or equal
     x>=y // greater than or equal
 
+// in code
 void some_function() // function that doesn't return a value
 {    
     double d = 2.2; // initialize folating-point number
@@ -133,6 +134,12 @@ void some_function() // function that doesn't return a value
     d = d+i; // assign sum to d
     i = d*i; // assign product to i (truncating the double to an integer)
 }
+// end code
+
+double d1 = 2.3;
+double d1 = {2.3}; // is a long form of curly brace initialization
+double d2 {2.3} // initializes the var in the same way
+
 
 notation
 
