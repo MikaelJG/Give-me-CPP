@@ -135,7 +135,7 @@ void some_function() // function that doesn't return a value
     i = d*i; // assign product to i (truncating the double to an integer)
 }
 // end code
-
+// in code
 double d1 = 2.3;
 double d1 = {2.3}; // is a long form of curly brace initialization
 double d2 {2.3}; // initializes the var in the same way
@@ -143,6 +143,34 @@ double d2 {2.3}; // initializes the var in the same way
 complex<double> z = 1; // a complex number with double-precision folating-point scalars
 complex<double> z2 = {d1.d2}; 
 complex<double> z3 {1.2}; // the = is optional with {...}
+
+vector<int> v {1,2,3,4,5,6}; // a vector of ints
+
+// end code
+
+Use the {}-list
+
+int i1 = 7.2; // i7 is reduced to 7
+int i2 {7.2}; // error: floating-point to integer conversion 
+
+A constant can't be left unintialized. 
+A var should almost never be left unintialized.
+
+String, vector, Matrix and Orc, are user-defined types.
+Type can be deduced from the initializer:
+    auto b = true; // a bool
+    auto ch = 'x'; // a char
+    auto i = 123; // an int
+    auto d = 1.2; // a double
+    auto z = sqrt(y) // z has the type of sqrt(y)'s return.
+
+
+
+
+
+
+
+
 
 
 notation
