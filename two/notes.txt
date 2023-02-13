@@ -148,7 +148,7 @@ vector<int> v {1,2,3,4,5,6}; // a vector of ints
 
 // end code
 
-Use the {}-list
+Use the {}-list, unless implicit initialization (auto)
 
 int i1 = 7.2; // i7 is reduced to 7
 int i2 {7.2}; // error: floating-point to integer conversion 
@@ -164,6 +164,20 @@ Type can be deduced from the initializer:
     auto d = 1.2; // a double
     auto z = sqrt(y) // z has the type of sqrt(y)'s return.
 
+explicit in type makes code more readable and shows a var's range or precision (long double vs double)
+
+More operators
+// in code
+
+x+=y // x = x+y
+++x // increment: x = x+1 
+x-=y // x = x-y
+--x // decrement: x = x-1
+x*=y // scaling: x = x*y
+x/=y // scaling x = x/y
+x%=y // x = x%y
+
+// end code
 
 
 
