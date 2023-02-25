@@ -35,3 +35,14 @@ None of this is going to run! */
 
 Every variable has a type, which represents the kind of information you can store inside of it. It tells your compiler how much memory to set aside for the variable, and it defines what you can do with the variabl
 
+C++ is known as a strongly typed language. If you try to assign a value of one type to a variable that is a different type, you may get unexpected results, warnings, or errors.
+
+declare a var:
+int score;
+
+initialize the var:
+score = 0
+
+You need both:
+
+int score = 0;
