@@ -1,0 +1,11 @@
+C++17 introduced a new header <filesystem> to handle file system operations. It includes several classes, functions, and types for working with files, directories, and paths, and provides a modern and standard way to work with the file system.
+
+The main classes and functions in <filesystem> include:
+
+    std::filesystem::path for representing file paths
+    std::filesystem::directory_entry for representing an entry in a directory
+    std::filesystem::directory_iterator for iterating over entries in a directory
+    std::filesystem::recursive_directory_iterator for iterating over entries in a directory and its subdirectories
+    std::filesystem::create_directory, std::filesystem::remove, std::filesystem::copy, and other functions for file system operations.
+
+Note that <filesystem> is part of the C++ standard library, so you don't need to install any additional libraries to use it.
