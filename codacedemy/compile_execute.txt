@@ -19,4 +19,19 @@ If you’ve compiled a program and have executed the executable named a.out, eve
 
 So the output of the compiler is assembled and this assembled output is a.out.
 
+name the executable: 
+
+g++ hello.cpp -o hello
+
+-----------------
+
+long comments
+
+/* This is all commented.
+std::cout << "hi!";
+None of this is going to run! */
+
+------------------
+
+Every variable has a type, which represents the kind of information you can store inside of it. It tells your compiler how much memory to set aside for the variable, and it defines what you can do with the variabl
 
