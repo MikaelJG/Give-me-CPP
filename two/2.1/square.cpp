@@ -9,7 +9,7 @@ double square(double x) // a function named square, taking one argument: a doubl
 void print_square(double x) // a function named print_square, taking one argument.
 // void is a return type. It indicates that a function does not return a value.
 {
-    std::cout << "the square of" << x << " is " << square(x) << " \n"; // standard output stream
+    std::cout << "the square of " << x << " is " << square(x) << " \n"; // standard output stream
     // the function square() is used in the interpolation
 }
 
