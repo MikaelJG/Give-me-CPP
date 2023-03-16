@@ -1,13 +1,17 @@
 
-Give Me C++ is my journey to learn c++. 
+## Give Me CPP 
 
-It is named after God of War's hardest difficulty: Give Me God of War. 
+My journey to learn c++, named after God of War's hardest difficulty: Give Me God of War. 
+
+It contains notes from :
+    - Bjarne Stroustrup' [A Tour of C++: The Basics](https://isocpp.org/images/uploads/2-Tour-Basics.pdf)
+    - Jason Turner's [C++ Best Practices - 45ish Simple Rules with Specific Action Items for Better C++] (https://leanpub.com/cppbestpractices)
 
 Let's take one day at a time and learn this thing. 
 
-## On notes 
+## Want the notes? 
 
-Want the notes?
+Clone this repository.
 ```bash
 $ git@github.com:MikaelJG/Give-me-CPP.git
 ```
