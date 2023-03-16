@@ -3,7 +3,10 @@
 
 My journey to learn c++, named after God of War's hardest difficulty: Give Me God of War. 
 
-It contains notes from :
+
+# Content
+
+In contains notes from:
 
 Bjarne Stroustrup' [A Tour of C++: The Basics](https://isocpp.org/images/uploads/2-Tour-Basics.pdf)
 
