@@ -1,0 +1,13 @@
+
+
+Chaining
+
+int age = 28;
+
+std::cout << "Hello, I am ";
+std::cout << age;
+std::cout << " years old\n";
+
+    We use quotes when we want a literal string.
+    We don’t use quotes when refering to a variable's value.
+

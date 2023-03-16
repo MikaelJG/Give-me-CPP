@@ -1,0 +1,33 @@
+
+When you program in C++, you mainly go through 4 phases during development:
+
+    Code — writing the program
+    Save — saving the program
+    Compile — compiling via the terminal
+    Execute — executing via the terminal
+
+    Debug (after this cycle)
+
+----------------------------------------------------------------------------------------------------
+
+COMPILING
+
+Compiling is translating the C++ program and creating a machine code file.
+
+The executable is loaded to computer memory.
+The computer’s CPU (Central Processing Unit) executes the program.
+
+A.OUT 
+
+The default name is a.out. A stands for “assembler”, the OUT for “output”.
+
+If you’ve compiled a program and have executed the executable named a.out, 
+
+The source code is all within the executable, thus removable after the compilation
+
+with G++ 
+
+Name the executable: 
+
+g++ hello.cpp -o hello
+
