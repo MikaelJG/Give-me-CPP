@@ -1,0 +1,9 @@
+Jason Turner recommends this to set up for c++
+
+https://github.com/cpp-best-practices/gui_starter_template
+
+Also, see
+
+https://github.com/cpp-best-practices/cmake_conan_boilerplate_template
+
+it has information on Catch2 and libfuzzer.
