@@ -1,0 +1,7 @@
+CMake
+
+    A Cross-platform build system that generates native build files and manages the build process of a project. 
+
+    CMake can generate build files for different platforms and compilers, including Makefiles, Visual Studio project files, and Xcode project files. 
+
+    Once the build files are generated, the actual compilation and linking are performed by the respective platform-specific tools, such as gcc or clang for C++ compilation and linking on Linux.
