@@ -1,0 +1,20 @@
+CTest is typically included as part of the CMake build system, which is commonly used to manage the build process of C++ projects on Ubuntu. To install CMake, you can use the following command:
+
+sudo apt-get install cmake
+Once CMake is installed, you can then use CTest by running the following commands in your project directory:
+
+mkdir build
+cd build
+cmake ..
+make
+ctest
+
+
+This will build your project using CMake, and then run the test suite using CTest. Note that you will need to have a CMakeLists.txt file in your project directory in order to use CMake.
+
+If you want to install CTest separately, you can use the following command:
+
+arduino
+Copy code
+sudo apt-get install cmake-curses-gui
+This will install the cmake-curses-gui package, which includes CTest.
