@@ -1,6 +1,3 @@
-Sure, here is a basic C++ boilerplate for a simple Shoot 'em up game:
-
-php
 
 #include <SFML/Graphics.hpp>
 
