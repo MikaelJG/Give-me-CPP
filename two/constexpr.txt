@@ -1,0 +1,11 @@
+
+Constants
+
+C++ supports two notions of immutability
+    const - specifies interfaces, passing data without fear of modification. It won't be changed.
+    constexpr - specifies constants, safe placement in memory for performance. Unlikely to be corrupted, evaluated at compile time. 
+
+examples:
+    double sum(const vector<double>&); // sum will not midify its argument
+    const int dmv = 17;     // dmv is a named constant
+    xonstexpr double max1 = 1.4*square(dmv); // OK if square(17) is a constant expression
