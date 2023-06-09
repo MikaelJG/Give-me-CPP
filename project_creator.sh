@@ -71,7 +71,5 @@ int main() {
 
 # Run cmake from the cmd line, specify a directory
 # 
-cmake .
-# && make && ./hello
+cmake . && make
 #
-# 
