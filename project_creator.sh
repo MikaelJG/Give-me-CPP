@@ -67,9 +67,7 @@ echo '
 int main() {
     std::cout << "This main.cpp" << "\n"; 
     return 0;
-}void Blah::boo() {
-  std::cout << "This Blah.cpp" << "\n";
-} ' >> ./src/main.cpp
+}' >> ./src/main.cpp
 
 # Run cmake from the cmd line, specify a directory
 # 
