@@ -13,7 +13,7 @@
 #
 # Create project achitecture (tree)
 #
-# mkdir build include test ;
+# mkdir build include test src ;
 #
 # Create a CMakeList.txt file
 #
@@ -39,16 +39,22 @@
 #
 # class Blah {
 #   public:
-#       inline void boo() {
-#           std::cout << "This Blah.h" << <'\n';
-#        
-#       }
+#       void boo();
+# }; " >> ./include/Blah.h
+# # Declarations here, in header file Blah.h
+#
+# echo "
+# #include "blah.h"
+# #include <iostream>
+# void Blah::boo() {
+#   std::cout << "This Blah.cpp" << '\n';
+# }
 #
 #
-# };
+# " >> ./src/Blah.cpp
+# # Declared in header file Blah.h
+# # Defined here in blah source file, Blah.cpp
 #
-#
-# " >> Blah.h
 #
 # Run cmake from the cmd line, specify a directory
 #
