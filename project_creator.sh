@@ -25,7 +25,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(name-of-project VERSION 1.0)
 
-add_executable (name-of-project main.cpp \${SRC_FILES})
+add_executable (name-of-project src/main.cpp \${SRC_FILES})
 # add all .cpp files in src to executable
 
 target_include_directories(name-of-project PUBLIC \${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -73,6 +73,7 @@ int main() {
 
 # Run cmake from the cmd line, specify a directory
 # 
-# cmake . && make && ./hello
+cmake .
+# && make && ./hello
 #
 # 
