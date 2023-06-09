@@ -23,11 +23,16 @@
 # set(CMAKE_CXX_STANDARD_REQUIRED ON)  
 #
 # project(name-of-project VERSION 1.0)
-# add_executable (name-of-project main.cpp)
 # 
 # target_include_directories(name-of-project PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 # # include is for header files (standard)
 #
+#
+#file(GLOB_RECURSE SRC_FILES src/*.cpp)
+## glob all .cpp files in src directory
+#
+# add_executable (name-of-project main.cpp ${SRC_FILES})
+## add all .cpp files in src to executable
 #
 # " >> CMakeList.txt
 #
