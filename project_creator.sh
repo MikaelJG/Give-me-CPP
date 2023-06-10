@@ -13,7 +13,7 @@
 #
 # Create project achitecture (tree)
 #
-mkdir build include test src ;
+mkdir build include src ;
 #
 # Create a CMakeList.txt file
 # Order of command matters here. 
@@ -39,7 +39,6 @@ file(GLOB_RECURSE SRC_FILES src/*.cpp)
 #
 echo "
 #pragma once
-#include <iostream>
 
 class Blah {
   public:
@@ -53,6 +52,8 @@ class Blah {
 echo ' 
 #include "blah.h"
 #include <iostream>
+
+// function boo of class Blah
 void Blah::boo() {
   std::cout << "This Blah.cpp" << "\n";
 } ' >> ./src/Blah.cpp
@@ -68,6 +69,11 @@ int main() {
     std::cout << "This main.cpp" << "\n"; 
     return 0;
 }' >> ./src/main.cpp
+
+# Have all cmake generated files in the build directory, 
+# then call make ../ from the build directory.
+
+cd build; cmake ../
 
 # Run cmake from the cmd line, specify a directory
 # 
