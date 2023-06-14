@@ -13,18 +13,13 @@ echo "begin.txt has $BEGIN_LINES number of lines"
 END_LINES=$(wc -l < end.txt)
 echo "end.txt has $END_LINES number of lines"
 
+read -r begin_value < begin.txt 
+read -r end_value < end.txt 
 
-end_value=$(head -n 1 end.txt)
-begin_value=$(head -n 1 begin.txt)
+begin_val_int=$((begin_value))
+end_val_int=$((end_value))
+sub=$((end_val_int - begin_val_int)) 
 
-echo "end: ${end_value} - begin ${begin_value}"
-
-
-# Loop through the range of lines
-# for ((i = 1; i <= END_LINES; i++)); do
-#     end_value=$(head -n "$i" end.txt)
-#     begin_value=$(head -n "$i" begin.txt)
-# 
-#     echo "end: ${end_value} - begin ${begin_value}"
-# done
+echo "end: ${end_val_int} - begin ${begin_val_int}"
+echo "substraction is ${sub}"
 
