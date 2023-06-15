@@ -124,3 +124,28 @@ sed -i 's/\\section{//' verbatim.csv
 sed -i 's/\\subsection{//' verbatim.csv
 sed -i 's/}//' verbatim.csv
 
+#################################### 
+# Create the final document
+#
+# Name of section
+#
+# example
+#
+# Name of section
+#
+# example 2
+#################################### 
+#
+#
+#
+while IFS= read -r line; do
+    IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
+    sed -n "${start_point},${end_point}p" 3_cpp.tex
+done < verbatim.csv >> final.csv
+
+#
+#
+#
+#
+#
+# sed -n "${b_int},${e_int}p" 3_cpp.tex
