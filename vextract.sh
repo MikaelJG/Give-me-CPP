@@ -38,13 +38,15 @@ find_section() {
     i=$((i - jmpAmount))
 
     local j
-    for (( j = 0; j < jmpAmount && i < length; j++, i++ )); do
+    for (( j = 0; j <= jmpAmount && i < length; j++, i++ )); do
         if (( section_start_a[i] > target )); then
             
             i=$(( i - 1 ))
             
-            echo "The given target is: $target"
+            echo "Target is: $target"
             echo "The found section is: ${section_start_a[i]}"
+            echo ""
+            echo ""
             return 
         fi
     done
@@ -100,7 +102,8 @@ echo "${section_start_a[@]}"
 
 while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines <<< "$line"
-    echo "Verbatim number: $ver_num -- It starts line $start_point"
+    echo ""
+    echo "V number $ver_num starts at line $start_point"
 
     find_section "$start_point"
 done < verbatim.csv
