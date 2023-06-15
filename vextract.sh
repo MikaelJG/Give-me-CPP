@@ -118,5 +118,9 @@ done < verbatim.csv >> section.csv
 
 paste -d ',' verbatim.csv section.csv > best_verbatim.csv 
 
-rm verbatim.csv
+rm verbatim.csv ; mv best_verbatim.csv verbatim.csv
+
+sed -i 's/\\section{//' verbatim.csv
+sed -i 's/\\subsection{//' verbatim.csv
+sed -i 's/}//' verbatim.csv
 
