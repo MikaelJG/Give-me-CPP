@@ -92,7 +92,14 @@ while IFS= read -r line; do
     section_start_a+=("$start_point")
 done < section.csv
 
-echo "${section_start_a[@]}"
+##################################
+#
+# Append large number, allows last verbatim not to overheap.
+# Otherwise, last verbatim fails the algo.
+#
+##################################
+
+section_start_a+=("100000")
 
 ##################################
 #
@@ -107,5 +114,5 @@ while IFS= read -r line; do
 
     find_section "$start_point"
 done < verbatim.csv
-#
-#
+
+
