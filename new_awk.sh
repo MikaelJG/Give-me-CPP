@@ -9,62 +9,38 @@ section_array() {
     while IFS= read -r line; do
       section_array+=("$line")
     done < "$sec_file"
-    
-    # Print the array
+
+    length=${#section_array[@]}
+    sqrtLength=$(echo "sqrt($length)" | bc)
+    jmpAmount=$(echo "($sqrtLength + 0.5) / 1" | bc)
+
+    # print to see all values
     echo "${section_array[@]}"
+    echo "this array has a length of: $length"
+    echo "It has a sqrt length of: $sqrtLength"
+    echo "The jmpAmount has been calculated at: $jmpAmount"
+
+    #local i=$jmpAmount
+    #while (( i < length )); do
+    #    if (( section_array[i] < b_int )); then
+    #        break
+    #    fi
+    #    i=$((i + jmpAmount))
+    #done
+
+    #i=$((i - jmpAmount))
+
+    #local j
+    #for (( j = 0; j < jmpAmount && i < length; j++, i++ )); do
+    #    if (( section_array[i] < b_int )); then
+    #        echo "$i"
+    #        return
+    #    fi
+    #done
+
+    #echo "-1"
+    
 }
-
-find_section() {
-    local -n sec_array=$1
-    local length=${#sec_array[@]}
-    local sqrtLength=$(echo "sqrt($length)" | bc)
-    local jmpAmount=$(echo "($sqrtLength + 0.5) / 1" | bc)
-
-    local i=$jmpAmount
-    while (( i < length )); do
-        if (( sec_array[i] < b_int )); then
-            break
-        fi
-        i=$((i + jmpAmount))
-    done
-
-    i=$((i - jmpAmount))
-
-    local j
-    for (( j = 0; j < jmpAmount && i < length; j++, i++ )); do
-        if (( sec_array[i] < b_int )); then
-            echo "$i"
-            return
-        fi
-    done
-
-    echo "-1"
-}
-
-# Example usage
-declare -a breaks=(false false false false false false true true true true)
-result=$(two_crystal_balls breaks)
-echo "Result: $result"
-
-}
-    # function two_crystal_balls(breaks: boolean[]):number {
-    #     const jmpAmount = Math.floor(Math.sqrt(breaks.length)); // jump sqrt length
-    #     
-    #     let i = jmpAmount;
-    #     for (i < breaks.length; 1 += jmpAmount) {
-    #         if (break[i]) {
-    #             break;
-    #         }
-    #     
-    #     i -= jmpAmount;
-    #     
-    #     for (let j = 0; j < jmpAmount && i < breaks.length; ++j, ++i) { // linear
-    #         if (break[i] {
-    #             return i;
-    #         }
-    #     }
-    #     return -1; // sentinal return, verify this
-    # }
 
 awk '/begin{verbat/ { print NR }' 3_cpp.tex >> begin.txt
 awk '/end{verbat/ { print NR }' 3_cpp.tex >> end.txt
@@ -83,6 +59,8 @@ awk -F ',' '{result = $2 - $1; print $0 "," result}' both.csv >> sub.txt
 
 section_array
 
+sleep 20
+
 # print the range with sed command
 #3
 while IFS= read -r line; do
@@ -96,26 +74,7 @@ while IFS= read -r line; do
     #
     # get rid of the begin{verba and end{verba line.
     # 
-    #
-    # 
-    # Im pretty sure that finding the right section is the crystall balls problem 
-    #
-    # an array of boolean
-    #
-    # if begin is greater than section line, have the boolean value be true. 
-    #
-    # the second it is less, you have to walk back from the last true, to find exactly where it went false
-    #
-    # in other words, jump a certain amount, ask if the value if greater. 
-    # If it is, jump again. If not, go back and jump small steps.
-    #
-    #
-    #
-    #
-    #
+    
 done < sub.txt > result.txt
 
 rm begin.txt end.txt both.csv sub.txt
-#
-# 
-
