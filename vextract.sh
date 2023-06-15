@@ -44,19 +44,21 @@ rm no_num_section.csv
 section_start_a=()
 
 while IFS= read -r line; do
-    # IFS=',' read -r sec_num start_point sec_name <<< "$line"
-    # section_start_a+=(start_point)
-    echo "hi"
+    IFS=',' read -r sec_num start_point sec_name <<< "$line"
+    section_start_a+=("$start_point")
 done < section.csv
 
-# echo "${section_start_a[@]}"
+echo "${section_start_a[@]}"
 
+while IFS= read -r line; do
+    IFS=',' read -r ver_num start_point end_point ver_num_lines <<< "$line"
+    echo "Verbatim number: $ver_num -- It starts line: $start_point"
+done < verbatim.csv
+# for each begin in verbatim.csv
+#   run the get section command
+#
+#
 
-# Combine the lines from both files into the output CSV file
-
-# begin, end, substracted
-# 335,358,23
-# 
 # while IFS= read -r line; do
 #     IFS=',' read -r begin_int end_int sub_int <<< "$line"
 #     b_int=$((begin_int))
