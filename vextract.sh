@@ -5,19 +5,21 @@
 ##################################
 # Delete all files from precedent extractions
 ##################################
-#
+
+
 rm verbatim.csv section.csv
-#
-#
+
 
 ##################################
+#
 # Find the right section, given an array of line numbers
 #
 # This implementation is based on the two crystal ball algorithm puzzle.
 #
 # [120,149,220]
 # 
-# if number is 135, it finds the section starting at 120
+# if number is 135, finds section start at 120
+#
 ##################################
 
 find_section() {
@@ -42,21 +44,20 @@ find_section() {
         if (( section_start_a[i] > target )); then
             
             i=$(( i - 1 ))
+
+            section=${section_start_a[i]}
             
-            echo "Target is: $target"
-            echo "The found section is: ${section_start_a[i]}"
-            echo ""
-            echo ""
-            return 
+            echo "$section"
+            return
         fi
     done
 
     echo "-1"
     
 }
+
 ##################################
 # Create verbatim.csv
-##################################
 #
 # Format: Verbatim number, Start, End, Number of lines for Verbatim
 #
@@ -72,7 +73,6 @@ rm begin.txt end.txt both.csv no_num_verbatim.csv
 
 ##################################
 # Create section.csv
-##################################
 #
 # Format: Section number, Start, Name of Section 
 #
@@ -80,11 +80,15 @@ rm begin.txt end.txt both.csv no_num_verbatim.csv
 awk '/section/ { print NR "," $0 }' 3_cpp.tex >> no_num_section.csv
 nl -w1 -s, no_num_section.csv > section.csv
 
-#
+
 rm no_num_section.csv
+
+##################################
 #
 # Create array of Section Start
 #
+##################################
+
 section_start_a=()
 
 while IFS= read -r line; do
@@ -92,13 +96,8 @@ while IFS= read -r line; do
     section_start_a+=("$start_point")
 done < section.csv
 
-##################################
-#
 # Append large number, allows last verbatim not to overheap.
 # Otherwise, last verbatim fails the algo.
-#
-##################################
-
 section_start_a+=("100000")
 
 ##################################
@@ -109,10 +108,9 @@ section_start_a+=("100000")
 
 while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines <<< "$line"
-    echo ""
-    echo "V number $ver_num starts at line $start_point"
+    section=$(find_section "$start_point")
 
-    find_section "$start_point"
+    echo "after find, section returned is: $section"
 done < verbatim.csv
 
 
