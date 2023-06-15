@@ -9,7 +9,6 @@
 rm verbatim.csv section.csv
 #
 #
-#
 ##################################
 # Create verbatim.csv
 ##################################
@@ -50,37 +49,60 @@ done < section.csv
 
 echo "${section_start_a[@]}"
 
-while IFS= read -r line; do
-    IFS=',' read -r ver_num start_point end_point ver_num_lines <<< "$line"
-    echo "Verbatim number: $ver_num -- It starts line: $start_point"
-done < verbatim.csv
-# for each begin in verbatim.csv
-#   run the get section command
+##################################
 #
+# For each verbatim find section section
 #
+##################################
 
 # while IFS= read -r line; do
-#     IFS=',' read -r begin_int end_int sub_int <<< "$line"
-#     b_int=$((begin_int))
-#     section_array $b_int
-# done < begin.txt
-# 
-# file1="begin.txt"
-# file2="chapter_name.txt"
-# all="all.csv"
-# 
-# paste -d ',' "$file1" "$file2" > "$all"
+#     IFS=',' read -r ver_num start_point end_point ver_num_lines <<< "$line"
+#     echo "Verbatim number: $ver_num -- It starts line $start_point"
+# done < verbatim.csv
+#
+#
+##################################
+#
+# format find_section 
+#        params -- section_line_number_array verbatim_line_number
+#
+##################################
+#
+find_section() {
+    target=$1
 
 
+    length=${#section_start_a[@]}
+    sqrtLength=$(echo "sqrt($length)" | bc)
+    jmpAmount=$(echo "($sqrtLength + 0.5) / 1" | bc)
+
+    i=$jmpAmount
+
+    while (( i < length )); do
+        if (( section_start_a[i] > target )); then
+            break
+        fi
+        i=$((i + jmpAmount))
+    done
+
+    i=$((i - jmpAmount))
+
+    local j
+    for (( j = 0; j < jmpAmount && i < length; j++, i++ )); do
+        if (( section_start_a[i] > target )); then
+            
+            i=$(( i - 1 ))
+            
+            echo "The given target is: $target"
+            echo "The found section is: ${section_start_a[i]}"
 
 
+            return 
+        fi
+    done
 
-# while IFS= read -r line; do
-#     IFS=',' read -r begin_int end_int sub_int <<< "$line"
-# 
-#     b_int=$((begin_int))
-#     # e_int=$((end_int))
-#     # sed -n "${b_int},${e_int}p" 3_cpp.tex
-#     
-# done < sub.txt >> result.txt
+    echo "-1"
+    
+}
 
+find_section 250
