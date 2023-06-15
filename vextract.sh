@@ -158,7 +158,13 @@ for (( i = 0; i < ${#rows[@]}; i++ )); do
   awk -v r="${row}" 'BEGIN{ found=0 } /^\\begin{verbatim}$/ && !found { found=1; print r; next } 1' final.csv > final.tmp
   mv final.tmp final.csv
 done
+
+# add a line after \end{verbatim} in final.csv
 #
+sed -i '/end{verbatim}/ s//&\n/' final.csv
+sed -i '/end{verbatim}/d' final.csv
+
+
 #
 #
 # sed -n "${b_int},${e_int}p" 3_cpp.tex
