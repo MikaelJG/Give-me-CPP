@@ -1,10 +1,74 @@
 #!/bin/bash
 
-rm result.txt
+rm result.txt section.csv
+
+section_array() {
+    sec_file="section.csv"
+    section_array=()
+    
+    while IFS= read -r line; do
+      section_array+=("$line")
+    done < "$sec_file"
+    
+    # Print the array
+    echo "${section_array[@]}"
+}
+
+find_section() {
+    local -n sec_array=$1
+    local length=${#sec_array[@]}
+    local sqrtLength=$(echo "sqrt($length)" | bc)
+    local jmpAmount=$(echo "($sqrtLength + 0.5) / 1" | bc)
+
+    local i=$jmpAmount
+    while (( i < length )); do
+        if (( sec_array[i] < b_int )); then
+            break
+        fi
+        i=$((i + jmpAmount))
+    done
+
+    i=$((i - jmpAmount))
+
+    local j
+    for (( j = 0; j < jmpAmount && i < length; j++, i++ )); do
+        if (( sec_array[i] < b_int )); then
+            echo "$i"
+            return
+        fi
+    done
+
+    echo "-1"
+}
+
+# Example usage
+declare -a breaks=(false false false false false false true true true true)
+result=$(two_crystal_balls breaks)
+echo "Result: $result"
+
+}
+    # function two_crystal_balls(breaks: boolean[]):number {
+    #     const jmpAmount = Math.floor(Math.sqrt(breaks.length)); // jump sqrt length
+    #     
+    #     let i = jmpAmount;
+    #     for (i < breaks.length; 1 += jmpAmount) {
+    #         if (break[i]) {
+    #             break;
+    #         }
+    #     
+    #     i -= jmpAmount;
+    #     
+    #     for (let j = 0; j < jmpAmount && i < breaks.length; ++j, ++i) { // linear
+    #         if (break[i] {
+    #             return i;
+    #         }
+    #     }
+    #     return -1; // sentinal return, verify this
+    # }
 
 awk '/begin{verbat/ { print NR }' 3_cpp.tex >> begin.txt
 awk '/end{verbat/ { print NR }' 3_cpp.tex >> end.txt
-awk '/section/ { print NR "," $0  }' 3_cpp.tex >> section.csv
+awk '/section/ { print NR }' 3_cpp.tex >> section.csv
 
 file1="begin.txt"
 file2="end.txt"
@@ -16,6 +80,8 @@ paste -d ',' "$file1" "$file2" > "$both"
 # begin, end, substracted
 # 335,358,23
 awk -F ',' '{result = $2 - $1; print $0 "," result}' both.csv >> sub.txt
+
+section_array
 
 # print the range with sed command
 #3
