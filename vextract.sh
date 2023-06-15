@@ -124,6 +124,10 @@ sed -i 's/\\section{//' verbatim.csv
 sed -i 's/\\subsection{//' verbatim.csv
 sed -i 's/}//' verbatim.csv
 
+sed -i 's/\\section{//' section.csv
+sed -i 's/\\subsection{//' section.csv
+sed -i 's/}//' section.csv
+
 #################################### 
 # Create the final document
 #
@@ -143,8 +147,17 @@ while IFS= read -r line; do
     sed -n "${start_point},${end_point}p" 3_cpp.tex
 done < verbatim.csv >> final.csv
 
+
+# Read CSV file into an array
+mapfile -t rows < section.csv
+
+# Iterate over the rows and replace occurrences in the document
 #
-#
+for (( i = 0; i < ${#rows[@]}; i++ )); do
+  row="${rows[i]}"
+  awk -v r="${row}" 'BEGIN{ found=0 } /^\\begin{verbatim}$/ && !found { found=1; print r; next } 1' final.csv > final.tmp
+  mv final.tmp final.csv
+done
 #
 #
 #
