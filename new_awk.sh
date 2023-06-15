@@ -1,6 +1,7 @@
 #!/bin/bash
 
-rm result.txt section.csv
+rm result.txt section.csv chapter_name.txt
+rm begin.txt end.txt both.csv sub.txt
 
 section_array() {
     sec_file="section.csv"
@@ -36,12 +37,8 @@ section_array() {
             
             i=$(( i - 1 ))
 
-            echo "The number given is $1 !"
-            echo "Section_array[i] is this! :: ${section_array[i]}"
-            echo "Chapter name is: ${chapter_name_array[i]}"
-            
-            sleep 1
-            return
+            echo "${chapter_name_array[i]}" >> chapter_name.txt
+            return 
         fi
     done
 
@@ -72,18 +69,14 @@ while IFS= read -r line; do
     e_int=$((end_int))
     # s_int=$((sub_int))
     #
-    echo "this is b_int : $b_int"
-    echo "this is e_int : $e_int"
+
+    sed -n "${b_int},${e_int}p" 3_cpp.tex
 
     section_array $b_int
-
-    sleep 1 
-
-    # sed -n "${b_int},${e_int}p" 3_cpp.tex
     #
     # get rid of the begin{verba and end{verba line.
     # 
     
-done < sub.txt
+done < sub.txt >> result.txt
 
 rm begin.txt end.txt both.csv sub.txt
