@@ -20,25 +20,31 @@ section_array() {
     echo "It has a sqrt length of: $sqrtLength"
     echo "The jmpAmount has been calculated at: $jmpAmount"
 
-    #local i=$jmpAmount
-    #while (( i < length )); do
-    #    if (( section_array[i] < b_int )); then
-    #        break
-    #    fi
-    #    i=$((i + jmpAmount))
-    #done
+    i=$jmpAmount
 
-    #i=$((i - jmpAmount))
+    while (( i < length )); do
+        if (( section_array[i] > 1230 )); then
+            break
+        fi
+        i=$((i + jmpAmount))
+    done
 
-    #local j
-    #for (( j = 0; j < jmpAmount && i < length; j++, i++ )); do
-    #    if (( section_array[i] < b_int )); then
-    #        echo "$i"
-    #        return
-    #    fi
-    #done
+    i=$((i - jmpAmount))
 
-    #echo "-1"
+    local j
+    for (( j = 0; j < jmpAmount && i < length; j++, i++ )); do
+        if (( section_array[i] > 1230 )); then
+            
+            i=$(( i - 1 ))
+
+            echo "The number given is 1230 !"
+            echo "Section_array[i] is this! :: ${section_array[i]}"
+            echo $i
+            return
+        fi
+    done
+
+    echo "-1"
     
 }
 
