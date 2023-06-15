@@ -96,6 +96,8 @@ while IFS= read -r line; do
     section_start_a+=("$start_point")
 done < section.csv
 
+rm section.csv
+
 # Append large number, allows last verbatim not to overheap.
 # Otherwise, last verbatim fails the algo.
 section_start_a+=("100000")
@@ -110,7 +112,11 @@ while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines <<< "$line"
     section=$(find_section "$start_point")
 
-    echo "after find, section returned is: $section"
-done < verbatim.csv
+    sed -n "${section}p" 3_cpp.tex
 
+done < verbatim.csv >> section.csv
+
+paste -d ',' verbatim.csv section.csv > best_verbatim.csv 
+
+rm verbatim.csv
 
