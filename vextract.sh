@@ -6,7 +6,7 @@
 # Delete all files from precedent extractions
 ##################################
 #
-# rm verbatim.csv section.csv
+rm verbatim.csv section.csv
 #
 #
 #
@@ -14,6 +14,9 @@
 # Create verbatim.csv
 ##################################
 #
+# Format: Verbatim number, Start, End, Number of lines for Verbatim
+#
+##################################
 #
 awk '/begin{verbat/ { print NR }' 3_cpp.tex >> begin.txt
 awk '/end{verbat/ { print NR }' 3_cpp.tex >> end.txt
@@ -21,22 +24,33 @@ paste -d ',' begin.txt end.txt > both.csv
 awk -F ',' '{result = $2 - $1; print $0 "," result}' both.csv >> no_num_verbatim.csv
 nl -w1 -s, no_num_verbatim.csv > verbatim.csv
 
-
 rm begin.txt end.txt both.csv no_num_verbatim.csv
-
-
-
-#
-#
 
 ##################################
 # Create section.csv
 ##################################
 #
-# awk '/section/ { print NR "," $0 }' 3_cpp.tex >> section.csv
+# Format: Section number, Start, Name of Section 
 #
+##################################
+awk '/section/ { print NR "," $0 }' 3_cpp.tex >> no_num_section.csv
+nl -w1 -s, no_num_section.csv > section.csv
+
 #
+rm no_num_section.csv
 #
+# Create array of Section Start
+#
+section_start_a=()
+
+while IFS= read -r line; do
+    # IFS=',' read -r sec_num start_point sec_name <<< "$line"
+    # section_start_a+=(start_point)
+    echo "hi"
+done < section.csv
+
+# echo "${section_start_a[@]}"
+
 
 # Combine the lines from both files into the output CSV file
 
