@@ -1,14 +1,12 @@
 #!/bin/bash
 
-# file_to_extract=$1
+tex_file="$1"
 
 ##################################
 # Delete all files from precedent extractions
 ##################################
 
-
 rm verbatim.csv section.csv
-
 
 ##################################
 #
@@ -63,8 +61,8 @@ find_section() {
 #
 ##################################
 #
-awk '/begin{verbat/ { print NR }' 3_cpp.tex >> begin.txt
-awk '/end{verbat/ { print NR }' 3_cpp.tex >> end.txt
+awk '/begin{verbat/ { print NR }' "$tex_file" >> begin.txt
+awk '/end{verbat/ { print NR }' "$tex_file" >> end.txt
 paste -d ',' begin.txt end.txt > both.csv 
 awk -F ',' '{result = $2 - $1; print $0 "," result}' both.csv >> no_num_verbatim.csv
 nl -w1 -s, no_num_verbatim.csv > verbatim.csv
@@ -77,7 +75,7 @@ rm begin.txt end.txt both.csv no_num_verbatim.csv
 # Format: Section number, Start, Name of Section 
 #
 ##################################
-awk '/section/ { print NR "," $0 }' 3_cpp.tex >> no_num_section.csv
+awk '/section/ { print NR "," $0 }' "$tex_file" >> no_num_section.csv
 nl -w1 -s, no_num_section.csv > section.csv
 
 
@@ -112,7 +110,7 @@ while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines <<< "$line"
     section=$(find_section "$start_point")
 
-    sed -n "${section}p" 3_cpp.tex
+    sed -n "${section}p" "$tex_file"
 
 done < verbatim.csv >> section.csv
 
@@ -141,10 +139,9 @@ sed -i 's/}//' section.csv
 #################################### 
 #
 #
-#
 while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
-    sed -n "${start_point},${end_point}p" 3_cpp.tex
+    sed -n "${start_point},${end_point}p" "$tex_file"
 done < verbatim.csv >> final.csv
 
 
@@ -163,8 +160,4 @@ done
 #
 sed -i '/end{verbatim}/ s//&\n/' final.csv
 sed -i '/end{verbatim}/d' final.csv
-
-
-#
-#
-# sed -n "${b_int},${e_int}p" 3_cpp.tex
+mv final.csv final.txt
