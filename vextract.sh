@@ -78,7 +78,6 @@ rm begin.txt end.txt both.csv no_num_verbatim.csv
 awk '/section/ { print NR "," $0 }' "$tex_file" >> no_num_section.csv
 nl -w1 -s, no_num_section.csv > section.csv
 
-
 rm no_num_section.csv
 
 ##################################
@@ -114,6 +113,17 @@ while IFS= read -r line; do
 
 done < verbatim.csv >> section.csv
 
+sed -i 's/\\section{//' section.csv
+sed -i 's/\\subsection{//' section.csv
+sed -i 's/}//' section.csv
+
+mkdir output
+
+while IFS= read -r line; do
+    IFS=',' read -r name <<< "$line"
+    touch output/"$name".test
+done < section.csv
+
 paste -d ',' verbatim.csv section.csv > best_verbatim.csv 
 
 rm verbatim.csv ; mv best_verbatim.csv verbatim.csv
@@ -144,7 +154,6 @@ while IFS= read -r line; do
     sed -n "${start_point},${end_point}p" "$tex_file"
 done < verbatim.csv >> final.csv
 
-
 # Read CSV file into an array
 mapfile -t rows < section.csv
 
@@ -157,7 +166,8 @@ for (( i = 0; i < ${#rows[@]}; i++ )); do
 done
 
 # add a line after \end{verbatim} in final.csv
-#
+# delete \end{verbatim} lines
+
 sed -i '/end{verbatim}/ s//&\n/' final.csv
 sed -i '/end{verbatim}/d' final.csv
 mv final.csv final.txt
