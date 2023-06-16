@@ -126,6 +126,7 @@ sed -i 's/\\subsection{//' section.csv
 sed -i 's/}//' section.csv
 
 mkdir output
+
 #################################### 
 # Create the final document
 #
@@ -143,9 +144,8 @@ while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
 
     touch output/"$sec_name".test
-
-    sed -n "${start_point},${end_point}p" "$tex_file"
-done < verbatim.csv >> final.csv
+    sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$sec_name".test
+done < verbatim.csv
 
 # Read CSV file into an array
 mapfile -t rows < section.csv
