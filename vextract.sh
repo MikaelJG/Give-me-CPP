@@ -144,13 +144,15 @@ while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
 
     lower_sec_name="${sec_name,,}"
+    no_space_sec_name="${lower_sec_name// /_}"
+    final_sec_name="${no_space_sec_name//[\(\)]/}"
 
-    touch output/"$lower_sec_name".test
-    sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$lower_sec_name".test
+    touch output/"$final_sec_name".test
+    sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$final_sec_name".test
     
     # clean up the new doc
-    sed -i 's/\\end{verbatim}//' output/"$lower_sec_name".test
-    sed -i 's/\\begin{verbatim}//' output/"$lower_sec_name".test
+    sed -i 's/\\end{verbatim}//' output/"$final_sec_name".test
+    sed -i 's/\\begin{verbatim}//' output/"$final_sec_name".test
 done < verbatim.csv
 
 
