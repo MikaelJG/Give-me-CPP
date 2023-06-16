@@ -3,9 +3,14 @@
 # if there is no value, give help and exit
 if [ $# -eq 0 ]; then
     echo "To extract verbatim content,"
-    echo "Provide a .tex file as argument." ; exit
+    echo "Provide a .tex file as first argument."
+    echo "Plus, a file extention as second argument." ; exit
+elif [ $# -eq 1 ]; then
+    echo "To extract verbatim content,"
+    echo "Provide a .tex file as first argument."
+    echo "Plus, a file extention as second argument." ; exit
 else
-    tex_file=$1
+    tex_file=$1 ex_ext=$2 ;
 fi
 
 ##################################
@@ -148,12 +153,12 @@ while IFS= read -r line; do
     no_space_sec_name="${lowercase_sec_name// /_}"
     final_sec_name="${no_space_sec_name//[\(\)]/}"
 
-    touch output/"$final_sec_name".test
-    sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$final_sec_name".test
+    touch output/"$final_sec_name"."$ex_ext"
+    sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$final_sec_name"."$ex_ext"
     
     # clean up the new doc
-    sed -i 's/\\end{verbatim}//' output/"$final_sec_name".test
-    sed -i 's/\\begin{verbatim}//' output/"$final_sec_name".test
+    sed -i 's/\\end{verbatim}//' output/"$final_sec_name"."$ex_ext"
+    sed -i 's/\\begin{verbatim}//' output/"$final_sec_name"."$ex_ext"
 done < verbatim.csv
 
 echo "Successfully created 'output' directory"
