@@ -1,6 +1,11 @@
 #!/bin/bash
 
-tex_file="$1"
+# if there is no value, give help and exit
+if [ $# -eq 0 ]; then
+    echo "Give an argument"; exit
+else
+    tex_file=$1
+fi
 
 ##################################
 # Delete all files from precedent extractions
@@ -138,12 +143,14 @@ mkdir output
 while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
 
-    touch output/"$sec_name".test
-    sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$sec_name".test
+    lower_sec_name="${sec_name,,}"
+
+    touch output/"$lower_sec_name".test
+    sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$lower_sec_name".test
     
     # clean up the new doc
-    sed -i 's/\\end{verbatim}//' output/"$sec_name".test
-    sed -i 's/\\begin{verbatim}//' output/"$sec_name".test
+    sed -i 's/\\end{verbatim}//' output/"$lower_sec_name".test
+    sed -i 's/\\begin{verbatim}//' output/"$lower_sec_name".test
 done < verbatim.csv
 
 
