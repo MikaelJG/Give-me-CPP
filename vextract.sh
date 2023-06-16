@@ -113,17 +113,6 @@ while IFS= read -r line; do
 
 done < verbatim.csv >> section.csv
 
-sed -i 's/\\section{//' section.csv
-sed -i 's/\\subsection{//' section.csv
-sed -i 's/}//' section.csv
-
-mkdir output
-
-while IFS= read -r line; do
-    IFS=',' read -r name <<< "$line"
-    touch output/"$name".test
-done < section.csv
-
 paste -d ',' verbatim.csv section.csv > best_verbatim.csv 
 
 rm verbatim.csv ; mv best_verbatim.csv verbatim.csv
@@ -136,6 +125,7 @@ sed -i 's/\\section{//' section.csv
 sed -i 's/\\subsection{//' section.csv
 sed -i 's/}//' section.csv
 
+mkdir output
 #################################### 
 # Create the final document
 #
@@ -151,6 +141,9 @@ sed -i 's/}//' section.csv
 #
 while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
+
+    touch output/"$sec_name".test
+
     sed -n "${start_point},${end_point}p" "$tex_file"
 done < verbatim.csv >> final.csv
 
