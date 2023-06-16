@@ -6,7 +6,7 @@ tex_file="$1"
 # Delete all files from precedent extractions
 ##################################
 
-rm verbatim.csv section.csv
+rm -rf output ; rm verbatim.csv section.csv
 
 ##################################
 #
@@ -55,6 +55,7 @@ find_section() {
 }
 
 ##################################
+#
 # Create verbatim.csv
 #
 # Format: Verbatim number, Start, End, Number of lines for Verbatim
@@ -70,6 +71,7 @@ nl -w1 -s, no_num_verbatim.csv > verbatim.csv
 rm begin.txt end.txt both.csv no_num_verbatim.csv
 
 ##################################
+#
 # Create section.csv
 #
 # Format: Section number, Start, Name of Section 
@@ -101,7 +103,7 @@ section_start_a+=("100000")
 
 ##################################
 #
-# For each verbatim find section section
+# For each verbatim find section
 #
 ##################################
 
@@ -127,29 +129,21 @@ sed -i 's/}//' section.csv
 
 mkdir output
 
-#################################### 
-# Create the final document
+#################################
 #
-# Name of section
+# Insert the verbatim in a new file, named with the section' name
 #
-# example
-#
-# Name of section
-#
-# example 2
-#################################### 
-#
-#
+#################################
+
 while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
 
     touch output/"$sec_name".test
     sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$sec_name".test
-
+    
+    # clean up the new doc
     sed -i 's/\\end{verbatim}//' output/"$sec_name".test
     sed -i 's/\\begin{verbatim}//' output/"$sec_name".test
-
-    cat output/"$sec_name".test
 done < verbatim.csv
 
 
