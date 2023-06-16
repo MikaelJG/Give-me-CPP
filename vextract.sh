@@ -146,21 +146,3 @@ while IFS= read -r line; do
     touch output/"$sec_name".test
     sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$sec_name".test
 done < verbatim.csv
-
-# Read CSV file into an array
-mapfile -t rows < section.csv
-
-# Iterate over the rows and replace occurrences in the document
-#
-for (( i = 0; i < ${#rows[@]}; i++ )); do
-  row="${rows[i]}"
-  awk -v r="${row}" 'BEGIN{ found=0 } /^\\begin{verbatim}$/ && !found { found=1; print r; next } 1' final.csv > final.tmp
-  mv final.tmp final.csv
-done
-
-# add a line after \end{verbatim} in final.csv
-# delete \end{verbatim} lines
-
-sed -i '/end{verbatim}/ s//&\n/' final.csv
-sed -i '/end{verbatim}/d' final.csv
-mv final.csv final.txt
