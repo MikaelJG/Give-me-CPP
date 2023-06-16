@@ -145,4 +145,11 @@ while IFS= read -r line; do
 
     touch output/"$sec_name".test
     sed -n "${start_point},${end_point}p" "$tex_file" >> output/"$sec_name".test
+
+    sed -i 's/\\end{verbatim}//' output/"$sec_name".test
+    sed -i 's/\\begin{verbatim}//' output/"$sec_name".test
+
+    cat output/"$sec_name".test
 done < verbatim.csv
+
+
