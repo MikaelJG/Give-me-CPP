@@ -2,7 +2,8 @@
 
 # if there is no value, give help and exit
 if [ $# -eq 0 ]; then
-    echo "Give an argument"; exit
+    echo "To extract verbatim content,"
+    echo "Provide a .tex file as argument." ; exit
 else
     tex_file=$1
 fi
@@ -143,8 +144,8 @@ mkdir output
 while IFS= read -r line; do
     IFS=',' read -r ver_num start_point end_point ver_num_lines sec_name <<< "$line"
 
-    lower_sec_name="${sec_name,,}"
-    no_space_sec_name="${lower_sec_name// /_}"
+    lowercase_sec_name="${sec_name,,}"
+    no_space_sec_name="${lowercase_sec_name// /_}"
     final_sec_name="${no_space_sec_name//[\(\)]/}"
 
     touch output/"$final_sec_name".test
@@ -155,4 +156,5 @@ while IFS= read -r line; do
     sed -i 's/\\begin{verbatim}//' output/"$final_sec_name".test
 done < verbatim.csv
 
+echo "Successfully created 'output' directory"
 
