@@ -3,3 +3,8 @@ if (arguments.size() == 0) {
     arguments.push_back("-help");
 }
 
+
+if (arguments.size() == 0) {
+    arguments.push_back("-help");
+}
+

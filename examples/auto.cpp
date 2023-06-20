@@ -1,15 +1,12 @@
 
-constexpr double calculate_pi() {
-    return 22/7;
-}
 
-constexpr auto pi = calculate_pi();
+For format see p.44 filetime puzzler book 1
 
-int main()
-{
-    const auto radius = 1.5;
-    const auto area = pi * radius * radius;
-    std::cout << area;
+S object_1("a","t");
 
-}
+
+
+For format see p.44 filetime puzzler book 1
+
+S object_1("a","t");
 
