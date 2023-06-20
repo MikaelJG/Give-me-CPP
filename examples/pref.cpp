@@ -1,18 +1,18 @@
 
-// const auto
-const auto result = std::count( /*stuff */);
+// Algorithms end game (before C++20)
 
-or, if you prefer:
-// auto const
+const auto has_value
+    = std::any_of(begin(container), end(container), 
+            greater_than(12));
 
-auto const result = std::count( /*stuff*/ );
+// Algorithm end game (c++20)
 
+const auto has_value
+    = std::any_of(container, greater_than(12));
 
-// const auto
-const auto result = std::count( /*stuff */);
+Next time you are reading through a loop in your codebase,
+cross-reference it with the C++ <algorithm> header²
+and try to find an algorithm that applies instead.
 
-or, if you prefer:
-// auto const
-
-auto const result = std::count( /*stuff*/ );
+https://en.cppreference.com/w/cpp/algorithm
 

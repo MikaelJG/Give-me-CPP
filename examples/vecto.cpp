@@ -1,16 +1,14 @@
 
-int main(int argc, char* argv[]) {
-    std::vector<std::string> arguments(argv + 1, argv + argc);
-
-    for (int i = 0; i < arguments.size(); i++) {
-        std::cout << arguments[i] << " ";
-    }
-
-    std::cout << std::endl;
-    if (hasFlag(arguments, "-o")) {
-    std::cout << "Flag -o for -omit is present!" << std::endl;
+  std::vector<double> subway_adult; // value is 0.0 is default
+  std::vector<double> location(2); // initialize two elements! 
 }
 
+std::vector<char> vowels = {'a', 'e', 'i', 'o', 'u'};
+std::vector vec{1,2,3}; // now possible! 
+
+for (index = 0; index < vowels.size(); index++) {
+    std::cout << vowels[index] << "\n";
+}
 
 int main(int argc, char* argv[]) {
     std::vector<std::string> arguments(argv + 1, argv + argc);
@@ -19,8 +17,19 @@ int main(int argc, char* argv[]) {
         std::cout << arguments[i] << " ";
     }
 
-    std::cout << std::endl;
-    if (hasFlag(arguments, "-o")) {
-    std::cout << "Flag -o for -omit is present!" << std::endl;
+}
+
+#include <vector>
+
+template<typename Value_Type>
+std::vector<Value_Type> get_data(const Value_Type &v1, const Value_Type &v2,
+                                 const Value_Type &v3)
+
+{
+    std::vector<Value_Type> data;
+    data.push_back(v1);
+    data.push_back(v2);
+    data.push_back(v3);
+    return data;
 }
 

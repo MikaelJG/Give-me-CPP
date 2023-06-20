@@ -1,68 +1,45 @@
 
-#include <format>
-#include <string_view>
 
-void print_map(const auto &map, const std::string_view &key_desc = "key",
-                                const std::string_view &value_desc = "value")
-{
-    const auto print_key_value = [&](const auto &data) { 
-        const auto &[key, value] = data;
-        std::puts(std::format("{}: '{}' {}: '{}'",
-                         key_desc, key, value_desc, value).c_str());
-    };
-
-    for_each(map, print_key_value);
+for (const auto &element : container) {
+    // eliminates both other problems
 }
 
+for (int element : first_three_multiples(8)) {
+ std::cout << element << "\n";
+}
+std::string str = "Hello";
+for (char character : str) {
+    std::cout << character << std::endl;
+}
 
-#include <vector>
-#include <ranges>
-#include <iostream>
-
-int main()
+template<typename Map>
+void print_map(const Map &map, const std::string &key_desc = "key",
+                               const std::string &value_desc = "value")
 {
-    std::vector<int> ints{1, 2, 3, 4, 5};
-    auto even = [](int i){ return 0 == i % 2; };
-    auto square = [](int i){ return i * i; }; // this is a lambda!
-                                              // it defines an anonymous function
-                                              // on the fly.
-
-    for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
-        std::cout << i << ' ';
+    for (const auto &data : map)
+    {
+        std::cout << key_desc << ": '" << data_itr->first << "' "
+                  << value_desc << ": '" << data_itr->second << "'\n";
     }
 }
 
+for (const auto &value : container) {} // for each element in the container
 
-#include <format>
-#include <string_view>
+standard c++11
 
-void print_map(const auto &map, const std::string_view &key_desc = "key",
-                                const std::string_view &value_desc = "value")
+Never mutate the container itself while iterating inside of a ranged-for loop. 
+Use clang-tidy's modernize-loop-convert check. Not using auto eases silent mistakes in your code.
+
+template<typename Map>
+void print_map(const Map &map, const std::string &key_desc = "key",
+                               const std::string &value_desc = "value")
 {
-    const auto print_key_value = [&](const auto &data) { 
-        const auto &[key, value] = data;
-        std::puts(std::format("{}: '{}' {}: '{}'",
-                         key_desc, key, value_desc, value).c_str());
-    };
-
-    for_each(map, print_key_value);
-}
-
-
-#include <vector>
-#include <ranges>
-#include <iostream>
-
-int main()
-{
-    std::vector<int> ints{1, 2, 3, 4, 5};
-    auto even = [](int i){ return 0 == i % 2; };
-    auto square = [](int i){ return i * i; }; // this is a lambda!
-                                              // it defines an anonymous function
-                                              // on the fly.
-
-    for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
-        std::cout << i << ' ';
+    for (const auto &data : map)
+    {
+        std::cout << key_desc << ": '" << data.first << "' "
+                  << value_desc << ": '" << data.second << "'\n";
     }
 }
+
+// if only there was some way to make this data.first, data.second nonsense more readable!!
 

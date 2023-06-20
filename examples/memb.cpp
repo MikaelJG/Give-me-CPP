@@ -1,6 +1,27 @@
 
-Member functions (i.e. functions inside of classes)
+class MyClass {
+private:
+    int myVariable;
 
+public:
+    // Getter function
+    int getMyVariable() const {
+        return myVariable;
+    }
 
-Member functions (i.e. functions inside of classes)
+    // Setter function
+    void setMyVariable(int newValue) {
+        myVariable = newValue;
+    }
+};
+
+int main() {
+    MyClass obj;
+    obj.setMyVariable(42);
+
+    int value = obj.getMyVariable();
+    std::cout << "MyVariable value: " << value << std::endl;
+
+    return 0;
+}
 

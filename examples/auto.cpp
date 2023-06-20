@@ -4,9 +4,7 @@ For format see p.44 filetime puzzler book 1
 
 S object_1("a","t");
 
+\subsection{Thread\_local}
 
-
-For format see p.44 filetime puzzler book 1
-
-S object_1("a","t");
+thread_local object_2("a","t");
 

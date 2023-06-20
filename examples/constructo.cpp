@@ -1,74 +1,28 @@
 
-#include <string> // in header file, song.hpp
+City montreal;
+montreal.population = 20000;
 
-class Song {
+montreal.get_population();
+
+class Song { // header file, song.hpp
+
   std::string title;
-  std::string artist;
 
 public:
-  Song(std::string new_title, std::string new_artist);
-
+  void add_title(std::string new_title);
   std::string get_title();
-  std::string get_artist();
 };
-                    ***
-#include "song.hpp"
 
-Song::Song(std::string new_title, std::string new_artist) // in main song.cpp
-  : title(new_title), artist(new_artist) {}
+void Song::add_title(std::string new_title) {
+  title = new_title; // main file, song.cpp
+}
 
 std::string Song::get_title() {
   return title;
 }
-
-std::string Song::get_artist() {
-  return artist;
-}
-
-#include <iostream> // in main.cpp
-#include "song.hpp"
-
-int main() { 
-  Song back_to_black("Back to Black", "Amy Winehouse");
-
-  std::cout << back_to_black.get_title() << "\n";
-  std::cout << back_to_black.get_artist() << "\n";
-}
-
-
-#include <string> // in header file, song.hpp
-
-class Song {
-  std::string title;
-  std::string artist;
-
-public:
-  Song(std::string new_title, std::string new_artist);
-
-  std::string get_title();
-  std::string get_artist();
-};
-                    ***
-#include "song.hpp"
-
-Song::Song(std::string new_title, std::string new_artist) // in main song.cpp
-  : title(new_title), artist(new_artist) {}
-
-std::string Song::get_title() {
-  return title;
-}
-
-std::string Song::get_artist() {
-  return artist;
-}
-
-#include <iostream> // in main.cpp
-#include "song.hpp"
-
-int main() { 
-  Song back_to_black("Back to Black", "Amy Winehouse");
-
-  std::cout << back_to_black.get_title() << "\n";
-  std::cout << back_to_black.get_artist() << "\n";
+int main() {
+  Song electric_relaxation;
+  electric_relaxation.add_title("Electric Relaxation");
+  std::cout << electric_relaxation.get_title();
 }
 

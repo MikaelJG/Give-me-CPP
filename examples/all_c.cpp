@@ -17,20 +17,16 @@ void print_map(const auto &map, const std::string_view &key_desc = "key",
 // if only there was some way to not have to do this begin(map) and end(map)!!!
 
 
-#include <format>
-#include <string_view>
+\subsection{With c++20 auto concept}
 
-void print_map(const auto &map, const std::string_view &key_desc = "key",
-                                const std::string_view &value_desc = "value")
+
+#include <array>
+
+auto get_data(const auto & ... params)
 {
-    const auto print_key_value = [&](const auto &data) { 
-        const auto &[key, value] = data;
-        std::puts(std::format("{}: '{}' {}: '{}'",
-                         key_desc, key, value_desc, value).c_str());
-    };
-
-    for_each(begin(map), end(map), print_key_value);
+    return std::array{params...};
 }
 
-// if only there was some way to not have to do this begin(map) and end(map)!!!
+// The only problem now is that this code requires the types to be copyable.
+// If only there was a way to forward arguments and avoid copies......
 

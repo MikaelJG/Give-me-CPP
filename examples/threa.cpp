@@ -1,6 +1,7 @@
 
 thread_local object_2("a","t");
 
+\subsection{Static}
 
-thread_local object_2("a","t");
+static object_3("a","t");
 
