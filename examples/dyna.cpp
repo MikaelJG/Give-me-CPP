@@ -15,3 +15,6 @@ void some_func() {
 
 Standard: c++ 98
 
+
+delete new S *object_4("a","t");
+

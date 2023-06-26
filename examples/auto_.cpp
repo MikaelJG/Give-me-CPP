@@ -1,78 +1,36 @@
 
-template<typename Arithmetic>
-Arithmetic divide(Arithmetic numerator, Arithmetic denominator) {
-    return numerator / denominator;
-}
+# include <string>
 
+// C++20's auto concept or further constrained to something that
+// has values that can be destructured into 2 elements.
 
-\section{Constexp}
-
-Compile-time generation of code and data.
-
-
-#include <iostream>
-
-const double pi = 3.141593;
-
-int main()
+void print_map(const auto &map, const std::string &key_desc = "key",
+                                const std::string &value_desc = "value")
 {
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
+    for (const auto &[key, value] : map) /// strucuted binding
+    {
+        std::cout << key_desc << ": '" << key << "' "
+                  << value_desc << ": '" << value << "'\n";
+    }
 }
-    // is pi known at compile time??
 
-// If only there was some way to make a compile-time constant....
+// implicitely created a template for us. Just like our lamdas did!
 
-#include <iostream>
 
-constexpr double pi = 3.141593;
+# include <string>
 
-int main()
+// C++20's auto concept or further constrained to something that
+// has values that can be destructured into 2 elements.
+
+void print_map(const auto &map, const std::string &key_desc = "key",
+                                const std::string &value_desc = "value")
 {
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
+    for (const auto &[key, value] : map) /// strucuted binding
+    {
+        std::cout << key_desc << ": '" << key << "' "
+                  << value_desc << ": '" << value << "'\n";
+    }
 }
 
-// OR EVEN, Generate it at compile-time.
-
-#include <iostream>
-
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-constexpr double pi = calculate_pi();
-
-int main()
-{
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
-}
-
-// This function can be executed at compile-time
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-// This value will be available at compile-time 
-constexpr double pi = calculate_pi();
-
-Standard c++11, relaxed in c++14, relaxed a ton c++20
-
-// But what is the type of pi?? (double, float, long double?)
-I don't care?
-It depends?
-
-// If only there was a way to mention "I don't care or It depends" for what a type is ......  
-`constexpr` is used for compile-time evaluation.
-It ensures that an expression or function can be computed at compile time.
-It reduces runtime overhead.
-The program avoids the need to perform those computations at runtime. 
-
-The computations are already done during the compilation process, 
-The program doesn't incur the additional time and resources required
-to perform them during runtime execution.
+// implicitely created a template for us. Just like our lamdas did!
 

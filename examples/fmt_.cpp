@@ -48,3 +48,53 @@ int main()
     print_map(get_some_map(), "index", "location");
 }
 
+
+#include <format>
+#include <string_view>
+
+void print_map(const auto &map, const std::string_view &key_desc = "key",
+                                const std::string_view &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// strucuted binding
+    {
+        std::puts(std::format("{}: '{}' {}: '{}'",
+                         key_desc, key, value_desc, value).c_str());
+
+        // this is genious spacing for readability
+    }
+}
+
+Standard c++20
+
+\subsection{String\_View}
+
+A non-owning "view" of a string like structure.
+
+
+#include <string_view>
+std::string_view sv{some_string_like_thing}; // no copy
+
+Standard c++17
+
+These are passed-by-value on purpose.
+String_view are cheap to copy. It is recommended to pass them by value.
+The following code doesn't create a string anymore, if doesn't have to.
+
+# include <iostream>
+# include <string>
+
+void print_map(const auto &map, const std::string_view &key_desc = "key",
+                                const std::string_view &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// strucuted binding
+    {
+        std::cout << key_desc << ": '" << key << "' "
+                  << value_desc << ": '" << value << "'\n";
+    }
+}
+
+int main()
+{
+    print_map(get_some_map(), "index", "location");
+}
+

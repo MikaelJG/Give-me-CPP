@@ -5,3 +5,6 @@ thread_local object_2("a","t");
 
 static object_3("a","t");
 
+
+thread_local object_2("a","t");
+

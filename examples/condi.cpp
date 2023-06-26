@@ -8,3 +8,8 @@ int main() {
   }
 }
 
+
+  if (coin == 0) {
+  }	else {}
+}
+

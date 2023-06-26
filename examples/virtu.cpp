@@ -63,10 +63,7 @@ implement the createProduct method to create specific products (ConcreteProductA
 The main function demonstrates the usage of 
 the virtual factory by creating instances of the concrete factories and using them to create products.
 
-
-
-
-\section{Shell Commands - system()}
+\section{System()}
 
 
 #include <string>

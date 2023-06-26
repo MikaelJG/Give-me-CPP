@@ -1,16 +1,36 @@
 
-If only there was some easier way of formatting our output...
+#include <format>
+#include <string_view>
 
+void print_map(const auto &map, const std::string_view &key_desc = "key",
+                                const std::string_view &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// structured binding
+    {
+        std::puts(std::format("{}: '{}' {}: '{}'",
+                         key_desc, key, value_desc, value).c_str());
 
-\subsection{Text Formatting}
+        // this is genious spacing for readability
+    }
+}
 
-A subset of the excellent {fmt} library, allowing for formatting of strings with positional,
-named and python/printf style formatting options.
+Standard c++20
 
 
 #include <format>
-std::string s = fmt::format("I'd rathe be {1} than {0}.", "right", "happy");
-// "I'd rather be happy than right."
+#include <string_view>
 
-Standard C++20
+void print_map(const auto &map, const std::string_view &key_desc = "key",
+                                const std::string_view &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// structured binding
+    {
+        std::puts(std::format("{}: '{}' {}: '{}'",
+                         key_desc, key, value_desc, value).c_str());
+
+        // this is genious spacing for readability
+    }
+}
+
+Standard c++20
 
