@@ -1,9 +1,6 @@
 
 auto lambda = [/*captures*/](int param1){ return param1 * 10; };
 
-
-auto lambda = [/*captures*/](int param1){ return param1 * 10; };
-
 The captures s(ection) can be left empty if the lambda does not need to access any external variables.
 
 By value

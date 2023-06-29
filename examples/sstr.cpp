@@ -29,8 +29,6 @@ int main() {
 }
 
 
-
-
 \section{Type}
 
 \subsection{Return Types}
@@ -39,8 +37,15 @@ int main() {
   std::exit(0) (success)
   std::exit(1) (failure)
 
-  More of this?
-}
+  int isPrime(int x) {
+    if (x % 2 == 1) {
+        return 0; // is considered as false
+                  // Yet, is it not the same as the boolean false
+                  // In a boolean context, 
+                  // 0 is implicitly converted to false,
+                  // However, not equivalent in all contexts.
+    }
+  }
 
 Void, Also refered as subroutine.
 

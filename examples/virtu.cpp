@@ -56,7 +56,6 @@ int main() {
 }
 
 
-
 Here, an abstract factory class (`AbstractFactory`) that defines the interface for creating products.
 The concrete factory classes (`ConcreteFactoryA` and `ConcreteFactoryB`) implement
 implement the createProduct method to create specific products (ConcreteProductA and ConcreteProductB, respectively).
