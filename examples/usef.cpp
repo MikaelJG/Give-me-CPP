@@ -8,10 +8,6 @@ is not reinitialized each time the function is encountered.
 With static (see object lifetimes), the variable lasts for the lifetime of the program.
 It will be initialized only once. 
 
-
-\subsubsection{Differences}
-
-
     the size of the array is now known at compile time
     We've removed dynamic allocations
     We no longer pay the cost of accessing a static

@@ -1,0 +1,86 @@
+
+\section{C++ Exercises}
+
+\subsection{Total}
+
+\begin{verbatim}
+int main() {
+  std::vector<double> delivery_order;
+  delivery_order.push_back(8.99);
+  delivery_order.push_back(0.99);
+  
+  double total = 0.0;
+
+  for (int i = 0; i < delivery_order.size(); i++) {
+    total = total + delivery_order[i];
+    }
+  std::cout << "The total " << total;
+}
+\end{verbatim}
+
+\subsection{Average}
+
+\begin{verbatim}
+double average(double num1, double num2) {
+  double average = (num1 + num2) / 2;
+  return average;
+}
+
+int main() {
+  std::cout << average(42.0, 24.0) << "\n";
+}
+\end{verbatim}
+
+\subsection{Palindrome}
+
+\begin{verbatim}
+bool is_palindrome(std::string text) {
+  std::string reversed_text = "";
+  for (int index = text.size() - 1; index >= 0; index--) {
+  }
+  
+  if (reversed_text == text) {
+    return true;
+  }
+  return false;
+}
+\end{verbatim}
+
+\subsection{Fizzbuzz}
+\begin{verbatim}
+int main() {
+    for (int i = 1; i <= 100; ++i) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            std::cout << "FizzBuzz" << std::endl;
+        } else if (i % 3 == 0) {
+            std::cout << "Fizz" << std::endl;
+        } else if (i % 5 == 0) {
+            std::cout << "Buzz" << std::endl;
+        } else {
+            std::cout << i << std::endl;
+        }
+    }
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Song}
+
+\begin{verbatim}
+class Song { // in Header, song.hpp
+  std::string title;
+
+public:
+    void add_title(std::string new_title);
+    std::string get_title();
+};
+
+void Song::add_title(std::string new_title) { // song.cpp
+  title = new_title;
+}
+
+std::string Song::get_title() {
+  return title;
+}
+\end{verbatim}
+

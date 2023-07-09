@@ -1,0 +1,761 @@
+
+
+\chapter{Data Structures}
+
+\section{Maps}
+
+Dynamically resizing containers.
+
+Unlike arrays, fixed sizes, std::map has an arbitrary number of key-value pairs.
+`std::map` is a balanced binary search tree, it keeps elements sorted based on the keys, 
+Insertions, deletions and searches have logarithmic time complexity.
+Plus, keys must be unique within the map.
+
+C++'s equivalent to Ruby's hash object. 
+Both `std::map` and Ruby's hash are associative containers that store key-value pairs.
+They allow efficient lookup and retrieval of values based on a given key.
+The key-value pairs are stored in an unordered, unspecific manner.
+
+\begin{verbatim}
+#include <map>
+
+int main() {
+    std::string str = "hello";
+    std::map<char, int> charFreq;
+
+    // Count the frequency of each character in the string
+    for (char c : str) {
+        charFreq[c]++;
+    }
+
+    // Display the character frequencies
+    for (const auto& pair : charFreq) {
+        std::cout << pair.first << ": " << pair.second << std::endl;
+    }
+
+    return 0;
+}
+
+#include <map>
+#include <string>
+
+int main() {
+    std::map<std::string, int> studentGrades;
+
+    // Add student names and their grades
+    studentGrades["Alice"] = 90;
+    studentGrades["Bob"] = 85;
+    studentGrades["Charlie"] = 95;
+
+    // Access and display individual student grades
+    std::cout << "Charlie's grade: " << studentGrades["Charlie"] << std::endl;
+
+    // Iterate over all student grades
+    for (const auto& pair : studentGrades) {
+        std::cout << pair.first << ": " << pair.second << std::endl;
+    }
+
+    return 0;
+}
+
+std::map<int, Product> map1 {
+    {1, Product(1, "Item 1")},
+    {2, Product(10, "Item 2")},
+};
+
+map1[3] = Product(30, "Item 3");
+for (std::pair<int, Product> elt : map1)
+{
+    cout << elt.first << " ";
+    cout << elt.second.name << '\n';
+
+}
+
+
+#include <map>
+#include <sstream>
+#include <string>
+
+int main() {
+    std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+    // convert text to lowercase
+    for (char& c : text) {
+        c = std::tolower(c);
+    }
+
+    std::map<std::string, int> wordfreq;
+    std::istringstream iss(text);
+    std::string word;
+
+    // count the frequency of each word in the text
+    while (iss >> word) {
+        wordfreq[word]++;
+    }
+
+    // display the word frequencies
+    for (const auto& pair : wordfreq) {
+        std::cout << pair.first << ": " << pair.second << std::endl;
+    }
+
+    return 0;
+}
+
+// Understand how this code is working
+// Accidental copy?
+
+std::map<std::string, int> get_map();
+
+using element_type = std::pair<std::string, int>;
+
+for (const element_type & : get_map())
+{}
+\end{verbatim}
+
+\subsection{Maps CRUD}
+
+\begin{verbatim}
+    Create (Insert Key-Value Pair):
+        map[key] = value 
+        map.insert(std::make_pair(key, value))
+
+    Read (Retrieve a value by key):
+        Value = map[key]
+        Checking if a key exists: map.count(key)
+
+    Update (Modify the value of a key):
+        map[key] = new_value
+
+    Delete (Remove a key-value pair):
+        map.erase(key)
+        Removing all elements: map.clear()
+
+#include <map>
+
+int main() {
+    std::map<int, std::string> map;
+
+    // Create (Insert)
+    map[1] = "Apple";
+    map.insert(std::make_pair(2, "Banana"));
+
+    // Read (Retrieve)
+    std::cout << "Value at key 1: " << map[1];
+    std::cout << "Key 2 exists? " << (map.count(2) ? "Yes" : "No");
+
+    // Update
+    map[1] = "Apricot";
+
+    // Delete
+    map.erase(2);
+
+    // Display all key-value pairs
+    for (const auto& pair : map) {
+        std::cout << "Key: " << pair.first << ", Value: " << pair.second << std::endl;
+    }
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Multimaps}
+
+A multimap allows multiple values to be associated with the same key. 
+
+\begin{verbatim}
+#include <map>
+
+int main() {
+    std::multimap<int, std::string> myMultimap;
+
+    // Insert key-value pairs into the multimap
+    myMultimap.insert(std::make_pair(1, "Apple"));
+    myMultimap.insert(std::make_pair(2, "Banana"));
+    myMultimap.insert(std::make_pair(1, "Apricot"));
+
+    for (const auto& pair : myMultimap) {
+        std::cout << "Key: " << pair.first << ", Value: " << pair.second << std::endl;
+    }
+
+        // Key: 1, Value: Apple
+        // Key: 1, Value: Apricot
+        // Key: 2, Value: Banana
+
+    return 0;
+}
+\end{verbatim}
+
+\section{Sets}
+
+Std::set represents a sorted set of unique elements. The set maintains a sorted order,
+the elements are automatically sorted. Plus, it makes sure they are unique.
+
+\begin{verbatim}
+#include <set>
+
+int main() {
+    std::set<int> mySet;
+    mySet.insert(5);
+    mySet.insert(2);
+    mySet.insert(8);
+
+    for (const auto& element : mySet) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    // Check if an element exists in the set
+    int searchElement = 2;
+    if (mySet.count(searchElement) > 0) {
+        std::cout << searchElement << " exists in the set" << std::endl;
+    } else {
+        std::cout << searchElement << " does not exist in the set" << std::endl;
+    }
+
+    // Remove an element from the set
+    int removeElement = 5;
+    mySet.erase(removeElement);
+
+    for (const auto& element : mySet) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+    
+    // 2 5 8
+    // 2 exists in the set
+    // 2 8
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Multisets}
+
+Std::multiset represents a sorted set of elements (duplicates are possible). The set maintains a sorted order,
+the elements are automatically sorted.
+
+\begin{verbatim}
+#include <iostream>
+#include <set>
+
+int main() {
+    std::multiset<int> myMul;
+    myMul.insert(5);
+    myMul.insert(2);
+    myMul.insert(2); // Duplicates are allowed in a multiset
+
+    for (const auto& element : myMul) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    // Check the count of a specific element
+    int countE = 2;
+    std::cout << countE << " appears " << myMul.count(countE) << " times" << '\n';
+
+    // Remove specific elements
+    int removeElement = 2;
+    myMul.erase(removeElement);
+
+    for (const auto& element : myMul) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+        // 2 2 5
+        // 2 appears 2 times
+        // 2 5 
+
+    return 0;
+}
+\end{verbatim}
+
+\section{Maps and Sets Functions}
+
+\subsection{Size}
+
+\begin{verbatim}
+empty() - returns true if empty
+max_size() - returns max number of elements to be stocked
+size() - returns the number of elements
+\end{verbatim}
+
+
+\subsection{Access and Research}
+
+\begin{verbatim}
+at()            - Only for Maps.
+                - returns an reference to the element. Can list std::out_of_range exception, I think? 
+operator[]      - Only for Maps.
+                - returns a reference to the element
+count()         - returns number of elements matching the given key
+find()          - finds an element with given key
+lower_bound()   - return an iterator to the first element < (less than) the given key
+upper_bound()   - return an iterator to the first element > (less than) the given key
+equal_range()   - find a range of elements that are equivalent to a given value in a sorted container
+
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::vector<int> numbers = {2, 4, 6, 8, 10};
+
+    auto it = std::find(numbers.begin(), numbers.end(), 6);
+
+    if (it != numbers.end()) {
+        std::cout << "Value 6 found at index: " << std::distance(numbers.begin(), it) << std::endl;
+    } else {
+        std::cout << "Value 6 not found" << std::endl;
+    }
+
+    return 0;
+}
+
+#include <set>
+#include <algorithm>
+
+int main() {
+    std::multiset<int> numbers = {1, 2, 3, 3, 3};
+
+    // Find the range of elements equal to 3 in the multiset
+    auto range = numbers.equal_range(3);
+
+    // Print the elements in the range
+    std::cout << "Elements equal to 3: ";
+    for (auto it = range.first; it != range.second; ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    // Elements equal to 3: 3 3 3
+
+    return 0;
+}
+\end{verbatim}
+
+
+\subsection{Modify Maps and Sets}
+
+\begin{verbatim}
+clear()         - empties the container
+emplace()       -    
+emplace_hint()  -  
+erase()         - delete one element, a range or all elements at given key
+extract()       - extract a knot (a node? my translation)
+insert()        - insert elements or knots (a node?) from other containers
+merge()         - merge a container in a container 
+swap()          - swap the content of two containers 
+
+insert_or_assign() - insert a new element or deletes the value
+try_emplace()      - builds a new key-value pair at given idx
+\end{verbatim}
+
+\section{Lists}
+
+List (std::list) is a doubly-linked list container, storing in a linear sequence. 
+It allows efficient insertion and removal of elements at any position, 
+but direct access to elements by index is slower,
+compared to random-access containers like vector.
+
+std::list container does not support random access using the subscript operator [],
+like an array or std::vector does. Use an iterator
+
+\begin{verbatim}
+std::list mylist{100, 20 , 300, 40, 500, 20, 100};
+mylist.sort();
+mylist.unique();
+
+for (size_t i = 0; i < love.size(); i++)
+    std::cout << love[i] 
+                        // impossible, 
+                        // no support for subscript
+                        // operator []
+
+#include <list>
+
+int main() {
+    std::list<int> love{20, 30, 40};
+
+    for (const auto& element : love) {
+        std::cout << element << '\n';
+    }
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Forward Lists}
+
+std::forward\_list store elements as a singly linked list.
+
+It does not provide the necessary iterator support for the range-based for loop syntax.
+Unlike other standard containers like std::vector or std::list,
+std::forward\_list does not have a begin() and end() member function that returns iterators.
+
+\begin{verbatim}
+#include <forward_list>
+
+int main() {
+    std::forward_list<int> mylist{20, 30, 40};
+
+    for (auto it = mylist.begin(); it != mylist.end(); ++it) {
+        std::cout << *it << '\n';
+    }
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Lists Functions}
+
+\begin{verbatim}
+merge() - merges two sorted lists. The merged list is emptied.
+remove() - delete list elements for a value.
+remove_if() - delete list element for a boolean (to verify).
+reverse() - reverses list content.
+sort() - sort elements.
+splice() - moves elements, before given index. (not valid for std::forward_list).
+splice_after() - moves elements, after given index. (not valid for std::list).
+unique() - replaces consecutive duplicates by one value.
+\end{verbatim}
+
+\section{Hash Maps}
+
+Hash maps are the answer to every interview. They are containers with fast elements inserts.
+
+\subsection{Unordored Map}
+
+A map storing key-value pairs with constant-time average complexity for insertion,
+deletion, and access operations based on the key.
+The elements in the map are not ordered by their keys.
+
+\begin{verbatim}
+#include <unordered_map>
+
+int main() {
+    std::unordered_map<std::string, int> ages = {
+        {"Alice", 25},
+        {"Bob", 32},
+        {"Charlie", 42}
+    };
+
+    // Insert a new key-value pair
+    ages["Dave"] = 55;
+
+    // Access elements using the [] operator
+    std::cout << "Age of Alice: " << ages["Alice"] << std::endl;
+
+    // Check if a key exists
+    if (ages.count("Charlie") > 0) {
+        std::cout << "Charlie's age: " << ages["Charlie"] << std::endl;
+    }
+
+    // Iterate over the map
+    for (const auto& entry : ages) {
+        std::cout << "Name: " << entry.first << ", Age: " << entry.second << std::endl;
+    }
+
+    // Erase an element
+    ages.erase("Bob");
+
+    // Check if a key exists after erasing
+    if (ages.count("Bob") > 0) {
+        std::cout << "Bob's age: " << ages["Bob"] << std::endl;
+    } else {
+        std::cout << "Bob is not found in the map." << std::endl;
+    }
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Unordored MultiMap}
+
+A map that allows for multiple values associated with the same key. 
+
+\begin{verbatim}
+#include <unordered_map>
+
+int main() {
+    std::unordered_multimap<int, std::string> students;
+
+    // Insert multiple key-value pairs with the same key
+    students.insert({101, "Alice"});
+    students.insert({102, "Bob"});
+    students.insert({101, "Charlie"});
+    students.insert({103, "Dave"});
+    students.insert({101, "Eve"});
+
+    // Iterate over the multimap
+    for (const auto& entry : students) {
+        std::cout << "ID: " << entry.first << ", Name: " << entry.second << std::endl;
+    }
+
+    // Find all students with ID 101
+    int targetId = 101;
+    auto range = students.equal_range(targetId);
+    std::cout << "Students with ID " << targetId << ":" << std::endl;
+    for (auto it = range.first; it != range.second; ++it) {
+        std::cout << it->second << std::endl;
+    }
+
+        // ID: 101, Name: Alice
+        // ID: 103, Name: Dave
+        // ID: 101, Name: Charlie
+        // ID: 102, Name: Bob
+        // ID: 101, Name: Eve
+        // Students with ID 101:
+        // Alice
+        // Charlie
+        // Eve
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Unordored Lists}
+
+`std::unordered\_map` is a hash table. 
+Unspecific order, with constant-time complexity,for average-case 
+insertions, deletions, and searches. 
+Keys must be unique as well.
+
+\begin{verbatim}
+Need the elements to be sorted by keys or require efficient range-based operations?
+`std::map` is a good choice.
+
+Prioritize constant-time lookups and insertions? Don't need a specific order? 
+`std::unordered_map` can provide better performance.
+
+constant time (O(1)) 
+linear time (O(n))
+\end{verbatim}
+
+\subsection{Unordered Sets}
+
+A container storing unique elements with unordered access and efficient search operations.
+
+\begin{verbatim}
+#include <unordered_set>
+
+int main() {
+    std::unordered_set<int> numbers;
+    numbers.insert(5);
+    numbers.insert(2);
+    numbers.insert(10);
+    numbers.insert(7);
+    numbers.insert(3);
+
+    for (const auto& number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << std::endl;
+
+    // Check if a value exists in the set
+    int target = 7;
+    if (numbers.find(target) != numbers.end()) {
+        std::cout << target << " is found in the set." << std::endl;
+    } else {
+        std::cout << target << " is not found in the set." << std::endl;
+    }
+
+    // Remove an element from the set
+    int toRemove = 2;
+    numbers.erase(toRemove);
+
+    for (const auto& number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << std::endl;
+
+        // 7 5 10 3 2
+        // 7 is found in the set.
+        // 7 5 10 3
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Unordered Multisets}
+
+A container storing elements with unordered access and efficient search operations.
+
+\begin{verbatim}
+#include <unordered_set>
+
+int main() {
+    std::unordered_multiset<int> numbers;
+    numbers.insert(5);
+    numbers.insert(2);
+    numbers.insert(5); // Duplicate element
+
+    for (const auto& number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << std::endl;
+
+    // Count occurrences of a value in the multiset
+    int target = 5;
+    int count = numbers.count(target);
+    std::cout << "Occurrences of " << target << ": " << count << std::endl;
+
+    // Remove specific occurrences of a value from the multiset
+    int toRemove = 5;
+    numbers.erase(numbers.find(toRemove));
+    
+        // 2 5 5
+        // Occurrences of 5: 2
+        // 2 5
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Hash Functions}
+
+\begin{verbatim}
+hash_function()  - returns a function, unclear
+key_eq()         - returns a function, unclear 
+
+begin(int)
+end(int)
+cbegin(int)
+cend(int)
+bucket(key)
+bucket_count(key)
+bucket_size(key)
+max_bucket_count(key)
+
+
+load_factor()
+max_load_factor()
+rehash()
+reserve()
+
+I need definition and example for these.
+\end{verbatim}
+
+\section{Queue}
+std::queue is a FIFO (first in, first out). Important functions are back(), front(), push\_back(), pop\_front().
+
+\section{Priority Queue}
+
+std::priority\_queue can only be modified from the back, not from the front. Important functions are front(), push\_back(), 
+and pop\_back().
+
+\section{Stack}
+
+std::stack is a LIFO (last in, first out). Important functions are back(), front(), push\_back().
+
+\begin{center}
+    \includegraphics[width=2in]{stack_functions.png}
+\end{center}
+
+\section{Tries - Retrieval Trees - AutoComplete}
+
+`std::queue` and `std::stack` containers as part of the standard library, but tries (retrieval trees) are not implemented. 
+
+Here, and example with `std::unordered\_map` or `std::map` for the children nodes,
+and custom classes or structs to represent the nodes.
+
+Yet, third-party libraries have implementions of trie data structures.
+
+\begin{verbatim}
+#include <unordered_map>
+
+class TrieNode {
+public:
+    bool isEndOfWord;
+    std::unordered_map<char, TrieNode*> children;
+
+    TrieNode() : isEndOfWord(false) {}
+};
+
+class Trie {
+private:
+    TrieNode* root;
+
+public:
+    Trie() {
+        root = new TrieNode();
+    }
+
+    void insert(const std::string& word) {
+        TrieNode* curr = root;
+        for (char c : word) {
+            if (curr->children.find(c) == curr->children.end()) {
+                curr->children[c] = new TrieNode();
+            }
+            curr = curr->children[c];
+        }
+        curr->isEndOfWord = true;
+    }
+
+    bool search(const std::string& word) {
+        TrieNode* curr = root;
+        for (char c : word) {
+            if (curr->children.find(c) == curr->children.end()) {
+                return false;
+            }
+            curr = curr->children[c];
+        }
+        return curr->isEndOfWord;
+    }
+};
+
+int main() {
+    Trie trie;
+    
+    // Insert words into the trie
+    trie.insert("apple");
+    trie.insert("banana");
+    trie.insert("cat");
+    trie.insert("dog");
+    
+    // Search for words in the trie
+    std::cout << trie.search("apple") << std::endl;  // Output: 1 (true)
+    std::cout << trie.search("banana") << std::endl; // Output: 1 (true)
+    std::cout << trie.search("cat") << std::endl;    // Output: 1 (true)
+    std::cout << trie.search("dog") << std::endl;    // Output: 1 (true)
+    std::cout << trie.search("car") << std::endl;    // Output: 0 (false)
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Serialize a Trie with JSON or XML}
+
+To save a retrieval tree (trie) and use it later without recreating the tree every time, you can serialize the tree data structure to a file and then deserialize it when needed. This allows you to persist the tree structure to disk and load it back into memory when required.
+
+Here are the general steps to achieve this:
+
+1. Serialize the trie: Traverse the trie and convert its nodes and data
+into a serialized representation that can be written to a file.
+This typically involves converting the tree nodes and their contents into
+a suitable format, such as JSON, XML, or a custom binary format.
+
+2. Write the serialized data to a file: Open a file in write mode and write the serialized data to the file.
+You can use file I/O operations provided by the programming language or libraries to accomplish this.
+
+3. Save the file: Close the file and make sure it is saved to a location of your choice,
+such as a specific directory.
+
+\textbf{Use the saved trie later}:
+
+1. Read the serialized data from the file:
+Open the saved file in read mode and read the serialized data from it.
+
+2. Deserialize the data: Convert the serialized data back into the original trie data structure.
+This involves parsing the serialized format and reconstructing the trie nodes and their relationships.
+
+3. Use the trie: Once the trie is deserialized,
+you can use it in your program for retrieval or any other operations as needed.
+
+By saving and loading the serialized trie data,
+you avoid the need to recreate the entire trie every time your program runs,
+improving efficiency and performance.
+
+The exact implementation details will depend on the programming language 
+you're using and the specific serialization and deserialization mechanisms available.
+Many programming languages provide libraries or built-in features for serialization,
+such as JSON or XML parsers, binary serialization libraries, or custom serialization methods.

@@ -11,11 +11,3 @@ It is multi-disciplinary, supports all programming paradigms.
 Knowing when paradims are needed is the key to good C++.
 Using appropriate techniques takes time and appropriate technique. 
 
-
-\subsection{Learn a different language}
-
-
-    Lisp // Diverge from the C-family languages. Learn,
-    Haskell
-    Erlang
-

@@ -55,21 +55,3 @@ int main() {
     return 0;
 }
 
-
-Here, an abstract factory class (`AbstractFactory`) that defines the interface for creating products.
-The concrete factory classes (`ConcreteFactoryA` and `ConcreteFactoryB`) implement
-implement the createProduct method to create specific products (ConcreteProductA and ConcreteProductB, respectively).
-The main function demonstrates the usage of 
-the virtual factory by creating instances of the concrete factories and using them to create products.
-
-\section{System()}
-
-
-#include <string>
-
-int main() {
-    std::string cmd = "ls -l";
-    system(cmd.c_str()); // change to c-string
-    return 0;
-}
-

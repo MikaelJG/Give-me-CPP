@@ -9,6 +9,7 @@ void eat() {
 // function defined and declared in a single line in a header file
 void Cookie::eat() {std::cout << "nom nom\n";}
 
+Without inline in header is slower.
 
 // source
 std::string goodnight1(std::string thing1) {

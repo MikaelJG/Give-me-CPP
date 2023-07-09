@@ -28,20 +28,3 @@ auto get_data(const auto & ... params)
 // The only problem now is that this code requires the types to be copyable.
 // If only there was a way to forward arguments and avoid copies......
 
-
-\section{System Design}
-
-\subsection{Header Files}
-
-\subsection{Source Files}
-
-\section{Arguments}
-
-
-#include <iostream>
-
-int main(int argc, char* argv[]) {
-
-    return 0;
-}
-

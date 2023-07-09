@@ -11,8 +11,3 @@ int main() {
     return 0;
 }
 
-
-\section{OpCode}
-
-mov
-

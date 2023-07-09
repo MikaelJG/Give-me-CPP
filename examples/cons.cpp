@@ -65,11 +65,3 @@ The computations are already done during the compilation process,
 The program doesn't incur the additional time and resources required
 to perform them during runtime execution.
 
-
-\subsection{Overcomplicated Constexpr}
-
-
-
-// static const data known at compile time. 
-static const std::vector<int> angles{-90,-45,0,45,90};
-

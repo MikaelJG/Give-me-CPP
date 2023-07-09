@@ -26,13 +26,3 @@ int main()
     print_map(get_some_map(), "index", "location");
 }
 
-
-\subsection{Cout}
-
-Std::Cout is quite verbose, relatively slow and difficult to reason about. 
-
-
-If only there was some easier way of formatting our output...
-
-Puts (algorithm)
-

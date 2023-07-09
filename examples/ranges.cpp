@@ -14,7 +14,6 @@ void print_map(const auto &map, const std::string_view &key_desc = "key",
     for_each(map, print_key_value);
 }
 
-
 #include <vector>
 #include <ranges>
 
