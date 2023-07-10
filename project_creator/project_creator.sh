@@ -24,6 +24,8 @@ echo "g++ -Wall -std=c++17 $name_of_project.cpp -o $name_of_project
 " >> compile.sh 
 
 echo "Compiling..."
+
+# in milliseconds
 sleep 1
 echo "Compilation done."
 echo ""
@@ -38,7 +40,9 @@ echo ""
 
 "./$name_of_project" "$arg"
 
-
+################################################################ 
+#
+# Write a basic main.cpp, taking arguments and saving current directory
 #
 #
 ## first, cmake generates make files
