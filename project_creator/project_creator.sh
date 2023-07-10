@@ -1,5 +1,28 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Provide the name of the project as argument"
+    exit
+fi
+
+name_of_project=$1
+
+################################################################ 
+
+# Compile and run automatically (with one command)
+
+################################################################ 
+
+# Create an automatic compile tool
+
+################################################################ 
+
+echo "g++ -Wall -std=c++17 $name_of_the_project.cpp -o $name_of_the_project
+" >> compile.sh && chmod -x compile.sh
+
 #
-# compile and run automatically (with one command)
+#
+#
 #
 ## first, cmake generates make files
 ## second, make runs the make files & creates an executable

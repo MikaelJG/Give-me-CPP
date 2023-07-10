@@ -1,13 +1,8 @@
 
-template<typename Value_Type>
-struct Data {
-    Data(const std::size_t size)
-      : data(new Value_Type[size]) // constructor
-    {
-    }
+empty() - returns true if empty
+max_size() - returns max number of elements to be stocked
+size() - returns the number of elements
 
-    ~Data() { delete [] data; }
 
-    Value_Type *data;
-};
+std::cout << grocery.size() << "\n";
 
