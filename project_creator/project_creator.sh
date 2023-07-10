@@ -6,6 +6,7 @@ if [ $# -eq 0 ]; then
 fi
 
 name_of_project=$1
+arg=$2
 
 ################################################################ 
 
@@ -17,11 +18,27 @@ name_of_project=$1
 
 ################################################################ 
 
-echo "g++ -Wall -std=c++17 $name_of_the_project.cpp -o $name_of_the_project
-" >> compile.sh && chmod -x compile.sh
+# Compile the project
 
-#
-#
+echo "g++ -Wall -std=c++17 $name_of_project.cpp -o $name_of_project
+" >> compile.sh 
+
+echo "Compiling..."
+sleep 1
+echo "Compilation done."
+echo ""
+
+chmod -x compile.sh
+
+# Run the project
+
+echo "Running $name_of_project with arg $arg."
+sleep 1
+echo ""
+
+"./$name_of_project" "$arg"
+
+
 #
 #
 ## first, cmake generates make files
