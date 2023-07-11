@@ -120,6 +120,14 @@ hello // our target, where to add the stuff from headers
 PUBLIC // gives the scope of added stuff from headers. 
        // Public, Private or Interface
        // Usage: when you have cmake library, make sure it is seen by #include in files
+
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+project(hello VERSION 1.0)
+add_executable(hello main.cpp)
+target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 \end{verbatim}
 
 \subsubsection{In header file}
@@ -136,18 +144,6 @@ class Blah {
 };
 \end{verbatim}
 
-\subsection{Include Header File - CMake Continued}
-
-\begin{verbatim}
-cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-project(hello VERSION 1.0)
-add_executable(hello main.cpp)
-target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-\end{verbatim}
-
 \subsection{Pragma Once}
 
 \begin{verbatim}
@@ -159,7 +155,7 @@ Placed at the beginning of a header file, it acts as a compiler directive to pre
 Supported by most compilers, including GCC, Clang, and MSVC.
 \end{verbatim}
 
-\subsection{Include Many files with CMake - Controversies}
+\subsection{Glob - Include Many files with CMake}
  
 You have at least two options. First, include every files one-by-one in the CMakeList.txt.
 \begin{verbatim}
