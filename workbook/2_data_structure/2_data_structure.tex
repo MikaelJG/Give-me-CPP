@@ -759,3 +759,108 @@ The exact implementation details will depend on the programming language
 you're using and the specific serialization and deserialization mechanisms available.
 Many programming languages provide libraries or built-in features for serialization,
 such as JSON or XML parsers, binary serialization libraries, or custom serialization methods.
+
+\section{Algorithms}
+
+\subsection{Accumulate (Algorithms)}
+
+\begin{verbatim}
+// the algorithm everybody knows. (For_each and accumulate)
+
+#include <numeric>
+
+template<typename T>
+T sum_data(const std::vector<T> &d) {
+    return std::accumulate(d.begin(), d.end(), T());
+}
+\end{verbatim}
+
+\subsection{Std::Puts}
+
+Generating a null-terminated string,  a sequence of characters stored in an array
+where the end of the string is marked by a null character ('\0'). 
+The null character serves as a sentinel value to indicate the end of the string
+
+\begin{verbatim}
+#include <format>
+#include <string_view>
+
+void print_map(const auto &map, const std::string_view &key_desc = "key",
+                                const std::string_view &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// structured binding
+    {
+        std::puts(std::format("{}: '{}' {}: '{}'",
+                         key_desc, key, value_desc, value).c_str());
+
+        // this is genious spacing for readability
+    }
+}
+
+Standard c++20
+\end{verbatim}
+\subsection{Algorithms and Standard Template Library}
+
+\begin{verbatim}
+set<>
+vector<>
+for_each<>
+any_of<>
+etc.
+
+A generic set of composable tools
+
+// now, here we are
+
+#include <numeric>
+#include <vector>
+
+template<typename Value_Type>
+std::vector<Value_Type> get_data(const Value_Type &v1, const Value_type &v2,
+                                 const Value_type &v3)
+{
+    std::vector<Value_Type> data;
+    data.push_back(v1);
+    data.push_back(v2);
+    data.push_back(v3);
+    return data;
+}
+
+template<typename T>
+T sum_data(const std::vector<T> &d) {
+    return std::accumulate(d.begin(), d.end(), T());
+}
+
+int main() {
+    return sum)data(get_data(1,2,3));
+}
+
+// But we know the amount of data at compile-time. 
+// If only there was some fixed-size container available!
+
+\end{verbatim}
+
+\subsection{Prefer Algorithms Over Loops}
+
+Algorithms communicate meaning and help "const all the things".
+
+Taking a functional approach and using algorithms, we can write cleaner c++.
+
+\begin{verbatim}
+// Algorithms end game (before C++20)
+
+const auto has_value
+    = std::any_of(begin(container), end(container), 
+            greater_than(12));
+
+// Algorithm end game (c++20)
+
+const auto has_value
+    = std::any_of(container, greater_than(12));
+
+Next time you are reading through a loop in your codebase,
+cross-reference it with the C++ <algorithm> header²
+and try to find an algorithm that applies instead.
+
+https://en.cppreference.com/w/cpp/algorithm
+\end{verbatim}
