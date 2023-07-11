@@ -3251,6 +3251,271 @@ The `createComplexType` function creates an instance of `ComplexType` by taking 
 as parameters. The function initializes a `ComplexType` object, sets its elements, and returns it. 
 Finally, in the `main` function, we call `createComplexType` and print the resulting complex type.
 
+\section{Compiler}
+
+If your program has 3 .cpp files, the compiler would generate 3 object files. 
+After all object files were compiled, the linker starts. 
+\begin{center}
+\includegraphics[width=3.5in]{compile.png}
+\end{center}
+\begin{center}
+\includegraphics[width=3.5in]{compiling.png}
+\end{center}
+
+\begin{verbatim}
+MVSC // Microsoft Compiler
+GCC // Gnu C Compiler
+LLVM Clang // LLVM Compiler
+\end{verbatim}
+
+\section{Linker}
+\begin{verbatim}
+    It combined all object files in one executable.
+    the linker links library files. 
+    resolves cross-file dependencies.  
+\end{verbatim}
+
+\begin{center}
+\includegraphics[width=2in]{linker.png}
+\end{center}
+\section{Libraries}
+\subsection{Library files}
+\begin{verbatim}
+    a collection of precompiled code that has been "packaged up" for reuse in other programs. 
+    C++ comes with a standard library providing additional functionality.
+    commonly used in the iostream library
+\end{verbatim}
+
+\subsection{External Libraries}
+
+A collection of pre-compiled code, providing functionality.
+
+Functions, classes, and data structures that are not part of the standard C++ library.
+
+These libraries are often provided by third-party developers or organizations
+
+They speed up the development process by providing ready-to-use functionality. 
+
+\begin{verbatim}
+Popular C++ external libraries:
+\end{verbatim}
+
+\subsection{Boost}
+
+\subsection{OpenCV}
+
+\subsection{Qt}
+
+\section{Builds}
+\subsection{Build Configuration (build target)}
+
+\begin{verbatim}
+    Project settings determining how your project will be built. 
+    Build configuration includes executable name, project arch and library files. 
+    It specifies keepings or strippings of debugging info, compiler optimization details 
+\end{verbatim}
+
+\subsection{Debug Config}
+
+\begin{verbatim}
+    Debug configuations turns off all optimizations, includes debugging information,
+    Jason Turner would say "with as much information as possible"
+    Such configs makes your programs larger and slower, but much easier to debug. 
+\end{verbatim}
+
+\subsection{Release Config}
+
+\begin{verbatim}
+    Optimized for size and performance, no debugging information.
+    With all optimization, now testing for code performance.
+
+    When the Hello World program (from lesson 0.7) was built using Visual Studio,
+    Executable produced in the debug configuration was 65kb, 
+    Executable built in the release version was 12kb. 
+    The difference is largely due to the extra debugging information kept in the debug build.
+\end{verbatim}
+
+\subsection{G++ Builds}
+\begin{verbatim}
+GCC / Clang? 
+    -ggdb  // cmd line debugging
+           // This is the GNU Debugger !?
+    -ggdb O2 -DNDEBUG for release builds. ??
+    -g++ O2 -DNDEBUG for release builds. ??
+\end{verbatim}
+
+\section{Compiler Extensions (compiler-specific behavior)}
+
+    many compilers implement their own changes to the language,
+    \begin{verbatim}
+    Using compiler extension allows you to write programs that are incompatible
+    with the C++ standard.
+    \end{verbatim}
+
+    Programs using non-standard extensions generally will not compile on other compilers (lacking same extensions support)
+    , or if they do, they may not run correctly.
+
+    Compiler extensions are often enabled by default. Overpermissive compilers.
+
+    Compiler extensions are optional, cause programs non-compliancy with C++ standards,
+    Turn compiler extensions off.
+
+\begin{verbatim}
+GCC
+         -pedantic-errors // Disable extensions
+\end{verbatim}
+
+\section{Max Warnings}
+
+\begin{verbatim}
+GCC 
+    -Wall -Weffc++ -Wextra -Wsign-conversion
+    -Werror
+
+Turner does it with cmake?
+\end{verbatim}
+
+\section{Standard Set-Up}
+
+\begin{verbatim}
+GCC pre-8
+          -std=c++11 // set c++ standard
+          -std=c++14
+          -std=c++17
+          -std=c++20 
+GCC 8 or 9
+          -std=c++2a for C++20 support
+
+g++ -std=c++17 myfile.cpp -o output // cmd line
+\end{verbatim}
+
+\section{Dear ImGui}
+
+\section{PCH - Precompiling Headers}
+
+Some compilers' feature to speed compilation of large projects. 
+It generates a precompiled version of commonly included header files, 
+
+This version is known as the PCH file.
+It is used during subsequent compilations. Avoids reparse and re-process of header files.
+
+Great for large projects: numerous headers, included in multiple source files.
+
+\subsection{Enable PCH}
+
+PCH usage is compiler-specific, the enabling and configuring method varies. 
+
+It typically involves specifying which headers should be precompiled and how the precompiled information should be stored.
+
+\subsection{Include Header Files}
+
+\begin{verbatim}
+// Main.cpp
+// #include "my_function.hpp"
+
+//then
+// g++ main.cpp my_function.cpp -o program
+\end{verbatim}
+
+\subsection{Header Files 2.0}
+
+\begin{verbatim}
+// Declare in header, fun.hpp or fun.h
+double average(double num1, double num2);
+
+// Define in fun.cpp
+double average(double num1, double num2) {
+  return (num1 + num2) / 2;
+}
+\end{verbatim}
+
+\subsection{Standard Library Headers}
+
+\begin{verbatim}
+Some standard library headers are included by others. 
+
+<cstdlib> is included by <iostream>, since it relies on its functionalities,
+such as the declaration of the system() function. 
+\end{verbatim}
+
+\section{Command Line Linking and Compiling}
+
+\begin{verbatim}
+g++ main.cpp my_functions.cpp // link both files
+\end{verbatim}
+
+\subsection{Source Code Files Suffix}
+
+\begin{verbatim}
+    .cpp (ex: hello.cpp) or
+    .h (ex: std_lib_facilities.h).
+\end{verbatim}
+
+\subsection{Compile}
+\begin{verbatim}
+g++ hello.cpp -o hello
+
+Compiling translates C++ programs into machine code.
+It is stored on disk as a file with the .o extension (hello.o). 
+\end{verbatim}
+
+A linker then links the object code with standard library routines that the program may use and creates an executable image which is also saved on disk,
+
+usually as a file with the file name without any extension (e.g. hello).
+
+\section{Debugg and Error Type}
+
+\subsection{Compile Time Errors}
+
+\subsection{Synthax Errors}
+
+\subsection{Type errors}
+
+Forgetting to declare a variable
+
+Storing a value in a different type. 
+
+\subsection{Link-Time Errors}
+
+link-time errors are based on unfindable needed function or library.
+
+When the linker tries to combine object files into an executable.
+
+\subsection{Run-Time Errors}
+
+Errors which happen during program execution (run-time) after successful compilation.
+
+Division by zero
+
+Open an non-existing file
+
+\subsection{Logical Errors}
+
+Flawed programming's logical thinking. 
+
+No errors, but output is wrong. 
+
+\subsection{Testing Framework}
+
+\section{Benchmarking strategy}
+\subsection{Chrono, clock time}
+
+\begin{verbatim}
+#include <chrono>
+int main() {
+
+  // Measure time taken for goodnight1():
+  std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+
+  std::cout << goodnight1("tulip");
+
+  std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double, std::milli> time_span = end - start;
+
+  // Print time taken for goodnight1():
+  std::cout << "Time taken for goodnight1(): " << time_span.count() << " milliseconds.\n\n";
+\end{verbatim}
+
 \section{Good practices}
 
 \subsection{Proper Design}
@@ -4298,6 +4563,14 @@ hello // our target, where to add the stuff from headers
 PUBLIC // gives the scope of added stuff from headers. 
        // Public, Private or Interface
        // Usage: when you have cmake library, make sure it is seen by #include in files
+
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+project(hello VERSION 1.0)
+add_executable(hello main.cpp)
+target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 \end{verbatim}
 
 \subsubsection{In header file}
@@ -4314,18 +4587,6 @@ class Blah {
 };
 \end{verbatim}
 
-\subsection{Include Header File - CMake Continued}
-
-\begin{verbatim}
-cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-project(hello VERSION 1.0)
-add_executable(hello main.cpp)
-target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-\end{verbatim}
-
 \subsection{Pragma Once}
 
 \begin{verbatim}
@@ -4337,7 +4598,7 @@ Placed at the beginning of a header file, it acts as a compiler directive to pre
 Supported by most compilers, including GCC, Clang, and MSVC.
 \end{verbatim}
 
-\subsection{Include Many files with CMake - Controversies}
+\subsection{Glob - Include Many files with CMake}
  
 You have at least two options. First, include every files one-by-one in the CMakeList.txt.
 \begin{verbatim}
