@@ -1,17 +1,13 @@
 
-# Give Me CPP 
+# My C++ Workbook.
 
-My journey to learn c++, named after God of War's hardest difficulty: Give Me God of War. 
+All of my notes on C++ in a .tex format, exportable in a nice PDF Workbook, with all code examples aside.
 
 Let's take one day at a time and learn this thing. 
 
 ## Content
 
-In contains notes from:
-
-1. Bjarne Stroustrup' [A Tour of C++: The Basics](https://isocpp.org/images/uploads/2-Tour-Basics.pdf)
-
-2. Jason Turner's [C++ Best Practices - 45ish Simple Rules with Specific Action Items for Better C++](https://leanpub.com/cppbestpractices)
+In contains many notes from Jason Turner's books and lectures.
 
 ## Want the notes? 
 
