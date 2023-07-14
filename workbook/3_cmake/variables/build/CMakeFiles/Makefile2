@@ -54,39 +54,18 @@ CMAKE_BINARY_DIR = /home/mjg/code/cpp/workbook/3_cmake/variables/build
 
 # The main recursive "all" target.
 all: src/all
-all: app/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: src/preinstall
-preinstall: app/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: src/clean
-clean: app/clean
 
 .PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory app
-
-# Recursive "all" directory target.
-app/all: app/CMakeFiles/Hello.dir/all
-
-.PHONY : app/all
-
-# Recursive "preinstall" directory target.
-app/preinstall:
-
-.PHONY : app/preinstall
-
-# Recursive "clean" directory target.
-app/clean: app/CMakeFiles/Hello.dir/clean
-
-.PHONY : app/clean
 
 #=============================================================================
 # Directory level rules for directory src
@@ -131,7 +110,7 @@ src/my_lib/clean: src/my_lib/CMakeFiles/Library.dir/clean
 src/my_lib/CMakeFiles/Library.dir/all:
 	$(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/depend
 	$(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mjg/code/cpp/workbook/3_cmake/variables/build/CMakeFiles --progress-num=3,4 "Built target Library"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mjg/code/cpp/workbook/3_cmake/variables/build/CMakeFiles --progress-num=1,2 "Built target Library"
 .PHONY : src/my_lib/CMakeFiles/Library.dir/all
 
 # Build rule for subdir invocation for target.
@@ -150,33 +129,6 @@ Library: src/my_lib/CMakeFiles/Library.dir/rule
 src/my_lib/CMakeFiles/Library.dir/clean:
 	$(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/clean
 .PHONY : src/my_lib/CMakeFiles/Library.dir/clean
-
-#=============================================================================
-# Target rules for target app/CMakeFiles/Hello.dir
-
-# All Build rule for target.
-app/CMakeFiles/Hello.dir/all: src/my_lib/CMakeFiles/Library.dir/all
-	$(MAKE) -f app/CMakeFiles/Hello.dir/build.make app/CMakeFiles/Hello.dir/depend
-	$(MAKE) -f app/CMakeFiles/Hello.dir/build.make app/CMakeFiles/Hello.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mjg/code/cpp/workbook/3_cmake/variables/build/CMakeFiles --progress-num=1,2 "Built target Hello"
-.PHONY : app/CMakeFiles/Hello.dir/all
-
-# Build rule for subdir invocation for target.
-app/CMakeFiles/Hello.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mjg/code/cpp/workbook/3_cmake/variables/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/Hello.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mjg/code/cpp/workbook/3_cmake/variables/build/CMakeFiles 0
-.PHONY : app/CMakeFiles/Hello.dir/rule
-
-# Convenience name for target.
-Hello: app/CMakeFiles/Hello.dir/rule
-
-.PHONY : Hello
-
-# clean rule for target.
-app/CMakeFiles/Hello.dir/clean:
-	$(MAKE) -f app/CMakeFiles/Hello.dir/build.make app/CMakeFiles/Hello.dir/clean
-.PHONY : app/CMakeFiles/Hello.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

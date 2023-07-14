@@ -21,5 +21,6 @@ add_subdirectory(src)
 
 if(COMPILE_EXECUTABLE)
     add_subdirectory(app)
-else (
+else ()
+    message("Without executation compiling")
 endif()

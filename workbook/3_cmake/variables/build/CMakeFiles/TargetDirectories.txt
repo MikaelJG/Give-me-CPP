@@ -5,6 +5,3 @@
 /home/mjg/code/cpp/workbook/3_cmake/variables/build/src/my_lib/CMakeFiles/rebuild_cache.dir
 /home/mjg/code/cpp/workbook/3_cmake/variables/build/src/my_lib/CMakeFiles/edit_cache.dir
 /home/mjg/code/cpp/workbook/3_cmake/variables/build/src/my_lib/CMakeFiles/Library.dir
-/home/mjg/code/cpp/workbook/3_cmake/variables/build/app/CMakeFiles/rebuild_cache.dir
-/home/mjg/code/cpp/workbook/3_cmake/variables/build/app/CMakeFiles/edit_cache.dir
-/home/mjg/code/cpp/workbook/3_cmake/variables/build/app/CMakeFiles/Hello.dir

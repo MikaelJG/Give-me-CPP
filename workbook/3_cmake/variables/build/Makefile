@@ -123,19 +123,6 @@ Library/fast:
 	$(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/build
 .PHONY : Library/fast
 
-#=============================================================================
-# Target rules for targets named Hello
-
-# Build rule for target.
-Hello: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Hello
-.PHONY : Hello
-
-# fast build rule for target.
-Hello/fast:
-	$(MAKE) -f app/CMakeFiles/Hello.dir/build.make app/CMakeFiles/Hello.dir/build
-.PHONY : Hello/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -145,7 +132,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Library"
-	@echo "... Hello"
 .PHONY : help
 
 

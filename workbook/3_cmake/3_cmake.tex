@@ -141,6 +141,25 @@ if (COMPILE_EXECUTABLE)
 endif()
 \end{verbatim}
 
+
+\section{Makefile Shell Scripting}
+
+Make is Cmake's ancestor. You can automate folder creation and files, just like any shell script would do. 
+
+Make do not support space, use tabs.
+
+\begin{verbatim}
+prepare:
+    rm -rf build
+    mkdir build
+    cd build
+
+# to execute it
+
+# $ make prepare
+\end{verbatim}
+
+
 \section{Starter Pack - Jason Turner's Template}
 
 \begin{verbatim}
