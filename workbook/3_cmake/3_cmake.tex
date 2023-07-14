@@ -1,5 +1,14 @@
 \chapter{Cmake}
 
+
+\section{Overview}
+
+Cmake is super old. It has more than 300 functions to use, but 250 should not be used in modern cmake projects. 
+This makes it particularly difficult to learn. Many older tutorials are confusing, out-of-date.
+
+Moreover, modern cmake makes it as readable as possible with modern functions. Thus, way easier to read than older
+functions.
+
 \section{Project Structure}
 
 See basic project and intermediate project examples, in cmake udemy.
@@ -863,6 +872,7 @@ configure_file(
                           # we create an output for a config file, 
                           # in our build directory.
 
+    # "${PROJECT_SOURCE_DIR}" # stores absolute path to project's root directory
 
     "${CMAKE_BINARY_DIR}/configured_files/include/config.hpp" ESCAPE_QUOTES 
 \end{verbatim}
@@ -942,5 +952,88 @@ set(EXE_SOURCES
 add_exectable(${EXECUTABLE_NAME} ${EXE_SOURCES})
 target_link)libraries(${ECEXUTABLE_NAME} PUBLIC ${LIBRARY_NAME})
 \end{verbatim}
+
+
+\section{Using External Libraries}
+
+
+\subsection{Git Submodule - nlohman/json}
+
+Create an external directory. Our project looks like this:
+
+\begin{center}
+    \includegraphics[width=2in]{external.png}
+\end{center}
+
+\begin{verbatim}
+// make sure that your root folder is a git repo, git init
+
+git submodule add https://github.com/nlogmann/json external/json
+
+// it creates the json directory, when cloning the module in it.
+\end{verbatim}
+
+\subsection{Custom Cmake Functions}
+
+In a cpp project, when you create your own cmake functions, they are stored in a Cmake directory. We just cloned a 
+git repo in our external directory.
+
+\begin{center}
+    \includegraphics[width=2in]{add.png}
+\end{center}
+
+Now we create a AddGitSubmodule.cmake file. Inside, we define our function.
+
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function(add_git_submodule dir) # our function takes one argument called dir
+                                # this dir, is where the submodule is located
+                                # making the add_ action possible.
+        find_package(Git REQUIRED) # Git must be on your computer, or it
+                                   # Error's out.
+        if (NOT EXISTS ${dir}/CMakeLists.txt)
+            execute_process (COMMAND ${GIT_EXECUTABLE}}
+            submodule update --init --recursive -- ${dir}
+            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}) # cmake saves some variable
+                                                     # including the source dir
+                                                     # of our project.
+        endif()
+
+endfunction(add_git_submodule)
+
+\end{verbatim}
+
+
+
+
+
 
 
