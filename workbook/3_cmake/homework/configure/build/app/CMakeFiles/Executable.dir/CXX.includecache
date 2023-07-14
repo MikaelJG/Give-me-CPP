@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/my_lib/my_lib.h
+
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/app/main.cc
+iostream
+-
+config.hpp
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/app/config.hpp
+my_lib.h
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/app/my_lib.h
+
+configured_files/include/config.hpp
+cstdint
+-
+string_view
+-
+

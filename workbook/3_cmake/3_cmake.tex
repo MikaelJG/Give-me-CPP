@@ -852,15 +852,64 @@ Create a configuration directory. With a config.hpp.in file.
     \includegraphics[width=2in]{conf.png}
 \end{center}
 
-\subsection{Project Version Number}
+In the CMakeLists.txt of this new configured directory.
 
 \begin{verbatim}
-# @ tells cmake to remplace this text @
+configure_file(
+    "config.hpp.in"
+    # "${CMAKE_BINARY_DIR}" this is our build directory
+                          # it is one of prebuilt directories in CMAKE
+                          # thus, we reference it with CMAKE_BINARY_DIR
+                          # we create an output for a config file, 
+                          # in our build directory.
+
+
+    "${CMAKE_BINARY_DIR}/configured_files/include/config.hpp" ESCAPE_QUOTES 
+\end{verbatim}
+
+\subsection{Project Version Number}
+
+In config.hpp.in
+
+\begin{verbatim}
+# @ cmake looks for and remplaces text between @@ this text @
 
 #include <cstdint>
 #include <string_view> 
 static constexpr std::string_view project_name = "@PROJECT_NAME@";
 static constexpr std::string_view project_version = "@PROJECT_VERSION@";
+\end{verbatim}
+
+
+
+
+\subsection{Sementic Versioning}
+
+In version names: 1.0.0 . This is the first Major version (1). Incrementing the major version means
+that the previous and the new codebase are not compatible at all. 2.0.0 have breaking changes with the 1.0.0 version.
+
+The minor version 1.6.0, number 6 here, indicate that new features are available. Yet, nothing breaks between minor versions.
+
+The patches are the last number, the last small fixes.
+
+\begin{verbatim}
+static constexpr std::int32_t project_version_major{@PROJECT_VERSION_MAJOR@};
+static constexpr std::int32_t project_version_minor{@PROJECT_VERSION_MINOR@};
+static constexpr std::int32_t project_version_patch{@PROJECT_VERSION_PATCH@};
+
+#### Resulting file looks like.
+
+#pragma once
+
+#include <cstdint>
+#include <string_view>
+
+static constexpr std::string_view project_name = "CppProjectTemplate";
+static constexpr std::string_view project_version = "1.0.0";
+
+static constexpr std::int32_t project_version_major{1};
+static constexpr std::int32_t project_version_minor{0};
+static constexpr std::int32_t project_version_patch{0};
 \end{verbatim}
 
 

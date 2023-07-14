@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/src/my_lib/my_lib.cc
+iostream
+-
+my_lib.h
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/src/my_lib/my_lib.h
+
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/src/my_lib/my_lib.h
+

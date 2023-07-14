@@ -1,0 +1,12 @@
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/configured/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/configured/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/src/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/src/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/src/my_lib/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/src/my_lib/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/src/my_lib/CMakeFiles/Library.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/app/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/app/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/homework/configure/build/app/CMakeFiles/Executable.dir
