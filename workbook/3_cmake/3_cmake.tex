@@ -41,6 +41,66 @@ Don't forget to add a CMakeList in the src directory.
 Create a project builder based on the architecture of the intermediate project.
 
 
+\section{Variables}
+
+You can create variables for you executable or your libraries in the root CMakeLists.txt. The variables
+will be usable in all add\_subdirectory chain at the end of the same document.
+
+\begin{verbatim}
+# set a variable for the library you want to use
+# common synthax is capital letters.
+
+# we reference Library in other CMakeLists files
+# we change the Library name for LIBA
+
+set(LIBA Library)
+
+# where we used Library, write ${LIBA}
+
+
+# we have used Hello for our executable name so far.
+# we can change it as well.
+set(HE Hello)
+
+# where we used Hello, write ${HE}
+
+add_subdirectory(src)
+add_subdirectory(app)
+\end{verbatim}
+
+
+\section{Standard for cpp}
+
+In your root CMakeLists.txt file as well. This defines a variable and sets the standard to 17.
+
+\begin{verbatim}
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 98)
+\end{verbatim}
+
+
+\subsection{Standard Required}
+
+Indicate that the compiler 100 pourcent implemented the language's standard.
+
+\begin{verbatim}
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+\end{verbatim}
+
+\subsection{Compiler Extensions}
+
+Some compilers have features that are not implemented in the Cpp standard. These features are extensions.
+Some compilers allow you to use non-standard c code into a cpp program, even if they are not in the cpp standard.
+
+\begin{verbatim}
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+\end{verbatim}
+
+
+
 \section{Starter Pack - Jason Turner's Template}
 
 \begin{verbatim}
