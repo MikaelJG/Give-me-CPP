@@ -913,3 +913,34 @@ static constexpr std::int32_t project_version_patch{0};
 \end{verbatim}
 
 
+\section{Sources and Headers}
+
+When you have many libraries and many headers, create a variable for all of you headers. Then, reference this variable to include
+everything. List all of your source files in my\_lib directory.
+
+\begin{verbatim}
+set(LIBRARY_SOURCES
+     "my_lib.cpp"
+     "my_lib2.cpp"
+     ) # quotes are not mandatory, just preference.
+set(LIBRARY_HEADERS
+     "my_lib.h")
+
+add_library(${LIBRARY_NAME} STATIC
+    "./"
+    "${CMAKE_BINARY_DIR}/configured_files/include")
+\end{verbatim}
+
+\subsection{Executables}
+
+You can do the same thing if you generate many executables, I think. This would be in your app directory.
+
+\begin{verbatim}
+set(EXE_SOURCES
+    "main.cpp")
+
+add_exectable(${EXECUTABLE_NAME} ${EXE_SOURCES})
+target_link)libraries(${ECEXUTABLE_NAME} PUBLIC ${LIBRARY_NAME})
+\end{verbatim}
+
+
