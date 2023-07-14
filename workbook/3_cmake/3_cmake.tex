@@ -69,15 +69,16 @@ add_subdirectory(app)
 \end{verbatim}
 
 
-\section{Standard for cpp}
+\subsection{Standard for cpp}
 
+This is essential to have in your program. Otherwise, the compiler's default config will take the lead, with huge
+variability between compiler versions!
 In your root CMakeLists.txt file as well. This defines a variable and sets the standard to 17.
 
 \begin{verbatim}
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 98)
 \end{verbatim}
-
 
 \subsection{Standard Required}
 
@@ -99,7 +100,46 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 \end{verbatim}
 
+\subsection{If Statement}
 
+Cmake has if statement. It even has string comparaison functions, to compare variable and create conditions.
+
+\begin{verbatim}
+option(COMPILE_EXECUTABLE "Whether to compile the executable" OFF)
+
+add_subdirectory(src)
+
+if (COMPILE_EXECUTABLE)
+    add_subdirectory(app)
+else()
+    message("Without executable compiling")
+endif()
+
+
+
+\end{verbatim}
+
+
+\subsection{Options}
+
+You can set an option, the second argument is a simple comment for the reader (with no impact).
+
+\begin{verbatim}
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(LIBA Library)
+set(HE Hello)
+
+option(COMPILE_EXECUTABLE "Whether to compile the executable" OFF)
+
+add_subdirectory(src)
+
+if (COMPILE_EXECUTABLE)
+    add_subdirectory(app)
+endif()
+\end{verbatim}
 
 \section{Starter Pack - Jason Turner's Template}
 
