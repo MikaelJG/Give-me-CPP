@@ -843,3 +843,24 @@ Windows: *.lib
 
 Static libraries increase the overall size of the binary, but it means that you don't need to carry along a copy of the library that is being used.
 As the code is connected at compile time there are not any additional run-time loading costs.
+
+\section{Configuration - Precompiling Information}
+
+Create a configuration directory. With a config.hpp.in file.
+
+\begin{center}
+    \includegraphics[width=2in]{conf.png}
+\end{center}
+
+\subsection{Project Version Number}
+
+\begin{verbatim}
+# @ tells cmake to remplace this text @
+
+#include <cstdint>
+#include <string_view> 
+static constexpr std::string_view project_name = "@PROJECT_NAME@";
+static constexpr std::string_view project_version = "@PROJECT_VERSION@";
+\end{verbatim}
+
+
