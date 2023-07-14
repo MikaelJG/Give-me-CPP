@@ -182,6 +182,13 @@ A binary file that contains information about code.
 A library cannot be executed on its own.
 An application utilizes a library.
 
+A library must be build too, if it is used by an executable.
+
+\begin{verbatim}
+cmake --build . --target Library
+cmake --build . --target Executable // it is dependent to the Library build!
+\end{verbatim}
+
 \subsection{Shared}
 
 \begin{verbatim}

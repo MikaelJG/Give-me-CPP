@@ -1,0 +1,4 @@
+/home/mjg/code/cpp/workbook/3_cmake/basic_projects/build/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/basic_projects/build/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/basic_projects/build/CMakeFiles/Hello.dir
+/home/mjg/code/cpp/workbook/3_cmake/basic_projects/build/CMakeFiles/Library.dir
