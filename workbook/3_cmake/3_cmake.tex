@@ -985,35 +985,6 @@ git repo in our external directory.
 Now we create a AddGitSubmodule.cmake file. Inside, we define our function.
 
 \begin{verbatim}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function(add_git_submodule dir) # our function takes one argument called dir
                                 # this dir, is where the submodule is located
                                 # making the add_ action possible.
@@ -1027,9 +998,37 @@ function(add_git_submodule dir) # our function takes one argument called dir
                                                      # of our project.
         endif()
 
+        add_subdirectory(${dir})
 endfunction(add_git_submodule)
+\end{verbatim}
+
+
+\subsection{Call Your Own Functions}
+
+In the source CMakeFiles.txt, knowing that we have a new git submodule. We add:
+
+
+\begin{verbatim}
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+include(AddGitSubmodule) # includes indicates thats it a cmake module file.
+                         # it will look where cmake modules are defined
+                         # in our cmake dir
+
+
+add_git_submodule(external/json) # this calls our custom function.
+
+# In our app, we add this as well
+
+set(EXE_SOURCES
+    "main.cpp")
+
+add_exectable(${EXECUTABLE_NAME} ${EXE_SOURCES})
+target_link_libraries(${EXECUTABLE_NAME} PUBLIC
+    ${LIBRARY_NAME}
+    nlohmann_json) # this links the submodule with the executable
 
 \end{verbatim}
+
 
 
 
