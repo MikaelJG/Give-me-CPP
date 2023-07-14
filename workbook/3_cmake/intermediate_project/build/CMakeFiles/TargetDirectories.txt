@@ -1,0 +1,8 @@
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/src/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/src/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/src/CMakeFiles/Library.dir
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/app/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/app/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/app/CMakeFiles/Hello.dir
