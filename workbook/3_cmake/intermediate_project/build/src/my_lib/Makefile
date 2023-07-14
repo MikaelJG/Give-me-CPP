@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/CMakeFiles /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/src/CMakeFiles/progress.marks
-	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/CMakeFiles /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/src/my_lib/CMakeFiles/progress.marks
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/my_lib/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/my_lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,18 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/my_lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/my_lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+src/my_lib/CMakeFiles/Library.dir/rule:
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f CMakeFiles/Makefile2 src/my_lib/CMakeFiles/Library.dir/rule
+.PHONY : src/my_lib/CMakeFiles/Library.dir/rule
+
+# Convenience name for target.
+Library: src/my_lib/CMakeFiles/Library.dir/rule
+
+.PHONY : Library
+
+# fast build rule for target.
+Library/fast:
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/build
+.PHONY : Library/fast
+
+my_lib.o: my_lib.cpp.o
+
+.PHONY : my_lib.o
+
+# target to build an object file
+my_lib.cpp.o:
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/my_lib.cpp.o
+.PHONY : my_lib.cpp.o
+
+my_lib.i: my_lib.cpp.i
+
+.PHONY : my_lib.i
+
+# target to preprocess a source file
+my_lib.cpp.i:
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/my_lib.cpp.i
+.PHONY : my_lib.cpp.i
+
+my_lib.s: my_lib.cpp.s
+
+.PHONY : my_lib.s
+
+# target to generate assembly for a file
+my_lib.cpp.s:
+	cd /home/mjg/code/cpp/workbook/3_cmake/intermediate_project/build && $(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/my_lib.cpp.s
+.PHONY : my_lib.cpp.s
 
 # Help Target
 help:
@@ -118,6 +160,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... Library"
+	@echo "... my_lib.o"
+	@echo "... my_lib.i"
+	@echo "... my_lib.s"
 .PHONY : help
 
 

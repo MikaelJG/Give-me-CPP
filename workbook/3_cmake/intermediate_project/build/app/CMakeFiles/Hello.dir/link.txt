@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/Hello.dir/main.cpp.o  -o Hello  ../src/libLibrary.a 
+/usr/bin/c++     CMakeFiles/Hello.dir/main.cpp.o  -o Hello  ../src/my_lib/libLibrary.a 

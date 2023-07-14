@@ -120,7 +120,7 @@ Library: cmake_check_build_system
 
 # fast build rule for target.
 Library/fast:
-	$(MAKE) -f src/CMakeFiles/Library.dir/build.make src/CMakeFiles/Library.dir/build
+	$(MAKE) -f src/my_lib/CMakeFiles/Library.dir/build.make src/my_lib/CMakeFiles/Library.dir/build
 .PHONY : Library/fast
 
 #=============================================================================
