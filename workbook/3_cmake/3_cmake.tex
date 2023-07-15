@@ -993,16 +993,36 @@ function(add_git_submodule dir) # our function takes one argument called dir
         if (NOT EXISTS ${dir}/CMakeLists.txt)
             execute_process (COMMAND ${GIT_EXECUTABLE}}
             submodule update --init --recursive -- ${dir}
+                                                     # recursive is essential here
+                                                     # If someone clones your project, 
+                                                     # It automatically clones this submodules,
+                                                     # It clones auto repos, inside your repo.
+                                                            
             WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}) # cmake saves some variable
                                                      # including the source dir
                                                      # of our project.
         endif()
         
-        if (NOT EXISTS ${dir}/CMakeLists.txt)
+        if (EXISTS ${dir}/CMakeLists.txt)
+            message("Adding ${dir}/CMakeLists.txt")
             add_subdirectory(${dir})
+        else
+            message("Could not add ${dir}/CMakeLists.txt")
         endif()
 endfunction(add_git_submodule)
 \end{verbatim}
+
+
+\subsection{Log example}
+
+Here we are using an external library called log, with only two files, log.c and log.h . We have the library in our 
+external directory. Plus, we have a CMakeLists.txt at the root of the external folder, taking care of the log library. 
+
+
+\begin{center}
+    \includegraphics[width=4in]{loge.png}
+\end{center}
+
 
 
 \subsection{Call Your Own Functions}
