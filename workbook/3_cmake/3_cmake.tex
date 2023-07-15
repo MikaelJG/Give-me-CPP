@@ -997,8 +997,10 @@ function(add_git_submodule dir) # our function takes one argument called dir
                                                      # including the source dir
                                                      # of our project.
         endif()
-
-        add_subdirectory(${dir})
+        
+        if (NOT EXISTS ${dir}/CMakeLists.txt)
+            add_subdirectory(${dir})
+        endif()
 endfunction(add_git_submodule)
 \end{verbatim}
 
