@@ -1077,22 +1077,31 @@ FetchContent_MakeAvailable()
 
 
                        # I want to use github.com/nlohmann/json
+                       # any Gitlab is also possible
                        # I can do:
 FetchContent_Declare(
-    nlohmann_json
+    nlohmann_json      # since this repo is a cmake project,
+                       # look at the project's root CMakeLists.txt file
+                       # you will the name of the project, to enter here 
+                       # see next image
+
     GIT_REPOSITORY https://github.com/nlohmann/json
     GIT_TAG v3.11.2    # the version I want to use
-)
-    
+    GIT_SHALLOW TRUE)  # The function won't clone the repo recursively
 
+                       # With this function, the git repository will be cloned in  
+                       # our cloned repository.
+                       # And it needs to be a cmake project.
 
-
-
-
-
-
+                       # if it is not a cmake project, use the AddGitSubmodule method shown.
 
 \end{verbatim}
+
+
+\begin{center}
+    \includegraphics[width=2in]{json_n.png}
+\end{center}
+
 
 
 \subsection{CPM - C Package Manager}
