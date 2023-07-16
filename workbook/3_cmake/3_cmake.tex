@@ -1232,7 +1232,15 @@ int main() {
 \end{verbatim}
 
 
+\subsection{Git Submodules vs Fetch Content}
 
+If the repo is not a CMakeProject, you should use Git Submodules. Valid for GitHub and GitLab. In this case, 
+define its own library target, I think. Not explained in detail.
+
+If it is a CMake project on GitHub or Gitlab, use FetchContent. It is easier to use, you don't need to mess with header
+libraries or anything. We can simply use the makeAvailable and prepare function.
+
+The instructor highly recommends FetchContent!
 
 \subsection{CPM - C Package Manager}
 \subsection{Conan}
