@@ -1063,6 +1063,20 @@ target_link_libraries(${EXECUTABLE_NAME} PUBLIC
 
 \section{Dependency Graphs}
 
+In a makefile, or any script, use the command --graphviz. Dependency and prepare are the flag needed to run the command.
+
+\begin{verbatim}
+dependency:
+    cd build && cmake .. --graphviz=grap.dot && dot -Tpng graph.dot -o grapImage.png
+                        // not yet an image when .dot
+                        // but easy to transform
+prepare:
+    rm -rf build
+    mkdir build
+                        // unrelated to dependency graph.
+\end{verbatim}
+
+
 
 \section{Doxygen Documentation}
 
