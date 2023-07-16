@@ -1073,7 +1073,7 @@ include(FetchContent)  # built-in library or file
                        # including it gives access to features
 
 FetchContent_Declare() # Declare which github repository we would like to use
-FetchContent_MakeAvailable()
+FetchContent_MakeAvailable() # will load this library in our cmake project.
 
 
                        # I want to use github.com/nlohmann/json
@@ -1094,13 +1094,37 @@ FetchContent_Declare(
                        # And it needs to be a cmake project.
 
                        # if it is not a cmake project, use the AddGitSubmodule method shown.
-
+FetchContent_MakeAvailable(nlohmann_json) # will load this library in our cmake project.
 \end{verbatim}
-
 
 \begin{center}
     \includegraphics[width=2in]{json_n.png}
 \end{center}
+
+
+\subsection{FMT}
+
+The best library to easily format strings in cpp.
+
+\begin{verbatim}
+FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtib/fmt
+    GIT_TAG 9.1.0
+    GIT_SHALLOW TRUE)
+\end{verbatim}
+
+\subsection{spdlog}
+
+The best fast logging library for cpp.
+
+\begin{verbatim}
+FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtib/fmt
+    GIT_TAG 9.1.0
+    GIT_SHALLOW TRUE)
+\end{verbatim}
 
 
 
