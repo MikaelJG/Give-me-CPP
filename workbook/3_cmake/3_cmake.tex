@@ -1156,7 +1156,7 @@ FetchContent_MakeAvailable(catch2)
 \end{verbatim}
 
 
-\subsection{Include All Libraries Easily}
+\subsection{Include All Libraries in root CMakeListstxt}
 
 Refer to Final project Template seen in the course. Modifying the CMakeLists.txt in our my-lib directory.
 
@@ -1165,34 +1165,6 @@ Refer to Final project Template seen in the course. Modifying the CMakeLists.txt
 \end{center}
 
 \begin{verbatim}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 set(LIBRARY_SOURCES
     "my_lib.cpp")
 set(LIBRARY_HEADERS
@@ -1210,10 +1182,54 @@ target_link_libraries(${LIBA} PUBLIC
                                         # Naming convention is project_name::library_name
                                         # see next image, to find library_name in CMake project
                                         # on github
+    
+    nlohmann_json::nlohmann_json
+    fmt::fmt
+    spdlog::spdlog
+    catch2::catch2
+    cxxopts::cxxopts                    # not always the same
+
     )
 \end{verbatim}
 
+When this is set-up, and we reconfigure our cmake project, the repository will be cloned in a \_deps directory. This includes
+a build, subbuild and src directory for all dependencies. Don't worry about it for now.
 
+\begin{center}
+    \includegraphics[width=2in]{deps.png}
+\end{center}
+
+
+\subsection{Include all Libraries in App Main.cpp}
+
+It is tricky to include the libraries files in main. Some have directories, some do not.
+
+\begin{verbatim}
+#include <iostream>
+
+#include <cxxopts.hpp>
+#include <nlohman/json.hpp>
+#include <fmt/format.h>
+#include <spdlog/spdlog.h>
+#include <catch2>
+
+#include "my_lib.h"
+#include "config.hpp"
+
+int main() {
+    ...
+    std::cout << "CXXOPTS: # chose any included lib, to prove you have access to their info
+
+    << CXXOPTS__VERSION_MAJOR << "."
+    << CXXOPTS__VERSION_MINOR << "."
+    << CXXOPTS__VERSION_PATCH << "." # if you have access to these variable, 
+                                     # you have successfully imported and configure the lib
+                                     # for you project.
+
+    ...
+
+}
+\end{verbatim}
 
 
 
