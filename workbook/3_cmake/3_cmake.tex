@@ -1657,11 +1657,93 @@ if(${ENABLE_WARNINGS})
         ${ENABLE_WARNINGS}
         ${ENABLE_WARNINGS_AS_ERRORS})
 endif()
+
+# for the lib CMakeLists.txt
+
+if(${ENABLE_WARNINGS})
+    target_set_warnings(
+        ${LIBA}       # this is our library target name,
+                      # passed as argument in our created warnings function
+        ${ENABLE_WARNINGS}
+        ${ENABLE_WARNINGS_AS_ERRORS})
+endif()
 \end{verbatim}
 
 You don't have to have warnings as error for all targets, but you should have compilation warnings for all of them.
 
 \section{Sanitizers}
+
+Use sanitizers to find memory links or memory problems in your code. Sanitizers are used at runtime. 
+Thus, it happens after compilation. Clang-tidy is a static linter, it finds problems before compilation!  
+
+In order, you have clang-tidy before compilation, 
+compiler warnings during compilation and sanitizers at runtime (after compilation).
+
+In our root CMakeLists.txt, we add
+
+\begin{verbatim}
+option(ENABLE_SANITIZE_ADDR "Enable warnings" ON)
+option(ENABLE_SANITIZE_UNDEF "Enable warnings" ON)
+
+
+if(ENABLE_SANITIZE_UNDUF OR ENABLE_SANITIZE_ADDR)
+    include(Sanitizers) # include a Sanitizers.cmake file
+                        # same as Warnings.cmake file
+endif()
+
+\end{verbatim}
+
+\begin{center}
+    \includegraphics[width=2in]{san.png}
+\end{center}
+
+
+\subsection{Sanitizers.cmake}
+
+In cmake directory, we have this file.
+
+
+\begin{verbatim}
+function(add_sanitizer_flags)
+    if(NOT ${ENABLE_SANITIZE_UNDEF} AND NOT ${ENABLE_SANITIZE_ADDR})
+        message(STATUS "Sanitizers deactivated") 
+        return()
+    endif()
+
+    set(MSCV_COMPILER
+        /WA4
+        /permissive-)
+
+    set(CLANG_COMPILER
+        -Wall
+        -Wextra
+        -Wpedantic)
+
+    set(GCC_WARNINGS ${CLANG_WARNINGS})
+
+    if(${ENABLED_AS_ERRORS}}
+        set(MSCV_WARNINGS ${MSVC_WARNINGS} /WX) # We need to append to our MSVC compiler
+                                                # We append /WX
+
+        set(CLANG_WARNINGS ${CLANG_WARNINGS} -Werror)
+                                                # We append -Werror
+        set(GCC_WARNINGS ${GCC_WARNINGS} -Werror)
+    endif()
+
+    if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        set(WARNINGS ${MSVC_WARNINGS})
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "CLANG")
+        set(WARNINGS ${CLANG_WARNINGS})
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        set(WARNINGS ${GCC_WARNINGS})
+    endif()
+
+    target_compile_options(${TARGET} PRIVATE ${WARNINGS})
+    message(STATUS ${WARNINGS})
+
+endfunction(target_set_warnings TARGET)
+\end{verbatim}
+
 
 
 \section{IPO LTO}
