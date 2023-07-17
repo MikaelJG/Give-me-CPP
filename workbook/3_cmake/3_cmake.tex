@@ -1565,6 +1565,89 @@ As the code is connected at compile time there are not any additional run-time l
 
 \section{Adding Compiler Warnings}
 
+You can pull certain warnings for a particular target. We can activate them based on the operating system and on the compiler.
+We can trigger certain set of compiler checks. In this course, we had two targets: the library target and the executable target.
+
+In the cmake directory, add Warnings.cmake. 
+
+
+\begin{center}
+    \includegraphics[width=2in]{warnings1.png}
+\end{center}
+
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function(target_set_warnings TARGET ENABLE ENABLED_AS_ERRORS)
+    if (NOT ${ENABLED})
+        message(STATUS "Warnings disabled for: ${TARGET}")
+
+    set(MSCV_COMPILER
+        /WA4
+        /permissive-)
+
+    set(CLANG_COMPILER
+        -Wall
+        -Wextra
+        -Wpedantic)
+
+    set(GCC_WARNINGS ${CLANG_WARNINGS})
+
+    if(${ENABLED_AS_ERRORS}}
+        set(MSCV_WARNINGS ${MSVC_WARNINGS} /WX) # We need to append to our MSVC compiler
+                                                # We append /WX
+
+        set(CLANG_WARNINGS ${CLANG_WARNINGS} -Werror)
+                                                # We append -Werror
+        set(GCC_WARNINGS ${GCC_WARNINGS} -Werror)
+    endif()
+
+endfunction(target_set_warnings TARGET)
+\end{verbatim}
+
+
+\subsection{Check user's Compiler}
+
+\begin{verbatim}
+if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    set(WARNINGS ${MSVC_WARNINGS})
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "CLANG")
+    set(WARNINGS ${CLANG_WARNINGS})
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    set(WARNINGS ${GCC_WARNINGS})
+endif()
+
+\end{verbatim}
+
+
 
 \section{Sanitizers}
 
