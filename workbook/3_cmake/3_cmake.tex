@@ -1454,18 +1454,76 @@ add_subdirectory(tests) # adding tests
 executable we'll both use our library, but we will test with Unit. Unit will test if all our implemented functions work without bugs.}
 
 
-\subsection{Tests CMakeLists.txt}
+\subsection{Tests Set-up, CMakeLists.txt}
 
 \begin{verbatim}
 set(TEST_MAIN "unit_tests")        # this is the name of our testing executable
 set(TEST_SOURCES "main.cpp")       # Here, the tests are in one file only
                                    # It could be divided into more files
+                                   # Header files for example
 set(TEST_INCLUDES "./")
 add_executable(${TEST_MAIN} ${TEST_SOURCES})
 target_include_directories(${TEST_MAIN} PUBLIC ${TEST_INCLUDES})
+target_link_libraries(${TEST_MAIN} PUBLIC ${LIBA} Catch2::Catch2)
 
-
+                                   # Our library is linked, LIBA
+                                   # This is how we will test it
 \end{verbatim}
+
+
+\subsection{Defining Tests}
+
+To test the factorial function, this is the test definition given as example.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{verbatim}
+
+
+#define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one file
+                          // No need to write int main() {}, this does it. 
+#include "catch.hpp"
+
+#include "my_lib.h"
+
+
+TEST_CASE( "Factorials are computed", "[factorial]" ) {
+    REQUIRE( Factorial(1) == 1);
+    REQUIRE( Factorial(2) == 2);
+    REQUIRE( Factorial(3 == 6);
+    REQUIRE( Factorial(10 == 362880 );
+}
+\end{verbatim}
+
 
 
 
