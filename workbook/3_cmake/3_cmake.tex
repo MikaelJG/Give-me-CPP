@@ -1281,6 +1281,18 @@ The house symbol is the executable. Rectangle are external libraries. Losanges s
     \includegraphics[width=2in]{graph.png}
 \end{center}
 
+Towards the end of the course, the graph was more complex.
+
+\begin{center}
+    \includegraphics[width=2in]{graph3.png}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=2in]{legend.png}
+\end{center}
+
+Straight line are public libraries.
+
 \section{Doxygen Documentation}
 
 Generate html documentation for our code. For example, for our library. The course has a vscode extention: Doxygen Documentation Generator.
@@ -1517,8 +1529,27 @@ endfi()
 \end{verbatim}
 
 
+\subsection{On Testing Libraries in General}
+
+The specific words (Test\_case, require, etc.) may vary a bit, but they all have the same logic. When you are familiar with one, 
+you will be able to use another testing library.
+
+\begin{verbatim}
+You have a test case, 
+
+TEST_CASE()
+
+You can give it a name and a short-name(abbriviated)
+
+TEST_CASE( "Factorials are computed", "[factorial]" )
+
+you can test a function with a keyword like require, or require_equal. Giving an input, the result should be. 
+REQUIRE( factorial(0) == 0)
+\end{verbatim}
 
 \section{Public, Interface and Private}
+
+They are many linking types.
 
 
 \section{Adding Compiler Warnings}
