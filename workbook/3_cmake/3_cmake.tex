@@ -789,81 +789,6 @@ cd build
 \end{verbatim}
 
 
-\subsection{Different Linking Types}
-
-\begin{verbatim}
-add_library(A ...)
-add_library(B ...)
-add_library(C ...)
-\end{verbatim}
-
-\subsection{Public}
-
-\begin{verbatim}
-target_link_libraries(A PUBLIC B)
-target_link_libraries(C PUBLIC A)
-\end{verbatim}
-
-When A links in B as PUBLIC, it says that A uses B in its implementation, and B is also used in A's public API. Hence, C can use B since it is part of the public API of A.
-
-\subsection{Private}
-
-\begin{verbatim}
-target_link_libraries(A PRIVATE B)
-target_link_libraries(C PRIVATE A)
-\end{verbatim}
-
-
-When A links in B as PRIVATE, it is saying that A uses B in its
-implementation, but B is not used in any part of A's public API. Any code
-that makes calls into A would not need to refer directly to anything from
-B.
-
-\subsection{Interface}
-
-\begin{verbatim}
-add_library(D INTERFACE)
-target_include_directories(D INTERFACE {CMAKE_CURRENT_SOURCE_DIR}/include)
-\end{verbatim}
-
-In general, used for header-only libraries.
-
-\section{Different Library Types}
-
-\subsection{Library}
-
-A binary file that contains information about code.
-A library cannot be executed on its own.
-An application utilizes a library.
-
-A library must be build too, if it is used by an executable.
-
-\begin{verbatim}
-cmake --build . --target Library
-cmake --build . --target Executable // it is dependent to the Library build!
-\end{verbatim}
-
-\subsection{Shared}
-
-\begin{verbatim}
-Linux: *.so
-MacOS: *.dylib
-Windows: *.dll
-\end{verbatim}
-
-Shared libraries reduce the amount of code that is duplicated in each program that makes use of the library, keeping the binaries small.
-Shared libraries will however have a small additional cost for the execution.
-In general the shared library is in the same directory as the executable.
-
-\subsection{Static}
-
-\begin{verbatim}
-Linux/MacOS: *.a
-Windows: *.lib
-\end{verbatim}
-
-Static libraries increase the overall size of the binary, but it means that you don't need to carry along a copy of the library that is being used.
-As the code is connected at compile time there are not any additional run-time loading costs.
 
 \section{Configuration - Precompiling Information}
 
@@ -1545,6 +1470,98 @@ REQUIRE( factorial(0) == 0)
 
 \section{Public, Interface and Private}
 
+Public and private is similar to OOP public and private keywords in classes.
+
+\subsection{Different Linking Types}
+
+\begin{verbatim}
+add_library(A ...)
+add_library(B ...)
+add_library(C ...)
+\end{verbatim}
+
+\subsection{Public}
+
+Here, fmt can be used in the library of A. 
+
+\begin{verbatim}
+target_link_libraries(A PUBLIC fmt)
+
+target_link_libraries(C PUBLIC/PRIVATE A)
+target_link_libraries(C PUBLIC/PRIVATE A)
+\end{verbatim}
+
+When A links fmt as PUBLIC, it says that A uses fmt in its implementation, and fmt is also used in A's public API.
+Hence, C can use fmt since it is part of the public API of A.
+
+\subsection{Private}
+
+Using PRIVATE does not make the library available in the target's public API. Instead, it is part of a private API.
+When B links in spdlog as PRIVATE, it is saying that B uses spdlog in its implementation,
+but spdlog is not used in any part of B's public API. 
+
+\begin{verbatim}
+target_link_libraries(B PRIVATE spdlog)
+
+target_link_libraries(C PUBLIC/PRIVATE B)
+\end{verbatim}
+
+Any code that makes calls into B would not need to refer directly to anything from
+spdlog.
+
+
+In a professional setting, you want to keep certain aspect of you project private. Hence, this option to consider.
+
+\subsection{Interface}
+
+In general, used for header-only libraries. That is, libraries where you don't need to compile anything. They do not have
+any compilation logic in them.
+
+\begin{verbatim}
+add_library(D INTERFACE)
+target_include_directories(D INTERFACE {CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# this only links something to the executable, I think. No compilation logic.
+\end{verbatim}
+
+
+
+\section{Different Library Types}
+
+\subsection{Library}
+
+A binary file that contains information about code.
+A library cannot be executed on its own.
+An application utilizes a library.
+
+A library must be build too, if it is used by an executable.
+
+\begin{verbatim}
+cmake --build . --target Library
+cmake --build . --target Executable // it is dependent to the Library build!
+\end{verbatim}
+
+\subsection{Shared}
+
+\begin{verbatim}
+Linux: *.so
+MacOS: *.dylib
+Windows: *.dll
+\end{verbatim}
+
+Shared libraries reduce the amount of code that is duplicated in each program that makes use of the library, keeping the binaries small.
+Shared libraries will however have a small additional cost for the execution.
+In general the shared library is in the same directory as the executable.
+
+\subsection{Static}
+
+\begin{verbatim}
+Linux/MacOS: *.a
+Windows: *.lib
+\end{verbatim}
+
+Static libraries increase the overall size of the binary, but it means that you don't need to carry along a copy of the library that is being used.
+As the code is connected at compile time there are not any additional run-time loading costs.
 
 \section{Adding Compiler Warnings}
 
