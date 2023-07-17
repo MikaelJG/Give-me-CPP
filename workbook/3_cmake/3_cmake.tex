@@ -1272,11 +1272,9 @@ The house symbol is the executable. Rectangle are external libraries. Losanges s
 
 Generate html documentation for our code. For example, for our library. The course has a vscode extention: Doxygen Documentation Generator.
 
-
 \subsection{Vscode Extension}
 
 The extention generates documentation base on this synthax.
-
 
 \begin{verbatim}
 #include <iostream>
@@ -1290,7 +1288,6 @@ The extention generates documentation base on this synthax.
  *
  */
 \end{verbatim}
-
 
 \subsection{Doxygen Command Line}
 
@@ -1353,6 +1350,49 @@ it has the index.html automatically. The webpage looks like this:
 \begin{center}
     \includegraphics[width=2in]{dox2.png}
 \end{center}
+
+
+\subsection{Document Custom Target}
+
+We need to add the documentation to our cmake project.
+
+\begin{center}
+    \includegraphics[width=2in]{doccmake.png}
+\end{center}
+
+In our root CMakeLists.txt, we add.
+
+\begin{verbatim}
+include(AddGitSubmodule)
+include(FetchContent)
+include(Docs)               # this is our new dir.
+
+\end{verbatim}
+
+
+\subsection{Doc.cmake}
+
+Cmake needs to find Doxygen, because we are using it for our docs. In Docs.cmake,
+
+\begin{verbatim}
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+    add_custom_target( # This is just an utility target
+                       # With it, we can interact with it, 
+                       # in the terminal
+    docs
+    ${DOXYGEN_EXECUTABLE}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/docs
+
+                       # CMAKE_SOURCE_DIR is always the directory of the
+                       # root CMakeLIsts.txt file
+                       # our root directory
+endif()
+\end{verbatim}
+
+
+
+
 
 
 \section{Catch2 - Unit Testing}
