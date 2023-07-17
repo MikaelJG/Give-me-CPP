@@ -1298,11 +1298,9 @@ Doxygen is looking for a doxy file, a config file. Generate a doxy file with dox
 In it, fill information on the project, name, version,  path to source files, etc. It will generate better html file with the information.
 In the docs directory.
 
-
 \begin{center}
     \includegraphics[width=2in]{dox.png}
 \end{center}
-
 
 \begin{verbatim}
 # Configuration for Doxygen for use with CMake
@@ -1348,6 +1346,13 @@ FILE_PATTERNS          = *.c \
                          *.txt
 \end{verbatim}
 
+When ready, generate the html with the command Doxygen, inside the docs folder (where the doxyfile is located). It creates an html dir.
+it has the index.html automatically. The webpage looks like this:
+
+
+\begin{center}
+    \includegraphics[width=2in]{dox2.png}
+\end{center}
 
 
 \section{Catch2 - Unit Testing}
