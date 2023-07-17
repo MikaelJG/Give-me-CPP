@@ -1726,7 +1726,7 @@ function(add_sanitizer_flags)
             add_link_options("-fsanitize=undefined") 
         endif()
 
-    else if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
         if (${ENABLE_SANITIZE_ADDR})
             add_compile_options("-fsanitize=address") 
             add_link_options("-fsanitize=address") 
@@ -1740,6 +1740,36 @@ function(add_sanitizer_flags)
         message(ERROR "Compiler not supported for Sanitizers")
     endif()
 endfunction()
+\end{verbatim}
+
+
+\subsection{Activate Sanitizers in Root CMakeLists.txt}
+
+Call the add\_sanitizer\_flags function from root.
+
+\begin{verbatim}
+if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
+    include(Sanitizers)
+    add_sanitizer_flags()
+endif()
+\end{verbatim}
+
+\subsection{Sanitizer bug example}
+
+Going out of bounds, like this, would be caught be clang-tidy, but not by compilers. Thus, Sanitizers help big time. See documentation at
+gcc.gnu.org/onlinedocs/Instrumentation-Options.html.
+
+
+\begin{center}
+    \includegraphics[width=2in]{fsan.png}
+\end{center}
+
+
+\begin{verbatim}
+int main() {
+    int x[2];
+    x[2] = 1337;
+}
 \end{verbatim}
 
 
