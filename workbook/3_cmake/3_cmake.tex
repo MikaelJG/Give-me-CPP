@@ -42,6 +42,19 @@ Don't forget to add a CMakeList in the src directory.
     \includegraphics[width=2in]{cpp_tree4.png}
 \end{center}
 
+\subsection{CMake Default Paths}
+
+Cmake has built-in paths to use. We use many in these notes.
+
+\begin{verbatim}
+# CMAKE_SOURCE_DIR is always the directory of the
+# root CMakeLIsts.txt file
+# our root directory
+
+# CMAKE_BINARY_DIR is always our build directory
+\end{verbatim}
+
+
 
 \subsection{Template for Projects is Intermediate project}
 
@@ -1387,6 +1400,8 @@ if (DOXYGEN_FOUND)
                        # CMAKE_SOURCE_DIR is always the directory of the
                        # root CMakeLIsts.txt file
                        # our root directory
+
+                       # CMAKE_BINARY_DIR is always our build directory
 endif()
 \end{verbatim}
 
