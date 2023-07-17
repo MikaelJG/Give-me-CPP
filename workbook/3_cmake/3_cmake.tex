@@ -1576,36 +1576,6 @@ In the cmake directory, add Warnings.cmake.
 \end{center}
 
 \begin{verbatim}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function(target_set_warnings TARGET ENABLE ENABLED_AS_ERRORS)
     if (NOT ${ENABLED})
         message(STATUS "Warnings disabled for: ${TARGET}")
@@ -1630,9 +1600,19 @@ function(target_set_warnings TARGET ENABLE ENABLED_AS_ERRORS)
         set(GCC_WARNINGS ${GCC_WARNINGS} -Werror)
     endif()
 
+    if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        set(WARNINGS ${MSVC_WARNINGS})
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "CLANG")
+        set(WARNINGS ${CLANG_WARNINGS})
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        set(WARNINGS ${GCC_WARNINGS})
+    endif()
+
+    target_compile_options(${TARGET} PRIVATE ${WARNINGS})
+    message(STATUS ${WARNINGS})
+
 endfunction(target_set_warnings TARGET)
 \end{verbatim}
-
 
 \subsection{Check user's Compiler}
 
@@ -1644,10 +1624,42 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "CLANG")
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     set(WARNINGS ${GCC_WARNINGS})
 endif()
-
 \end{verbatim}
 
 
+\subsection{Warnings Root CMakeLists Options}
+
+We just created a function to check the user's compiler and set compilation warnings.
+Now create options in the root CMakeFilelists.txt.
+
+\begin{verbatim}
+option(ENABLE_WARNINGS "Enable warnings" ON)
+option(ENABLE_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
+
+    ...
+
+if(ENABLE_WARNINGS)
+    include(Warnings) # include the newly created Warnings.cmake file
+endif()
+\end{verbatim}
+
+
+\subsection{Executable Target Enable Warnings}
+
+There are two targets that can have compilation warnings, our library and our executable (our app). We have to 
+add warning conditionals in both of their CMakeLists.txt file.
+
+\begin{verbatim}
+if(${ENABLE_WARNINGS})
+    target_set_warnings(
+        ${HE}       # this is our executable / app name,
+                    # passed as argument in our created warnings function
+        ${ENABLE_WARNINGS}
+        ${ENABLE_WARNINGS_AS_ERRORS})
+endif()
+\end{verbatim}
+
+You don't have to have warnings as error for all targets, but you should have compilation warnings for all of them.
 
 \section{Sanitizers}
 
