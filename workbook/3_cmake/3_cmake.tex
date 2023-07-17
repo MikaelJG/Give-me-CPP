@@ -1475,46 +1475,12 @@ target_link_libraries(${TEST_MAIN} PUBLIC ${LIBA} Catch2::Catch2)
 
 To test the factorial function, this is the test definition given as example.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \begin{verbatim}
-
-
 #define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one file
                           // No need to write int main() {}, this does it. 
-#include "catch.hpp"
+#include "catch2/catch.hpp"
 
-#include "my_lib.h"
-
+#include "my_lib.h"       // Will be called in my_lib.h
 
 TEST_CASE( "Factorials are computed", "[factorial]" ) {
     REQUIRE( Factorial(1) == 1);
@@ -1522,8 +1488,33 @@ TEST_CASE( "Factorials are computed", "[factorial]" ) {
     REQUIRE( Factorial(3 == 6);
     REQUIRE( Factorial(10 == 362880 );
 }
+
+This function needs to be called in my_lib.h
+
+std::uint32_t factorial(std::uint32_t number);
 \end{verbatim}
 
+
+\subsection{Command Line Testing Option}
+
+It is convenient to have a command line option to activate or deactivate our testing build. In our root CMakeLists.txt
+file, we add an option. In our CMakeLists.txt in the tests directory, we add an if statement. 
+
+\begin{verbatim}
+option(ENABLE_TESTING "Enable a Unit Testing Build" ON) 
+
+# in tests directory's CMakeLists.txt
+
+if (ENABLE_TESTING)
+    set(TEST_MAIN "unit_tests")
+    set(TEST_SOURCES "main.cpp")
+    set(TEST_INCLUDES "./")
+
+    add_executable(#{TEST_MAIN} ${TEST_SOURCES})
+    target_include_directories(${TEST_MAIN} PUBLIC ${TEST_INCLUDES})
+    target_link_libraries(${TEST_MAIN} PUBLIC ${LIBA} Catch2::Catch2)
+endfi()
+\end{verbatim}
 
 
 
