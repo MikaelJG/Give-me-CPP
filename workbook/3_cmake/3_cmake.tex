@@ -1710,38 +1710,36 @@ function(add_sanitizer_flags)
         return()
     endif()
 
-    set(MSCV_COMPILER
-        /WA4
-        /permissive-)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "CLANG" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        add_compile_options("-fno-omit-frame-pointer")   
+                                        # This functions adds compiler flags for every target
+                                        # Sanitizers need to run on all of the application
+        add_link_options("-fno-omit-frame-pointer")
 
-    set(CLANG_COMPILER
-        -Wall
-        -Wextra
-        -Wpedantic)
+        if (${ENABLE_SANITIZE_ADDR})
+            add_compile_options("-fsanitize=address") 
+            add_link_options("-fsanitize=address") 
+        endif()
 
-    set(GCC_WARNINGS ${CLANG_WARNINGS})
+        if (${ENABLE_SANITIZE_UNDEF})
+            add_compile_options("-fsanitize=undefined") 
+            add_link_options("-fsanitize=undefined") 
+        endif()
 
-    if(${ENABLED_AS_ERRORS}}
-        set(MSCV_WARNINGS ${MSVC_WARNINGS} /WX) # We need to append to our MSVC compiler
-                                                # We append /WX
+    else if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        if (${ENABLE_SANITIZE_ADDR})
+            add_compile_options("-fsanitize=address") 
+            add_link_options("-fsanitize=address") 
+        endif()
 
-        set(CLANG_WARNINGS ${CLANG_WARNINGS} -Werror)
-                                                # We append -Werror
-        set(GCC_WARNINGS ${GCC_WARNINGS} -Werror)
+        if (${ENABLE_SANITIZE_UNDEF})
+            message(STATUS "Undefined sanitizer is not implemented for MVSC")
+        endif()
+
+    else() 
+        message(ERROR "Compiler not supported for Sanitizers")
     endif()
-
-    if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-        set(WARNINGS ${MSVC_WARNINGS})
-    elseif(CMAKE_CXX_COMPILER_ID MATCHES "CLANG")
-        set(WARNINGS ${CLANG_WARNINGS})
-    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-        set(WARNINGS ${GCC_WARNINGS})
-    endif()
-
-    target_compile_options(${TARGET} PRIVATE ${WARNINGS})
-    message(STATUS ${WARNINGS})
-
-endfunction(target_set_warnings TARGET)
+endfunction()
 \end{verbatim}
 
 
