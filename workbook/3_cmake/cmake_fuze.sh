@@ -45,5 +45,4 @@ done
 rm *.png ; 
 rm *.aux ; rm *.log ; rm *.toc
 mv *.pdf complete ; mv cmake_$date.tex complete
-rm *.tex 
 
