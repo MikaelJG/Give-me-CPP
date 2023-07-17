@@ -1409,6 +1409,65 @@ Now Documentation can be built seperately, independently of the main project app
 
 \section{Catch2 - Unit Testing}
 
+\subsection{Function testing example}
+
+Adding Unit test to our codebase, with the catch2 library. Unit tests are useful to test functions from the library.
+
+There is a tutorial on the github catch2 page. As an example, it provides this factorial function example, to try.
+
+
+\begin{verbatim}
+unsigned int factorial( unsigned int number ) {
+    return number <= 1 ? number : factorial(number-1)*number;
+}
+
+// the instructor changes it to
+
+std::uint32_t factorial(std::unint32_t number)
+{
+
+    return number <= 1 ? number : factorial(number-1) * number;
+
+}
+\end{verbatim}
+
+
+\subsection{Test Directory}
+
+To introduce unit testing, we create a new directory: tests.
+
+\begin{center}
+    \includegraphics[width=3in]{tests.png}
+\end{center}
+
+In our root CMakeLists.txt.  
+
+\begin{verbatim}
+add_subdirectory(configured)
+add_subdirectory(external)
+add_subdirectory(src)
+add_subdirectory(app)
+add_subdirectory(tests) # adding tests
+\end{verbatim}
+
+\textbf{The idea is to have our main executable, our library(lib) and our unit test executable. The main and the Unit
+executable we'll both use our library, but we will test with Unit. Unit will test if all our implemented functions work without bugs.}
+
+
+\subsection{Tests CMakeLists.txt}
+
+\begin{verbatim}
+set(TEST_MAIN "unit_tests")        # this is the name of our testing executable
+set(TEST_SOURCES "main.cpp")       # Here, the tests are in one file only
+                                   # It could be divided into more files
+set(TEST_INCLUDES "./")
+add_executable(${TEST_MAIN} ${TEST_SOURCES})
+target_include_directories(${TEST_MAIN} PUBLIC ${TEST_INCLUDES})
+
+
+\end{verbatim}
+
+
 
 \section{Public, Interface and Private}
 
