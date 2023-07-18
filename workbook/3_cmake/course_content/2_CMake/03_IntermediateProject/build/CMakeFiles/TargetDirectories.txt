@@ -1,0 +1,10 @@
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/src/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/src/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/src/my_lib/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/src/my_lib/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/src/my_lib/CMakeFiles/Library.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/app/CMakeFiles/edit_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/app/CMakeFiles/rebuild_cache.dir
+/home/mjg/code/cpp/workbook/3_cmake/course_content/2_CMake/03_IntermediateProject/build/app/CMakeFiles/Executable.dir
