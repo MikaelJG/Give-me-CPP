@@ -1307,11 +1307,19 @@ int main() {
 }
 \end{verbatim}
 
-
-
 \section{IPO LTO}
 
+In release mode, the release build, optimizations are activated to create the best product. C++ has many types of builds
+for a project, debug modes, performance modes, etc. 
 
+In this case, the release mode optimizations are related to the compiler for a better runtime. Yet, these optimizations
+look at functions separately, not as a chain of functions so to speak (subsequent calls of different functions).
+
+Link Time Optimization (LTO) is a response to these limits. Using functions from different translation units, the compiler with optimizations,
+will be able to analyse them subsequently. In other words, the optimized compiler will be able to evaluate
+if some operations can be cancelled in the function chain.
+
+To use it, we will use a CMake functions
 \subsection{IPO LTO in CMake}
 
 
