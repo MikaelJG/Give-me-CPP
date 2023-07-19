@@ -1319,7 +1319,86 @@ Link Time Optimization (LTO) is a response to these limits. Using functions from
 will be able to analyse them subsequently. In other words, the optimized compiler will be able to evaluate
 if some operations can be cancelled in the function chain.
 
-To use it, we will use a CMake functions
+To use it, we will use a CMake function. All compilers (MSVC, CLANG and GCC) have LTO implemented.
+
+
+\subsection{LTO Example - Clang}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{verbatim}
+--- a.h --- // .h for header file
+            // this is genius note-taking!!!
+
+extern int foo1(void);
+extern void foo2(void);
+extern void foo4(void);
+
+--- a.c --- // .c for source file
+            // this is genius note-taking!!!
+
+#include "a.h"
+
+static signed int i = 0;
+
+void foo2(void {
+    i = -1; 
+}
+
+static int foo3(void {
+    i = -1; 
+}
+
+int foo1(void) {
+    int data = 0;
+
+    if (i < 0)
+        data = foo3();
+
+    data = data + 42;
+    return data;
+}
+
+--- main.c ---
+#include <stdio.h>
+#include "a.h"
+
+void foo4(void){
+    printf("Hi\n");
+}
+
+int main() {
+    return foo1()
+}
+\end{verbatim}
+
+In this example, it is impossible for i to be reduced under zero. Since it is impossible, the foo3 function will never be
+called. Thus, the compiler cancels an impossible chain and does not generate code for these logically uncallable functions.
+This is the optimization.
+
+
 \subsection{IPO LTO in CMake}
 
 
