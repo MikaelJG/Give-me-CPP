@@ -1392,7 +1392,49 @@ endif()
 
 \subsection{LTO.cmake}
 
+Configuring link time optimization in the new lto.cmake file, in the cmake directory.
 
+\begin{verbatim}
+function(target_enable_lto TARGET ENABLE)
+    if(NOT ${ENBALE})
+    endif()
+
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT result OUTPUT output)
+
+    if(result) 
+        message(STATUS "IPO/LTO is supported!")
+        set_property(TARGET ${TARGET} PROPERTY_INTERPROCEDURAL_OPTIMIZATION ${ENABLE})
+    else()
+        message("WARNING "IPO/LTO is not supported!")
+
+                                     #PROPERTY... is a predefined variable in modern cmake
+    endif()
+endfunction(target_enable_lto)
+\end{verbatim}
+
+
+\subsection{In Our Target CMakeLists.txt}
+
+Enabling LTO for our target library, means configuring it in its CMakeLists.txt file.
+
+\begin{center}
+    \includegraphics[width=2in]{lto_lib.png}
+\end{center}
+
+
+\begin{verbatim}
+if(${ENABLE_LTO})
+    target_enable_lto(${LIBRARY_NAME})
+endif()
+
+---- in app ----
+---- CMakeLists.txt ----
+
+if(${ENABLE_LTO})
+    target_enable_lto(${EXECUTABLE_NAME} ${ENBALE_LTO})
+endif()
+\end{verbatim}
 
 
 \section{Starter Pack - Jason Turner's Template}
