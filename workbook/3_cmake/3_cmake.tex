@@ -1315,7 +1315,7 @@ for a project, debug modes, performance modes, etc.
 In this case, the release mode optimizations are related to the compiler for a better runtime. Yet, these optimizations
 look at functions separately, not as a chain of functions so to speak (subsequent calls of different functions).
 
-Link Time Optimization (LTO) is a response to these limits. Using functions from different translation units, the compiler with optimizations,
+Link Time Optimization (LTO) or Interprocedural Optimization (IPO) [synonyms] is a response to these limits. Using functions from different translation units, the compiler with optimizations,
 will be able to analyse them subsequently. In other words, the optimized compiler will be able to evaluate
 if some operations can be cancelled in the function chain.
 
@@ -1323,30 +1323,6 @@ To use it, we will use a CMake function. All compilers (MSVC, CLANG and GCC) hav
 
 
 \subsection{LTO Example - Clang}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \begin{verbatim}
 --- a.h --- // .h for header file
@@ -1398,14 +1374,23 @@ In this example, it is impossible for i to be reduced under zero. Since it is im
 called. Thus, the compiler cancels an impossible chain and does not generate code for these logically uncallable functions.
 This is the optimization.
 
-
 \subsection{IPO LTO in CMake}
 
+In your cmake directory, create a LTO.cmake file. Plus, create a new option in your root CMakelists.txt
 
 
+\begin{verbatim}
+option(ENABLE_LTO "Enable the link time optimization" ON)
+
+...
+
+if(ENABLE_LTO)
+    include(LTO)
+endif()
+\end{verbatim}
 
 
-
+\subsection{LTO.cmake}
 
 
 
@@ -1416,6 +1401,7 @@ This is the optimization.
 lefticus/cmake_template // Jason Turner 2023 cmake starter pack
 
 rename "myproject" in the cmake files to use it.
+
 \end{verbatim}
 
 \subsection{Lefticus Defaults - ProjectOptions.cmake}
