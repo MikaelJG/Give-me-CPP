@@ -2027,6 +2027,17 @@ Create an option for clang-tidy in your projects' root CMakeLists.txt
 \begin{verbatim}
 option(ENABLE_CLANG_TIDY "Enable to add clang tidy." ON)
 \end{verbatim}
+
+
+\subsection{Clang-tidy on Microsoft MSVC}
+
+To activate it with the microsoft compiler, you need to use the Visual Studio Code GUI only.
+Some filters, defined in .clang-tidy config file may not work on Windows, but will work on Unix systems.
+
+\begin{center}
+    \includegraphics[width=2in]{ms_tidy.png}
+\end{center}
+
  
 \subsection{Clang-Format and CMake-Format}
 
