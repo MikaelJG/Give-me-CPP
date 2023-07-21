@@ -711,6 +711,9 @@ libraries or anything. We can simply use the makeAvailable and prepare function.
 
 The instructor highly recommends FetchContent!
 
+
+\chapter{CMake Package Managers}
+
 \section{CPM - Cmake Package Manager}
 
 There are a few ways to include external libraries in you project. Git submodules, fetch content and packages managers such as
@@ -778,7 +781,34 @@ else()
 endif()
 \end{verbatim}
 
-\subsection{Conan}
+\section{Conan}
+
+A package manager for cmake projects, alternatives to CPM and fetchcontent. CPM and fetchcontent localy
+clones github repositories in your build directory. Then they compile the library locally, on your machine. 
+
+
+Conan has a different approach. In an online database, pre-compiled repositories are available.
+Conan downloads these. It depends on the compiler, but it generally saves compilation time.
+No need to compile locally.
+
+
+\subsection{Conan Installation}
+
+\begin{verbatim}
+Official installation guide is [here](https://docs.conan.io/2/).
+
+The conan database is [here](https://conan.io/center/).
+
+1. Install Python (3.7+)
+2. Type ``pip install --user -U conan`` into the terminal
+   1. Unix: Append conan to the PATH by: ``source ~/.profile``
+3. Run: $ conan
+
+4. $ conan profile detect --force
+5. $ conan profile path default
+\end{verbatim}
+
+
 \subsection{VCPKG}
 
 \section{Dependency Graphs}
