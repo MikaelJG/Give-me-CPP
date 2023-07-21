@@ -741,7 +741,6 @@ in the src/my\_lib/CMakeLists.txt file target\_link\_libraries function,
 can keep the fetchcontent synthax of nlohman\_json::nlohman\_json.
 
 
-
 \begin{verbatim}
 option(USE_CPM "Whether to use CPM" ON)
 
@@ -754,13 +753,13 @@ if(USE_CPM)
                 # "gh" cpm will look at github
                 # "gh:nholmann" username
                 # "gh:nholmann/json" repository name
-                # "gh:nholmann/json#3.11.2" version number 
+                # "gh:nholmann/json#v3.11.2" version number 
 
-    cpmaddpackage("gh:nholman/json#3.11.2")    # This is CPM's defined function
+    cpmaddpackage("gh:nholman/json#v3.11.2")    # This is CPM's defined function
     cpmaddpackage("gh:fmtlib/fmt#9.1.0")
-    cpmaddpackage("gh:gabime/spdlog#1.11.0")
-    cpmaddpackage("gh:jarro2783/cxxopts#3.1.1")
-    cpmaddpackage("gh:cathorg/Catch2#2.13.9")
+    cpmaddpackage("gh:gabime/spdlog#v1.11.0")
+    cpmaddpackage("gh:jarro2783/cxxopts#v3.1.1")
+    cpmaddpackage("gh:cathorg/Catch2#v2.13.9")
 
 else()
     message(STATUS "Using FetchContent")
@@ -778,21 +777,6 @@ else()
 
 endif()
 \end{verbatim}
-
-
-
-
-
-\begin{verbatim}
-
-\end{verbatim}
-
-
-
-
-
-
-
 
 \subsection{Conan}
 \subsection{VCPKG}
