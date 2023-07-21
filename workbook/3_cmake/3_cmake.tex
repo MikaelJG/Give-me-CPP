@@ -916,10 +916,73 @@ will deal with them.
     \includegraphics[width=2in]{conan2.png}
 \end{center}
 
+\section{VCPKG}
+
+A C/C++ package manager for Microsoft. 
+To use it, clone the VCPKG repository in your project's external library directory.
+
+
+\subsection{VCPKG Installation}
+
+Move to you project's external directory and clone the repo. Then, execute the .sh script.
+ 
+\begin{verbatim}
+Official Link: <https://vcpkg.io/en/index.html>
+
+cd external
+git clone https://github.com/Microsoft/vcpkg.git
+
+.\vcpkg\bootstrap-vcpkg.bat  # windows
+./vcpkg/bootstrap-vcpkg.sh   # Unix
+
+cd vcpkg 
+vcpkg --help 
+\end{verbatim}
+
+
+\subsection{VCPKG.json file in project root}
+
+List dependencies of your cmake project in a JSON file.
+
+\begin{verbatim}
+{
+    "name": "cpptemplateproject",
+    "version-string": "1.0.0",
+    "dependencies": [
+        {
+            "name": "cxxopts",
+            "version>=": "3.1.1"
+        },
+        {
+            "name": "fmt",
+            "version>=": "9.1.0"
+        },
+        {
+            "name": "nlohmann-json",
+            "version>=": "3.11.2"
+        },
+        {
+            "name": "spdlog",
+            "version>=": "1.11.0"
+        },
+        {
+            "name": "catch2",
+            "version>=": "2.13.9"
+        }
+    ],
+    "overrides": [
+        {
+            "name": "catch2",
+            "version": "2.13.9"
+        }
+    ],
+    "builtin-baseline": "40619a55c3e76dc4005c8d1b7395071471bb8b96"
+}
+\end{verbatim}
 
 
 
-\subsection{VCPKG}
+\chapter{CMake Tooling}
 
 \section{Dependency Graphs}
 
