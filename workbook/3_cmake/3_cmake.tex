@@ -2001,6 +2001,12 @@ Checks: 'clang-analyzer-*,cppcoreguidelines-*,
         google-explicit-constructor,-modernize-use-trailing-return-type,
         -bugprone-exception-escape,-cppcoreguidelines-pro-bounds-constant-array-index,
         -cppcoreguidelines-avoid-magic-numbers,-bugprone-easily-swappable-parameters'
+
+
+        # modernize-* --------------- includes all warnings in this category
+        # -bugprone=exception-escape # - with a '-' char, 
+                                     # specifies one omition in the group
+
 WarningsAsErrors: ''
 HeaderFilterRegex: '\(src|app\)\/*.\(h|hpp\)'
 AnalyzeTemporaryDtors: false
@@ -2026,6 +2032,12 @@ Create an option for clang-tidy in your projects' root CMakeLists.txt
 
 \begin{verbatim}
 option(ENABLE_CLANG_TIDY "Enable to add clang tidy." ON)
+
+
+set(CMAKE_EXPOET_COMPILE_COMMANDS ON) # this cmake function creates a json file
+                                      # clang-tidy needs this json to work
+                                      # to differenciate your code from dependencies.
+
 \end{verbatim}
 
 
