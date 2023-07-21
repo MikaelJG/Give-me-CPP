@@ -2053,9 +2053,11 @@ Some filters, defined in .clang-tidy config file may not work on Windows, but wi
  
 \subsection{Clang-Format}
 
-A essential professional formatting tool for cpp. Use version 14 at least, 16+ is best. The 
+An essential professional formatting tool for cpp. Use version 14 at least, 16+ is best. The 
 clang-tidy and clang-format .py files expects at least clang-format 14. Command line arguments 
-change with versions.
+change with versions. Check cpp project template .clang-format file in root directory.
+
+Plus, these tools were configured in the root CMakeLists.txt file.
 
 \begin{verbatim}
 Documentation for Clang-Format: https://clang.llvm.org/docs/ClangFormat.html
@@ -2069,8 +2071,16 @@ https://github.com/llvm/llvm-project/releases/tag/llvmorg-16.0.0
 
 \subsection{CMake-Format}
 
-A nice-to-have .cmake file formater. It may make your project easier to read, since it standardizes your files.
+A nice-to-have .cmake file formater. It may make your project easier to read, 
+since it standardizes all of your CMakeLists.txt files and .
+Check .cmake-format.yaml file in root directory.
 
+Plus, these tools were configured in the root CMakeLists.txt file.
+
+
+\begin{center}
+    \includegraphics[width=2in]{tools4.png}
+\end{center}
 
 
 \begin{verbatim}
@@ -2078,6 +2088,17 @@ Install CMake-format,
 
 pip install cmake-format # python 3.7+
 \end{verbatim}
+
+\subsection{Glob and Exclude Cmake Functions}
+
+For clang and cmake-format tools, the tools.cmake file contains globing functions to
+find all .cmake and CMakeLists.txt files.
+
+
+\begin{center}
+    \includegraphics[width=2in]{glob.png}
+\end{center}
+
 
 
 \subsection{Github Pages}
