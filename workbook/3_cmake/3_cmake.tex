@@ -1026,50 +1026,33 @@ elseif(USE_CONAN)
 elseif(USE_VCPKG)
     message(STATUD "Using VCPKG")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     include(${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake)
     find_package(nlohmann_json REQUIRED)
     find_package(fmt REQUIRED)
-    find_package( REQUIRED)
-    find_package( REQUIRED)
-    find_package( REQUIRED)
-    find_package( REQUIRED)
-
+    find_package(..  REQUIRED)
 
 else()
     FetchContent_Declare(
         ...
 \end{verbatim}
 
-\end{verbatim}
+\section{Package Managers Summary}
+
+There are many ways to add and include libraries to our cmake project: Git Submodules, FetchContent,
+Cmake Package Manager (CPM), Conan and VCPKG.
+
+Use Git Submodules if you github repo you want to use is not a cmake project. It is a rare case, but it is
+the best solution. Do not use this approach if they are cmake projects.
 
 
+\textbf{CPM is the instructors' recommendation} for all gitlab and github cmake projects. However, it is important to understand the FetchContent functions of 
+CMake. CPM uses these same fetch content methods under the hood.
 
+
+VCPKG is hard to configure and version download complications. Not recommended.
+
+Conan's pre-built binaries are a great idea, but they do not update these binaries often enough. 
+However, if you have huge libraries that take 30 minutes to compile. Conan is the way to go.
 
 \chapter{CMake Tooling}
 
@@ -1766,6 +1749,36 @@ function(target_enable_lto TARGET ENABLE)
 endfunction(target_enable_lto)
 \end{verbatim}
 
+\subsection{LTO.cmake Refactoring}
+
+The instructor revised the lto.cmake file at the end of the course.
+
+\begin{verbatim}
+function(target_enable_lto)         # he passes less arguments here
+    set(oneValueArgs TARGET ENABLE)
+    cmake_parse_arguments(          # every options and arguments in oneValueArgs
+                                    # will be prefixed by LTO_
+                                    # thus, TARGET becomes LTO_TARGET
+        LTO
+        "${options}"
+        "${oneValueArgs}"
+        "${multiValueArgs}"
+        ${ARGN})
+
+
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT result OUTPUT output)
+
+    if(result) 
+        message(STATUS "IPO/LTO is supported: ${LTO_TARGET}")
+        set_property(TARGET ${LTO_TARGET} PROPERTY_INTERPROCEDURAL_OPTIMIZATION ${LTO_ENABLE})
+    else()
+        message("WARNING "IPO/LTO is not supported! ${LTO_TARGET}")
+
+                                     #PROPERTY... is a predefined variable in modern cmake
+    endif()
+endfunction(target_enable_lto)
+\end{verbatim}
 
 \subsection{In Our Target CMakeLists.txt}
 
@@ -1785,9 +1798,13 @@ endif()
 ---- CMakeLists.txt ----
 
 if(${ENABLE_LTO})
-    target_enable_lto(${EXECUTABLE_NAME} ${ENBALE_LTO})
+    target_enable_lto(${EXECUTABLE_NAME} ${ENABLE_LTO})
 endif()
 \end{verbatim}
+
+\chapter{Cpp Project Template}
+
+
 
 
 \section{Github Repositories}
@@ -1818,7 +1835,7 @@ endif()
 
 
 
-\section{Starter Pack - Jason Turner's Template}
+\section{Jason Turner's Template}
 
 \begin{verbatim}
 lefticus/cmake_template // Jason Turner 2023 cmake starter pack
