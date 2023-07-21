@@ -1447,9 +1447,27 @@ In the cmake directory, add Warnings.cmake.
 \end{center}
 
 \begin{verbatim}
-function(target_set_warnings TARGET ENABLE ENABLED_AS_ERRORS)
-    if (NOT ${ENABLED})
-        message(STATUS "Warnings disabled for: ${TARGET}")
+function(target_set_warnings)
+    set(oneValueArgs TARGET ENABLE AS_ERRORS)
+    cmake_parse_arguments(
+        TARGET_SET_WARNINGS             # every option and oneValueArgs
+                                        # will be prefixed by
+                                        # TARGET_SET_WARNINGS
+
+
+                                        # this function was updated at the end of the course.
+                                        # refactoring at the end of the course was hard to follow.
+        "${options}"
+        "${oneValueArgs}"
+        "${multiValueArgs}"
+        ${ARGN})
+
+    if (NOT ${TARGET_SET_WARNINGS_ENABLE})
+        message(STATUS "Warnings disabled for: ${TARGET_SET_WARNINGS_TARGET}")
+        return()
+    endif()
+    message(STATUS "Warnings Active for: ${TARGET_SET_WARNINGS_TARGET}")
+    message(STATUS "Warnings as Errors: ${TARGET_SET_WARNINGS_AS_ERRORS}")
 
     set(MSCV_COMPILER
         /WA4
