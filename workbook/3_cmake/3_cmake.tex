@@ -2051,26 +2051,32 @@ Some filters, defined in .clang-tidy config file may not work on Windows, but wi
 \end{center}
 
  
-\subsection{Clang-Format and CMake-Format}
+\subsection{Clang-Format}
 
-A formatting tool for cpp, 
+A essential professional formatting tool for cpp. Use version 14 at least, 16+ is best. The 
+clang-tidy and clang-format .py files expects at least clang-format 14. Command line arguments 
+change with versions.
 
 \begin{verbatim}
 Documentation for Clang-Format: https://clang.llvm.org/docs/ClangFormat.html
-
----
-
-Install CMake-format,
-
-pip install cmake-format # python 3.7+
-
----
 
 Install Clang Tools
 
 It's included in the LLVM toolchain, but also installable by apt, brew, winget etc.
 
 https://github.com/llvm/llvm-project/releases/tag/llvmorg-16.0.0
+\end{verbatim}
+
+\subsection{CMake-Format}
+
+A nice-to-have .cmake file formater. It may make your project easier to read, since it standardizes your files.
+
+
+
+\begin{verbatim}
+Install CMake-format,
+
+pip install cmake-format # python 3.7+
 \end{verbatim}
 
 
