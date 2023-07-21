@@ -2278,7 +2278,7 @@ Configure code coverage for a specific target in its CMakeLists.txt file.
 
 \begin{verbatim}
 if(ENABLE_COVERAGE)
-    set(COVERAGE_MAIN "coverage")
+    set(COVERAGE_MAIN "coverage") # the name of this coverage to run
     set(COVERAGE_EXCLUDES
         "${PROJECT_SOURCE_DIR}/app/*"
         "${PROJECT_SOURCE_DIR}/cmake/*"
@@ -2287,12 +2287,34 @@ if(ENABLE_COVERAGE)
         "${PROJECT_SOURCE_DIR}/tests/*"
         "${PROJECT_SOURCE_DIR}/build/*"
         "$usr/indlude/*")
+    setup_target_for_coverage_lcov(
+        NAME
+        ${COVERAGE_MAIN}
+        EXECUTABLE
+        ${UNIT_TEST_NAME}
+        DEPENDENCIES
+        ${UNIT_TEST_NAME})
+endif()
 \end{verbatim}
+
+
+\subsection{Code Coverage Directory}
+
+lcov generates a code Coverage directory, with information in an html.
+
+
+\begin{center}
+    \includegraphics[width=2in]{cov.png}
+\end{center}
+
+
+\begin{center}
+    \includegraphics[width=2in]{cov2.png}
+\end{center}
 
 
 
 \subsection{CodeCoverage.cmake}
-
 
 \begin{verbatim}
 include(CMakeParseArguments)
