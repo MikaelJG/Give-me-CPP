@@ -130,3 +130,9 @@ int main() {
   std::cout << back_to_black.get_artist() << "\n";
 }
 
+
+target_link_libraries(A PUBLIC fmt)
+
+target_link_libraries(C PUBLIC/PRIVATE A)
+target_link_libraries(C PUBLIC/PRIVATE A)
+
