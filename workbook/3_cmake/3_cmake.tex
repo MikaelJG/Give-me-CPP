@@ -538,10 +538,6 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include(AddGitSubmodule)
 
 
-
-
-
-
 include(FetchContent)  # built-in library or file
                        # including it gives access to features
 
@@ -715,7 +711,71 @@ libraries or anything. We can simply use the makeAvailable and prepare function.
 
 The instructor highly recommends FetchContent!
 
-\subsection{CPM - C Package Manager}
+\section{CPM - Cmake Package Manager}
+
+There are a few ways to include external libraries in you project. Git submodules, fetch content and packages managers such as
+Cmake Package Manager.
+
+On CPM's github page, click Releases. Pick the latest release, download the CPM.cmake file and copy it to your project's
+cmake directory.
+
+\begin{center}
+    \includegraphics[width=2in]{cpm1.png}
+\end{center}
+
+
+\subsection{CPM configuration in root CMakeLists.txt}
+
+Add an option in your root CMakeLists.txt.
+Since the course's project has two different ways to import external libraries,
+we will have an option for cpm and for fetch content.
+We shouldn't use multiple tools at the same time. Thus, code
+an if statement to use one or the other fetching method.
+
+\textbf{Every external libraries used under CPM need to be github CMake projects, which 95 pourcent are.
+It shouldn't be a problem}.
+
+
+\begin{verbatim}
+option(USE_CPM "Whether to use CPM" ON)
+
+if(USE_CPM)
+    message(STATUS "Using Cmake Package Manager")
+    include(CPM)            # this includes the cpm.cmake file
+
+
+else()
+    message(STATUS "Using FetchContent")
+
+    FetchContent_Declare(
+        nlohmann_json      
+        GIT_REPOSITORY https://github.com/nlohmann/json
+        GIT_TAG v3.11.2    
+        GIT_SHALLOW TRUE)  
+    FetchContent_MakeAvailable(nlohmann_json) # will load this library in our cmake project.
+
+    FetchContent_Declare(
+        fmt
+        GIT_REPOSITORY ...
+
+endif()
+\end{verbatim}
+
+
+
+
+
+\begin{verbatim}
+
+\end{verbatim}
+
+
+
+
+
+
+
+
 \subsection{Conan}
 \subsection{VCPKG}
 
