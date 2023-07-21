@@ -2096,7 +2096,10 @@ function(add_clang_format_target)
         CPP_FILES
         EXCLUDE
         REGEX
-        "${CMAKE_SOURCE_DIR}/(build|external)/.*")
+        "${CMAKE_SOURCE_DIR}/(build|external)/.*") 
+
+                                # exclude build and external files
+
     find_program(CLANGFORMAT clang-format)
     if(CLANGFORMAT)
         message(STATUS "Added Clang Format")
@@ -2113,8 +2116,6 @@ function(add_clang_format_target)
     endif()
 endfunction()
 \end{verbatim}
-
-
 
 \subsection{CMake-Format}
 
@@ -2184,8 +2185,6 @@ function(add_cmake_format_target)
 endfunction()
 \end{verbatim}
 
-
-
 \subsection{Glob and Exclude Cmake Functions}
 
 For clang and cmake-format tools, the tools.cmake file contains globing functions to
@@ -2196,10 +2195,59 @@ find all .cmake and CMakeLists.txt files.
     \includegraphics[width=2in]{glob.png}
 \end{center}
 
-
-
 \subsection{Github Pages}
 
+Since Doxygen creates an html you can have a github-pages branch of your project and
+use github pages to create a webpage your project.
+
+In your .github directory of you project, in a workflows directory, create a documentation.yaml file. 
+This will configure github to update your doc webpage automatically.
+
+
+\begin{center}
+    \includegraphics[width=2in]{pages.png}
+\end{center}
+
+Then, when we push to master, all the jobs will be run by github.
+
+\begin{verbatim}
+name: Documentation
+
+on:
+  push:
+    tags:
+      - "*"
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Build and publish documentation
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - name: Install Docs
+      run: |
+        sudo apt-get install doxygen
+        pip install jinja2 Pygments
+    - name: prepare
+      run: |
+        make prepare
+    - name: configure
+      run: |
+        cmake -H. -Bbuild -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug"
+    - name: building
+      run: |
+        cmake --build build --config Debug --target docs -j4
+    - name: Deploy to GitHub Pages
+      uses: Cecilapp/GitHub-Pages-deploy@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        build_dir: ./docs/html   # where is the doxygen documentation
+\end{verbatim}
+
+It hosts the website on MikaelJG.github.io/repo-name/. Public documentation uploaded online.
 
 \subsection{Code Coverage}
 
