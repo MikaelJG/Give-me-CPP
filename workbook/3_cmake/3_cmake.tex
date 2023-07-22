@@ -2499,13 +2499,39 @@ function(append_coverage_compiler_flags)
 endfunction()
 \end{verbatim}
 
+\subsection{Github Actions - CI}
+
+Yml files instruct github to perform some actions when you push to the main branch. 
+You can have unit testing automatically when you push for example.
 
 
+\begin{center}
+    \includegraphics[width=4in]{actions.png}
+\end{center}
 
-\subsection{Github Actions}
+For Ubuntu, you can have automatic code coverage as well. Not possible on macOS and Windows.
+
+
+\subsection{Github Actions Workflows}
+
+Follow your workflows, your different configurated unit tests on Github.
+
+
+\begin{center}
+    \includegraphics[width=2in]{actions2.png}
+\end{center}
+
+For every job configured, every step is executed on github, with a checkmark if everything has passed.
+
+
+\begin{center}
+    \includegraphics[width=2in]{actions3.png}
+\end{center}
+
 
 
 \subsection{Codecov}
+
 
 
 \subsection{Pre-Commit}
