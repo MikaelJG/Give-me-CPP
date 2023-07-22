@@ -2640,7 +2640,7 @@ install(TARGETS ${HE}
     EXPORT ${LIBA}
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
-    RUNTIME DESTINATION bin)
+    RUNTIME DESTINATION bin) 
 
 install(TARGETS ${LIBA}
         ARCHIVE DESTINATION lib
@@ -2656,7 +2656,26 @@ $ sudo cmake --build . --target install
     \includegraphics[width=2in]{inst.png}
 \end{center}
 
+\subsection{Install any CMake Program on the Internet}
 
+Logically, you could clone any Cmake project from github, build it and use the executable as a regular
+program on your machine. This is how pros do it, I guess.
+
+
+\begin{verbatim}
+Clone the repo
+Generate the Cmake project (cmake --build ...)
+and
+Run the install function we just seen.
+\end{verbatim}
+
+
+\section{Shared Libraries}
+
+\section{Static Libraries}
+\section{Cmake GUI}
+
+\section{ImGUI}
 
 
 
