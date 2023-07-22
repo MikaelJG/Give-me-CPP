@@ -2625,6 +2625,41 @@ jobs:
 \end{verbatim}
 
 
+\section{Install Command for your Program}
+
+We can make our build executable usable on your computer, just like any other tool. To make a transition from 
+our project to our real computer, we will use an install command.
+
+
+\subsection{Install in root CMakeLists.txt}
+
+On linux, cmake install automatically on usr/local. On windows, it is in Programs directory.
+
+\begin{verbatim}
+install(TARGETS ${HE}
+    EXPORT ${LIBA}
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin)
+
+install(TARGETS ${LIBA}
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib)
+
+# in build
+
+$ sudo cmake --build . --target install
+\end{verbatim}
+
+
+\begin{center}
+    \includegraphics[width=2in]{inst.png}
+\end{center}
+
+
+
+
+
 \section{Jason Turner's Template}
 
 \begin{verbatim}
