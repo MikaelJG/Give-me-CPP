@@ -1423,6 +1423,13 @@ Shared libraries reduce the amount of code that is duplicated in each program th
 Shared libraries will however have a small additional cost for the execution.
 In general the shared library is in the same directory as the executable.
 
+A file that needs to be carried along with the executable.
+
+\begin{center}
+    \includegraphics[width=2in]{shar.png}
+\end{center}
+
+
 \subsection{Static}
 
 \begin{verbatim}
@@ -1432,6 +1439,9 @@ Windows: *.lib
 
 Static libraries increase the overall size of the binary, but it means that you don't need to carry along a copy of the library that is being used.
 As the code is connected at compile time there are not any additional run-time loading costs.
+
+A staticly compiled into the executable.
+
 
 \section{Adding Compiler Warnings}
 
@@ -2670,9 +2680,6 @@ Run the install function we just seen.
 \end{verbatim}
 
 
-\section{Shared Libraries}
-
-\section{Static Libraries}
 \section{Cmake GUI}
 
 \section{ImGUI}
