@@ -3490,6 +3490,8 @@ No errors, but output is wrong.
 
 \chapter{Filesystem Libray}
 
+LOOK AT FILESYSTEM VIDEO IN CODE
+
 Introduced in c++17, the language has a filesystem library allowing
 manipulation of paths, regular files and directories.
 
@@ -3497,6 +3499,35 @@ manipulation of paths, regular files and directories.
 
 \subsection{File Creation}
 
+Use the fstream header and the ofstream function.
+
+\begin{verbatim}
+#include <filesystem>
+#include <iostream>
+#include <fstream> // Add this header for std::ofstream
+namespace fs = std::filesystem;
+
+int main() {
+    fs::create_directories("sandbox/a");
+
+    std::ofstream("sandbox/file.1.txt");     // is simplest,
+
+    std::ofstream file("sandbox/file1.txt"); // initialize the variable on top!
+
+    // Check if the file was opened successfully
+    if (file.is_open()) {
+
+        file << "This is some content written to the file.\n";
+
+        file.close(); // Close the file after writing if no longer needed
+
+    } else {
+        std::cout << "Failed to open the file.\n";
+    }
+
+    return 0;
+}
+\end{verbatim}
 
 
 \subsection{File Deletion}
@@ -3505,7 +3536,30 @@ manipulation of paths, regular files and directories.
 
 \section{Directories}
 
-\subsection{File Creation}
+\subsection{Directory Creation}
+
+Create a directory with fs::create\_directories. This creates both sandbox and a, inside it.
+
+\begin{verbatim}
+#include <filesystem>
+namespace fs = std::filesystem;
+
+int main() {
+
+    fs::create_directories("sandbox/a");
+    std::ofstream("sandbox/file1.txt");
+    std::ofstream("sandbox/file2.txt");
+
+    for (auto& p : fs::directory_iterator("sandbox")) {
+        std::cout << p.path() << '\n';
+    } 
+
+fs::remove_all("sandbox");
+
+}
+\end{verbatim}
+
+
 \subsection{File Creation}
 
 
