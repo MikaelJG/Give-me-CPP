@@ -1023,7 +1023,7 @@ int main() {
 
     // Print the shortest distances from the source node to all other nodes
     for (int i = 0; i < n; ++i) {
-        std::cout << "Shortest distance from node " << source << " to node " << i << ": ";
+        std::cout << "Shortest dist from node " << source << " to node " << i;
         if (shortestDistances[i] == INF)
             std::cout << "Not reachable" << std::endl;
         else
