@@ -1320,185 +1320,6 @@ public:
 };
 \end{verbatim}
 
-\chapter{Object Lifetime}
-
-\section{Constructors}
-
-\begin{verbatim}
-City montreal;
-montreal.population = 20000;
-
-montreal.get_population();
-
-class Song { // header file, song.hpp
-
-  std::string title;
-
-public:
-  void add_title(std::string new_title);
-  std::string get_title();
-};
-
-void Song::add_title(std::string new_title) {
-  title = new_title; // main file, song.cpp
-}
-
-std::string Song::get_title() {
-  return title;
-}
-int main() {
-  Song electric_relaxation;
-  electric_relaxation.add_title("Electric Relaxation");
-  std::cout << electric_relaxation.get_title();
-}
-\end{verbatim}
-
-\section{Destructors}
-
-\begin{verbatim}
------- city.hpp -------
-
-class City { 
-  std::string name;
-  int population;
- 
-public:
-  City(std::string new_name, int new_pop);
-  ~City();  // destructor
-};
- 
-City::~City() { // in main, city.cpp
-            // any final cleanup
-}
-
-class Song { // in header, .hpp
-  std::string title;
-  std::string artist;
-
-public:
-  Song(std::string new_title, std::string new_artist);
-  ~Song();
-  
-  std::string get_title(); // getters
-  std::string get_artist();
-};
-
-Song::Song(std::string new_title, std::string new_artist) // .cpp
-  : title(new_title), artist(new_artist) {}
-
-Song::~Song() { // aded destructor
-  std::cout << "Goodbye " << title << "\n";
-}
-
-struct Double_Data {
-
-    Double_Data(const std::size_t size)
-      : data(new double[size] // allocate
-    {
-    }
-
-    ~Double_Data() {          // destructor
-      delete [] data;         // free
-    }
-
-    double *data;
-
-};
-\end{verbatim}
-
-\subsection{Automatic Destructors}
-
-\begin{verbatim}
-    The object moves out of scope.
-    The object is explicitly deleted.
-    When the program ends.
-
-void some_func() {
-    std::string s{"Hello"};     // allocate a string
-}                               // automatically frees it
-                                // when scope exits
-\end{verbatim}
-
-\subsection{Deterministic Object Lifetime and Destruction}
-
-Constructor / Destruct pairs (RAII) combined with scoped values give us determinism
-that removes the need for things like 'finally'.
-
-\begin{verbatim}
-#include <string>
-
-void some_func() {
-    std::string s{"Hello"};     // allocate a string
-}                               // automatically frees it
-                                // when scope exits
-
-Standard: c++ 98
-\end{verbatim}
-
-
-\subsection{Automatic}
-\begin{verbatim}
-
-For format see p.44 filetime puzzler book 1
-
-S object_1("a","t");
-\end{verbatim}
-
-\subsection{Thread\_local}
-\begin{verbatim}
-thread_local object_2("a","t");
-\end{verbatim}
-
-\subsection{Static}
-\begin{verbatim}
-static object_3("a","t");
-\end{verbatim}
-
-\subsection{Dynamic}
-
-\begin{verbatim}
-delete new S *object_4("a","t");
-\end{verbatim}
-
-
-\subsection{For doubles, ints and floats}
-
-\begin{verbatim}
-// Handy dandy tool for doubles
-struct Double_Data {
-    Double_Data(const std::size_t size) : data(new double[size] { }
-    ~Double_Data() { delete [] data; }
-    double *data;
-   };
-
-// I want one for ints!
-struct Int_Data {
-    Int_Data(const std::size_t size) : data(new int[size] { }
-    ~Int_Data() { delete [] data; }
-    int *data;
-   };
-
-// I want one for floats!
-struct Float_Data {
-    Float_Data(const std::size_t size) : data(new float[size] { }
-    ~Float_Data() { delete [] data; }
-    float *data;
-   };
-
-// If only there was some way to avoid repeating ourselves here!!
-\end{verbatim}
-
-\subsection{Sum}
-
-\begin{verbatim}
-// I want to sum the values
-
-double sum_data(const Double_Data &d) {
-    return d.data[0] + d.data[1] + d.data[2];
-}
-
-// If only ther was some utility to automatically add these values up....
-\end{verbatim}
 
 \section{Span}
 
@@ -2554,110 +2375,190 @@ implement the createProduct method to create specific products (ConcreteProductA
 The main function demonstrates the usage of 
 the virtual factory by creating instances of the concrete factories and using them to create products.
 
-\section{System()}
+\chapter{Object Lifetime}
+
+\section{Constructors}
+
+\begin{verbatim}
+City montreal;
+montreal.population = 20000;
+
+montreal.get_population();
+
+class Song { // header file, song.hpp
+
+  std::string title;
+
+public:
+  void add_title(std::string new_title);
+  std::string get_title();
+};
+
+void Song::add_title(std::string new_title) {
+  title = new_title; // main file, song.cpp
+}
+
+std::string Song::get_title() {
+  return title;
+}
+int main() {
+  Song electric_relaxation;
+  electric_relaxation.add_title("Electric Relaxation");
+  std::cout << electric_relaxation.get_title();
+}
+\end{verbatim}
+
+\section{Destructors}
+
+\begin{verbatim}
+------ city.hpp -------
+
+class City { 
+  std::string name;
+  int population;
+ 
+public:
+  City(std::string new_name, int new_pop);
+  ~City();  // destructor
+};
+ 
+City::~City() { // in main, city.cpp
+            // any final cleanup
+}
+
+class Song { // in header, .hpp
+  std::string title;
+  std::string artist;
+
+public:
+  Song(std::string new_title, std::string new_artist);
+  ~Song();
+  
+  std::string get_title(); // getters
+  std::string get_artist();
+};
+
+Song::Song(std::string new_title, std::string new_artist) // .cpp
+  : title(new_title), artist(new_artist) {}
+
+Song::~Song() { // aded destructor
+  std::cout << "Goodbye " << title << "\n";
+}
+
+struct Double_Data {
+
+    Double_Data(const std::size_t size)
+      : data(new double[size] // allocate
+    {
+    }
+
+    ~Double_Data() {          // destructor
+      delete [] data;         // free
+    }
+
+    double *data;
+
+};
+\end{verbatim}
+
+\subsection{Automatic Destructors}
+
+\begin{verbatim}
+    The object moves out of scope.
+    The object is explicitly deleted.
+    When the program ends.
+
+void some_func() {
+    std::string s{"Hello"};     // allocate a string
+}                               // automatically frees it
+                                // when scope exits
+\end{verbatim}
+
+\subsection{Deterministic Object Lifetime and Destruction}
+
+Constructor / Destruct pairs (RAII) combined with scoped values give us determinism
+that removes the need for things like 'finally'.
 
 \begin{verbatim}
 #include <string>
 
-int main() {
-    std::string cmd = "ls -l";
-    system(cmd.c_str()); // change to c-string
-    return 0;
-}
+void some_func() {
+    std::string s{"Hello"};     // allocate a string
+}                               // automatically frees it
+                                // when scope exits
+
+Standard: c++ 98
 \end{verbatim}
 
-\subsection{Error Handeling - if cmd succeeded}
+
+\subsection{Automatic}
+\begin{verbatim}
+
+For format see p.44 filetime puzzler book 1
+
+S object_1("a","t");
+\end{verbatim}
+
+\subsection{Thread\_local}
+\begin{verbatim}
+thread_local object_2("a","t");
+\end{verbatim}
+
+\subsection{Static}
+\begin{verbatim}
+static object_3("a","t");
+\end{verbatim}
+
+\subsection{Dynamic}
 
 \begin{verbatim}
-int main() {
-    std::string cmd = "ls -l";
-    int result = system(cmd.c_str());  // Pass C-string to system()
-
-    if (result == 0) {
-        std::cout << "Command executed successfully." << std::endl;
-    } else {
-        std::cout << "Command execution failed." << std::endl;
-    }
-    return 0;
-}
+delete new S *object_4("a","t");
 \end{verbatim}
 
-\section{OpCode}
-\begin{verbatim}
-mov
-\end{verbatim}
 
-\section{Structured Bindings}
-
-Used to decompose a strcure or array into a set of identifiers.
-You must use auto, and the number of elements must match. There's no way to skip an element.
+\subsection{For doubles, ints and floats}
 
 \begin{verbatim}
-const auto &[elem1, elem2] = some_thing;
+// Handy dandy tool for doubles
+struct Double_Data {
+    Double_Data(const std::size_t size) : data(new double[size] { }
+    ~Double_Data() { delete [] data; }
+    double *data;
+   };
 
-Standard c++17
+// I want one for ints!
+struct Int_Data {
+    Int_Data(const std::size_t size) : data(new int[size] { }
+    ~Int_Data() { delete [] data; }
+    int *data;
+   };
 
-# include <iostream>
-# include <string>
+// I want one for floats!
+struct Float_Data {
+    Float_Data(const std::size_t size) : data(new float[size] { }
+    ~Float_Data() { delete [] data; }
+    float *data;
+   };
 
-template<typename Map>
-void print_map(const Map &map, const std::string &key_desc = "key",
-                               const std::string &value_desc = "value")
-{
-    for (const auto &[key, value] : map) /// strucuted binding
-    {
-        std::cout << key_desc << ": '" << key << "' "
-                  << value_desc << ": '" << value << "'\n";
-    }
-}
-
-Standard c++17
+// If only there was some way to avoid repeating ourselves here!!
 \end{verbatim}
 
-\subsection{Bulky Template Synthax}
+\subsection{Sum}
 
 \begin{verbatim}
-#include <string>
+// I want to sum the values
 
-template<typename Map>
-void print_map(const Map &map, const std::string &key_desc = "key",
-                               const std::string &value_desc = "value")
-{
-    for (const auto &[key, value] : map) /// strucuted binding
-    {
-        std::cout << key_desc << ": '" << key << "' "
-                  << value_desc << ": '" << value << "'\n";
-    }
+double sum_data(const Double_Data &d) {
+    return d.data[0] + d.data[1] + d.data[2];
 }
 
-// If only there was a way to simplify this code......
-
-Potential Inefficiency Hiding
-
-# include <iostream>
-# include <string>
-
-void print_map(const auto &map, const std::string &key_desc = "key",
-                                const std::string &value_desc = "value")
-{
-    for (const auto &[key, value] : map) /// strucuted binding
-    {
-        std::cout << key_desc << ": '" << key << "' "
-                  << value_desc << ": '" << value << "'\n";
-    }
-}
-
-int main()
-{
-    print_map(get_some_map(), "index", "location");
-}
-
-/// Std::String vs Const Char *
-
-We are constructing a std::string from a const char * for no particular reason.
-
-If Only there was a way to observe string-like things without actually constructing a std::string!!...
+// If only there was some utility to automatically add these values up....
 \end{verbatim}
+
+\chapter{Libraries}
+
+A collection of pre-compiled code, providing functionality. Functions, classes and data structures,
+that are not part of the standard C++ library.
 
 \section{fmt - format library}
 
@@ -2766,6 +2667,107 @@ auto get_data(const auto & ... params)
 
 // The only problem now is that this code requires the types to be copyable.
 // If only there was a way to forward arguments and avoid copies......
+\end{verbatim}
+
+
+\section{System()}
+
+\begin{verbatim}
+#include <string>
+
+int main() {
+    std::string cmd = "ls -l";
+    system(cmd.c_str()); // change to c-string
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Error Handeling - if cmd succeeded}
+
+\begin{verbatim}
+int main() {
+    std::string cmd = "ls -l";
+    int result = system(cmd.c_str());  // Pass C-string to system()
+
+    if (result == 0) {
+        std::cout << "Command executed successfully." << std::endl;
+    } else {
+        std::cout << "Command execution failed." << std::endl;
+    }
+    return 0;
+}
+\end{verbatim}
+
+\section{Structured Bindings}
+
+Used to decompose a structure or array into a set of identifiers.
+You must use auto, and the number of elements must match. There's no way to skip an element.
+
+\begin{verbatim}
+const auto &[elem1, elem2] = some_thing;
+
+Standard c++17
+
+# include <iostream>
+# include <string>
+
+template<typename Map>
+void print_map(const Map &map, const std::string &key_desc = "key",
+                               const std::string &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// strucuted binding
+    {
+        std::cout << key_desc << ": '" << key << "' "
+                  << value_desc << ": '" << value << "'\n";
+    }
+}
+
+Standard c++17
+\end{verbatim}
+
+\subsection{Bulky Template Synthax}
+
+\begin{verbatim}
+#include <string>
+
+template<typename Map>
+void print_map(const Map &map, const std::string &key_desc = "key",
+                               const std::string &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// strucuted binding
+    {
+        std::cout << key_desc << ": '" << key << "' "
+                  << value_desc << ": '" << value << "'\n";
+    }
+}
+
+// If only there was a way to simplify this code......
+
+Potential Inefficiency Hiding
+
+# include <iostream>
+# include <string>
+
+void print_map(const auto &map, const std::string &key_desc = "key",
+                                const std::string &value_desc = "value")
+{
+    for (const auto &[key, value] : map) /// strucuted binding
+    {
+        std::cout << key_desc << ": '" << key << "' "
+                  << value_desc << ": '" << value << "'\n";
+    }
+}
+
+int main()
+{
+    print_map(get_some_map(), "index", "location");
+}
+
+/// Std::String vs Const Char *
+
+We are constructing a std::string from a const char * for no particular reason.
+
+If Only there was a way to observe string-like things without actually constructing a std::string!!...
 \end{verbatim}
 
 \section{System Design}
@@ -2989,252 +2991,7 @@ The `createComplexType` function creates an instance of `ComplexType` by taking 
 as parameters. The function initializes a `ComplexType` object, sets its elements, and returns it. 
 Finally, in the `main` function, we call `createComplexType` and print the resulting complex type.
 
-\section{Compiler}
-
-If your program has 3 .cpp files, the compiler would generate 3 object files. 
-After all object files were compiled, the linker starts. 
-\begin{center}
-\includegraphics[width=3.5in]{compile.png}
-\end{center}
-\begin{center}
-\includegraphics[width=3.5in]{compiling.png}
-\end{center}
-
-\begin{verbatim}
-MVSC // Microsoft Compiler
-GCC // Gnu C Compiler
-LLVM Clang // LLVM Compiler
-\end{verbatim}
-
-\section{Linker}
-\begin{verbatim}
-    It combined all object files in one executable.
-    the linker links library files. 
-    resolves cross-file dependencies.  
-\end{verbatim}
-
-\begin{center}
-\includegraphics[width=2in]{linker.png}
-\end{center}
-\section{Libraries}
-\subsection{Library files}
-\begin{verbatim}
-    a collection of precompiled code that has been "packaged up" for reuse in other programs. 
-    C++ comes with a standard library providing additional functionality.
-    commonly used in the iostream library
-\end{verbatim}
-
-\subsection{External Libraries}
-
-A collection of pre-compiled code, providing functionality.
-
-Functions, classes, and data structures that are not part of the standard C++ library.
-
-These libraries are often provided by third-party developers or organizations
-
-They speed up the development process by providing ready-to-use functionality. 
-
-\begin{verbatim}
-Popular C++ external libraries:
-\end{verbatim}
-
-\subsection{Boost}
-
-\subsection{OpenCV}
-
-\subsection{Qt}
-
-\section{Builds}
-\subsection{Build Configuration (build target)}
-
-\begin{verbatim}
-    Project settings determining how your project will be built. 
-    Build configuration includes executable name, project arch and library files. 
-    It specifies keepings or strippings of debugging info, compiler optimization details 
-\end{verbatim}
-
-\subsection{Debug Config}
-
-\begin{verbatim}
-    Debug configuations turns off all optimizations, includes debugging information,
-    Jason Turner would say "with as much information as possible"
-    Such configs makes your programs larger and slower, but much easier to debug. 
-\end{verbatim}
-
-\subsection{Release Config}
-
-\begin{verbatim}
-    Optimized for size and performance, no debugging information.
-    With all optimization, now testing for code performance.
-
-    When the Hello World program (from lesson 0.7) was built using Visual Studio,
-    Executable produced in the debug configuration was 65kb, 
-    Executable built in the release version was 12kb. 
-    The difference is largely due to the extra debugging information kept in the debug build.
-\end{verbatim}
-
-\subsection{G++ Builds}
-\begin{verbatim}
-GCC / Clang? 
-    -ggdb  // cmd line debugging
-           // This is the GNU Debugger !?
-    -ggdb O2 -DNDEBUG for release builds. ??
-    -g++ O2 -DNDEBUG for release builds. ??
-\end{verbatim}
-
-\section{Compiler Extensions (compiler-specific behavior)}
-
-    many compilers implement their own changes to the language,
-    \begin{verbatim}
-    Using compiler extension allows you to write programs that are incompatible
-    with the C++ standard.
-    \end{verbatim}
-
-    Programs using non-standard extensions generally will not compile on other compilers (lacking same extensions support)
-    , or if they do, they may not run correctly.
-
-    Compiler extensions are often enabled by default. Overpermissive compilers.
-
-    Compiler extensions are optional, cause programs non-compliancy with C++ standards,
-    Turn compiler extensions off.
-
-\begin{verbatim}
-GCC
-         -pedantic-errors // Disable extensions
-\end{verbatim}
-
-\section{Max Warnings}
-
-\begin{verbatim}
-GCC 
-    -Wall -Weffc++ -Wextra -Wsign-conversion
-    -Werror
-
-Turner does it with cmake?
-\end{verbatim}
-
-\section{Standard Set-Up}
-
-\begin{verbatim}
-GCC pre-8
-          -std=c++11 // set c++ standard
-          -std=c++14
-          -std=c++17
-          -std=c++20 
-GCC 8 or 9
-          -std=c++2a for C++20 support
-
-g++ -std=c++17 myfile.cpp -o output // cmd line
-\end{verbatim}
-
-\section{Dear ImGui}
-
-\section{PCH - Precompiling Headers}
-
-Some compilers' feature to speed compilation of large projects. 
-It generates a precompiled version of commonly included header files, 
-
-This version is known as the PCH file.
-It is used during subsequent compilations. Avoids reparse and re-process of header files.
-
-Great for large projects: numerous headers, included in multiple source files.
-
-\subsection{Enable PCH}
-
-PCH usage is compiler-specific, the enabling and configuring method varies. 
-
-It typically involves specifying which headers should be precompiled and how the precompiled information should be stored.
-
-\subsection{Include Header Files}
-
-\begin{verbatim}
-// Main.cpp
-// #include "my_function.hpp"
-
-//then
-// g++ main.cpp my_function.cpp -o program
-\end{verbatim}
-
-\subsection{Header Files 2.0}
-
-\begin{verbatim}
-// Declare in header, fun.hpp or fun.h
-double average(double num1, double num2);
-
-// Define in fun.cpp
-double average(double num1, double num2) {
-  return (num1 + num2) / 2;
-}
-\end{verbatim}
-
-\subsection{Standard Library Headers}
-
-\begin{verbatim}
-Some standard library headers are included by others. 
-
-<cstdlib> is included by <iostream>, since it relies on its functionalities,
-such as the declaration of the system() function. 
-\end{verbatim}
-
-\section{Command Line Linking and Compiling}
-
-\begin{verbatim}
-g++ main.cpp my_functions.cpp // link both files
-\end{verbatim}
-
-\subsection{Source Code Files Suffix}
-
-\begin{verbatim}
-    .cpp (ex: hello.cpp) or
-    .h (ex: std_lib_facilities.h).
-\end{verbatim}
-
-\subsection{Compile}
-\begin{verbatim}
-g++ hello.cpp -o hello
-
-Compiling translates C++ programs into machine code.
-It is stored on disk as a file with the .o extension (hello.o). 
-\end{verbatim}
-
-A linker then links the object code with standard library routines that the program may use and creates an executable image which is also saved on disk,
-
-usually as a file with the file name without any extension (e.g. hello).
-
-\section{Debugg and Error Type}
-
-\subsection{Compile Time Errors}
-
-\subsection{Synthax Errors}
-
-\subsection{Type errors}
-
-Forgetting to declare a variable
-
-Storing a value in a different type. 
-
-\subsection{Link-Time Errors}
-
-link-time errors are based on unfindable needed function or library.
-
-When the linker tries to combine object files into an executable.
-
-\subsection{Run-Time Errors}
-
-Errors which happen during program execution (run-time) after successful compilation.
-
-Division by zero
-
-Open an non-existing file
-
-\subsection{Logical Errors}
-
-Flawed programming's logical thinking. 
-
-No errors, but output is wrong. 
-
-
-\chapter{Filesystem Libray}
+\chapter{Filesystem Library}
 
 LOOK AT FILESYSTEM VIDEO IN CODE
 
