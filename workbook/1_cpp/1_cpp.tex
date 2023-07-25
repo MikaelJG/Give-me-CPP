@@ -1980,7 +1980,10 @@ allowing direct access to the original variable.
 The lambda can then use these captured variables (`x` and `y`)
 within its body to perform calculations.
 
-By capturing variables, lambda functions gain access to the state of the surrounding scope, providing a powerful and flexible way to operate on external data within the lambda's body.
+By capturing variables,
+lambda functions gain access to the state of the surrounding scope,
+providing a powerful and flexible way to operate 
+on external data within the lambda's body.
 
 \subsection{Lambda Auto}
 \begin{verbatim}
@@ -2447,14 +2450,14 @@ public:
   Song(std::string new_title, std::string new_artist);
   ~Song();
   
-  std::string get_title(); // getters
+  std::string get_title();   // getters
   std::string get_artist();
 };
 
 Song::Song(std::string new_title, std::string new_artist) // .cpp
   : title(new_title), artist(new_artist) {}
 
-Song::~Song() { // aded destructor
+Song::~Song() {              // added destructor
   std::cout << "Goodbye " << title << "\n";
 }
 
