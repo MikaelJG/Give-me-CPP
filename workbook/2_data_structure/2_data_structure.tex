@@ -2,6 +2,13 @@
 
 \chapter{Data Structures}
 
+
+\section{Time Complexity}
+
+\section{Space Complexity}
+
+
+
 \section{Containers}
 
 Arrays and vectors are the most common containers, I think. Arrays are fixed-size stack-based containers. Vectors
@@ -610,17 +617,19 @@ int main() {
 \subsection{Sorted?}
 \subsection{Uniqueness?}
 
-\subsection{Lists Functions}
+\subsection{Lists and  Functions}
 
 \begin{verbatim}
-merge() - merges two sorted lists. The merged list is emptied.
-remove() - delete list elements for a value.
-remove_if() - delete list element for a boolean (to verify).
-reverse() - reverses list content.
-sort() - sort elements.
-splice() - moves elements, before given index. (not valid for std::forward_list).
-splice_after() - moves elements, after given index. (not valid for std::list).
-unique() - replaces consecutive duplicates by one value.
+merge()             - merges two sorted lists. The merged list is emptied.
+remove()            - delete list elements for a value.
+remove_if()         - delete list element for a boolean (to verify).
+reverse()           - reverses list content.
+sort()              - sort elements.
+splice()            - moves elements, before given index.
+                    - (not valid for std::forward_list).
+
+splice_after()      - moves elements, after given index. (not valid for std::list).
+unique()            - replaces consecutive duplicates by one value.
 \end{verbatim}
 
 \section{Hash Maps}
@@ -735,6 +744,11 @@ constant time (O(1))
 linear time (O(n))
 \end{verbatim}
 
+\subsection{Strengths}
+\subsection{Weaknesses}
+\subsection{Sorted?}
+\subsection{Uniqueness?}
+
 \subsection{Unordered Sets}
 
 A container storing unique elements with unordered access and efficient search operations.
@@ -779,6 +793,10 @@ int main() {
     return 0;
 }
 \end{verbatim}
+\subsection{Strengths}
+\subsection{Weaknesses}
+\subsection{Sorted?}
+\subsection{Uniqueness?}
 
 \subsection{Unordered Multisets}
 
