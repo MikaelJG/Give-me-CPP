@@ -64,7 +64,7 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Enum with Array Mapping}
+\subsection{Enum Array Mapping}
 
 \begin{verbatim}
 enum class Fruit {
@@ -96,7 +96,7 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Enum with Vector Mapping}
+\subsection{Enum Vector Mapping}
 
 \begin{verbatim}
 enum class Month {
@@ -289,7 +289,7 @@ for deallocating memory when deleting dynamically allocated arrays, as shown wit
 
 This ensures that the memory occupied by the `data` array is properly deallocated.
 
-\subsection{Type mismatch (int vs std::size\_t)}
+\subsection{Size\_t against integers}
 
 Size() of containers returns a value of type size\_t, 
 an unsigned integral type specifically designed for representing sizes of objects.
@@ -313,32 +313,6 @@ for (int i = 0; i < static_cast<int>(container.size()); ++i) {
 
 for (int i = 0; i < container.size(); ++i) {
     // oops mismatched types
-}
-\end{verbatim}
-
-
-\subsection{User Input}
-
-\begin{verbatim}
-std::cout << "Enter your password: ";
-std::cin >> password;
-
-#include <iostream>
-#include <string>
-#include <cstdlib>
-
-int main() {
-    std::string answer;
-    std::cout << "Place the output in" << output_dir << "? [y/yes, n/no]: ";
-    std::cin >> answer;
-
-    if (answer == "y" || answer == "yes") {
-    } else if (answer == "n" || answer == "no") {
-    } else {
-        std::cout << "Invalid response, exiting";
-        std::exit(1) // (failure)
-    }
-    return 0;
 }
 \end{verbatim}
 
@@ -417,9 +391,9 @@ int main()
 }
 \end{verbatim}
 
-\subsection{Pipes for Ranges}
+\subsection{Ranges Pipes}
 
-`|` are operators for composing ranges in C++20.
+I are operators for composing ranges in C++20.
 
 They chain range adaptors, transforming or filtering operations.
 Pipes take the output of one range and passes it as the input to the next range adaptor,
@@ -497,7 +471,7 @@ void print_map(const Map &map, const std::string &key_desc = "key",
 // if only there was some way to make this data.first, data.second nonsense more readable!!
 \end{verbatim}
 
-\subsection{Accidental conversions}
+\subsection{Accidental Conversions}
 
 \begin{verbatim}
 for (const int value : container_of_double) {
@@ -505,7 +479,7 @@ for (const int value : container_of_double) {
 }
 \end{verbatim}
 
-\subsection{Accidental slicing}
+\subsection{Accidental Slicing}
 
 \begin{verbatim}
 for (const base value : container_of_derived) {
@@ -560,7 +534,7 @@ bool even(int num) {
 }
 \end{verbatim}
 
-\subsection{Inline Functions (2 meanings)}
+\subsection{Inline Functions}
 
 The compiler inserts the function’s body on the function call
 
@@ -593,7 +567,7 @@ std::string goodnight1(std::string thing1) {
 }
 \end{verbatim}
 
-\subsection{Member Functions}
+\subsection{Class Functions (Member Functions)}
 
 Functions inside of classes.
 
@@ -625,7 +599,7 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Public}
+\subsection{Functions Public}
 
 \begin{verbatim}
 class City {
@@ -760,7 +734,7 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Overloading}
+\subsection{Functions Overloading}
 
 Accepts many types as parameters.
 
@@ -792,7 +766,20 @@ int fancy_number(double num1, double num2);
 
 \end{verbatim}
 
-\subsection{Parameters}
+\subsection{Functions Return Type Deduction}
+
+Not to be underestimated, this allows
+for the creation of powerful higher order function constructs, among other things.
+
+\begin{verbatim}
+auto get_thing() {
+    struct Thing {}; // creating my own type inside the function 
+
+    return Thing{};
+}
+\end{verbatim}
+
+\section{Parameters}
 
 \begin{verbatim}
 void get_emergency_number(std::string emergency_number) {}
@@ -840,7 +827,7 @@ void name_x_times(std::string name, int x){
 }
 \end{verbatim}
 
-\subsection{Pass-by-value (in a function's params)}
+\subsection{Pass-By-Value}
 
 \begin{verbatim}
 Yet, we can't modify the value of the arguments.
@@ -891,10 +878,78 @@ int main() {
 
     return 0;
 }
-
 \end{verbatim}
 
-\subsection{Default Values}
+
+\subsection{Pass-By-Reference}
+
+Now, when called, the function can modify the argument's value.
+Avoid making copies of a variable/object for performance reasons.
+
+\begin{verbatim}
+//Calling swap_num(), variables a and b's value will be modified
+//because they are passed by reference
+
+void swap_num(int &i, int &j) {
+  int temp = i;
+  i = j;
+  j = temp;
+}
+ 
+int main() {
+  int a = 100;
+  int b = 200;
+ 
+  swap_num(a, b);
+ 
+  std::cout << "A is " << a << "\n";
+  std::cout << "B is " << b << "\n";
+}
+
+WHEN? To MODIFY the arguments’ values.
+
+int triple(int &i) {
+  i = i * 3;
+  
+  return i;
+}
+
+int main() {
+  int num = 1;
+  std::cout << triple(num) << "\n";
+}
+
+template<typename T>
+void modifyVector(std::vector<T>& vec) {
+    for (auto& element : vec) {
+        element *= 2;
+    }
+}
+
+template<typename T>
+void printVector(const std::vector<T>& vec) {
+    for (const auto& element : vec) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    std::vector<int> numbers = {1, 2, 3, 4, 5};
+
+    std::cout << "Original vector: ";
+    printVector(numbers);  // Output: Original vector: 1 2 3 4 5
+
+    modifyVector(numbers);
+
+    std::cout << "Modified vector: ";
+    printVector(numbers);  // Output: Modified vector: 2 4 6 8 10
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Parameters Default Values}
 
 \begin{verbatim}
 struct Chapters {
@@ -954,31 +1009,12 @@ int main()
 
 \end{verbatim}
 
-\subsection{Standard Library Functions}
-\begin{verbatim}
-C++ considers system architecture. 
-The libraries are differents as well?
 
-Listing files in a directory is different in both OS.
-\end{verbatim}
+\section{References}
 
-\subsection{Return Type Deduction for Normal Functions}
-
-Not to be underestimated, this allows
-for the creation of powerful higher order function constructs, among other things.
-
-\begin{verbatim}
-auto get_thing() {
-    struct Thing {}; // creating my own type inside the function 
-
-    return Thing{};
-}
-\end{verbatim}
-
-\section{Reference}
 \subsection{References Variables}
 
-\textbf{A second name for an existing variable}
+\textbf{A second name for an existing variable}.
 
 \begin{verbatim}
 int &sonny = songqiao; // Sonny, a reference to songqiao;
@@ -1079,7 +1115,7 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Pass-by-reference (in a funtion's params)}
+\subsection{Pass-By-Reference}
 
 Now, when called, the function can modify the argument's value.
 Avoid making copies of a variable/object for performance reasons.
@@ -1147,7 +1183,7 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Const Reference}
+\subsection{References Const}
 
 \begin{verbatim}
 int triple(int const &i) { // save computational cost
@@ -1197,25 +1233,6 @@ auto get_data(auto && ... params)
 This does not make c++ easier to teach, but it allows for high level efficiency. At this point, 
 is get\_data() even necessary?
 
-\subsection{Rvalue References}
-
-Difficult to teach, but allows to more accurately reason about the lifetime of objects. C++11.
-
-\subsection{Guaranteed Copy Elision}
-
-Compilers have "always done copy elision on return values but c++17 guarantees it in some situations:
-
-\begin{verbatim}
-struct S {
-    S() = default;
-    S(S&&) = delete;
-    S(const S &) = delete;
-};
-
-auto s_factory(){
-    return S{}; // compiles in C++17, neither a copy nor a move.
-}
-\end{verbatim}
 
 \section{Pointers}
 
@@ -1636,13 +1653,35 @@ T divide(T numerator, T denominator) {
 \end{verbatim}
 
 \section{Structs}
-\begin{verbatim}
 
-The only difference between a struct and a class is
-With structs, all properties are public by default
+The only difference between a struct and a class is public properties. With
+structs, all properties are public by default.
+
+\begin{verbatim}
+struct Double_Data {
+    Double_Data(const std::size_t size) : data(new double[size] { }
+    ~Double_Data() { delete [] data; }
+    double *data;
+   };
+
+// I want one for ints!
+struct Int_Data {
+    Int_Data(const std::size_t size) : data(new int[size] { }
+    ~Int_Data() { delete [] data; }
+    int *data;
+   };
+
+// I want one for floats!
+struct Float_Data {
+    Float_Data(const std::size_t size) : data(new float[size] { }
+    ~Float_Data() { delete [] data; }
+    float *data;
+   };
+
+// If only there was some way to avoid repeating ourselves here!!
 \end{verbatim}
 
-\subsection{Use structs instead of classes}
+\subsection{Structs Against Classes}
 \begin{verbatim}
 The only difference between them is that struct has all members by default public.
 Using struct makes examples shorter and easier to read. 
@@ -2516,43 +2555,27 @@ delete new S *object_4("a","t");
 \end{verbatim}
 
 
-\subsection{For doubles, ints and floats}
-
 \begin{verbatim}
-// Handy dandy tool for doubles
-struct Double_Data {
-    Double_Data(const std::size_t size) : data(new double[size] { }
-    ~Double_Data() { delete [] data; }
-    double *data;
-   };
-
-// I want one for ints!
-struct Int_Data {
-    Int_Data(const std::size_t size) : data(new int[size] { }
-    ~Int_Data() { delete [] data; }
-    int *data;
-   };
-
-// I want one for floats!
-struct Float_Data {
-    Float_Data(const std::size_t size) : data(new float[size] { }
-    ~Float_Data() { delete [] data; }
-    float *data;
-   };
-
-// If only there was some way to avoid repeating ourselves here!!
-\end{verbatim}
-
-\subsection{Sum}
-
-\begin{verbatim}
-// I want to sum the values
 
 double sum_data(const Double_Data &d) {
     return d.data[0] + d.data[1] + d.data[2];
 }
+\end{verbatim}
 
-// If only there was some utility to automatically add these values up....
+\subsection{Guaranteed Copy Elision}
+
+Compilers have "always done copy elision on return values but c++17 guarantees it in some situations:
+
+\begin{verbatim}
+struct S {
+    S() = default;
+    S(S&&) = delete;
+    S(const S &) = delete;
+};
+
+auto s_factory(){
+    return S{}; // compiles in C++17, neither a copy nor a move.
+}
 \end{verbatim}
 
 \chapter{Libraries}
@@ -2805,6 +2828,32 @@ int main(int argc, char* argv[]) {
         std::cout << "Flag -o for -omit is present!" << std::endl;
     }
 \end{verbatim}
+
+\subsection{User Input}
+
+\begin{verbatim}
+std::cout << "Enter your password: ";
+std::cin >> password;
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+int main() {
+    std::string answer;
+    std::cout << "Place the output in" << output_dir << "? [y/yes, n/no]: ";
+    std::cin >> answer;
+
+    if (answer == "y" || answer == "yes") {
+    } else if (answer == "n" || answer == "no") {
+    } else {
+        std::cout << "Invalid response, exiting";
+        std::exit(1) // (failure)
+    }
+    return 0;
+}
+\end{verbatim}
+
 
 \section{Synthax}
 \subsection{Ternary Operator}
