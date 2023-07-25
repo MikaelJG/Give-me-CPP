@@ -1320,7 +1320,9 @@ public:
 };
 \end{verbatim}
 
-\section{Constructor}
+\chapter{Object Lifetime}
+
+\section{Constructors}
 
 \begin{verbatim}
 City montreal;
@@ -1351,20 +1353,22 @@ int main() {
 }
 \end{verbatim}
 
-\section{Destructors - prevent memory leaks}
+\section{Destructors}
 
 \begin{verbatim}
-class City { // In Header, city.hpp
+------ city.hpp -------
+
+class City { 
   std::string name;
   int population;
  
 public:
   City(std::string new_name, int new_pop);
-  ~City(); // destructor
+  ~City();  // destructor
 };
  
 City::~City() { // in main, city.cpp
-  // any final cleanup
+            // any final cleanup
 }
 
 class Song { // in header, .hpp
@@ -1389,12 +1393,12 @@ Song::~Song() { // aded destructor
 struct Double_Data {
 
     Double_Data(const std::size_t size)
-      : data(new double[size] /// allocate
+      : data(new double[size] // allocate
     {
     }
 
-    ~Double_Data() { /// destructor
-      delete [] data; // free
+    ~Double_Data() {          // destructor
+      delete [] data;         // free
     }
 
     double *data;
@@ -1402,15 +1406,35 @@ struct Double_Data {
 };
 \end{verbatim}
 
-\subsection{Automatic Destructors (no necessary calls)}
+\subsection{Automatic Destructors}
 
 \begin{verbatim}
     The object moves out of scope.
     The object is explicitly deleted.
     When the program ends.
+
+void some_func() {
+    std::string s{"Hello"};     // allocate a string
+}                               // automatically frees it
+                                // when scope exits
 \end{verbatim}
 
-\section{Object lifetime}
+\subsection{Deterministic Object Lifetime and Destruction}
+
+Constructor / Destruct pairs (RAII) combined with scoped values give us determinism
+that removes the need for things like 'finally'.
+
+\begin{verbatim}
+#include <string>
+
+void some_func() {
+    std::string s{"Hello"};     // allocate a string
+}                               // automatically frees it
+                                // when scope exits
+
+Standard: c++ 98
+\end{verbatim}
+
 
 \subsection{Automatic}
 \begin{verbatim}
@@ -1419,32 +1443,23 @@ For format see p.44 filetime puzzler book 1
 
 S object_1("a","t");
 \end{verbatim}
+
 \subsection{Thread\_local}
 \begin{verbatim}
 thread_local object_2("a","t");
 \end{verbatim}
+
 \subsection{Static}
 \begin{verbatim}
 static object_3("a","t");
 \end{verbatim}
+
 \subsection{Dynamic}
+
 \begin{verbatim}
 delete new S *object_4("a","t");
 \end{verbatim}
 
-\subsection{Deterministic Object Lifetime and Destruction}
-
-Constructor / Destruct pairs (RAII) combined with scoped values give us determinism that removes the need for things like 'finally'
-
-\begin{verbatim}
-#include <string>
-
-void some_func() {
-    std::string s{"Hello"}; // allocate a string
-} // automatically free it when scope exits
-
-Standard: c++ 98
-\end{verbatim}
 
 \subsection{For doubles, ints and floats}
 
@@ -1795,17 +1810,6 @@ int divide(int numerator, int denominator) {
 \begin{verbatim}
 template<typename T>
 T divide(T numerator, T denominator) {
-    return numerator / denominator;
-}
-\end{verbatim}
-
-\subsection{Example use T. don't do that. Name your Type meaningfully}
-
-\begin{verbatim}
-template Parameters with actual names. 
-
-template<typename Arithmetic>
-<Arithmetic divide(Arithmetic numerator, Arithmetic denominator) {
     return numerator / denominator;
 }
 \end{verbatim}

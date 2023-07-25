@@ -60,6 +60,51 @@ Forward_list doesn't have support for rbegin() / rend() or
 crbegin() / crend()
 \end{verbatim}
 
+
+\subsection{Container Iterations}
+
+For Jason Turner, this construct, was one of the most difficult things to learn!
+
+\begin{verbatim}
+void print_map(const std::map<int, std::string> &map,
+               const std::string &key_desc = "key",
+               const std::string &value_desc = "value")
+{
+    for (std::map<int, std::string>::const_iterator data_itr = map.begin(); // this right here
+         data_itr != map.end();
+         ++data_itr)
+    {
+        std::cout << key_desc << ": '" << data_itr->first << "' "
+                  << value_desc << ": '" << data_itr->second << "'\n";
+    }
+}
+
+void print_map(const std::map<int, std::string> &map,
+               const std::string &key_desc = "key",
+               const std::string &value_desc = "value")
+{
+    for (auto data_itr = map.begin();
+         data_itr != map.end();
+         ++data_itr)
+    {
+        std::cout << key_desc << ": '" << data_itr->first << "' "
+                  << value_desc << ": '" << data_itr->second << "'\n";
+    }
+}
+
+// If only there was some simple way to iterate over all the values in a container.....
+\end{verbatim}
+
+\subsection{Containers Looping Mismatched}
+
+\begin{verbatim}
+for (auto itr = container.begin();
+    itr != container2.end();
+    ++itr) {
+    // oops! most of us have done this at some point
+}
+\end{verbatim}
+
 \subsection{Container Size functions}
 
 \begin{verbatim}
@@ -130,49 +175,6 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Iterating over a Container}
-
-For Jason Turner, this construct, was one of the most difficult things to learn!
-
-\begin{verbatim}
-void print_map(const std::map<int, std::string> &map,
-               const std::string &key_desc = "key",
-               const std::string &value_desc = "value")
-{
-    for (std::map<int, std::string>::const_iterator data_itr = map.begin(); // this right here
-         data_itr != map.end();
-         ++data_itr)
-    {
-        std::cout << key_desc << ": '" << data_itr->first << "' "
-                  << value_desc << ": '" << data_itr->second << "'\n";
-    }
-}
-
-void print_map(const std::map<int, std::string> &map,
-               const std::string &key_desc = "key",
-               const std::string &value_desc = "value")
-{
-    for (auto data_itr = map.begin(); // auto, from c++11
-         data_itr != map.end();
-         ++data_itr)
-    {
-        std::cout << key_desc << ": '" << data_itr->first << "' "
-                  << value_desc << ": '" << data_itr->second << "'\n";
-    }
-}
-
-// If only there was some simple way to iterate over all the values in a container.....
-\end{verbatim}
-
-\subsection{Mismatched containers while looping}
-
-\begin{verbatim}
-for (auto itr = container.begin();
-    itr != container2.end();
-    ++itr) {
-    // oops! most of us have done this at some point
-}
-\end{verbatim}
 
 \section{Maps}
 
