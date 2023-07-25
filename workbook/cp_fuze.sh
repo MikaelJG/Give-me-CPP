@@ -24,6 +24,12 @@ echo "
 \usepackage[margin=1.2in]{geometry}
 \usepackage{graphicx}
 \usepackage{parskip}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}                      % Clear all header and footer fields
+\fancyhead[R]{\leftmark}        % Display chapter name at the top right corner
+
 \title{C++ Workbook}
 \author{Mikael J. Gonsalves}
 \date{\today}
