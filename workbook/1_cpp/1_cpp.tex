@@ -1697,6 +1697,15 @@ Data<Value_Type> get_data(const Value_Type &v1, const Value_Type &v2,
 }
 \end{verbatim}
 
+\subsection{Templates Basics}
+
+\begin{verbatim}
+template<typename T>
+T divide(T numerator, T denominator) {
+    return numerator / denominator;
+}
+\end{verbatim}
+
 \subsection{Variadic Templates}
 
 Drastic simplification of code needing to match a variable number of parameters.
@@ -1861,14 +1870,6 @@ auto divide(Numerator numerator, Denominator denominator)
 }
 \end{verbatim}
 
-\subsection{Basic template usage}
-
-\begin{verbatim}
-template<typename T>
-T divide(T numerator, T denominator) {
-    return numerator / denominator;
-}
-\end{verbatim}
 
 \section{Structs}
 

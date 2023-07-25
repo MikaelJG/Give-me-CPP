@@ -286,6 +286,17 @@ for (const element_type & : get_map())
 {}
 \end{verbatim}
 
+ 
+\subsection{Strengths}
+
+
+\subsection{Weaknesses}
+
+
+\subsection{Sorted?}
+\subsection{Uniqueness?}
+
+
 \subsection{Maps CRUD}
 
 \begin{verbatim}
@@ -444,6 +455,15 @@ int main() {
 }
 \end{verbatim}
 
+
+\subsection{Strengths}
+\subsection{Weaknesses}
+\subsection{Sorted?}
+\subsection{Uniqueness?}
+
+
+
+
 \section{Maps and Sets Functions}
 
 \subsection{Size}
@@ -524,7 +544,7 @@ insert_or_assign() - insert a new element or deletes the value
 try_emplace()      - builds a new key-value pair at given idx
 \end{verbatim}
 
-\section{Lists}
+\section{Lists (Doubly Linked Lists)}
 
 List (std::list) is a doubly-linked list container, storing in a linear sequence. 
 It allows efficient insertion and removal of elements at any position, 
@@ -558,7 +578,12 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Forward Lists}
+\subsection{Strengths}
+\subsection{Weaknesses}
+\subsection{Sorted?}
+\subsection{Uniqueness?}
+
+\section{Forward Lists (Singly Linked Lists)}
 
 std::forward\_list store elements as a singly linked list.
 
@@ -579,6 +604,11 @@ int main() {
     return 0;
 }
 \end{verbatim}
+
+\subsection{Strengths}
+\subsection{Weaknesses}
+\subsection{Sorted?}
+\subsection{Uniqueness?}
 
 \subsection{Lists Functions}
 
@@ -897,9 +927,11 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Serialize a Trie with JSON or XML}
+\subsection{Trie Serialization in JSON or XML}
 
-To save a retrieval tree (trie) and use it later without recreating the tree every time, you can serialize the tree data structure to a file and then deserialize it when needed. This allows you to persist the tree structure to disk and load it back into memory when required.
+To save a retrieval tree (trie) and use it later without recreating the tree every time,
+you can serialize the tree data structure to a file and then deserialize it when needed.
+This allows you to persist the tree structure to disk and load it back into memory when required.
 
 Here are the general steps to achieve this:
 
@@ -908,7 +940,8 @@ into a serialized representation that can be written to a file.
 This typically involves converting the tree nodes and their contents into
 a suitable format, such as JSON, XML, or a custom binary format.
 
-2. Write the serialized data to a file: Open a file in write mode and write the serialized data to the file.
+2. Write the serialized data to a file:
+Open a file in write mode and write the serialized data to the file.
 You can use file I/O operations provided by the programming language or libraries to accomplish this.
 
 3. Save the file: Close the file and make sure it is saved to a location of your choice,
@@ -929,13 +962,12 @@ By saving and loading the serialized trie data,
 you avoid the need to recreate the entire trie every time your program runs,
 improving efficiency and performance.
 
-The exact implementation details will depend on the programming language 
-you're using and the specific serialization and deserialization mechanisms available.
-Many programming languages provide libraries or built-in features for serialization,
-such as JSON or XML parsers, binary serialization libraries, or custom serialization methods.
-
 
 \section{Trees}
+
+\subsection{Breadth First Search}
+
+\subsection{Depth First Search}
 
 
 \section{Graphs}
@@ -946,6 +978,12 @@ such as JSON or XML parsers, binary serialization libraries, or custom serializa
 \section{Bubble Sort}
 
 \section{Quick Sort}
+
+
+\section{Adjacency Lists}
+
+\subsection{Adjacency Matrix}
+
 
 
 
