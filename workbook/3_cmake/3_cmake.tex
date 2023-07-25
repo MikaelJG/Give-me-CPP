@@ -645,7 +645,7 @@ target_link)libraries(${ECEXUTABLE_NAME} PUBLIC ${LIBRARY_NAME})
 \end{verbatim}
 
 
-\section{Using External Libraries}
+\section{External Libraries}
 
 
 \subsection{Git Submodule - nlohman json}
@@ -746,7 +746,7 @@ target_link_libraries(${EXECUTABLE_NAME} PUBLIC
 \end{verbatim}
 
 
-\subsection{Fetch Content - External Libraries}
+\subsection{Fetch Content (fmt, spdlog, cxxopts, catch2)}
 
 We have the gitmodule example, but modern CMake has a great fetching feature. Our root CMakelLists.txt will look like this, 
 
@@ -790,7 +790,7 @@ FetchContent_MakeAvailable(nlohmann_json) # will load this library in our cmake 
 \end{center}
 
 
-\subsection{FMT}
+\subsubsection{FMT}
 
 The best library to easily format strings in cpp.
 
@@ -803,7 +803,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(fmt)
 \end{verbatim}
 
-\subsection{spdlog}
+\subsubsection{spdlog}
 
 The best fast logging library for cpp.
 
@@ -816,7 +816,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(spdlog)
 \end{verbatim}
 
-\subsection{Cxxopts}
+\subsubsection{Cxxopts}
 
 The best library to work with command line arguments in cpp. From the received arguments, to any other type.
 The equivalent of the argument parser in python.
@@ -830,7 +830,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(cxxopts)
 \end{verbatim}
 
-\subsection{Catch2}
+\subsubsection{Catch2}
 
 The best Unit Testing library, seen further below.
 
@@ -844,7 +844,7 @@ FetchContent_MakeAvailable(catch2)
 \end{verbatim}
 
 
-\subsection{Include All Libraries in root CMakeListstxt}
+\subsubsection{Include All Libraries in root CMakeListstxt}
 
 Refer to Final project Template seen in the course. Modifying the CMakeLists.txt in our my-lib directory.
 
@@ -888,7 +888,7 @@ a build, subbuild and src directory for all dependencies. Don't worry about it f
 \end{center}
 
 
-\subsection{Include all Libraries in App Main.cpp}
+\subsection{Include All Libraries in App Main.cpp}
 
 It is tricky to include the libraries files in main. Some have directories, some do not.
 
@@ -946,7 +946,7 @@ cmake directory.
 \end{center}
 
 
-\subsection{CPM configuration in root CMakeLists.txt}
+\subsection{CPM Configuration in Root CMakeLists.txt}
 
 Add an option in your root CMakeLists.txt.
 Since the course's project has two different ways to import external libraries,
@@ -1033,7 +1033,7 @@ The conan database is [here](https://conan.io/center/).
 \end{verbatim}
 
 
-\subsection{Conan Configuration in root CMakeLists.txt}
+\subsection{Conan Configuration in Root CMakeLists.txt}
 
 There is a pattern here, when you want to use something new in your cmake project,
 set an option in the CMakeLists.txt file first.
@@ -1305,13 +1305,11 @@ Towards the end of the course, the graph was more complex.
     \includegraphics[width=5in]{graph3.png}
 \end{center}
 
-
-
 \section{Doxygen Documentation}
 
 Generate html documentation for our code. For example, for our library. The course has a vscode extention: Doxygen Documentation Generator.
 
-\subsection{Vscode Extension}
+\subsection{Doxygen Vscode Extension}
 
 The extention generates documentation base on this synthax.
 
@@ -1391,7 +1389,7 @@ it has the index.html automatically. The webpage looks like this:
 \end{center}
 
 
-\subsection{Document Custom Target}
+\subsection{Doxygen Custom Target Documentation}
 
 We need to add the documentation to our cmake project.
 
@@ -1409,7 +1407,7 @@ include(Docs)               # this is our new dir.
 \end{verbatim}
 
 
-\subsection{Doc.cmake}
+\subsection{Doxygen Doc.cmake}
 
 Cmake needs to find Doxygen, because we are using it for our docs. In Docs.cmake,
 
@@ -1435,12 +1433,11 @@ Now Documentation can be built seperately, independently of the main project app
 
 \section{Catch2 - Unit Testing}
 
-\subsection{Function testing example}
+\subsection{Function Unit Testing}
 
 Adding Unit test to our codebase, with the catch2 library. Unit tests are useful to test functions from the library.
 
 There is a tutorial on the github catch2 page. As an example, it provides this factorial function example, to try.
-
 
 \begin{verbatim}
 unsigned int factorial( unsigned int number ) {
@@ -1458,7 +1455,7 @@ std::uint32_t factorial(std::unint32_t number)
 \end{verbatim}
 
 
-\subsection{Test Directory}
+\subsection{Unit Test Directory}
 
 To introduce unit testing, we create a new directory: tests.
 
@@ -1480,7 +1477,7 @@ add_subdirectory(tests) # adding tests
 executable we'll both use our library, but we will test with Unit. Unit will test if all our implemented functions work without bugs.}
 
 
-\subsection{Tests Set-up, CMakeLists.txt}
+\subsection{Unit Tests Configuration CMakeLists.txt}
 
 \begin{verbatim}
 set(TEST_MAIN "unit_tests")        # this is the name of our testing executable
@@ -1497,7 +1494,7 @@ target_link_libraries(${TEST_MAIN} PUBLIC ${LIBA} Catch2::Catch2)
 \end{verbatim}
 
 
-\subsection{Defining Tests}
+\subsection{Unit Tests Definition}
 
 To test the factorial function, this is the test definition given as example.
 
@@ -1521,7 +1518,7 @@ std::uint32_t factorial(std::uint32_t number);
 \end{verbatim}
 
 
-\subsection{Command Line Testing Option}
+\subsection{Unit Testing Command Line Options}
 
 It is convenient to have a command line option to activate or deactivate our testing build. In our root CMakeLists.txt
 file, we add an option. In our CMakeLists.txt in the tests directory, we add an if statement. 
@@ -1561,11 +1558,9 @@ you can test a function with a keyword like require, or require_equal. Giving an
 REQUIRE( factorial(0) == 0)
 \end{verbatim}
 
-\section{Public, Interface and Private}
+\section{Linking Types Differences} 
 
 Public and private is similar to OOP public and private keywords in classes.
-
-\subsection{Different Linking Types}
 
 \begin{verbatim}
 add_library(A ...)
@@ -1573,7 +1568,7 @@ add_library(B ...)
 add_library(C ...)
 \end{verbatim}
 
-\subsection{Public}
+\subsection{Linking Type Public}
 
 Here, fmt can be used in the library of A. 
 
@@ -1587,7 +1582,7 @@ target_link_libraries(C PUBLIC/PRIVATE A)
 When A links fmt as PUBLIC, it says that A uses fmt in its implementation, and fmt is also used in A's public API.
 Hence, C can use fmt since it is part of the public API of A.
 
-\subsection{Private}
+\subsection{Linking Type Private}
 
 Using PRIVATE does not make the library available in the target's public API. Instead, it is part of a private API.
 When B links in spdlog as PRIVATE, it is saying that B uses spdlog in its implementation,
@@ -1605,7 +1600,7 @@ spdlog.
 
 In a professional setting, you want to keep certain aspect of you project private. Hence, this option to consider.
 
-\subsection{Interface}
+\subsection{Linking Type Interface}
 
 In general, used for header-only libraries. That is, libraries where you don't need to compile anything. They do not have
 any compilation logic in them.
@@ -1618,10 +1613,9 @@ target_include_directories(D INTERFACE {CMAKE_CURRENT_SOURCE_DIR}/include)
 \end{verbatim}
 
 
+\section{Library Types Difference}
 
-\section{Different Library Types}
-
-\subsection{Library}
+\subsection{Library Type Library}
 
 A binary file that contains information about code.
 A library cannot be executed on its own.
@@ -1634,7 +1628,7 @@ cmake --build . --target Library
 cmake --build . --target Executable // it is dependent to the Library build!
 \end{verbatim}
 
-\subsection{Shared}
+\subsection{Library Type Shared}
 
 \begin{verbatim}
 Linux: *.so
@@ -1653,7 +1647,7 @@ A file that needs to be carried along with the executable.
 \end{center}
 
 
-\subsection{Static}
+\subsection{Library Type Static}
 
 \begin{verbatim}
 Linux/MacOS: *.a
@@ -1666,13 +1660,14 @@ As the code is connected at compile time there are not any additional run-time l
 A staticly compiled into the executable.
 
 
-\section{Adding Compiler Warnings}
+\section{Compiler Warnings}
 
-You can pull certain warnings for a particular target. We can activate them based on the operating system and on the compiler.
-We can trigger certain set of compiler checks. In this course, we had two targets: the library target and the executable target.
+You can pull certain warnings for a particular target.
+We can activate them based on the operating system and on the compiler.
+We can trigger certain set of compiler checks.
+In this course, we had two targets: the library target and the executable target.
 
 In the cmake directory, add Warnings.cmake. 
-
 
 \begin{center}
     \includegraphics[width=2in]{warnings1.png}
@@ -1735,7 +1730,7 @@ function(target_set_warnings)
 endfunction(target_set_warnings TARGET)
 \end{verbatim}
 
-\subsection{Check user's Compiler}
+\subsection{Compiler Check User's Compiler}
 
 \begin{verbatim}
 if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
@@ -1748,7 +1743,7 @@ endif()
 \end{verbatim}
 
 
-\subsection{Warnings Root CMakeLists Options}
+\subsection{Compiler Warnings Root CMakeLists Options}
 
 We just created a function to check the user's compiler and set compilation warnings.
 Now create options in the root CMakeFilelists.txt.
@@ -1765,7 +1760,7 @@ endif()
 \end{verbatim}
 
 
-\subsection{Executable Target Enable Warnings}
+\subsection{Compiler Warnings Executable Target}
 
 There are two targets that can have compilation warnings, our library and our executable (our app). We have to 
 add warning conditionals in both of their CMakeLists.txt file.
@@ -1864,7 +1859,7 @@ endfunction()
 \end{verbatim}
 
 
-\subsection{Activate Sanitizers in Root CMakeLists.txt}
+\subsection{Sanitizers Activation in Root CMakeLists.txt}
 
 Call the add\_sanitizer\_flags function from root.
 
@@ -1875,7 +1870,7 @@ if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
 endif()
 \end{verbatim}
 
-\subsection{Sanitizer bug example}
+\subsection{Sanitizer Bugs}
 
 Going out of bounds, like this, would be caught be clang-tidy, but not by compilers. Thus, Sanitizers help big time. See documentation at
 gcc.gnu.org/onlinedocs/Instrumentation-Options.html.
@@ -2052,16 +2047,14 @@ if(${ENABLE_LTO})
 endif()
 \end{verbatim}
 
-\chapter{Cpp Project Template}
+\chapter{Cpp Project Engineering}
 
 A project template was included in the course. 
 
 
 \section{Clang Tools}
 
-
-\subsection{Tools.cmake}
-
+\subsection{Clang Tools.cmake}
 
 This content was seen at the end of the course. The instructor configured the tools in a new Tools.cmake file.
 
@@ -2195,7 +2188,7 @@ endfunction()
 \end{verbatim}
 
 
-\subsection{Tool Directory}
+\subsection{Clang Tool Directory}
 
 The previous tool.cmake file references two python files, one for clang-format and one for clang-tidy.
 Both are part of the LLVM package, no need to inspect those, it is part of the programs.
@@ -2546,7 +2539,7 @@ lcov generates a code Coverage directory, with information in an html.
 
 
 
-\subsection{CodeCoverage.cmake}
+\subsection{Code Coverage.cmake}
 
 \begin{verbatim}
 include(CMakeParseArguments)
@@ -2732,10 +2725,7 @@ endfunction()
 \end{verbatim}
 
 
-\section{Continuous Integration}
-
-
-\subsection{Github Actions}
+\section{Github Actions Continuous Integration}
 
 Yml files instruct github to perform some actions when you push to the main branch. 
 You can have unit testing automatically when you push for example.
@@ -2777,7 +2767,7 @@ You can have great icons to see versions of the project passing on your github p
 \end{center}
 
 
-\subsection{Codecov}
+\subsection{Github Actions Codecov}
 
 In Ubuntu, it is possible to upload the code coverage online, for free, automatically with github actions.
 
@@ -2902,13 +2892,6 @@ and
 Run the install function we just seen.
 \end{verbatim}
 
-
-\section{Cmake GUI}
-
-\section{ImGUI}
-
-
-
 \section{Jason Turner's Template}
 
 \begin{verbatim}
@@ -2918,7 +2901,7 @@ rename "myproject" in the cmake files to use it.
 
 \end{verbatim}
 
-\subsection{Lefticus Defaults - ProjectOptions.cmake}
+\subsection{Jason Turner Tools Defaults- ProjectOptions.cmake}
 
 \begin{verbatim}
 Address sanitizer
@@ -2946,112 +2929,17 @@ More compilation options / securities.
 + debug information 
 \end{verbatim}
 
-\section{Simple Cmake (Modern)}
 
-\subsection{Context}
-
-Cmake is "a generator of make files", it abstracts away makefile complexity.
-
-\begin{verbatim}
-First, cmake // generate make files
-Second, make // run make files
-Last, ./hello // run the created executable
-\end{verbatim}
-
-To create an executable of hello.cpp. We usually:
-\begin{verbatim}
-:wq // quit vim
-g++ main.cpp -o hello // compile 
-./hello // run the executable
-\end{verbatim}
-
-\subsection{CMakeLists.txt}
-
-With Cmake, we can have:
-
-\begin{verbatim}
-// have cmake installed
-
-cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-project(hello VERSION 1.0)
-add_executable(hello main.cpp)
-\end{verbatim}
-
-Run CMake from the command line, specify a directory.
-\begin{verbatim}
-cmake . && make && ./hello
-\end{verbatim}
-
-\subsection{Cmake .  }
-
-Generates all needed make files (Artifacts).
-
-\begin{center}
-    \includegraphics[width=4in]{cmake_dir.png}
-\end{center}
-
-\subsection{Make}
-
-With the MakeFile generated by cmake. Build your binary (the executable) with:
-
-\begin{center}
-    \includegraphics[width=4in]{make.png}
-\end{center}
-
-\subsection{Build folder}
-
-\begin{center}
-    \includegraphics[width=4in]{build.png}
-\end{center}
-
-\subsection{Sick CMake Vim plugins combos}
+\section{CMake Vim Plugins Combos}
 
 \begin{verbatim}
 See codevion/cpp2.md
 \end{verbatim}
 
-\subsection{COC - for code completion in nvim}
+\section{COC - for code completion in nvim}
 \begin{verbatim}
 https://github.com/neoclide/coc.nvim
 Jason Turner has this too
-\end{verbatim}
-
-\subsection{Include Header File - CMake Continued}
-
-\begin{verbatim}
-target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-    // Standard is having header files in /include directory!
-
-hello // our target, where to add the stuff from headers
-PUBLIC // gives the scope of added stuff from headers. 
-       // Public, Private or Interface
-       // Usage: when you have cmake library, make sure it is seen by #include in files
-
-cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-project(hello VERSION 1.0)
-add_executable(hello main.cpp)
-target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-\end{verbatim}
-
-\subsubsection{In header file}
-
-\begin{verbatim}
-#pragma once
-#include <iostream>
-
-class Blah {
-    public:
-        inline void boo() {
-            std::cout << "Boo!\n";
-        }
-};
 \end{verbatim}
 
 \subsection{Pragma Once}
@@ -3085,28 +2973,6 @@ file(GLOB_RECURSE SRC_FILES src/*.cpp) // glob everything in src/
 add_executable(hello ${SRC_FILES})
 \end{verbatim}
 
-\subsection{src Directory - source files}
-
-Declaration in the header file \textbf{blah.h}.
-\begin{verbatim}
-#pragma once
-
-class Blah {
-    public:
-        void boo(); // declaring function boo in header
-}
-\end{verbatim}
-
-Definition (implementation) of class Blah in the source files \textbf{blah.cpp}.
-\begin{verbatim}
-#include "blah.h"
-#include <iostream>
-
-void Blah::boo() {
-    std::cout << "Boo!\n"; // defining function boo in src file
-}
-\end{verbatim}
-
 \textbf{In CMake - Traditionally Added}
 \begin{verbatim}
 add_executable(hello main.cpp src/Blah.cpp) // added here
@@ -3117,54 +2983,6 @@ add_executable(hello main.cpp src/Blah.cpp) // added here
 file(GLOB_RECURSE SRC_FILES src/*.cpp)
 add_executable(hello main.cpp ${SRC_FILES})
 \end{verbatim}
-
-\subsection{CMake Custom Libraries}
-
-Create a lib from some source files:
-
-\begin{verbatim}
-Replace add_executable with add_library
-
-add_library(mylib STATIC lib/blah.cpp) // create a library
-                                       // Staticly linked or dynamicly linked
-\end{verbatim}
-
-Then, include it in your main executable
-\begin{verbatim}
-target_link_libraries(hello Public mylib)
-\end{verbatim}
-
-\subsection{Custom Library Implementation - Blah example}
-
-\begin{center}
-    \includegraphics[width=2in]{blah_tree.png}
-\end{center}
-
-\begin{verbatim}
-cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-project(hello VERSION 1.0)
-
-add_library(blah STATIC blah/Blah.cpp)
-target_include_directories(blah PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/blah/include)
-
-// file(GLOB_RECURSE SRC_FILES src/*.cpp)
-// now useless, since main.cpp has #include added library
-
-// We are linking our library with our executable directly, with
-// target_include_libraries
-
-add_executable(hello main.cpp)
-target_link_libraries(hello PUBLIC blah)
-\end{verbatim}
-
-The target link generates a libblah.a
-
-\begin{center}
-    \includegraphics[width=2in]{target_link.png}
-\end{center}
 
 \section{Jason Turner's CMake Template - Options}
 
