@@ -986,29 +986,6 @@ void intro(std::string name, std::string lang) {
 }
 \end{verbatim}
 
-\subsection{Ls Function}
-
-\begin{verbatim}
-// C++17 // g++ -std=c++17 myfile.cpp -o output-name
-
-#include <filesystem>
-namespace fs = std::filesystem;
-
-int main()
-{
-    std::string path = "./foo";
-    for (const auto &entry : fs::directory_iterator(path))
-        std::cout << entry.path() << std::endl; // valid single statement synthax
-                                                // If no optional block
-                                                // only the statement following
-                                                // the loop construct is executed.
-}
-
-&entry : fs::directory_iterator(path)
-& creates a reference to the elements of the fs::directory_iterator object.
-
-\end{verbatim}
-
 
 \section{References}
 
@@ -1659,7 +1636,7 @@ void print_map(const Map &map, const std::string key_desc = "key",
 }
 \end{verbatim}
 
-\subsection{Capturing}
+\subsection{Lambdas Captures}
 
 Mechanism through which a lambda function access variables from its surrounding scope.
 Use outside variable within their body.
@@ -1817,10 +1794,9 @@ int main() {
 \end{verbatim}
 
 
-\section{Concepts (c++20)}
+\section{Concepts}
 
 I want to have two versions of a function, one takes a Floating Point, the other an Integral value.
-
 Allows us to specify the requirements for a type, implicitly creating a template
 that constrains how a function can be used. Standard: C++20
 
@@ -3049,9 +3025,27 @@ fs::remove_all("sandbox");
 }
 \end{verbatim}
 
+\subsection{Directory Iterators}
+
+\begin{verbatim}
+#include <filesystem>
+namespace fs = std::filesystem;
+
+int main()
+{
+    std::string path = "./foo";
+    for (const auto &entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl; // valid single statement synthax
+                                                // If no optional block
+                                                // only the statement following
+                                                // the loop construct is executed.
+}
+
+&entry : fs::directory_iterator(path)
+& creates a reference to the elements of the fs::directory_iterator object.
+\end{verbatim}
 
 \subsection{File Creation}
-
 
 
 \subsection{Testing Framework}
