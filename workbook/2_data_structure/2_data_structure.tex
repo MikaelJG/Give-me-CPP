@@ -934,6 +934,106 @@ you're using and the specific serialization and deserialization mechanisms avail
 Many programming languages provide libraries or built-in features for serialization,
 such as JSON or XML parsers, binary serialization libraries, or custom serialization methods.
 
+
+\section{Trees}
+
+
+\section{Graphs}
+
+\chapter{Sorting Algorithms}
+
+
+\section{Bubble Sort}
+
+\section{Quick Sort}
+
+
+
+\section{Dijsktra Shortest Path}
+
+Below is a C++ implementation of Dijkstra's algorithm for finding the shortest path in a weighted graph.
+This implementation uses an adjacency list representation of the graph
+and a priority queue (min heap) to efficiently select the next node with the smallest distance.
+
+
+\begin{verbatim}
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <limits>
+
+const int INF = std::numeric_limits<int>::max();
+
+// Node representation in the graph
+struct Node {
+    int index;
+    int distance;
+
+    Node(int idx, int dist) : index(idx), distance(dist) {}
+
+    // Overload the comparison operator for the priority queue
+    bool operator>(const Node& other) const {
+        return distance > other.distance;
+    }
+};
+
+// Dijkstra's algorithm for finding the shortest path
+std::vector<int> dijkstraShortestPath(const std::vector<std::vector<std::pair<int, int>>>& graph, int source) {
+    int n = graph.size();
+    std::vector<int> distance(n, INF);
+    distance[source] = 0;
+
+    std::priority_queue<Node, std::vector<Node>, std::greater<Node>> pq;
+    pq.push(Node(source, 0));
+
+    while (!pq.empty()) {
+        Node current = pq.top();
+        pq.pop();
+
+        if (current.distance > distance[current.index])
+            continue;
+
+        for (const auto& neighbor : graph[current.index]) {
+            int newDistance = current.distance + neighbor.second;
+            if (newDistance < distance[neighbor.first]) {
+                distance[neighbor.first] = newDistance;
+                pq.push(Node(neighbor.first, newDistance));
+            }
+        }
+    }
+
+    return distance;
+}
+
+int main() {
+    int n = 5; // Number of nodes in the graph
+    std::vector<std::vector<std::pair<int, int>>> graph(n);
+
+    // Add edges to the graph (format: {destination, weight})
+    graph[0].push_back({1, 5});
+    graph[0].push_back({2, 3});
+    graph[1].push_back({2, 2});
+    graph[1].push_back({3, 6});
+    graph[2].push_back({3, 7});
+    graph[3].push_back({4, 4});
+
+    int source = 0; // Source node
+
+    std::vector<int> shortestDistances = dijkstraShortestPath(graph, source);
+
+    // Print the shortest distances from the source node to all other nodes
+    for (int i = 0; i < n; ++i) {
+        std::cout << "Shortest distance from node " << source << " to node " << i << ": ";
+        if (shortestDistances[i] == INF)
+            std::cout << "Not reachable" << std::endl;
+        else
+            std::cout << shortestDistances[i] << std::endl;
+    }
+
+    return 0;
+}
+\end{verbatim}
+
 \section{Algorithms}
 
 \subsection{Accumulate}
