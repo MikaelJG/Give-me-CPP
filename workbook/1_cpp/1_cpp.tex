@@ -1,4 +1,4 @@
-\chapter{C++}
+\chapter{C++ Basics}
 
 \section{Variables}
 
@@ -12,9 +12,314 @@
     bool: true/false                // 1 byte
 
     // use sizeof for size
-bool flag;
-std::cout << "Size of int: " << sizeof(numInt); 
 
+std::cout << "Size of int: " << sizeof(numInt); 
+\end{verbatim}
+
+\section{Auto}
+
+\begin{verbatim}
+constexpr double calculate_pi() {
+    return 22/7;
+}
+
+constexpr auto pi = calculate_pi();
+
+int main()
+{
+    const auto radius = 1.5;
+    const auto area = pi * radius * radius;
+    std::cout << area;
+
+}
+
+Automatic deduction of value types. Standard c++11
+
+constexpr auto calculate_pi() { // Return type deduction 
+                                // for normal functions.
+    return 22/7;
+}
+
+constexpr auto pi = calculate_pi();
+
+int main()
+{
+    const auto radius = 1.5;
+    const auto area = pi * radius * radius;
+    std::cout << area;
+}
+
+// const auto
+const auto result = std::count( /*stuff */);
+
+or, if you prefer:
+// auto const
+
+auto const result = std::count( /*stuff*/ );
+\end{verbatim}
+
+\subsection{Auto Expensive Conversion}
+
+Avoid potential expensive conversions. Same as ranged-for loops. 
+
+Auto requires initialization, same as const. 
+
+\begin{verbatim}
+const std::string value = get_string_value();
+
+// What is the return type of get_string_value()? 
+
+If its std::string_view or const char *,
+we'll get costly conversion on all compilers with no diagnostic. 
+
+// avoids conversion
+const auto value = get_string_value();
+
+Plus, auto return types simplifies code
+
+template<typename Arithmetic>
+Arithmetic divide(Arithmetic numerator, Arithmetic denominator) {
+    return numerator / denominator;
+}
+\end{verbatim}
+
+\section{Constexp}
+
+Compile-time generation of code and data.
+
+\begin{verbatim}
+#include <iostream>
+
+const double pi = 3.141593;
+
+int main()
+{
+   const double radius = 1.5;
+   const double area = pi * radius * radius;
+   std::cout << area;
+}
+    // is pi known at compile time??
+
+// If only there was some way to make a compile-time constant....
+
+#include <iostream>
+
+constexpr double pi = 3.141593;
+
+int main()
+{
+   const double radius = 1.5;
+   const double area = pi * radius * radius;
+   std::cout << area;
+}
+
+// OR EVEN, Generate it at compile-time.
+
+#include <iostream>
+
+constexpr double calculate_pi() {
+    return 22/7;
+}
+
+constexpr double pi = calculate_pi();
+
+int main()
+{
+   const double radius = 1.5;
+   const double area = pi * radius * radius;
+   std::cout << area;
+}
+
+// This function can be executed at compile-time
+constexpr double calculate_pi() {
+    return 22/7;
+}
+
+// This value will be available at compile-time 
+constexpr double pi = calculate_pi();
+
+Standard c++11, relaxed in c++14, relaxed a ton c++20
+
+// But what is the type of pi?? (double, float, long double?)
+I don't care?
+It depends?
+
+// If only there was a way to mention "I don't care or It depends" for what a type is ......  
+`constexpr` is used for compile-time evaluation.
+It ensures that an expression or function can be computed at compile time.
+It reduces runtime overhead.
+The program avoids the need to perform those computations at runtime. 
+
+The computations are already done during the compilation process, 
+The program doesn't incur the additional time and resources required
+to perform them during runtime execution.
+\end{verbatim}
+
+\subsection{Overcomplicated Constexpr}
+
+\begin{verbatim}
+
+// static const data known at compile time. 
+static const std::vector<int> angles{-90,-45,0,45,90};
+\end{verbatim}
+
+\subsection{Useful Constexpr}
+
+\begin{verbatim}
+// Moving static const to static constexpr.
+static constexpr std::array<int, 5> angles{-90,45,0,45,90};
+
+Here static constexpr makes sure the object
+is not reinitialized each time the function is encountered.
+
+With static (see object lifetimes), the variable lasts for the lifetime of the program.
+It will be initialized only once. 
+
+    the size of the array is now known at compile time
+    We've removed dynamic allocations
+    We no longer pay the cost of accessing a static
+
+    " when you see a const, always ask yourself: "is this value known at compile time? 
+    If it is, what would it take to make the value constexpr?" 
+\end{verbatim}
+
+\section{Const Char}
+
+\begin{verbatim}
+#include <filesystem>
+#include <iostream>
+
+namespace fs = std::filesystem;
+
+int main() {
+    fs::path path = "your_directory_path";
+
+    for (const auto &entry : fs::directory_iterator(path)) {
+        const char *cstr = entry.path().c_str();
+        std::cout << cstr << '\n';
+    }
+    return 0;
+}
+\end{verbatim}
+
+\section{Synthax}
+\subsection{Ternary Operator}
+\begin{verbatim}
+std::cout << (coin == 0 ? "Heads" : "Tails") << "\n";
+\end{verbatim}
+
+\subsection{Relational Operators}
+
+\begin{verbatim}
+    ==              equal to
+    !=              not equal to
+    >               greater than
+    <               less than
+    >=              greater than or equal to
+    <=              less than or equal to
+\end{verbatim}
+
+\subsection{Logical Operators}
+
+\begin{verbatim}
+    &&              and 
+    ||              or
+    !               not
+
+    if (hunger && anger){}
+
+    ( !true )       not false
+    ( !(10 < 11) )  not condition 
+\end{verbatim}
+
+\subsection{String Manipulation}
+
+\begin{verbatim}
+reversed_text += text
+
+std::string chapOnePath = parentDirectory + "/chap_1";
+\end{verbatim}
+
+\subsection{Scope}
+
+\begin{verbatim}
+run() {
+    {
+        Is this in scope? //This variable is out of scope.?
+    {
+    
+}
+\end{verbatim}
+
+\subsection{Chaining}
+
+\begin{verbatim}
+int age = 28;
+std::cout << age << "years old.\n";
+
+template <typename T>
+struct MathOperation {
+    T value;
+
+    MathOperation(T val) : value(val) {}
+
+    template <typename U>
+    MathOperation<U> add(U val) {
+        return MathOperation<U>(value + val);
+    }
+
+    template <typename U>
+    MathOperation<U> multiply(U val) {
+        return MathOperation<U>(value * val);
+    }
+
+    void print() {
+        std::cout << "Result: " << value << std::endl;
+    }
+};
+
+int main() {
+    MathOperation<int> operation(5);
+    operation.add(3).multiply(2).print();
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Sstream}
+
+`std::stringstream` is a C++ class. It handling string-based input and output operations,
+allowing you to read from and write to strings as if they were input/output streams.
+
+\begin{verbatim}
+#include <map>
+#include <sstream>
+#include <string>
+
+int main() {
+    std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+    // convert text to lowercase
+    for (char& c : text) {
+        c = std::tolower(c);
+    }
+
+    std::map<std::string, int> wordfreq;
+    std::istringstream iss(text);
+    std::string word;
+
+    // count the frequency of each word in the text
+    while (iss >> word) {
+        wordfreq[word]++;
+    }
+
+    // display the word frequencies
+    for (const auto& pair : wordfreq) {
+        std::cout << pair.first << ": " << pair.second << std::endl;
+    }
+
+    return 0;
+}
 \end{verbatim}
 
 
@@ -1902,252 +2207,6 @@ int main() {
 // If only there was some way to automatically delete things when they are no longer needed...
 \end{verbatim}
 
-\section{Auto}
-
-\begin{verbatim}
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-constexpr auto pi = calculate_pi();
-
-int main()
-{
-    const auto radius = 1.5;
-    const auto area = pi * radius * radius;
-    std::cout << area;
-
-}
-
-Automatic deduction of value types. Standard c++11
-
-constexpr auto calculate_pi() { // Return type deduction 
-                                // for normal functions.
-    return 22/7;
-}
-
-constexpr auto pi = calculate_pi();
-
-int main()
-{
-    const auto radius = 1.5;
-    const auto area = pi * radius * radius;
-    std::cout << area;
-}
-
-// const auto
-const auto result = std::count( /*stuff */);
-
-or, if you prefer:
-// auto const
-
-auto const result = std::count( /*stuff*/ );
-\end{verbatim}
-
-\subsection{Familiarize Yourself with Auto Deduction}
-
-\begin{verbatim}
-
-What is the type of val in all these situation?
-
-const int *get();
-
-int main() {
-    const auto val = get();
-}
-
-const int &get();
-
-int main() {
-    const auto val = get();
-}
-
-The function get() returns a const int\& (a reference to a constant integer),
-and the auto keyword deduces the type of val as the same as the type of the
-expression on the right-hand side of the assignment.
-Since get() returns a const int&, the type of val is also const int&.
-The const qualifier in front of auto ensures that the type deduced for
-val is also a const reference.
-
-Const int *get();
-
-int main() {
-    const auto *val = get();
-}
-
-According to GPT
-
-The function get() returns a const int* (a pointer to a constant integer),
-and the auto keyword deduces the type of val as the same as the type of the
-expression on the right-hand side of the assignment.
-Since get() returns a const int*, the type of val is also const int*.
-
-The const qualifier applies to the integer pointed to by val,
-not to the pointer val itself. Therefore, val is a non-constant pointer to a constant integer.
-If you wanted a constant pointer to a constant integer,
-you would need to declare val as const int * const val = get();
-
-const int &get();
-
-int main() {
-    const auto &val = get();
-}
-
-const int *get();
-
-int main() {
-    const auto &val = get();
-}
-
-const int &get();
-
-int main() {
-    const auto &&val = get();
-}
-\end{verbatim}
-
-\subsection{possible expensive conversion}
-
-Avoid potential expensive conversions. Same as ranged-for loops. 
-
-Auto requires initialization, same as const. 
-\begin{verbatim}
-const std::string value = get_string_value();
-
-// What is the return type of get_string_value()? 
-
-If its std::string_view or const char *,
-we'll get costly conversion on all compilers with no diagnostic. 
-
-// avoids conversion
-const auto value = get_string_value();
-
-Plus, auto return types simplifies code
-
-template<typename Arithmetic>
-Arithmetic divide(Arithmetic numerator, Arithmetic denominator) {
-    return numerator / denominator;
-}
-\end{verbatim}
-
-\section{Constexp}
-
-Compile-time generation of code and data.
-
-\begin{verbatim}
-#include <iostream>
-
-const double pi = 3.141593;
-
-int main()
-{
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
-}
-    // is pi known at compile time??
-
-// If only there was some way to make a compile-time constant....
-
-#include <iostream>
-
-constexpr double pi = 3.141593;
-
-int main()
-{
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
-}
-
-// OR EVEN, Generate it at compile-time.
-
-#include <iostream>
-
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-constexpr double pi = calculate_pi();
-
-int main()
-{
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
-}
-
-// This function can be executed at compile-time
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-// This value will be available at compile-time 
-constexpr double pi = calculate_pi();
-
-Standard c++11, relaxed in c++14, relaxed a ton c++20
-
-// But what is the type of pi?? (double, float, long double?)
-I don't care?
-It depends?
-
-// If only there was a way to mention "I don't care or It depends" for what a type is ......  
-`constexpr` is used for compile-time evaluation.
-It ensures that an expression or function can be computed at compile time.
-It reduces runtime overhead.
-The program avoids the need to perform those computations at runtime. 
-
-The computations are already done during the compilation process, 
-The program doesn't incur the additional time and resources required
-to perform them during runtime execution.
-\end{verbatim}
-
-\subsection{Overcomplicated Constexpr}
-
-\begin{verbatim}
-
-// static const data known at compile time. 
-static const std::vector<int> angles{-90,-45,0,45,90};
-\end{verbatim}
-
-\subsection{Useful Constexpr}
-
-\begin{verbatim}
-// Moving static const to static constexpr.
-static constexpr std::array<int, 5> angles{-90,45,0,45,90};
-
-Here static constexpr makes sure the object
-is not reinitialized each time the function is encountered.
-
-With static (see object lifetimes), the variable lasts for the lifetime of the program.
-It will be initialized only once. 
-
-    the size of the array is now known at compile time
-    We've removed dynamic allocations
-    We no longer pay the cost of accessing a static
-
-    " when you see a const, always ask yourself: "is this value known at compile time? 
-    If it is, what would it take to make the value constexpr?" 
-\end{verbatim}
-
-\subsection{What is a const char?}
-
-\begin{verbatim}
-#include <filesystem>
-#include <iostream>
-
-namespace fs = std::filesystem;
-
-int main() {
-    fs::path path = "your_directory_path";
-
-    for (const auto &entry : fs::directory_iterator(path)) {
-        const char *cstr = entry.path().c_str();
-        std::cout << cstr << '\n';
-    }
-    return 0;
-}
-\end{verbatim}
 
 \section{Memory Allocation}
 
@@ -2492,6 +2551,24 @@ auto s_factory(){
 }
 \end{verbatim}
 
+\chapter{Timeline of Programs}
+
+Where are sanitizers, compiler warnings, clang-tidy? In this timeline?
+
+\section{Before Compilation}
+
+\subsection{Before Compilation Tools}
+
+\section{Compilation Time}
+
+\subsection{Compile Time Tools}
+
+
+\section{Runtime}
+
+\subsection{Runtime Tools}
+
+
 \chapter{Libraries}
 
 A collection of pre-compiled code, providing functionality. Functions, classes and data structures,
@@ -2769,125 +2846,6 @@ int main() {
 \end{verbatim}
 
 
-\section{Synthax}
-\subsection{Ternary Operator}
-\begin{verbatim}
-std::cout << (coin == 0 ? "Heads" : "Tails") << "\n";
-\end{verbatim}
-
-\subsection{Relational Operators}
-
-\begin{verbatim}
-    ==              equal to
-    !=              not equal to
-    >               greater than
-    <               less than
-    >=              greater than or equal to
-    <=              less than or equal to
-\end{verbatim}
-
-\subsection{Logical Operators}
-
-\begin{verbatim}
-    &&              and 
-    ||              or
-    !               not
-
-    if (hunger && anger){}
-
-    ( !true )       not false
-    ( !(10 < 11) )  not condition 
-\end{verbatim}
-
-\subsection{String Manipulation}
-
-\begin{verbatim}
-reversed_text += text
-
-std::string chapOnePath = parentDirectory + "/chap_1";
-\end{verbatim}
-
-\subsection{Scope}
-
-\begin{verbatim}
-run() {
-    {
-        Is this in scope? //This variable is out of scope.?
-    {
-    
-}
-\end{verbatim}
-
-\subsection{Chaining}
-
-\begin{verbatim}
-int age = 28;
-std::cout << age << "years old.\n";
-
-template <typename T>
-struct MathOperation {
-    T value;
-
-    MathOperation(T val) : value(val) {}
-
-    template <typename U>
-    MathOperation<U> add(U val) {
-        return MathOperation<U>(value + val);
-    }
-
-    template <typename U>
-    MathOperation<U> multiply(U val) {
-        return MathOperation<U>(value * val);
-    }
-
-    void print() {
-        std::cout << "Result: " << value << std::endl;
-    }
-};
-
-int main() {
-    MathOperation<int> operation(5);
-    operation.add(3).multiply(2).print();
-
-    return 0;
-}
-\end{verbatim}
-
-\subsection{Sstream}
-
-`std::stringstream` is a C++ class. It handling string-based input and output operations,
-allowing you to read from and write to strings as if they were input/output streams.
-
-\begin{verbatim}
-#include <map>
-#include <sstream>
-#include <string>
-
-int main() {
-    std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-
-    // convert text to lowercase
-    for (char& c : text) {
-        c = std::tolower(c);
-    }
-
-    std::map<std::string, int> wordfreq;
-    std::istringstream iss(text);
-    std::string word;
-
-    // count the frequency of each word in the text
-    while (iss >> word) {
-        wordfreq[word]++;
-    }
-
-    // display the word frequencies
-    for (const auto& pair : wordfreq) {
-        std::cout << pair.first << ": " << pair.second << std::endl;
-    }
-
-    return 0;
-}
-\end{verbatim}
 
 \section{Type}
 
@@ -3156,3 +3114,63 @@ int divide(int numerator, int denominator) {
 // Templates were designed for just this scenario. 
 \end{verbatim}
 
+\subsection{Auto Deduction Practice}
+
+\begin{verbatim}
+What is the type of val in all these situation?
+
+const int *get();
+
+int main() {
+    const auto val = get();
+}
+
+const int &get();
+
+int main() {
+    const auto val = get();
+}
+
+The function get() returns a const int\& (a reference to a constant integer),
+and the auto keyword deduces the type of val as the same as the type of the
+expression on the right-hand side of the assignment.
+Since get() returns a const int&, the type of val is also const int&.
+The const qualifier in front of auto ensures that the type deduced for
+val is also a const reference.
+
+Const int *get();
+
+int main() {
+    const auto *val = get();
+}
+
+According to GPT
+
+The function get() returns a const int* (a pointer to a constant integer),
+and the auto keyword deduces the type of val as the same as the type of the
+expression on the right-hand side of the assignment.
+Since get() returns a const int*, the type of val is also const int*.
+
+The const qualifier applies to the integer pointed to by val,
+not to the pointer val itself. Therefore, val is a non-constant pointer to a constant integer.
+If you wanted a constant pointer to a constant integer,
+you would need to declare val as const int * const val = get();
+
+const int &get();
+
+int main() {
+    const auto &val = get();
+}
+
+const int *get();
+
+int main() {
+    const auto &val = get();
+}
+
+const int &get();
+
+int main() {
+    const auto &&val = get();
+}
+\end{verbatim}
