@@ -2,6 +2,178 @@
 
 \chapter{Data Structures}
 
+\section{Containers}
+
+Arrays and vectors are the most common containers, I think. Arrays are fixed-size stack-based containers. Vectors
+are dynamic containers.
+
+\subsection{Containers Functions}
+
+\begin{verbatim}
+begin()         - returns an iterator on the first element 
+end()           - returns an iterator after the last element
+cbegin()        - version constant of begin() and end()
+cend()  
+rbegin()        - returns a reverse iterator pointing to the last element of a container
+rend()          - returns an iterator pointing to one position before the beginning
+before_begin()  - Only for forward_list! 
+                  returns an iterator pointing to the position
+                  before the first element in a container.  
+cbefore_begin() - Only for forward_list!
+                  Constant version of before_begin()
+
+#include <vector>
+
+int main() {
+    std::vector<int> numbers{1, 2, 3, 4, 5};
+
+    // Using rbegin() to iterate over elements in reverse order
+    for (auto it = numbers.rbegin(); it != numbers.rend(); ++it) {
+        std::cout << *it << " ";
+    }
+
+        // 5 4 3 2 1
+
+    return 0;
+}
+
+#include <forward_list>
+
+int main() {
+    std::forward_list<int> numbers{2, 3, 4};
+
+    // Inserting an element at the beginning using before_begin()
+    numbers.insert_after(numbers.before_begin(), 1);
+
+    // Printing the elements
+    for (auto it = numbers.begin(); it != numbers.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    
+        // 1 2 3 4
+
+    return 0;
+}
+
+
+Forward_list doesn't have support for rbegin() / rend() or
+crbegin() / crend()
+\end{verbatim}
+
+\subsection{Container Size functions}
+
+\begin{verbatim}
+size()     - returns the number of elements
+             not available for forward_lists
+max_size() - returns the maximum amount of elements that can be
+             stocked in a container
+resize()   - resize the container, to a new capacity
+             not available for arrays
+empty()    - returns true if container is empty, else false
+\end{verbatim}
+
+\subsection{Access and Research functions}
+
+\begin{verbatim}
+
+insert()
+    numbers.insert(numbers.begin(), 0); 
+    numbers.insert(numbers.begin() + 3, 10);
+    numbers.insert(numbers.begin() + 2, {7, 8, 9});
+
+push_back() / pop.back()
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    int newValue = 6;
+    vec.push_back(newValue);
+
+
+#include <list>
+#include <algorithm>
+
+struct Person {
+    std::string name;
+    int age;
+
+    Person(const std::string& n, int a) : name(n), age(a) {}
+};
+
+int main() {
+    std::list<Person> people;
+
+    // Inserting elements in sorted order based on age
+    people.insert(people.begin(), {"Alice", 25});
+    people.insert(people.begin(), {"Bob", 30});
+    people.insert(people.begin(), {"Charlie", 20});
+
+    // Inserting an element after finding a specific person
+    auto it = std::find_if(people.begin(), people.end(), [](const Person& p) {
+        return p.name == "Bob";
+    });
+    if (it != people.end()) {
+        people.insert(std::next(it), {"David", 27});
+    }
+\end{verbatim}
+
+\subsection{static\_cast}
+
+Used with enums to convert between different enum types or to convert an enum value to an integer type.
+It allows for explicit and controlled type conversions, providing better type safety
+
+\begin{verbatim}
+int main() {
+    Fruit selectedFruit = Fruit::Banana;
+    int fruitIndex = static_cast<int>(selectedFruit);
+
+    std::cout << "Selected fruit: " << fruitNames[fruitIndex] << std::endl;
+
+    return 0;
+}
+\end{verbatim}
+
+\subsection{Iterating over a Container}
+
+For Jason Turner, this construct, was one of the most difficult things to learn!
+
+\begin{verbatim}
+void print_map(const std::map<int, std::string> &map,
+               const std::string &key_desc = "key",
+               const std::string &value_desc = "value")
+{
+    for (std::map<int, std::string>::const_iterator data_itr = map.begin(); // this right here
+         data_itr != map.end();
+         ++data_itr)
+    {
+        std::cout << key_desc << ": '" << data_itr->first << "' "
+                  << value_desc << ": '" << data_itr->second << "'\n";
+    }
+}
+
+void print_map(const std::map<int, std::string> &map,
+               const std::string &key_desc = "key",
+               const std::string &value_desc = "value")
+{
+    for (auto data_itr = map.begin(); // auto, from c++11
+         data_itr != map.end();
+         ++data_itr)
+    {
+        std::cout << key_desc << ": '" << data_itr->first << "' "
+                  << value_desc << ": '" << data_itr->second << "'\n";
+    }
+}
+
+// If only there was some simple way to iterate over all the values in a container.....
+\end{verbatim}
+
+\subsection{Mismatched containers while looping}
+
+\begin{verbatim}
+for (auto itr = container.begin();
+    itr != container2.end();
+    ++itr) {
+    // oops! most of us have done this at some point
+}
+\end{verbatim}
+
 \section{Maps}
 
 Dynamically resizing containers.
