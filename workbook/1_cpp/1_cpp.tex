@@ -1219,7 +1219,7 @@ std::cout << &porcupine << "\n";
 // 0x7ffd7caa5b54
 \end{verbatim}
 
-\subsection{Boarding References}
+\subsection{References Boarding}
 
 \begin{verbatim}
 auto get_data(auto && ... params)
@@ -1233,7 +1233,7 @@ auto get_data(auto && ... params)
 This does not make c++ easier to teach, but it allows for high level efficiency. At this point, 
 is get\_data() even necessary?
 
-
+\chapter{Memory Allocation}
 \section{Pointers}
 
 \begin{verbatim}
@@ -1255,7 +1255,7 @@ int * number; // All Synthaxically valid
 Certainly! Here are two complex examples showcasing the use of pointers in C++:
 
 Example 1: Pointer to Pointer
-```cpp
+
 #include <iostream>
 
 int main() {
@@ -1269,36 +1269,11 @@ int main() {
 
     return 0;
 }
-```
-In this example, we declare a variable `value` and initialize it with the value 5. We then create a pointer `ptr` that points to the address of `value`. Finally, we create a pointer to a pointer `ptrToPtr` that points to the address of `ptr`. We can access the value of `value` through the pointer `ptr` using the dereference operator `*`, and we can access it through the pointer to pointer `ptrToPtr` using double dereference `**`.
-
-// Dynamic Memory Allocation
-
-int main() {
-    int size = 5;
-    int* dynamicArray = new int[size];
-
-    for (int i = 0; i < size; ++i) {
-        dynamicArray[i] = i + 1;
-    }
-
-    std::cout << "Dynamic Array: ";
-    for (int i = 0; i < size; ++i) {
-        std::cout << dynamicArray[i] << " ";
-    }
-    std::cout << std::endl;
-
-    delete[] dynamicArray;
-
-    return 0;
-}
-
-We allocate dynamic memory for an integer array of size 5 using the `new` keyword.
-We then populate the array with values from 1 to 5.
-Finally, we print and release the allocated memory using `delete[]` to avoid memory leaks.
 \end{verbatim}
 
-\subsection{Null pointers}
+
+
+\subsection{Null Pointers}
 
 \begin{verbatim}
 // Ptr to a yet unknown memory address. Dangerous stuff!
@@ -1306,10 +1281,12 @@ Finally, we print and release the allocated memory using `delete[]` to avoid mem
 int* ptr; // declared, not yet initialized
 \end{verbatim}
 
-\subsection{Nullptr - null pointers since C++11}
+\subsection{Nullptr}
+
+Type safe pointer since C++14, I think. A replacement for NULL.
 
 \begin{verbatim}
-int* ptr = nullptr; // type safe pointer with nullptr, replacement for NULL
+int* ptr = nullptr;
 \end{verbatim}
 
 \section{Classes}
@@ -1591,21 +1568,8 @@ auto get_data(const Params & ... params)
     return std::array{params...};
 }
 \end{verbatim}
-\subsection{Same Type Templates Issue}
 
-\begin{verbatim}
-
-// This forces same type use, for both the numberator and denominator. 
-// not good, weird compile errors here!
-
-template<typename Numerator, typename Denominator>
-    /*what's the return type*/
-    divide(Numerator numerator, Denominator denominator) {
-    return numerator / denominator;
-}
-\end{verbatim}
-
-\subsection{C++14 auto return types}
+\subsection{Templates Auto Return Types}
 
 \begin{verbatim}
 template<typename Numerator, typename Denominator>
@@ -1613,34 +1577,6 @@ auto divide(Numerator numerator, Denominator denominator)
 {
     return numerator / denominator;
 }
-\end{verbatim}
-
-\subsection{Templates and Don't Repeat Yourself (DRY)}
-
-Principle aimed at reducing repetition of code and reusability. 
-We have more tools today, concepts, generic lambdas, etc. to help with templates.
-
-\begin{verbatim}
-// divide doubles
-double divide(double numerator, double denominator) {
-    return numerator / denominator;
-}
-
-//But you don't want all of your divisions to be promoted to double. 
-
-// Divide floats
-float divide(float numerator, float denominator) {
-    return numerator / denominator;
-}
-
-// You want to handle some kind of int values. 
-
-//divide ints
-int divide(int numerator, int denominator) {
-    return numerator / denominator;
-}
-
-// Templates were designed for just this scenario. 
 \end{verbatim}
 
 \subsection{Basic template usage}
@@ -1763,7 +1699,7 @@ within its body to perform calculations.
 
 By capturing variables, lambda functions gain access to the state of the surrounding scope, providing a powerful and flexible way to operate on external data within the lambda's body.
 
-\subsection{Lambda with auto}
+\subsection{Lambda Auto}
 \begin{verbatim}
 #include <iostream>
 #include <string>
@@ -1782,7 +1718,7 @@ void print_map(const Map &map, const std::string key_desc = "key",
 }
 \end{verbatim}
 
-\subsection{Generic and Variadic Lambdas}
+\subsection{Lambdas Generic Lambdas}
 
 Create implicit templates by simply using the auto keyword.
 
@@ -1794,7 +1730,9 @@ auto lambda = [/*captures*/](auto ... params){
 standard c++14
 \end{verbatim}
 
-\subsection{A lambda to initialize a const object}
+\subsection{Lambdas Variadic}
+
+\subsection{Lambdas Const Object Initionalization}
 
 \begin{verbatim}
 const auto data = [](){ // no parameters
@@ -3137,9 +3075,9 @@ int main() {
   std::cout << "Time taken for goodnight1(): " << time_span.count() << " milliseconds.\n\n";
 \end{verbatim}
 
-\section{Good practices}
+\chapter{Good Practices}
 
-\subsection{Proper Design}
+\section{Proper Design}
 
 \begin{verbatim}
     if a component is hard to test, it is not properly designed. 
@@ -3147,7 +3085,7 @@ int main() {
     Approval tests ressource : https://cppcast.com/clare-macrae/ 
 \end{verbatim}
 
-\subsection{Warnings}
+\section{Warnings}
 
 Enable as many compiler warnings as you can. 
 Fix new warning generated. 
@@ -3155,7 +3093,7 @@ Fix new warning generated.
 \textbf{It will feel tedious and meaningfless}
 \textbf{But this is the c++ way to catch real bugs.}
 
-\subsection{Slow Down!}
+\section{Slow Down!}
 
 \begin{verbatim}
 Copy and pasting is easy. 
@@ -3172,7 +3110,7 @@ discuss the design with a rubber duck.
 spend less time programming, more thinking.
 \end{verbatim}
 
-\subsection{C++ is not magic nor Object-Oriented}
+\section{C++ is not magic nor Object-Oriented}
 
 \begin{verbatim}
 It's not magic, construct to test your doubts.
@@ -3194,5 +3132,33 @@ Using appropriate techniques takes time and appropriate technique.
     Lisp // Diverge from the C-family languages. Learn,
     Haskell
     Erlang
+\end{verbatim}
+
+\section{DRY (Don't Repeat Yourself)}
+
+Principle aimed at reducing repetition of code and reusability. 
+We have more tools today, concepts, generic lambdas, etc. to help with templates.
+
+\begin{verbatim}
+// divide doubles
+double divide(double numerator, double denominator) {
+    return numerator / denominator;
+}
+
+//But you don't want all of your divisions to be promoted to double. 
+
+// Divide floats
+float divide(float numerator, float denominator) {
+    return numerator / denominator;
+}
+
+// You want to handle some kind of int values. 
+
+//divide ints
+int divide(int numerator, int denominator) {
+    return numerator / denominator;
+}
+
+// Templates were designed for just this scenario. 
 \end{verbatim}
 
