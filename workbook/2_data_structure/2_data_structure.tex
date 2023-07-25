@@ -972,8 +972,111 @@ improving efficiency and performance.
 
 \subsection{Breadth First Search}
 
+\begin{verbatim}
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <unordered_set>
+
+using Graph = std::vector<std::vector<int>>;
+
+// Breadth-First Search function
+void bfs(const Graph& graph, int startNode) {
+    int numNodes = graph.size();
+
+    std::vector<bool> visited(numNodes, false);
+    std::queue<int> q;
+
+    q.push(startNode);
+    visited[startNode] = true;
+
+    while (!q.empty()) {
+        int currentNode = q.front();
+        q.pop();
+
+        std::cout << currentNode << " ";
+
+        for (int neighbor : graph[currentNode]) {
+            if (!visited[neighbor]) {
+                q.push(neighbor);
+                visited[neighbor] = true;
+            }
+        }
+    }
+}
+
+int main() {
+    // Example graph represented as an adjacency list
+    Graph graph = {
+        {1, 2},      // Node 0 is connected to nodes 1 and 2
+        {0, 2, 3},   // Node 1 is connected to nodes 0, 2, and 3
+        {0, 1, 3},   // Node 2 is connected to nodes 0, 1, and 3
+        {1, 2, 4},   // Node 3 is connected to nodes 1, 2, and 4
+        {3, 5},      // Node 4 is connected to nodes 3 and 5
+        {4}          // Node 5 is connected to node 4
+    };
+
+    int startNode = 0; // Starting node for BFS
+
+    std::cout << "BFS traversal starting from node " << startNode << ": ";
+    bfs(graph, startNode);
+    std::cout << std::endl;
+
+    return 0;
+}
+\end{verbatim}
+
 \subsection{Depth First Search}
 
+\begin{verbatim}
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+
+using Graph = std::vector<std::vector<int>>;
+
+// Depth-First Search function
+void dfs(const Graph& graph, int currentNode, std::vector<bool>& visited) {
+    std::cout << currentNode << " ";
+    visited[currentNode] = true;
+
+    for (int neighbor : graph[currentNode]) {
+        if (!visited[neighbor]) {
+            dfs(graph, neighbor, visited);
+        }
+    }
+}
+
+// Wrapper function for DFS to handle disconnected graphs
+void dfsWrapper(const Graph& graph) {
+    int numNodes = graph.size();
+    std::vector<bool> visited(numNodes, false);
+
+    for (int i = 0; i < numNodes; ++i) {
+        if (!visited[i]) {
+            dfs(graph, i, visited);
+        }
+    }
+}
+
+int main() {
+    // Example graph represented as an adjacency list
+    Graph graph = {
+        {1, 2},      // Node 0 is connected to nodes 1 and 2
+        {0, 2, 3},   // Node 1 is connected to nodes 0, 2, and 3
+        {0, 1, 3},   // Node 2 is connected to nodes 0, 1, and 3
+        {1, 2, 4},   // Node 3 is connected to nodes 1, 2, and 4
+        {3, 5},      // Node 4 is connected to nodes 3 and 5
+        {4}          // Node 5 is connected to node 4
+    };
+
+    std::cout << "DFS traversal: ";
+    dfsWrapper(graph);
+    std::cout << std::endl;
+
+    return 0;
+}
+\end{verbatim}
 
 \section{Graphs}
 
