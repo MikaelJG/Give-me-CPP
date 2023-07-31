@@ -15,6 +15,12 @@ cp ${script_dir}/2_data_structure/*.tex "${script_dir}"
 cp ${script_dir}/3_cmake/*.tex "${script_dir}"
 cp ${script_dir}/4_gdb/*.tex "${script_dir}"
 
+
+# Refact possible,
+# recursively look for .tex files,
+# then cat it in one .tex file
+#
+
 path_1=${script_dir}
 files=$(ls $path_1)
  
