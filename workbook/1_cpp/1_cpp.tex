@@ -541,10 +541,7 @@ std::vector vec{1,2,3}; // now possible!
 
 int main(int argc, char* argv[]) {
     std::vector<std::string> arguments(argv + 1, argv + argc);
-
 }
-
-#include <vector>
 
 template<typename Value_Type>
 std::vector<Value_Type> get_data(const Value_Type &v1, const Value_Type &v2,
@@ -575,10 +572,6 @@ struct Data {
 };
 \end{verbatim}
 
-Size of the dynamically allocated array `data` in the `Data` struct. 
-std::size\_t is an unsigned integer type.
-specifically designed to represent the size of objects or arrays. 
-
 In the `Data` struct, the constructor takes a `std::size\_t` parameter named `size`,
 which specifies the desired size of the `data` array. 
 By using `std::size\_t` as the parameter type, 
@@ -588,11 +581,6 @@ Inside the constructor, the `data` member is \textbf{allocated dynamically using
 
 The size of the array is specified as the value of `size`, which is of type `std::size\_t`. 
 This ensures that the correct amount of memory is allocated for the array based on the given size.
-
-In the destructor, `std::size\_t` is not directly used, but it is common to use `std::size\_t`
-for deallocating memory when deleting dynamically allocated arrays, as shown with `delete [] data;`.
-
-This ensures that the memory occupied by the `data` array is properly deallocated.
 
 \subsection{Size\_t against integers}
 
@@ -1028,7 +1016,7 @@ std::string Song::get_artist() {
   return artist;
 }
 
-#include <iostream> // in main.cpp
+-- main.cpp --
 #include "song.hpp"
 
 int main() { 
@@ -1089,9 +1077,6 @@ auto get_thing() {
 \begin{verbatim}
 void get_emergency_number(std::string emergency_number) {}
 
-#include <iostream>
-#include <vector>
-
 struct ComplexType {
     int value;
     std::vector<int> data;
@@ -1121,8 +1106,6 @@ Many Parameters
 double get_tip(double price, double tip, bool total_included) {
     get_tip(0.25, true, 45.50); // will not work. Order matters. 
 }
-
-#include <iostream>
 
 void name_x_times(std::string name, int x){
   while (x > 0) {
@@ -1313,8 +1296,6 @@ especially when dealing with large objects or containers.
 
 By using a reference, the loop avoids creating a new copy of each element
 , reducing unnecessary memory usage and improving performance.
-
-#include <iostream>
 
 struct ComplexStruct {
     int value1;
@@ -1536,21 +1517,6 @@ int * number; // All Synthaxically valid
 
 Certainly! Here are two complex examples showcasing the use of pointers in C++:
 
-Example 1: Pointer to Pointer
-
-#include <iostream>
-
-int main() {
-    int value = 5;
-    int* ptr = &value;
-    int** ptrToPtr = &ptr;
-
-    std::cout << "Value: " << value << std::endl;
-    std::cout << "Value via pointer: " << *ptr << std::endl;
-    std::cout << "Value via pointer to pointer: " << **ptrToPtr << std::endl;
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Null Pointers}
@@ -1573,6 +1539,20 @@ int* ptr = nullptr;
 
 \subsection{Pointer of Pointer}
 
+\begin{verbatim}
+Example 1: Pointer to Pointer
+int main() {
+    int value = 5;
+    int* ptr = &value;
+    int** ptrToPtr = &ptr;
+
+    std::cout << "Value: " << value << std::endl;
+    std::cout << "Value via pointer: " << *ptr << std::endl;
+    std::cout << "Value via pointer to pointer: " << **ptrToPtr << std::endl;
+
+    return 0;
+}
+\end{verbatim}
 
 \subsection{Allocation}
 
