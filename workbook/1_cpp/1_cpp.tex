@@ -2520,47 +2520,7 @@ Void, Also refered as subroutine.
 void oscar_wilde_quote() {
   std::cout << "The highest";
 }
-
-#include <vector>
-
-template <typename T>
-struct ComplexType {
-    T value;
-    std::vector<T> elements;
-
-    ComplexType(T val) : value(val) {} // constructor
-
-    void print() {
-        std::cout << "Value: " << value << std::endl;
-        std::cout << "Elements:";
-        for (const auto& elem : elements) {
-            std::cout << " " << elem;
-        }
-        std::cout << std::endl;
-    }
-};
-
-template <typename T>
-ComplexType<T> createComplexType(T value, const std::vector<T>& elements) {
-    ComplexType<T> complex(value);
-    complex.elements = elements;
-    return complex;
-}
-
-int main() {
-    std::vector<int> elements{1, 2, 3, 4, 5};
-    ComplexType<int> result = createComplexType(10, elements);
-    result.print();
-
-    return 0;
-}
-
 \end{verbatim}
-
-A template struct `ComplexType` represents a complex type with a value and a vector of elements. 
-The `createComplexType` function creates an instance of `ComplexType` by taking a value and a vector of elements
-as parameters. The function initializes a `ComplexType` object, sets its elements, and returns it. 
-Finally, in the `main` function, we call `createComplexType` and print the resulting complex type.
 
 \chapter{Filesystem Library}
 
@@ -2829,6 +2789,6 @@ alias g++="g++ -Wall -Werror -Wextra -pedantic -std=c++17"
 \chapter{Program Timeline}
 
 
-\section{Sanitizers (before compiling), compile-time, runtime).
+\section{Sanitizers (before compiling), link-time, compile-time, runtime).
 
 
