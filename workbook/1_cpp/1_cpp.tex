@@ -88,8 +88,6 @@ Arithmetic divide(Arithmetic numerator, Arithmetic denominator) {
 Compile-time generation of code and data.
 
 \begin{verbatim}
-#include <iostream>
-
 const double pi = 3.141593;
 
 int main()
@@ -102,8 +100,6 @@ int main()
 
 // If only there was some way to make a compile-time constant....
 
-#include <iostream>
-
 constexpr double pi = 3.141593;
 
 int main()
@@ -114,8 +110,6 @@ int main()
 }
 
 // OR EVEN, Generate it at compile-time.
-
-#include <iostream>
 
 constexpr double calculate_pi() {
     return 22/7;
@@ -187,8 +181,6 @@ It will be initialized only once.
 
 \begin{verbatim}
 #include <filesystem>
-#include <iostream>
-
 namespace fs = std::filesystem;
 
 int main() {
@@ -198,7 +190,7 @@ int main() {
         const char *cstr = entry.path().c_str();
         std::cout << cstr << '\n';
     }
-    return 0;
+    return 0; // return success
 }
 \end{verbatim}
 
@@ -282,7 +274,7 @@ int main() {
     MathOperation<int> operation(5);
     operation.add(3).multiply(2).print();
 
-    return 0;
+    return 0; // return success
 }
 \end{verbatim}
 
@@ -294,7 +286,6 @@ allowing you to read from and write to strings as if they were input/output stre
 \begin{verbatim}
 #include <map>
 #include <sstream>
-#include <string>
 
 int main() {
     std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
@@ -318,7 +309,7 @@ int main() {
         std::cout << pair.first << ": " << pair.second << std::endl;
     }
 
-    return 0;
+    return 0; // return success
 }
 \end{verbatim}
 
@@ -341,7 +332,7 @@ int main() {
     if (today == Day::Saturday || today == Day::Wednesday) {
     } else {}
 
-    return 0;
+    return 0; // return success
 }
 
 enum Color {
@@ -365,7 +356,7 @@ int main() {
     Color favoriteColor = Color::Green;
     printColor(favoriteColor);
 
-    return 0;
+    return 0; // return success
 }
 \end{verbatim}
 
@@ -397,7 +388,7 @@ int main() {
 
     std::cout << "Selected fruit: " << fruitNames[fruitIndex] << std::endl;
 
-    return 0;
+    return 0; // return success
 }
 \end{verbatim}
 
@@ -422,7 +413,7 @@ int main() {
 
     std::cout << "Current month: " << monthNames[monthIndex] << std::endl;
 
-    return 0;
+    return 0; // return success
 }
 \end{verbatim}
 
@@ -516,7 +507,7 @@ int main() {
 
     delete[] dyn_ar;
 
-    return 1;
+    return 0; // return success
 }
 
 \end{verbatim}
@@ -982,8 +973,7 @@ Change behavior based on parameter's type.
     Each has different type parameters.
     Each has a different number of parameters.
     
-// in num.cpp 
-// defining
+-- num.cpp --
 int fancy_number(int num1, int num2) {
   return num1 - num2 + (num1 * num2);
 }
@@ -994,26 +984,12 @@ int fancy_number(int num1, int num2, int num3) {
 
 int fancy_number(double num1, double num2) {
   return num1 - num2 + (num1 * num2);
-} // different type of params.
-// in num.hpp
-// declaring
+}               // different type of params.
+
+-- num.hpp --
 int fancy_number(int num1, int num2);
 int fancy_number(int num1, int num2, int num3);
 int fancy_number(double num1, double num2);
-
-\end{verbatim}
-
-\subsection{Functions Return Type Deduction}
-
-Not to be underestimated, this allows
-for the creation of powerful higher order function constructs, among other things.
-
-\begin{verbatim}
-auto get_thing() {
-    struct Thing {}; // creating my own type inside the function 
-
-    return Thing{};
-}
 \end{verbatim}
 
 \section{Parameters}
@@ -1061,54 +1037,12 @@ void name_x_times(std::string name, int x){
 
 \subsection{Pass-By-Value}
 
+Passing by value makes modification impossible, since the passed variable is out of scope.
+Pass by reference to modify the passed parameter.
+
 \begin{verbatim}
-Yet, we can't modify the value of the arguments.
-The variable passed are out of scope.
-
-#include <iostream>
-
-struct ComplexStruct {
-    int value1;
-    int value2;
-};
-
-void modifyValue(int val) {
-    val = 100;
-}
-
-void modifyStruct(ComplexStruct obj) {
-    obj.value1 = 200;
-    obj.value2 = 300;
-}
-
-int main() {
-    int x = 10;
-
-    std::cout << "Before modif: x = " << x << std::endl;  
-    // Output: Before modif: x = 10
-
-    modifyValue(x);  // Pass x by value to the modifyValue function
-
-    std::cout << "After modif: x = " << x << std::endl;   
-    // Output: After modif: x = 10
-
-    ComplexStruct obj;
-    obj.value1 = 50;
-    obj.value2 = 60;
-
-    std::cout << "Before modif: obj.value1 = " << obj.value1 << std::endl;  
-    // Output: Before modif: obj.value1 = 50
-    std::cout << "Before modif: obj.value2 = " << obj.value2 << std::endl;  
-    // Output: Before modif: obj.value2 = 60
-
-    modifyStruct(obj);  // Pass obj by value to the modifyStruct function
-
-    std::cout << "After modif: obj.value1 = " << obj.value1 << std::endl;   
-    // Output: After modif: obj.value1 = 50
-    std::cout << "After modif: obj.value2 = " << obj.value2 << std::endl;   
-    // Output: After modif: obj.value2 = 60
-
-    return 0;
+void useless_function(int val) {
+    val = val * 2;
 }
 \end{verbatim}
 
@@ -1169,14 +1103,10 @@ void printVector(const std::vector<T>& vec) {
 int main() {
     std::vector<int> numbers = {1, 2, 3, 4, 5};
 
-    std::cout << "Original vector: ";
     printVector(numbers);  // Output: Original vector: 1 2 3 4 5
-
     modifyVector(numbers);
 
-    std::cout << "Modified vector: ";
     printVector(numbers);  // Output: Modified vector: 2 4 6 8 10
-
     return 0;
 }
 \end{verbatim}
@@ -1209,15 +1139,8 @@ int main() {
 \subsection{Default Arguments}
 
 \begin{verbatim}
-// Declaration
 void intro(std::string name, std::string lang = "C++");
-
-// Definition
-void intro(std::string name, std::string lang) {
-    std::cout << "my" << name << "is" << lang << '\n';
-}
 \end{verbatim}
-
 
 \section{References}
 
@@ -1253,37 +1176,19 @@ void modifyStruct(ComplexStruct& ref) {
 
 int main() {
     int x = 10;
-    int& ref1 = x;  // Reference variable ref1 refers to x
-
-    std::cout << "x: " << x << std::endl;        // Output: x: 10
-    std::cout << "ref1: " << ref1 << std::endl;  // Output: ref1: 10
-
-    ref1 = 20;  // Modifying ref1 will also modify x
-
-    std::cout << "x: " << x << std::endl;        // Output: x: 20
-    std::cout << "ref1: " << ref1 << std::endl;  // Output: ref1: 20
+    int& ref1 = x;              // Reference variable ref1 refers to x
+    ref1 = 20;                  // Modifying ref1 will also modify x
 
     ComplexStruct obj;
     obj.value1 = 50;
     obj.value2 = 60;
     ComplexStruct& ref2 = obj;  // Reference variable ref2 refers to obj
 
-    std::cout << "obj.value1: " << obj.value1 << std::endl;      // Output: obj.value1: 50
-    std::cout << "obj.value2: " << obj.value2 << std::endl;      // Output: obj.value2: 60
-    std::cout << "ref2.value1: " << ref2.value1 << std::endl;    // Output: ref2.value1: 50
-    std::cout << "ref2.value2: " << ref2.value2 << std::endl;    // Output: ref2.value2: 60
-
-    modifyStruct(ref2);  // Modifying ref2 will also modify obj
-
-    std::cout << "obj.value1: " << obj.value1 << std::endl;      // Output: obj.value1: 100
-    std::cout << "obj.value2: " << obj.value2 << std::endl;      // Output: obj.value2: 200
-    std::cout << "ref2.value1: " << ref2.value1 << std::endl;    // Output: ref2.value1: 100
-    std::cout << "ref2.value2: " << ref2.value2 << std::endl;    // Output: ref2.value2: 200
-
+    modifyStruct(ref2);         // Modifying ref2 will also modify obj
     return 0;
 }
-
 \end{verbatim}
+
 \subsection{Dereference}
 
 Obtain the pointer's pointed value. 
@@ -1861,8 +1766,6 @@ for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
     std::cout << i << ' ';
 }
 
-#include <string>
-
 template<typename Map>
 void print_map(const Map &map, const std::string key_desc = "key",
                                const std::string value_desc = "value")
@@ -1923,9 +1826,6 @@ on external data within the lambda's body.
 
 \subsection{Lambda Auto}
 \begin{verbatim}
-#include <iostream>
-#include <string>
-
 template<typename Map>
 void print_map(const Map &map, const std::string key_desc = "key",
                                const std::string value_desc = "value")
@@ -2080,8 +1980,6 @@ auto func(std::integral auto i) { return i + 3; }
 \subsection{Auto Concept}
 
 \begin{verbatim}
-# include <string>
-
 // C++20's auto concept or further constrained to something that
 // has values that can be destructured into 2 elements.
 
@@ -2432,8 +2330,6 @@ Constructor / Destruct pairs (RAII) combined with scoped values give us determin
 that removes the need for things like 'finally'.
 
 \begin{verbatim}
-#include <string>
-
 void some_func() {
     std::string s{"Hello"};     // allocate a string
 }                               // automatically frees it
@@ -2557,9 +2453,6 @@ These are passed-by-value on purpose.
 String_view are cheap to copy. It is recommended to pass them by value.
 The following code doesn't create a string anymore, if doesn't have to.
 
-# include <iostream>
-# include <string>
-
 void print_map(const auto &map, const std::string_view &key_desc = "key",
                                 const std::string_view &value_desc = "value")
 {
@@ -2671,9 +2564,6 @@ const auto &[elem1, elem2] = some_thing;
 
 Standard c++17
 
-# include <iostream>
-# include <string>
-
 template<typename Map>
 void print_map(const Map &map, const std::string &key_desc = "key",
                                const std::string &value_desc = "value")
@@ -2708,9 +2598,6 @@ void print_map(const Map &map, const std::string &key_desc = "key",
 
 Potential Inefficiency Hiding
 
-# include <iostream>
-# include <string>
-
 void print_map(const auto &map, const std::string &key_desc = "key",
                                 const std::string &value_desc = "value")
 {
@@ -2742,10 +2629,7 @@ If Only there was a way to observe string-like things without actually construct
 \section{Arguments}
 
 \begin{verbatim}
-#include <iostream>
-
 int main(int argc, char* argv[]) {
-
     return 0;
 }
 \end{verbatim}
@@ -2775,8 +2659,6 @@ int main(int argc, char* argv[]) {
 std::cout << "Enter your password: ";
 std::cin >> password;
 
-#include <iostream>
-#include <string>
 #include <cstdlib>
 
 int main() {
@@ -2876,7 +2758,6 @@ Use the fstream header and the ofstream function.
 
 \begin{verbatim}
 #include <filesystem>
-#include <iostream>
 #include <fstream> // Add this header for std::ofstream
 namespace fs = std::filesystem;
 
@@ -2939,22 +2820,14 @@ fs::remove_all("sandbox");
 #include <filesystem>
 namespace fs = std::filesystem;
 
-int main()
-{
+int main() {
     std::string path = "./foo";
     for (const auto &entry : fs::directory_iterator(path))
-        std::cout << entry.path() << std::endl; // valid single statement synthax
-                                                // If no optional block
-                                                // only the statement following
-                                                // the loop construct is executed.
+        std::cout << entry.path();
 }
-
-&entry : fs::directory_iterator(path)
-& creates a reference to the elements of the fs::directory_iterator object.
 \end{verbatim}
 
 \subsection{File Creation}
-
 
 \subsection{Testing Framework}
 
