@@ -122,7 +122,7 @@ endfunction()
 
 \section{Overview}
 
-Cmake is super old. It has more than 300 functions to use, but 250 should not be used in modern cmake projects. 
+Cmake is super old. It has more than 300 functions to use, but 250 should not be used in modern cmake projects.
 This makes it particularly difficult to learn. Many older tutorials are confusing, out-of-date.
 
 Moreover, modern cmake makes it as readable as possible with modern functions. Thus, way easier to read than older
@@ -293,7 +293,7 @@ endif()
 
 \section{Makefile Shell Scripting}
 
-Make is Cmake's ancestor. You can automate folder creation and files, just like any shell script would do. 
+Make is Cmake's ancestor. You can automate folder creation and files, just like any shell script would do.
 
 Make do not support space, use tabs.
 
@@ -461,12 +461,12 @@ configure_file(
     # "${CMAKE_BINARY_DIR}" this is our build directory
                           # it is one of prebuilt directories in CMAKE
                           # thus, we reference it with CMAKE_BINARY_DIR
-                          # we create an output for a config file, 
+                          # we create an output for a config file,
                           # in our build directory.
 
     # "${PROJECT_SOURCE_DIR}" # stores absolute path to project's root directory
 
-    "${CMAKE_BINARY_DIR}/configured_files/include/config.hpp" ESCAPE_QUOTES 
+    "${CMAKE_BINARY_DIR}/configured_files/include/config.hpp" ESCAPE_QUOTES
 \end{verbatim}
 
 \subsection{Project Version Number}
@@ -477,7 +477,7 @@ In config.hpp.in
 # @ cmake looks for and remplaces text between @@ this text @
 
 #include <cstdint>
-#include <string_view> 
+#include <string_view>
 static constexpr std::string_view project_name = "@PROJECT_NAME@";
 static constexpr std::string_view project_version = "@PROJECT_VERSION@";
 \end{verbatim}
@@ -564,7 +564,7 @@ git submodule add https://github.com/nlogmann/json external/json
 
 \subsection{Custom Cmake Functions}
 
-In a cpp project, when you create your own cmake functions, they are stored in a Cmake directory. We just cloned a 
+In a cpp project, when you create your own cmake functions, they are stored in a Cmake directory. We just cloned a
 git repo in our external directory.
 
 \begin{center}
@@ -583,15 +583,15 @@ function(add_git_submodule dir) # our function takes one argument called dir
             execute_process (COMMAND ${GIT_EXECUTABLE}}
             submodule update --init --recursive -- ${dir}
                                                      # recursive is essential here
-                                                     # If someone clones your project, 
+                                                     # If someone clones your project,
                                                      # It automatically clones this submodules,
                                                      # It clones auto repos, inside your repo.
-                                                            
+
             WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}) # cmake saves some variable
                                                      # including the source dir
                                                      # of our project.
         endif()
-        
+
         if (EXISTS ${dir}/CMakeLists.txt)
             message("Adding ${dir}/CMakeLists.txt")
             add_subdirectory(${dir})
@@ -604,8 +604,8 @@ endfunction(add_git_submodule)
 
 \subsection{Log example}
 
-Here we are using an external library called log, with only two files, log.c and log.h . We have the library in our 
-external directory. Plus, we have a CMakeLists.txt at the root of the external folder, taking care of the log library. 
+Here we are using an external library called log, with only two files, log.c and log.h . We have the library in our
+external directory. Plus, we have a CMakeLists.txt at the root of the external folder, taking care of the log library.
 
 
 \begin{center}
@@ -638,7 +638,7 @@ target_link_libraries(${EXECUTABLE_NAME} PUBLIC
     ${LIBRARY_NAME}
     nlohmann_json) # this links the submodule with the executable
 
-# In main.cpp, we add 
+# In main.cpp, we add
 
 #include <nlohman/json.hpp>
 \end{verbatim}
@@ -646,7 +646,7 @@ target_link_libraries(${EXECUTABLE_NAME} PUBLIC
 
 \subsection{Fetch Content - External Libraries}
 
-We have the gitmodule example, but modern CMake has a great fetching feature. Our root CMakelLists.txt will look like this, 
+We have the gitmodule example, but modern CMake has a great fetching feature. Our root CMakelLists.txt will look like this,
 
 \begin{verbatim}
 ...
@@ -668,14 +668,14 @@ FetchContent_MakeAvailable() # will load this library in our cmake project.
 FetchContent_Declare(
     nlohmann_json      # since this repo is a cmake project,
                        # look at the project's root CMakeLists.txt file
-                       # you will the name of the project, to enter here 
+                       # you will the name of the project, to enter here
                        # see next image
 
     GIT_REPOSITORY https://github.com/nlohmann/json
     GIT_TAG v3.11.2    # the version I want to use
     GIT_SHALLOW TRUE)  # The function won't clone the repo recursively
 
-                       # With this function, the git repository will be cloned in  
+                       # With this function, the git repository will be cloned in
                        # our cloned repository.
                        # And it needs to be a cmake project.
 
@@ -721,7 +721,7 @@ The equivalent of the argument parser in python.
 
 \begin{verbatim}
 FetchContent_Declare(
-    cxxopts 
+    cxxopts
     GIT_REPOSITORY https://github.com/jaroo2783/cxxopts
     GIT_TAG v3.0.0
     GIT_SHALLOW TRUE)
@@ -768,7 +768,7 @@ target_link_libraries(${LIBA} PUBLIC
                                         # Naming convention is project_name::library_name
                                         # see next image, to find library_name in CMake project
                                         # on github
-    
+
     nlohmann_json::nlohmann_json
     fmt::fmt
     spdlog::spdlog
@@ -808,7 +808,7 @@ int main() {
 
     << CXXOPTS__VERSION_MAJOR << "."
     << CXXOPTS__VERSION_MINOR << "."
-    << CXXOPTS__VERSION_PATCH << "." # if you have access to these variable, 
+    << CXXOPTS__VERSION_PATCH << "." # if you have access to these variable,
                                      # you have successfully imported and configure the lib
                                      # for you project.
 
@@ -820,7 +820,7 @@ int main() {
 
 \subsection{Git Submodules vs Fetch Content}
 
-If the repo is not a CMakeProject, you should use Git Submodules. Valid for GitHub and GitLab. In this case, 
+If the repo is not a CMakeProject, you should use Git Submodules. Valid for GitHub and GitLab. In this case,
 define its own library target, I think. Not explained in detail.
 
 If it is a CMake project on GitHub or Gitlab, use FetchContent. It is easier to use, you don't need to mess with header
@@ -857,7 +857,7 @@ It shouldn't be a problem}.
 
 
 \textbf{Under the hood, CPM uses fetchcontent}. Therefore, the linking,
-in the src/my\_lib/CMakeLists.txt file target\_link\_libraries function, 
+in the src/my\_lib/CMakeLists.txt file target\_link\_libraries function,
 can keep the fetchcontent synthax of nlohman\_json::nlohman\_json.
 
 
@@ -867,13 +867,13 @@ option(USE_CPM "Whether to use CPM" ON)
 if(USE_CPM)
     message(STATUS "Using Cmake Package Manager")
     include(CPM)            # this includes the cpm.cmake file
-    
+
 
 
                 # "gh" cpm will look at github
                 # "gh:nholmann" username
                 # "gh:nholmann/json" repository name
-                # "gh:nholmann/json#v3.11.2" version number 
+                # "gh:nholmann/json#v3.11.2" version number
 
     cpmaddpackage("gh:nholman/json#v3.11.2")    # This is CPM's defined function
     cpmaddpackage("gh:fmtlib/fmt#9.1.0")
@@ -885,10 +885,10 @@ else()
     message(STATUS "Using FetchContent")
 
     FetchContent_Declare(
-        nlohmann_json      
+        nlohmann_json
         GIT_REPOSITORY https://github.com/nlohmann/json
-        GIT_TAG v3.11.2    
-        GIT_SHALLOW TRUE)  
+        GIT_TAG v3.11.2
+        GIT_SHALLOW TRUE)
     FetchContent_MakeAvailable(nlohmann_json) # will load this library in our cmake project.
 
     FetchContent_Declare(
@@ -901,7 +901,7 @@ endif()
 \section{Conan}
 
 A package manager for cmake projects, alternatives to CPM and fetchcontent. CPM and fetchcontent localy
-clones github repositories in your build directory. Then they compile the library locally, on your machine. 
+clones github repositories in your build directory. Then they compile the library locally, on your machine.
 
 
 Conan has a different approach. In an online database, pre-compiled repositories are available.
@@ -937,7 +937,7 @@ There is a pattern here, when you want to use something new in your cmake projec
 set an option in the CMakeLists.txt file first.
 
 Since the course shared examples for GitSubmodules, FetchContent, CPM and Conan,
-we have a large if statement in our root CMakeLists.txt. In a regular project, 
+we have a large if statement in our root CMakeLists.txt. In a regular project,
 select the tool you want, you wouldn't need the if.
 
 \begin{verbatim}
@@ -947,7 +947,7 @@ if(USE_CPM)
     ...
 elseif(USE_CONAN)
     message(STATUS "Using Conan")
-    include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake  
+    include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake
                                 # This is generated by a conan command
                                 # in the conanfile.py (generate)
                                 # including it in advance here.
@@ -1006,7 +1006,7 @@ conan_d:    # for conan debug
     mkdir build
     cd build && conan install .. -s build_type=Debug =s compiler.cppstd=17 --output-folder=. --build missing
                                 -s               # for settings change
-                                -- build missing 
+                                -- build missing
                                                  # build binaries where no compiled version are available
 
 conan_r:    # for conan release
@@ -1020,7 +1020,7 @@ conan_r:    # for conan release
 
 $make conan_d
 $make conan_r
-\end{verbatim}  
+\end{verbatim}
 
 
 \subsection{Conan Generated File}
@@ -1035,7 +1035,7 @@ will deal with them.
 
 \section{VCPKG}
 
-A C/C++ package manager for Microsoft. 
+A C/C++ package manager for Microsoft.
 To use it, clone the VCPKG repository in your project's external library directory.
 
 \begin{verbatim}
@@ -1043,15 +1043,15 @@ VCPKG database for available packages.
 
 vcpkg.io/en/packages.html
 
-Better is 
+Better is
 
-vcpkg.link 
+vcpkg.link
 \end{verbatim}
 
 \subsection{VCPKG Installation}
 
 Move to you project's external directory and clone the repo. Then, execute the .sh script.
- 
+
 \begin{verbatim}
 Official Link: <https://vcpkg.io/en/index.html>
 
@@ -1061,14 +1061,14 @@ git clone https://github.com/Microsoft/vcpkg.git
 .\vcpkg\bootstrap-vcpkg.bat  # windows
 ./vcpkg/bootstrap-vcpkg.sh   # Unix
 
-cd vcpkg 
-vcpkg --help 
+cd vcpkg
+vcpkg --help
 \end{verbatim}
 
 
 \subsection{VCPKG.json file in project root}
 
-List dependencies of your cmake project in a JSON file. VCPKG's synthax is very tricky, plus its 
+List dependencies of your cmake project in a JSON file. VCPKG's synthax is very tricky, plus its
 requirements are complicated for no reason.
 
 It automatically downloads the latest versions of all libraries. Thus, if we want one particular
@@ -1141,7 +1141,7 @@ if(USE_CPM)
     ...
 elseif(USE_CONAN)
     message(STATUS "Using Conan")
-    include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake  
+    include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake
                                 # This is generated by a conan command
 elseif(USE_VCPKG)
     message(STATUD "Using VCPKG")
@@ -1165,13 +1165,13 @@ Use Git Submodules if you github repo you want to use is not a cmake project. It
 the best solution. Do not use this approach if they are cmake projects.
 
 
-\textbf{CPM is the instructors' recommendation} for all gitlab and github cmake projects. However, it is important to understand the FetchContent functions of 
+\textbf{CPM is the instructors' recommendation} for all gitlab and github cmake projects. However, it is important to understand the FetchContent functions of
 CMake. CPM uses these same fetch content methods under the hood.
 
 
 VCPKG is hard to configure and version download complications. Not recommended.
 
-Conan's pre-built binaries are a great idea, but they do not update these binaries often enough. 
+Conan's pre-built binaries are a great idea, but they do not update these binaries often enough.
 However, if you have huge libraries that take 30 minutes to compile. Conan is the way to go.
 
 \chapter{CMake Tooling}
@@ -1315,7 +1315,7 @@ Cmake needs to find Doxygen, because we are using it for our docs. In Docs.cmake
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
     add_custom_target( # This is just an utility target
-                       # With it, we can interact with it, 
+                       # With it, we can interact with it,
                        # in the terminal
     docs
     ${DOXYGEN_EXECUTABLE}
@@ -1364,7 +1364,7 @@ To introduce unit testing, we create a new directory: tests.
     \includegraphics[width=2in]{tests.png}
 \end{center}
 
-In our root CMakeLists.txt.  
+In our root CMakeLists.txt.
 
 \begin{verbatim}
 add_subdirectory(configured)
@@ -1401,7 +1401,7 @@ To test the factorial function, this is the test definition given as example.
 
 \begin{verbatim}
 #define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one file
-                          // No need to write int main() {}, this does it. 
+                          // No need to write int main() {}, this does it.
 #include "catch2/catch.hpp"
 
 #include "my_lib.h"       // Will be called in my_lib.h
@@ -1422,10 +1422,10 @@ std::uint32_t factorial(std::uint32_t number);
 \subsection{Command Line Testing Option}
 
 It is convenient to have a command line option to activate or deactivate our testing build. In our root CMakeLists.txt
-file, we add an option. In our CMakeLists.txt in the tests directory, we add an if statement. 
+file, we add an option. In our CMakeLists.txt in the tests directory, we add an if statement.
 
 \begin{verbatim}
-option(ENABLE_TESTING "Enable a Unit Testing Build" ON) 
+option(ENABLE_TESTING "Enable a Unit Testing Build" ON)
 
 # in tests directory's CMakeLists.txt
 
@@ -1443,11 +1443,11 @@ endfi()
 
 \subsection{On Testing Libraries in General}
 
-The specific words (Test\_case, require, etc.) may vary a bit, but they all have the same logic. When you are familiar with one, 
+The specific words (Test\_case, require, etc.) may vary a bit, but they all have the same logic. When you are familiar with one,
 you will be able to use another testing library.
 
 \begin{verbatim}
-You have a test case, 
+You have a test case,
 
 TEST_CASE()
 
@@ -1455,7 +1455,7 @@ You can give it a name and a short-name(abbriviated)
 
 TEST_CASE( "Factorials are computed", "[factorial]" )
 
-you can test a function with a keyword like require, or require_equal. Giving an input, the result should be. 
+you can test a function with a keyword like require, or require_equal. Giving an input, the result should be.
 REQUIRE( factorial(0) == 0)
 \end{verbatim}
 
@@ -1473,7 +1473,7 @@ add_library(C ...)
 
 \subsection{Public}
 
-Here, fmt can be used in the library of A. 
+Here, fmt can be used in the library of A.
 
 \begin{verbatim}
 target_link_libraries(A PUBLIC fmt)
@@ -1489,7 +1489,7 @@ Hence, C can use fmt since it is part of the public API of A.
 
 Using PRIVATE does not make the library available in the target's public API. Instead, it is part of a private API.
 When B links in spdlog as PRIVATE, it is saying that B uses spdlog in its implementation,
-but spdlog is not used in any part of B's public API. 
+but spdlog is not used in any part of B's public API.
 
 \begin{verbatim}
 target_link_libraries(B PRIVATE spdlog)
@@ -1559,7 +1559,7 @@ As the code is connected at compile time there are not any additional run-time l
 You can pull certain warnings for a particular target. We can activate them based on the operating system and on the compiler.
 We can trigger certain set of compiler checks. In this course, we had two targets: the library target and the executable target.
 
-In the cmake directory, add Warnings.cmake. 
+In the cmake directory, add Warnings.cmake.
 
 
 \begin{center}
@@ -1655,7 +1655,7 @@ endif()
 
 \subsection{Executable Target Enable Warnings}
 
-There are two targets that can have compilation warnings, our library and our executable (our app). We have to 
+There are two targets that can have compilation warnings, our library and our executable (our app). We have to
 add warning conditionals in both of their CMakeLists.txt file.
 
 \begin{verbatim}
@@ -1682,10 +1682,10 @@ You don't have to have warnings as error for all targets, but you should have co
 
 \section{Sanitizers}
 
-Use sanitizers to find memory links or memory problems in your code. Sanitizers are used at runtime. 
-Thus, it happens after compilation. Clang-tidy is a static linter, it finds problems before compilation!  
+Use sanitizers to find memory links or memory problems in your code. Sanitizers are used at runtime.
+Thus, it happens after compilation. Clang-tidy is a static linter, it finds problems before compilation!
 
-In order, you have clang-tidy before compilation, 
+In order, you have clang-tidy before compilation,
 compiler warnings during compilation and sanitizers at runtime (after compilation).
 
 In our root CMakeLists.txt, we add
@@ -1715,37 +1715,37 @@ In cmake directory, we have this file.
 \begin{verbatim}
 function(add_sanitizer_flags)
     if(NOT ${ENABLE_SANITIZE_UNDEF} AND NOT ${ENABLE_SANITIZE_ADDR})
-        message(STATUS "Sanitizers deactivated") 
+        message(STATUS "Sanitizers deactivated")
         return()
     endif()
 
     if(CMAKE_CXX_COMPILER_ID MATCHES "CLANG" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-        add_compile_options("-fno-omit-frame-pointer")   
+        add_compile_options("-fno-omit-frame-pointer")
                                         # This functions adds compiler flags for every target
                                         # Sanitizers need to run on all of the application
         add_link_options("-fno-omit-frame-pointer")
 
         if (${ENABLE_SANITIZE_ADDR})
-            add_compile_options("-fsanitize=address") 
-            add_link_options("-fsanitize=address") 
+            add_compile_options("-fsanitize=address")
+            add_link_options("-fsanitize=address")
         endif()
 
         if (${ENABLE_SANITIZE_UNDEF})
-            add_compile_options("-fsanitize=undefined") 
-            add_link_options("-fsanitize=undefined") 
+            add_compile_options("-fsanitize=undefined")
+            add_link_options("-fsanitize=undefined")
         endif()
 
     elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
         if (${ENABLE_SANITIZE_ADDR})
-            add_compile_options("-fsanitize=address") 
-            add_link_options("-fsanitize=address") 
+            add_compile_options("-fsanitize=address")
+            add_link_options("-fsanitize=address")
         endif()
 
         if (${ENABLE_SANITIZE_UNDEF})
             message(STATUS "Undefined sanitizer is not implemented for MVSC")
         endif()
 
-    else() 
+    else()
         message(ERROR "Compiler not supported for Sanitizers")
     endif()
 endfunction()
@@ -1784,7 +1784,7 @@ int main() {
 \section{IPO LTO}
 
 In release mode, the release build, optimizations are activated to create the best product. C++ has many types of builds
-for a project, debug modes, performance modes, etc. 
+for a project, debug modes, performance modes, etc.
 
 In this case, the release mode optimizations are related to the compiler for a better runtime. Yet, these optimizations
 look at functions separately, not as a chain of functions so to speak (subsequent calls of different functions).
@@ -1814,11 +1814,11 @@ extern void foo4(void);
 static signed int i = 0;
 
 void foo2(void {
-    i = -1; 
+    i = -1;
 }
 
 static int foo3(void {
-    i = -1; 
+    i = -1;
 }
 
 int foo1(void) {
@@ -1876,7 +1876,7 @@ function(target_enable_lto TARGET ENABLE)
     include(CheckIPOSupported)
     check_ipo_supported(RESULT result OUTPUT output)
 
-    if(result) 
+    if(result)
         message(STATUS "IPO/LTO is supported!")
         set_property(TARGET ${TARGET} PROPERTY_INTERPROCEDURAL_OPTIMIZATION ${ENABLE})
     else()
@@ -1907,7 +1907,7 @@ function(target_enable_lto)         # he passes less arguments here
     include(CheckIPOSupported)
     check_ipo_supported(RESULT result OUTPUT output)
 
-    if(result) 
+    if(result)
         message(STATUS "IPO/LTO is supported: ${LTO_TARGET}")
         set_property(TARGET ${LTO_TARGET} PROPERTY_INTERPROCEDURAL_OPTIMIZATION ${LTO_ENABLE})
     else()
@@ -1942,7 +1942,7 @@ endif()
 
 \chapter{Cpp Project Template}
 
-A project template was included in the course. 
+A project template was included in the course.
 
 
 \section{Clang Tools}
@@ -1999,10 +1999,10 @@ HeaderFilterRegex: '\(src|app\)\/*.\(h|hpp\)'
 AnalyzeTemporaryDtors: false
 FormatStyle:     none
 \end{verbatim}
- 
+
 \subsection{Clang-Format and CMake-Format}
 
-A formatting tool for cpp, 
+A formatting tool for cpp,
 
 \begin{verbatim}
 Documentation for Clang-Format: https://clang.llvm.org/docs/ClangFormat.html
@@ -2073,7 +2073,7 @@ More compilation options / securities.
 -fno-sanitize-recover=undefined
 -fsanitizise-minimal-runtime
 
-+ debug information 
++ debug information
 \end{verbatim}
 
 \section{Simple Cmake (Modern)}
@@ -2091,7 +2091,7 @@ Last, ./hello // run the created executable
 To create an executable of hello.cpp. We usually:
 \begin{verbatim}
 :wq // quit vim
-g++ main.cpp -o hello // compile 
+g++ main.cpp -o hello // compile
 ./hello // run the executable
 \end{verbatim}
 
@@ -2157,7 +2157,7 @@ target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
     // Standard is having header files in /include directory!
 
 hello // our target, where to add the stuff from headers
-PUBLIC // gives the scope of added stuff from headers. 
+PUBLIC // gives the scope of added stuff from headers.
        // Public, Private or Interface
        // Usage: when you have cmake library, make sure it is seen by #include in files
 
@@ -2187,7 +2187,7 @@ class Blah {
 \subsection{Pragma Once}
 
 \begin{verbatim}
-#pragma once is a non-standard directive that serves as an include guard. 
+#pragma once is a non-standard directive that serves as an include guard.
 It ensures that a header file is included only once during the compilation process,
 regardless of how many times it is referenced.
 
@@ -2196,7 +2196,7 @@ Supported by most compilers, including GCC, Clang, and MSVC.
 \end{verbatim}
 
 \subsection{Glob - Include Many files with CMake}
- 
+
 You have at least two options. First, include every files one-by-one in the CMakeList.txt.
 \begin{verbatim}
 cmake_minimum_required(VERSION 3.10)
@@ -2399,7 +2399,7 @@ macro(myproject_global_options)
 
   if(myproject_ENABLE_HARDENING AND myproject_ENABLE_GLOBAL_HARDENING)
     include(cmake/Hardening.cmake)
-    if(NOT SUPPORTS_UBSAN 
+    if(NOT SUPPORTS_UBSAN
        OR myproject_ENABLE_SANITIZER_UNDEFINED
        OR myproject_ENABLE_SANITIZER_ADDRESS
        OR myproject_ENABLE_SANITIZER_THREAD
@@ -2485,7 +2485,7 @@ macro(myproject_local_options)
 
   if(myproject_ENABLE_HARDENING AND NOT myproject_ENABLE_GLOBAL_HARDENING)
     include(cmake/Hardening.cmake)
-    if(NOT SUPPORTS_UBSAN 
+    if(NOT SUPPORTS_UBSAN
        OR myproject_ENABLE_SANITIZER_UNDEFINED
        OR myproject_ENABLE_SANITIZER_ADDRESS
        OR myproject_ENABLE_SANITIZER_THREAD

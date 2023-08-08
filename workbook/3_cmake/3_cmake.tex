@@ -357,8 +357,6 @@ else()
     message("Without executable compiling")
 endif()
 
-
-
 \end{verbatim}
 
 
@@ -568,7 +566,7 @@ configure_file(
 
     # "${PROJECT_SOURCE_DIR}" # stores absolute path to project's root directory
 
-    "${CMAKE_BINARY_DIR}/configured_files/include/config.hpp" ESCAPE_QUOTES 
+    "${CMAKE_BINARY_DIR}/configured_files/include/config.hpp" ESCAPE_QUOTES)
 \end{verbatim}
 
 \subsection{Project Version Number}
@@ -616,8 +614,9 @@ static constexpr std::int32_t project_version_patch{0};
 
 \section{Sources and Headers}
 
-When you have many libraries and many headers, create a variable for all of you headers. Then, reference this variable to include
-everything. List all of your source files in my\_lib directory.
+When you have many libraries and many headers, create a variable for all of your headers.
+Then, reference this variable to include everything.
+List all of your source files in my\_lib directory.
 
 \begin{verbatim}
 set(LIBRARY_SOURCES
@@ -640,8 +639,8 @@ You can do the same thing if you generate many executables, I think. This would 
 set(EXE_SOURCES
     "main.cpp")
 
-add_exectable(${EXECUTABLE_NAME} ${EXE_SOURCES})
-target_link)libraries(${ECEXUTABLE_NAME} PUBLIC ${LIBRARY_NAME})
+add_executable(${EXECUTABLE_NAME} ${EXE_SOURCES})
+target_link_libraries(${EXECUTABLE_NAME} PUBLIC ${LIBRARY_NAME})
 \end{verbatim}
 
 
@@ -735,7 +734,7 @@ add_git_submodule(external/json) # this calls our custom function.
 set(EXE_SOURCES
     "main.cpp")
 
-add_exectable(${EXECUTABLE_NAME} ${EXE_SOURCES})
+add_executable(${EXECUTABLE_NAME} ${EXE_SOURCES})
 target_link_libraries(${EXECUTABLE_NAME} PUBLIC
     ${LIBRARY_NAME}
     nlohmann_json) # this links the submodule with the executable
@@ -880,8 +879,8 @@ target_link_libraries(${LIBA} PUBLIC
     )
 \end{verbatim}
 
-When this is set-up, and we reconfigure our cmake project, the repository will be cloned in a \_deps directory. This includes
-a build, subbuild and src directory for all dependencies. Don't worry about it for now.
+When this is set-up, and we reconfigure our cmake project, the repository will be cloned in a \_deps directory.
+This includes a build, subbuild and src directory for all dependencies. Don't worry about it for now.
 
 \begin{center}
     \includegraphics[width=2in]{deps.png}

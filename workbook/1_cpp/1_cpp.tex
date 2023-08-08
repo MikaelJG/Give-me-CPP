@@ -1553,8 +1553,6 @@ int main() {
 }
 \end{verbatim}
 
-
-
 \subsection{Null Pointers}
 
 \begin{verbatim}
@@ -1570,6 +1568,20 @@ Type safe pointer since C++14, I think. A replacement for NULL.
 \begin{verbatim}
 int* ptr = nullptr;
 \end{verbatim}
+
+\subsection{Smart Pointers}
+
+\subsection{Pointer of Pointer}
+
+
+\subsection{Allocation}
+
+\subsection{Deallocation}
+
+\subsection{Freeing Memory}
+
+
+
 
 \section{Classes}
 
@@ -2507,6 +2519,15 @@ Standard: c++ 98
 \end{verbatim}
 
 
+\subsection{New Keyword}
+
+\begin{verbatim}
+std::array<int, 3> ar{1,2,3};
+int* dyn_ar = new int[4];
+\end{verbatim}
+
+
+
 \subsection{Automatic}
 \begin{verbatim}
 
@@ -2938,7 +2959,7 @@ namespace fs = std::filesystem;
 int main() {
     fs::create_directories("sandbox/a");
 
-    std::ofstream("sandbox/file.1.txt");     // is simplest,
+    std::ofstream("sandbox/file.1.txt");     // is simplest, deletes instantly
 
     std::ofstream file("sandbox/file1.txt"); // initialize the variable on top!
 
