@@ -76,11 +76,6 @@ we'll get costly conversion on all compilers with no diagnostic.
 const auto value = get_string_value();
 
 Plus, auto return types simplifies code
-
-template<typename Arithmetic>
-Arithmetic divide(Arithmetic numerator, Arithmetic denominator) {
-    return numerator / denominator;
-}
 \end{verbatim}
 
 \section{Constexp}
@@ -1410,7 +1405,6 @@ int main() {
 The ultimate in the DRY principle. Write a template that has types and values filled in at compile-time.
 
 \begin{verbatim}
-
 template <typename meaningful_Type>
 meaningful_Type get_smallest(meaningful_Type num1, meaningful_Type num2) {
   return num2 < num1? num2 : num1;
@@ -1470,7 +1464,6 @@ T divide(T numerator, T denominator) {
 \subsection{Variadic Templates}
 
 Drastic simplification of code needing to match a variable number of parameters.
-Absolutely critical for maintainable implementations of things like std::function!
 
 \begin{verbatim}
 #include <array>
@@ -1482,9 +1475,6 @@ std::array<VT, sizeof...(Params)+1> get_data(const VT &v1, const Params& ...para
     return {v1, params...};
 }
 
-                            ***
-
-#include <array>
 
 template<typename VT, Typename ... P> // variadic template
 std::array<VT, sizeof...(P)> get_data(const P & ... params) // param expansion
@@ -1492,67 +1482,29 @@ std::array<VT, sizeof...(P)> get_data(const P & ... params) // param expansion
     return {params...}; // pack expansion
 }
 
-standard C++11
-
-#include <array>
-
 template<typename> VT>
-std::array<VT, 3> get_data(const VT &v1, const VT &v2, const VT &v3)
-{
-    std::array<VT, 3> data;
-    data[0] = v1; data[1] = v2; data[2] = v3;
-    return data;
-}
-// But I would like a version of this that takes only 1 parameter
-
-#include <array>
-
-template<typename> VT>
-std::array<VT, 2> get_data(const VT &v1, const VT &v2)
-{
-    std::array<VT, 2> data;
-    data[0] = v1; data[1] = v2;
-    return data;
-}
-
-// Only 1 parameter
-
-#include <array>
-
-template<typename> VT>
-std::array<VT, 1> get_data(const VT &v1)
-{
-    std::array<VT, 1> data;
-    data[0] = v1;
-    return data;
-}
-
-#include <array>
-
-template<typename> VT> // takes 1 parameter
-std::array<VT, 1> get_data(const VT &v1)
-{
-    std::array<VT, 1> data;
-    data[0] = v1;
-    return data;
-}
-template<typename> VT> // takes 2 parameters
-std::array<VT, 2> get_data(const VT &v1, const VT &v2)
-{
-    std::array<VT, 2> data;
-    data[0] = v1; data[1] = v2;
-    return data;
-}
-
-template<typename> VT> // takes 3 parameters
-std::array<VT, 3> get_data(const VT &v1, const VT &v2, const VT &v3)
+std::array<VT, 3> get_data(const VT &v1, const VT &v2, const VT &v3) // 3 params
 {
     std::array<VT, 3> data;
     data[0] = v1; data[1] = v2; data[2] = v3;
     return data;
 }
 
-// if only there was a way to initialize the array values in one step...
+template<typename> VT>
+std::array<VT, 2> get_data(const VT &v1, const VT &v2) // 2 params
+{
+    std::array<VT, 2> data;
+    data[0] = v1; data[1] = v2;
+    return data;
+}
+
+template<typename> VT>
+std::array<VT, 1> get_data(const VT &v1) // 1 params
+{
+    std::array<VT, 1> data;
+    data[0] = v1;
+    return data;
+}
 
 // This bothers.
 template<typename Value_Type>
@@ -1566,43 +1518,11 @@ struct Data {
 
     Value_Type *data;
 };
-
-// declare a function template that take 3 params of the same type
-// and passes that type on to the 'Data' template
-
-template<typename Value_Type>
-Data<Value_Type> get_data(const Value_Type &v1, const Value_Type &v2,
-                          const Value_type &v3)
-{
-    {Data<Value_Type> d(3);
-    d.data[0] = v1; d.data[1] = v2; d.data[2] = v3;
-    return d; // This only works because of the copy elision that compilers have 'always' implemented.
-
-    // If only there was some way to contain a set of values
-    that has already taken care of these issues...  
-    // * Heap overflow problems I believe
-}
-
-#include <array>
-
-// require at least one parameter and it sets the type
-template<typename VT, typename ... Params>
-std::array<VT, sizeof...(Params)+1> get_data(const VT &v1, const Params& ...params)
-{
-    return {v1, params...};
-}
-
-// auto doesn't work well here
-// if only there was a way to deduce the type of the array being returned......
 \end{verbatim}
 
 \subsection{CTAD - Class Template Argument Deduction}
 
-Just how function template arguments have always been deduces class templates can be as of c++17.
-
 \begin{verbatim}
-#include <array>
-
 template<typename VT, typename ... Params>
 auto get_data(const VT &v1, const Params & ... params)
 {
@@ -1669,35 +1589,17 @@ Using struct makes examples shorter and easier to read.
 
 \section{Lambdas}
 
-Lambdas allow us to create unnamed function objects which may or may not have captures.
-Standard c++11
-We are not allowed to know the name of the type of a lambda. We are not allowed to call its name.
+Unnamed function objects occasionally capturing.
 
 \begin{verbatim}
 auto lambda = [/*captures*/](int param1){ return param1 * 10; };
 
 std::vector<int> ints{1, 2, 3, 4, 5};
 auto even = [](int i){ return 0 == i % 2; };
-auto square = [](int i){ return i * i; }; // this is a lambda!
-                                          // it defines an anonymous function
-                                          // on the fly.
+auto square = [](int i){ return i * i; }; 
 
 for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
     std::cout << i << ' ';
-}
-
-template<typename Map>
-void print_map(const Map &map, const std::string key_desc = "key",
-                               const std::string value_desc = "value")
-{
-    for_each(begin(map), end(map),
-        [&](const typename Map::value_type &data) { /// lambda! This is too wordy
-            std::cout << key_desc << ": '" << data.first << "' "
-                      << value_desc << ": '" << data.second << "'\n";
-            }
-    );
-
-/// If only there was some way to automatically deduce the types of lambda parameter!!!
 }
 \end{verbatim}
 
@@ -1709,7 +1611,7 @@ Use outside variable within their body.
 \begin{verbatim}
 auto lambda = [/*captures*/](int param1){ return param1 * 10; };
 
-The captures s(ection) can be left empty if the lambda does not need to access any external variables.
+The captures section can be left empty if the lambda does not need to access any external variables.
 
 By value
 auto lambda = [param](int param1){ return param1 * 10; };
@@ -2239,8 +2141,7 @@ void some_func() {
 
 \subsection{Deterministic Object Lifetime and Destruction}
 
-Constructor / Destruct pairs (RAII) combined with scoped values give us determinism
-that removes the need for things like 'finally'.
+Constructor / Destruct pairs (RAII) combined with scoped values give us determinism.
 
 \begin{verbatim}
 void some_func() {
@@ -2783,7 +2684,7 @@ int main() {
 Enable as many compiler warnings as you can. 
 Fix new warning generated. 
 
-\textbf{It will feel tedious and meaningfless}
+\textbf{It will feel tedious and meaningless}
 \textbf{But this is the c++ way to catch real bugs.}
 
 \section{Slow Down!}
@@ -2924,4 +2825,10 @@ alias g++="g++ -Wall -Werror -Wextra -pedantic -std=c++17"
 \end{verbatim}
 
 \section{Compiler Clang}
+
+\chapter{Program Timeline}
+
+
+\section{Sanitizers (before compiling), compile-time, runtime).
+
 
