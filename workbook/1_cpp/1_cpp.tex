@@ -582,39 +582,12 @@ Inside the constructor, the `data` member is \textbf{allocated dynamically using
 The size of the array is specified as the value of `size`, which is of type `std::size\_t`. 
 This ensures that the correct amount of memory is allocated for the array based on the given size.
 
-\subsection{Size\_t against integers}
-
-Size() of containers returns a value of type size\_t, 
-an unsigned integral type specifically designed for representing sizes of objects.
-
-Comparing a `size\_t` value with an `int`, causes a mismatch.
-Comparing s signed integer with an unsigned value causes UB.
-
-To solve it, either change the type of the loop variable `i` to `size\_t`
-or you can cast the container's size to `int` for comparison.
-
-\begin{verbatim}
-Option 1: Change the loop variable type to `size_t`:
-for (size_t i = 0; i < container.size(); ++i) {
-    // ...
-}
-
-Option 2: Cast the container's size to `int`:
-for (int i = 0; i < static_cast<int>(container.size()); ++i) {
-    // ...
-}
-
-for (int i = 0; i < container.size(); ++i) {
-    // oops mismatched types
-}
-\end{verbatim}
-
 \section{Iterators}
 \subsection{Conditionals}
 
 \begin{verbatim}
-  if (coin == 0) {
-  }	else {}
+if (coin == 0) {
+} else {}
 }
 \end{verbatim}
 
@@ -643,10 +616,8 @@ while (guess != 8) {
   std::cin >> guess;
 }
 
-for (int i = 0; i < 20; i++)  // incrementing
-{}
-for (int i = 20; i > 0; i--) // decrementing
-{}
+for (int i = 0; i < 20; i++) {}  // incrementing
+for (int i = 20; i > 0; i--) {}  // decrementing
 \end{verbatim}
 
 \section{Ranges}
@@ -655,8 +626,9 @@ for (int i = 20; i > 0; i--) // decrementing
 #include <format>
 #include <string_view>
 
-void print_map(const auto &map, const std::string_view &key_desc = "key",
-                                const std::string_view &value_desc = "value")
+void print_map(const auto &map,
+               const std::string_view &key_desc = "key",
+               const std::string_view &value_desc = "value")
 {
     const auto print_key_value = [&](const auto &data) { 
         const auto &[key, value] = data;
@@ -667,17 +639,14 @@ void print_map(const auto &map, const std::string_view &key_desc = "key",
     for_each(map, print_key_value);
 }
 
-#include <vector>
 #include <ranges>
 
 int main()
 {
     std::vector<int> ints{1, 2, 3, 4, 5};
     auto even = [](int i){ return 0 == i % 2; };
-    auto square = [](int i){ return i * i; }; // this is a lambda!
-                                              // it defines an anonymous function
-                                              // on the fly.
-
+    auto square = [](int i){ return i * i; };
+                                              
     for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
         std::cout << i << ' ';
     }
@@ -694,7 +663,7 @@ allowing you to compose multiple operations on a range in a concise and readable
 
 \begin{verbatim}
 auto even = [](int i){ return 0 == i % 2; };
-auto square = [](int i){ return i * i; }; // this is a lambda!
+auto square = [](int i){ return i * i; };
 
 for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
     std::cout << i << ' ';
@@ -707,12 +676,10 @@ for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
 `std::cout << i << ' ';`: Prints each element `i` separated by a space.
 \end{verbatim}
 
-Note that this code snippet utilizes C++20's Ranges library, which requires a compatible compiler with proper language and library support.
-
 \subsection{Range-Based for Loops}
 
 
-Iteratore over elements of a container, such as an array, std::vector, or std::list. It doesn't work for forward\_list.
+Iterate over container elements (array, vector or std::list). It doesn't work for forward\_list.
 
 
 Works with anything that has begin()
@@ -720,16 +687,11 @@ and end() members/functions, C-Style arrays and initializer lists.
 
 \begin{verbatim}
 
-for (const auto &element : container) {
-    // eliminates both other problems
-}
+for (const auto &element : container) {}
 
-for (int element : first_three_multiples(8)) {
- std::cout << element << "\n";
-}
 std::string str = "Hello";
 for (char character : str) {
-    std::cout << character << std::endl;
+    std::cout << character << '\n';
 }
 
 template<typename Map>
@@ -745,10 +707,7 @@ void print_map(const Map &map, const std::string &key_desc = "key",
 
 for (const auto &value : container) {} // for each element in the container
 
-standard c++11
-
-Never mutate the container itself while iterating inside of a ranged-for loop. 
-Use clang-tidy's modernize-loop-convert check. Not using auto eases silent mistakes in your code.
+Use clang-tidy's modernize-loop-convert check.
 
 template<typename Map>
 void print_map(const Map &map, const std::string &key_desc = "key",
@@ -760,8 +719,6 @@ void print_map(const Map &map, const std::string &key_desc = "key",
                   << value_desc << ": '" << data.second << "'\n";
     }
 }
-
-// if only there was some way to make this data.first, data.second nonsense more readable!!
 \end{verbatim}
 
 \subsection{Accidental Conversions}
@@ -805,15 +762,6 @@ auto &&
 // or if moving elements out of the container
 \end{verbatim}
 
-\subsection{Enable Ranged-Loop Warnings}
-
-\begin{verbatim}
-GCC/ Clang?
-
--Wrange-loop-construct
--Wall // included in -Wall
-\end{verbatim}
-
 \section{Functions}
 
 \begin{verbatim}
@@ -829,7 +777,7 @@ bool even(int num) {
 
 \subsection{Inline Functions}
 
-The compiler inserts the function’s body on the function call
+The compiler inserts the function’s body on the function call.
 
 \begin{verbatim}
 inline 
@@ -837,23 +785,17 @@ void eat() {
   std::cout << "nom nom\n";
 }
 
-// or
-
-// function defined and declared in a single line in a header file
+-- single line in header file is slower --
 void Cookie::eat() {std::cout << "nom nom\n";}
 
-Without inline in header is slower.
-
-// source
+-- goodnight.cpp --
 std::string goodnight1(std::string thing1) {
   return "Goodnight, " + thing1 + ".\n";
 }
-// header
+-- goodnight.h --
 std::string goodnight1(std::string thing1);
 
-With inline in header is faster. 0,004 milliseconds faster.
-
-//inline in header, night.hpp
+-- night.hpp -- 
 inline
 std::string goodnight1(std::string thing1) {
   return "Goodnight, " + thing1 + ".\n";
@@ -870,12 +812,10 @@ private:
     int instruments;
 
 public:
-    // Getter function
     int getMyVariable() const {
         return myVariable;
     }
 
-    // Setter function
     void setMyVariable(int newValue) {
         myVariable = newValue;
     }
@@ -886,8 +826,6 @@ int main() {
     obj.setMyVariable(42);
 
     int value = obj.getMyVariable();
-    std::cout << "MyVariable value: " << value << std::endl;
-
     return 0;
 }
 \end{verbatim}
@@ -898,18 +836,17 @@ int main() {
 class City {
   int population; 
  
-public: // accessible outside of the class
+public:         // accessible outside of the class
   void add_resident() { 
     population++;
   }
 
-private: // private to this class
+private:        // private to this class
   bool is_capital;
 };
 
-#include <string>
-
-class Song { // header song.hpp
+-- song.h --
+class Song {
   std::string title;
   std::string artist;
 
@@ -921,63 +858,13 @@ public:
   std::string get_artist();
 };
 
+-- song.cpp --
 #include "song.hpp"
-
-void Song::add_title(std::string new_title) { // song.cpp
-  title = new_title; // setters
-}
-
-std::string Song::get_title() { // getter
-  return title;
-}
-
-void Song::add_artist(std::string new_artist) { // setters
-  artist = new_artist;
-}
-
-std::string Song::get_artist() { // getters
-  return artist;
-}
-
-#include "city.hpp"
- 
-class City {
-  std::string name; // In header, city.hpp
-  int population;
- 
-public:
-  City(std::string new_name, int new_pop);
- 
-};
- 
-City::City(std::string new_name, int new_pop) // city.cpp
-  : name(new_name), population(new_pop) {} // member initialized to passed values.
-
-City ankara("Ankara", 5445000); // works, in main()
-
-// in Header, in song.hpp
-class Song {
-  std::string title;
-  std::string artist;
-
-public:
-  Song(std::string new_title, std::string new_artist); // constructor
-
-  void add_title(std::string new_title);
-  std::string get_title();
-
-  void add_artist(std::string new_artist);
-  std::string get_artist();
-};
-                ***
-#include "song.hpp"
-
-Song::Song(std::string new_title, std::string new_artist) in main, song.cpp
-  : title(new_title), artist(new_artist) {}
 
 void Song::add_title(std::string new_title) {
   title = new_title;
 }
+
 std::string Song::get_title() {
   return title;
 }
@@ -990,7 +877,63 @@ std::string Song::get_artist() {
   return artist;
 }
 
-#include <string> // in header file, song.hpp
+-- city.h -- 
+#include "city.hpp"
+ 
+class City {
+  std::string name;
+  int population;
+ 
+public:
+  City(std::string new_name, int new_pop);
+ 
+};
+
+-- city.cpp --
+City::City(std::string new_name, int new_pop)
+  : name(new_name), population(new_pop) {} 
+
+-- main.cpp --
+City ankara("Ankara", 5445000);
+
+-- song.h -- 
+class Song {
+  std::string title;
+  std::string artist;
+
+public:
+  Song(std::string new_title, std::string new_artist);
+
+  void add_title(std::string new_title);
+  std::string get_title();
+
+  void add_artist(std::string new_artist);
+  std::string get_artist();
+};
+
+-- song.cpp --
+#include "song.hpp"
+
+Song::Song(std::string new_title, std::string new_artist)
+  : title(new_title), artist(new_artist) {}
+
+void Song::add_title(std::string new_title) {
+  title = new_title;
+}
+
+std::string Song::get_title() {
+  return title;
+}
+
+void Song::add_artist(std::string new_artist) {
+  artist = new_artist;
+}
+
+std::string Song::get_artist() {
+  return artist;
+}
+
+-- song.h --
 
 class Song {
   std::string title;
@@ -1002,10 +945,11 @@ public:
   std::string get_title();
   std::string get_artist();
 };
-                    ***
+
+-- song.cpp --
 #include "song.hpp"
 
-Song::Song(std::string new_title, std::string new_artist) // in main song.cpp
+Song::Song(std::string new_title, std::string new_artist)
   : title(new_title), artist(new_artist) {}
 
 std::string Song::get_title() {
@@ -3180,3 +3124,13 @@ int main() {
     const auto &&val = get();
 }
 \end{verbatim}
+
+\chapter{Compilers}
+\section{Compiler GNU GCC}
+
+\begin{verbatim}
+alias g++="g++ -Wall -Werror -Wextra -pedantic -std=c++17"
+\end{verbatim}
+
+\section{Compiler Clang}
+
