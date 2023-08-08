@@ -85,7 +85,15 @@ Arithmetic divide(Arithmetic numerator, Arithmetic denominator) {
 
 \section{Constexp}
 
-Compile-time generation of code and data.
+Compile-time generation of code and data. Compile-time constant.
+`constexpr` is used for compile-time evaluation.
+It ensures that an expression or function can be computed at compile time.
+It reduces runtime overhead.
+The program avoids the need to perform those computations at runtime. 
+
+The computations are already done during the compilation process, 
+The program doesn't incur the additional time and resources required
+to perform them during runtime execution.
 
 \begin{verbatim}
 const double pi = 3.141593;
@@ -96,9 +104,6 @@ int main()
    const double area = pi * radius * radius;
    std::cout << area;
 }
-    // is pi known at compile time??
-
-// If only there was some way to make a compile-time constant....
 
 constexpr double pi = 3.141593;
 
@@ -131,22 +136,6 @@ constexpr double calculate_pi() {
 
 // This value will be available at compile-time 
 constexpr double pi = calculate_pi();
-
-Standard c++11, relaxed in c++14, relaxed a ton c++20
-
-// But what is the type of pi?? (double, float, long double?)
-I don't care?
-It depends?
-
-// If only there was a way to mention "I don't care or It depends" for what a type is ......  
-`constexpr` is used for compile-time evaluation.
-It ensures that an expression or function can be computed at compile time.
-It reduces runtime overhead.
-The program avoids the need to perform those computations at runtime. 
-
-The computations are already done during the compilation process, 
-The program doesn't incur the additional time and resources required
-to perform them during runtime execution.
 \end{verbatim}
 
 \subsection{Overcomplicated Constexpr}
@@ -1049,13 +1038,10 @@ void useless_function(int val) {
 
 \subsection{Pass-By-Reference}
 
-Now, when called, the function can modify the argument's value.
+Modify the argument's value.
 Avoid making copies of a variable/object for performance reasons.
 
 \begin{verbatim}
-//Calling swap_num(), variables a and b's value will be modified
-//because they are passed by reference
-
 void swap_num(int &i, int &j) {
   int temp = i;
   i = j;
@@ -1067,16 +1053,10 @@ int main() {
   int b = 200;
  
   swap_num(a, b);
- 
-  std::cout << "A is " << a << "\n";
-  std::cout << "B is " << b << "\n";
 }
-
-WHEN? To MODIFY the arguments’ values.
 
 int triple(int &i) {
   i = i * 3;
-  
   return i;
 }
 
@@ -1202,29 +1182,6 @@ int main() {
   int* ptr = &power;
   std::cout << *ptr; // prints 9000
 }
-
-int main() {
-    int x = 10;
-    int* ptr = &x;
-
-    std::cout << "Value of x: " << x << std::endl;            
-    // Output: Value of x: 10
-
-    std::cout << "Address of x: " << &x << std::endl;         
-    // Output: Address of x: 0x7ffeebdbcbe4
-
-    std::cout << "Value of ptr: " << ptr << std::endl;        
-    // Output: Value of ptr: 0x7ffeebdbcbe4
-
-    std::cout << "Dereferenced value of ptr: " << *ptr << std::endl;  
-    // Output: Dereferenced value of ptr: 10
-
-    *ptr = 20;  // Dereference ptr and assign a new value
-
-    std::cout << "Modified value of x: " << x << std::endl;    // Output: Modified value of x: 20
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Pass-By-Reference}
@@ -1298,11 +1255,11 @@ int main() {
 \subsection{References Const}
 
 \begin{verbatim}
-int triple(int const &i) { // save computational cost
-  return i * 3; // don't make a copy of the argument
+int triple(const int &i) { // save computational cost
+  return i * 3;            // don't make a copy of the argument
 }
 
-int square(int const &i) {
+int square(const int &i) {
   return i * i;
 }
 
@@ -1315,14 +1272,12 @@ int main() {
 \subsection{Reference Operator}
 
 \begin{verbatim}
-int soda = 99; // in a declaration
-int &pop = soda; // reference operator
+int soda = 99; 
+int &pop = soda;
 pop++;
 \end{verbatim}
 
 \subsection{Address Operator}
-
-Not a declaration? It is an address operator.
 
 \begin{verbatim}
 int porcupine = 3; 
@@ -1331,48 +1286,39 @@ std::cout << &porcupine << "\n";
 // 0x7ffd7caa5b54
 \end{verbatim}
 
-\subsection{References Boarding}
-
-\begin{verbatim}
-auto get_data(auto && ... params)
-{
-    return std::array{std::forward<decltype(params)>(params)...};
-}
-
-// no unnecessary copies of params, guaranteed copy/move elisions of return value.
-\end{verbatim}
-
-This does not make c++ easier to teach, but it allows for high level efficiency. At this point, 
-is get\_data() even necessary?
-
 \chapter{Memory Allocation}
 \section{Pointers}
 
 \begin{verbatim}
-// Pointers store a memory address. If possible, avoid pointers!
+Declaration? * creates a pointer.
+Not a declaration? * is a dereference operator.
 
-int* number; // Declaring
+int main() {
+  int power = 9000;
+  int* ptr = &power;
+  std::cout << *ptr; // prints 9000
+}
+
+int* number;         // Declaring
 double* decimal;
 char* character;
 
 int gum = 8;
-int* ptr = &gum; // int* [declare a pointer]
-                 // ptr [pointer's name]
-                 // &gum [store gum's memory address in ptr]
+int* ptr = &gum;     // int* [declare a pointer]
+                     // ptr [pointer's name]
+                     // &gum [store gum's memory address in ptr]
 
-int* number; // Declaration standard
+int* number;         // Declaration standard
 int *number;
-int * number; // All Synthaxically valid
-
-Certainly! Here are two complex examples showcasing the use of pointers in C++:
+int * number;        // All Synthaxically valid
 
 \end{verbatim}
 
 \subsection{Null Pointers}
 
-\begin{verbatim}
-// Ptr to a yet unknown memory address. Dangerous stuff!
+Ptr to a yet unknown memory address.
 
+\begin{verbatim}
 int* ptr; // declared, not yet initialized
 \end{verbatim}
 
@@ -1389,15 +1335,10 @@ int* ptr = nullptr;
 \subsection{Pointer of Pointer}
 
 \begin{verbatim}
-Example 1: Pointer to Pointer
 int main() {
     int value = 5;
     int* ptr = &value;
     int** ptrToPtr = &ptr;
-
-    std::cout << "Value: " << value << std::endl;
-    std::cout << "Value via pointer: " << *ptr << std::endl;
-    std::cout << "Value via pointer to pointer: " << **ptrToPtr << std::endl;
 
     return 0;
 }
@@ -1408,9 +1349,7 @@ int main() {
 \subsection{Deallocation}
 
 \subsection{Freeing Memory}
-
-
-
+\subsection{Leaking Memory}
 
 \section{Classes}
 
@@ -1440,30 +1379,15 @@ public:
 
 \section{Span}
 
-A non-owning, lightweight and flexible view over a contiguous sequence of elements. It allows you to work with a range of elements without owning or managing the underlying memory.
-It provides a way to represent a view into an array or any other contiguous sequence of elements. 
-
-\begin{verbatim}
-The `span` type was introduced in C++20 as part of the `<span>` header. 
-\end{verbatim}
-
-The elements can be of any type, such as fundamental types (e.g., `int`, `double`), user-defined types,
-or even pointers.
-
+A non-owning, lightweight and flexible view over a contiguous sequence of elements.
 A `span` is a pointer to the first element and the number of elements in the sequence.
-It provides various member functions to access and manipulate the elements,
-similar to other standard containers like `std::vector` or `std::array`.
-
-\subsection{Span Advantage}
-
-Work with existing arrays without making copies.
+A non-owning view, \textbf{it can be used to work with the array without copying its elements}.
 
 Pass and manipulate data ranges, such as sub-arrays or portions of containers,
 without memory allocation overhead or ownership.
 
 It allows you to write generic functions that operate on different containers
 without requiring specific container types.
-Since `span` is a non-owning view, \textbf{it can be used to work with the array without copying its elements}.
 
 \begin{verbatim}
 #include <span>
@@ -1481,16 +1405,12 @@ int main() {
 }
 \end{verbatim}
 
-`Span` represents a view of the array with 5 elements. 
-The `printSpan()` function takes a `span` as a parameter and prints its elements.
-
 \section{Templates}
 
 The ultimate in the DRY principle. Write a template that has types and values filled in at compile-time.
 
 \begin{verbatim}
 
-// in Header
 template <typename meaningful_Type>
 meaningful_Type get_smallest(meaningful_Type num1, meaningful_Type num2) {
   return num2 < num1? num2 : num1;
@@ -2067,20 +1987,13 @@ int main() {
         dynamicArray[i] = i + 1;
     }
 
-    std::cout << "Dynamic Array: ";
     for (int i = 0; i < size; ++i) {
         std::cout << dynamicArray[i] << " ";
     }
-    std::cout << std::endl;
 
     delete[] dynamicArray;
-
     return 0;
 }
-
-We allocate dynamic memory for an integer array of size 5 using the `new` keyword.
-We then populate the array with values from 1 to 5.
-Finally, we print and release the allocated memory using `delete[]` to avoid memory leaks.
 \end{verbatim}
 
 \section{Factories}
@@ -2339,6 +2252,10 @@ Standard: c++ 98
 \end{verbatim}
 
 
+\subsection{RAII}
+
+Constructor and Destructor pairs? I need more on this.
+
 \subsection{New Keyword}
 
 \begin{verbatim}
@@ -2373,12 +2290,20 @@ delete new S *object_4("a","t");
 \end{verbatim}
 
 
-\begin{verbatim}
+\chapter{Engineering}
 
-double sum_data(const Double_Data &d) {
-    return d.data[0] + d.data[1] + d.data[2];
-}
-\end{verbatim}
+\section{Synch}
+\section{Asynch}
+\section{Multithreading - Parallelisation}
+
+\section{Routine}
+\section{Subroutine}
+
+
+\subsection{Allocation Overhead}
+\subsection{Ownership}
+\subsection{Turing Complete}
+
 
 \subsection{Guaranteed Copy Elision}
 
@@ -2441,6 +2366,7 @@ Standard c++20
 \end{verbatim}
 \subsection{String\_View}
 
+Observe string-like things without actually constructing a std::string!
 A non-owning "view" of a string like structure.
 
 \begin{verbatim}
@@ -2474,8 +2400,6 @@ int main()
 Std::Cout is quite verbose, relatively slow and difficult to reason about. 
 
 \begin{verbatim}
-If only there was some easier way of formatting our output...
-
 Puts (algorithm)
 \end{verbatim}
 
@@ -2520,9 +2444,6 @@ auto get_data(const auto & ... params)
 {
     return std::array{params...};
 }
-
-// The only problem now is that this code requires the types to be copyable.
-// If only there was a way to forward arguments and avoid copies......
 \end{verbatim}
 
 
@@ -2594,8 +2515,6 @@ void print_map(const Map &map, const std::string &key_desc = "key",
     }
 }
 
-// If only there was a way to simplify this code......
-
 Potential Inefficiency Hiding
 
 void print_map(const auto &map, const std::string &key_desc = "key",
@@ -2617,7 +2536,6 @@ int main()
 
 We are constructing a std::string from a const char * for no particular reason.
 
-If Only there was a way to observe string-like things without actually constructing a std::string!!...
 \end{verbatim}
 
 \section{System Design}
