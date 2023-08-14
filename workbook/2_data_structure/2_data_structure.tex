@@ -179,13 +179,11 @@ int main() {
     std::string str = "hello";
     std::map<char, int> charFreq;
 
-    // Count the frequency of each character in the string
     for (char c : str) {
         charFreq[c]++;
     }
 
-    // Display the character frequencies
-    for (const auto& pair : charFreq) {
+    for (const auto& pair : charFreq) { // display
         std::cout << pair.first << ": " << pair.second << std::endl;
     }
 
@@ -198,19 +196,15 @@ int main() {
 int main() {
     std::map<std::string, int> studentGrades;
 
-    // Add student names and their grades
     studentGrades["Alice"] = 90;
     studentGrades["Bob"] = 85;
     studentGrades["Charlie"] = 95;
 
-    // Access and display individual student grades
     std::cout << "Charlie's grade: " << studentGrades["Charlie"] << std::endl;
 
-    // Iterate over all student grades
     for (const auto& pair : studentGrades) {
         std::cout << pair.first << ": " << pair.second << std::endl;
     }
-
     return 0;
 }
 
@@ -234,9 +228,8 @@ for (std::pair<int, Product> elt : map1)
 
 int main() {
     std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-
-    // convert text to lowercase
     for (char& c : text) {
+
         c = std::tolower(c);
     }
 
@@ -244,21 +237,16 @@ int main() {
     std::istringstream iss(text);
     std::string word;
 
-    // count the frequency of each word in the text
-    while (iss >> word) {
+    while (iss >> word) { // count frequency
         wordfreq[word]++;
     }
 
-    // display the word frequencies
-    for (const auto& pair : wordfreq) {
+    for (const auto& pair : wordfreq) { // display
         std::cout << pair.first << ": " << pair.second << std::endl;
     }
 
     return 0;
 }
-
-// Understand how this code is working
-// Accidental copy?
 
 std::map<std::string, int> get_map();
 
@@ -294,23 +282,17 @@ for (const element_type & : get_map())
 int main() {
     std::map<int, std::string> map;
 
-    // Create (Insert)
-    map[1] = "Apple";
+    map[1] = "Apple";                           // create
     map.insert(std::make_pair(2, "Banana"));
 
-    // Read (Retrieve)
-    std::cout << "Value at key 1: " << map[1];
+    std::cout << "Value at key 1: " << map[1];  // read
     std::cout << "Key 2 exists? " << (map.count(2) ? "Yes" : "No");
 
-    // Update
-    map[1] = "Apricot";
+    map[1] = "Apricot";                         // update
+    map.erase(2);                               // delete
 
-    // Delete
-    map.erase(2);
-
-    // Display all key-value pairs
-    for (const auto& pair : map) {
-        std::cout << "Key: " << pair.first << ", Value: " << pair.second << std::endl;
+    for (const auto& pair : map) {              // display
+        std::cout << "Key: " << pair.first << ", Value: " << pair.second;
     }
 
     return 0;
@@ -327,26 +309,21 @@ A multimap allows multiple values to be associated with the same key.
 int main() {
     std::multimap<int, std::string> myMultimap;
 
-    // Insert key-value pairs into the multimap
     myMultimap.insert(std::make_pair(1, "Apple"));
     myMultimap.insert(std::make_pair(2, "Banana"));
     myMultimap.insert(std::make_pair(1, "Apricot"));
 
-    for (const auto& pair : myMultimap) {
+    for (const auto& pair : myMultimap) { // display
         std::cout << "Key: " << pair.first << ", Value: " << pair.second << std::endl;
     }
-
-        // Key: 1, Value: Apple
-        // Key: 1, Value: Apricot
-        // Key: 2, Value: Banana
-
     return 0;
 }
 \end{verbatim}
 
 \section{Sets}
 
-Std::set represents a sorted set of unique elements. The set maintains a sorted order,
+A \textbf{sorted} set of unique elements. The set maintains a sorted order,
+
 the elements are automatically sorted. Plus, it makes sure they are unique.
 
 \begin{verbatim}
@@ -358,31 +335,13 @@ int main() {
     mySet.insert(2);
     mySet.insert(8);
 
-    for (const auto& element : mySet) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-
-    // Check if an element exists in the set
     int searchElement = 2;
-    if (mySet.count(searchElement) > 0) {
+    if (mySet.count(searchElement) > 0) { // find
         std::cout << searchElement << " exists in the set" << std::endl;
-    } else {
-        std::cout << searchElement << " does not exist in the set" << std::endl;
-    }
+    } else {}
 
-    // Remove an element from the set
     int removeElement = 5;
-    mySet.erase(removeElement);
-
-    for (const auto& element : mySet) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-    
-    // 2 5 8
-    // 2 exists in the set
-    // 2 8
+    mySet.erase(removeElement);           // remove
 
     return 0;
 }
