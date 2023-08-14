@@ -18,6 +18,8 @@ std::cout << "Size of int: " << sizeof(numInt);
 
 \section{Auto}
 
+Automatic deduction of value types. Standard c++11
+
 \begin{verbatim}
 constexpr double calculate_pi() {
     return 22/7;
@@ -33,62 +35,21 @@ int main()
 
 }
 
-Automatic deduction of value types. Standard c++11
-
-constexpr auto calculate_pi() { // Return type deduction 
-                                // for normal functions.
+constexpr auto calculate_pi() {
     return 22/7;
 }
 
 constexpr auto pi = calculate_pi();
 
-int main()
-{
-    const auto radius = 1.5;
-    const auto area = pi * radius * radius;
-    std::cout << area;
-}
-
-// const auto
+// east/ west const
 const auto result = std::count( /*stuff */);
-
-or, if you prefer:
-// auto const
-
 auto const result = std::count( /*stuff*/ );
 \end{verbatim}
 
-\subsection{Auto Expensive Conversion}
 
-Avoid potential expensive conversions. Same as ranged-for loops. 
-
-Auto requires initialization, same as const. 
-
-\begin{verbatim}
-const std::string value = get_string_value();
-
-// What is the return type of get_string_value()? 
-
-If its std::string_view or const char *,
-we'll get costly conversion on all compilers with no diagnostic. 
-
-// avoids conversion
-const auto value = get_string_value();
-
-Plus, auto return types simplifies code
-\end{verbatim}
-
-\section{Constexp}
+\section{Constexpr}
 
 Compile-time generation of code and data. Compile-time constant.
-`constexpr` is used for compile-time evaluation.
-It ensures that an expression or function can be computed at compile time.
-It reduces runtime overhead.
-The program avoids the need to perform those computations at runtime. 
-
-The computations are already done during the compilation process, 
-The program doesn't incur the additional time and resources required
-to perform them during runtime execution.
 
 \begin{verbatim}
 const double pi = 3.141593;
@@ -108,29 +69,6 @@ int main()
    const double area = pi * radius * radius;
    std::cout << area;
 }
-
-// OR EVEN, Generate it at compile-time.
-
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-constexpr double pi = calculate_pi();
-
-int main()
-{
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
-}
-
-// This function can be executed at compile-time
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-// This value will be available at compile-time 
-constexpr double pi = calculate_pi();
 \end{verbatim}
 
 \subsection{Overcomplicated Constexpr}
@@ -150,15 +88,6 @@ static constexpr std::array<int, 5> angles{-90,45,0,45,90};
 Here static constexpr makes sure the object
 is not reinitialized each time the function is encountered.
 
-With static (see object lifetimes), the variable lasts for the lifetime of the program.
-It will be initialized only once. 
-
-    the size of the array is now known at compile time
-    We've removed dynamic allocations
-    We no longer pay the cost of accessing a static
-
-    " when you see a const, always ask yourself: "is this value known at compile time? 
-    If it is, what would it take to make the value constexpr?" 
 \end{verbatim}
 
 \section{Const Char}
@@ -446,9 +375,6 @@ std::array<VT, 4> get_data(const VT &v1, const VT &v2, const VT &v3, const VT &v
 {
     return {v1, v2, v3, v4};
 }
-
-... 
-// If only there was a way to avoid all this code duplication !!!
 \end{verbatim}
 
 \subsection{Dynamic Array Allocation}
@@ -1325,6 +1251,41 @@ Type safe pointer since C++14, I think. A replacement for NULL.
 int* ptr = nullptr;
 \end{verbatim}
 
+
+\subsection{Unique Pointers}
+
+\begin{verbatim}
+class Factory {
+public:
+    std::unique_ptr<Product> createProduct(const std::string& productType) {
+        if (productType == "A") {
+            return std::make_unique<ConcreteProductA>();
+
+            // make unique
+            // create an instance of std::unique_ptr
+
+
+        } else if (productType == "B") {
+            return std::make_unique<ConcreteProductB>();
+        } else {
+            return nullptr;
+        }
+    }
+};
+
+#include <memory>
+
+int main() {
+    std::unique_ptr<int> num_ptr = std::make_unique<int>(42);
+    // num_ptr owns the dynamically allocated integer
+
+    // ...
+    
+    return 0;
+}
+
+\end{verbatim}
+
 \subsection{Smart Pointers}
 
 \subsection{Pointer of Pointer}
@@ -1590,8 +1551,6 @@ struct Float_Data {
     ~Float_Data() { delete [] data; }
     float *data;
    };
-
-// If only there was some way to avoid repeating ourselves here!!
 \end{verbatim}
 
 \subsection{Structs Against Classes}
@@ -1694,9 +1653,6 @@ const auto data = [](){ // no parameters
                         // fill result with things. 
     return result;
 }();                    // immediately invoked
-
-Because of RVO, using a lambda will not add overhead and may increase performance.
-What is RVO?
 \end{verbatim}
 
 \section{Concepts}
@@ -1754,34 +1710,12 @@ int main()
 }
 
 Const everything that's not constexpr
-
-Is this a good const?
-
-double *get_data() {
-    double *data = new double[3];
-    data[0] = 1.1; data[1] = 2.2; data[2] = 3.3;
-    return data;
-}
-
-double *sum_data(double *data) {
-    return data[0] + data[1] + data[2]; // uncaught leak
-}
-
-int main() {
-    return sum_data(get_data());
-}
-
-// If only there was some way to automatically delete things when they are no longer needed...
 \end{verbatim}
 
 
 \section{Memory Allocation}
 
 \begin{verbatim}
-// In declaration & is a reference
-
-Memory Address (&)
-
 int porcupine = 3;
 std::cout << &porcupine << "\n"; // Memory address
                                  // 0x7ffd7caa5b54
@@ -2110,6 +2044,24 @@ delete new S *object_4("a","t");
 
 \subsection{Allocation Overhead}
 \subsection{Ownership}
+
+std::make\_unique, ensure that the ownership of the dynamically allocated object is well-managed 
+
+
+\begin{verbatim}
+#include <memory>
+
+int main() {
+    std::unique_ptr<int> num_ptr = std::make_unique<int>(42);
+    // num_ptr owns the dynamically allocated integer
+
+    // ...
+    
+    return 0;
+}
+\end{verbatim}
+
+
 \subsection{Turing Complete}
 
 
@@ -2133,14 +2085,37 @@ auto s_factory(){
 
 Where are sanitizers, compiler warnings, clang-tidy? In this timeline?
 
+\section{Static}
+
+\begin{verbatim}
+With static (see object lifetimes), the variable lasts for the lifetime of the program.
+It will be initialized only once. 
+
+    the size of the array is now known at compile time
+    We've removed dynamic allocations
+    We no longer pay the cost of accessing a static
+
+    " when you see a const, always ask yourself: "is this value known at compile time? 
+    If it is, what would it take to make the value constexpr?" 
+\end{verbatim}
+
 \section{Before Compilation}
 
 \subsection{Before Compilation Tools}
 
-\section{Compilation Time}
 
 \subsection{Compile Time Tools}
 
+\subsubsection{Constexpr}
+
+`constexpr` is used for compile-time evaluation.
+It ensures that an expression or function can be computed at compile time.
+It reduces runtime overhead.
+The program avoids the need to perform those computations at runtime. 
+
+The computations are already done during the compilation process, 
+The program doesn't incur the additional time and resources required
+to perform them during runtime execution.
 
 \section{Runtime}
 
@@ -2203,14 +2178,6 @@ int main()
 }
 \end{verbatim}
 
-\subsection{Cout}
-
-Std::Cout is quite verbose, relatively slow and difficult to reason about. 
-
-\begin{verbatim}
-Puts (algorithm)
-\end{verbatim}
-
 \subsection{Text Formatting}
 
 A subset of the excellent {fmt} library, allowing for formatting of strings with positional,
@@ -2254,35 +2221,6 @@ auto get_data(const auto & ... params)
 }
 \end{verbatim}
 
-
-\section{System()}
-
-\begin{verbatim}
-#include <string>
-
-int main() {
-    std::string cmd = "ls -l";
-    system(cmd.c_str()); // change to c-string
-    return 0;
-}
-\end{verbatim}
-
-\subsection{Error Handeling - if cmd succeeded}
-
-\begin{verbatim}
-int main() {
-    std::string cmd = "ls -l";
-    int result = system(cmd.c_str());  // Pass C-string to system()
-
-    if (result == 0) {
-        std::cout << "Command executed successfully." << std::endl;
-    } else {
-        std::cout << "Command execution failed." << std::endl;
-    }
-    return 0;
-}
-\end{verbatim}
-
 \section{Structured Bindings}
 
 Used to decompose a structure or array into a set of identifiers.
@@ -2297,53 +2235,12 @@ template<typename Map>
 void print_map(const Map &map, const std::string &key_desc = "key",
                                const std::string &value_desc = "value")
 {
-    for (const auto &[key, value] : map) /// strucuted binding
+    for (const auto &[key, value] : map) // structured binding
     {
         std::cout << key_desc << ": '" << key << "' "
                   << value_desc << ": '" << value << "'\n";
     }
 }
-
-Standard c++17
-\end{verbatim}
-
-\subsection{Bulky Template Synthax}
-
-\begin{verbatim}
-#include <string>
-
-template<typename Map>
-void print_map(const Map &map, const std::string &key_desc = "key",
-                               const std::string &value_desc = "value")
-{
-    for (const auto &[key, value] : map) /// strucuted binding
-    {
-        std::cout << key_desc << ": '" << key << "' "
-                  << value_desc << ": '" << value << "'\n";
-    }
-}
-
-Potential Inefficiency Hiding
-
-void print_map(const auto &map, const std::string &key_desc = "key",
-                                const std::string &value_desc = "value")
-{
-    for (const auto &[key, value] : map) /// strucuted binding
-    {
-        std::cout << key_desc << ": '" << key << "' "
-                  << value_desc << ": '" << value << "'\n";
-    }
-}
-
-int main()
-{
-    print_map(get_some_map(), "index", "location");
-}
-
-/// Std::String vs Const Char *
-
-We are constructing a std::string from a const char * for no particular reason.
-
 \end{verbatim}
 
 \section{System Design}
@@ -2587,12 +2484,22 @@ Knowing when paradims are needed is the key to good C++.
 Using appropriate techniques takes time and appropriate technique. 
 \end{verbatim}
 
-\subsection{Learn a different language}
+\subsection{Auto Expensive Conversion}
+
+Avoid potential expensive conversions. Same as ranged-for loops. 
+
+Auto requires initialization, same as const. 
 
 \begin{verbatim}
-    Lisp // Diverge from the C-family languages. Learn,
-    Haskell
-    Erlang
+const std::string value = get_string_value();
+
+// What is the return type of get_string_value()? 
+
+If its std::string_view or const char *,
+we'll get costly conversion on all compilers with no diagnostic. 
+
+// avoids conversion
+const auto value = get_string_value();
 \end{verbatim}
 
 \section{DRY (Don't Repeat Yourself)}
@@ -2626,8 +2533,6 @@ int divide(int numerator, int denominator) {
 \subsection{Auto Deduction Practice}
 
 \begin{verbatim}
-What is the type of val in all these situation?
-
 const int *get();
 
 int main() {
@@ -2640,12 +2545,9 @@ int main() {
     const auto val = get();
 }
 
-The function get() returns a const int\& (a reference to a constant integer),
-and the auto keyword deduces the type of val as the same as the type of the
-expression on the right-hand side of the assignment.
-Since get() returns a const int&, the type of val is also const int&.
-The const qualifier in front of auto ensures that the type deduced for
-val is also a const reference.
+The function get() returns a const int& (a ref to a const int),
+
+get() returns a const int&, val is also const int&.
 
 Const int *get();
 
@@ -2653,12 +2555,10 @@ int main() {
     const auto *val = get();
 }
 
-According to GPT
+The function get() returns a const int* (a pointer to a const int),
 
-The function get() returns a const int* (a pointer to a constant integer),
-and the auto keyword deduces the type of val as the same as the type of the
-expression on the right-hand side of the assignment.
-Since get() returns a const int*, the type of val is also const int*.
+Since get() returns a const int*,
+val is also const int*.
 
 The const qualifier applies to the integer pointed to by val,
 not to the pointer val itself. Therefore, val is a non-constant pointer to a constant integer.
