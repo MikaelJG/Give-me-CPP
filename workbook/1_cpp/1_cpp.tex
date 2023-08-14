@@ -1605,46 +1605,43 @@ for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
 
 \subsection{Lambdas Captures}
 
-Mechanism through which a lambda function access variables from its surrounding scope.
-Use outside variable within their body.
+Access variables from its surrounding scope.
+Used outside variable within their body.
+
+The captures section can be left empty if
+the lambda does not need to access any external variables.
 
 \begin{verbatim}
 auto lambda = [/*captures*/](int param1){ return param1 * 10; };
+\end{verbatim}
 
-The captures section can be left empty if the lambda does not need to access any external variables.
+\subsection{Lambdas Captures by Values}
 
-By value
+A copy of the variable is made.
+
+\begin{verbatim}
 auto lambda = [param](int param1){ return param1 * 10; };
+\end{verbatim}
 
-A copy of the variable is made at the lambda's creation time.
-Then, it uses that copy within its body. 
+\subsection{Lambdas Captures References}
 
-Reference Capture
+\begin{verbatim}
 auto lambda = [&param](int param1){ return param1 * 10; };
+\end{verbatim}
 
-The lambda function refers to the original variable in the surrounding scope directly,
-without making a copy. 
+\subsection{Lambdas Captures by Values and References}
 
-Combine value and reference captures in the same lambda expression, 
-capture multiple variables, 
-or capture all variables in the surrounding scope by using `[=]` for value capture or `[&]` for reference capture.
+Capture multiple variables, 
 
+\begin{verbatim}
 int x = 42;
 double y = 3.14;
 
 auto lambda = [x, &y](int param1){ return x * param1 + y; };
+
+    // x is captured by value, creating a copy
+    // y is captured by reference, with access to original
 \end{verbatim}
-
-In this example, `x` is captured by value,
-creating a copy, while `y` is captured by reference,
-allowing direct access to the original variable.
-The lambda can then use these captured variables (`x` and `y`)
-within its body to perform calculations.
-
-By capturing variables,
-lambda functions gain access to the state of the surrounding scope,
-providing a powerful and flexible way to operate 
-on external data within the lambda's body.
 
 \subsection{Lambda Auto}
 \begin{verbatim}
