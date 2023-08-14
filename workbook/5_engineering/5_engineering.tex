@@ -8,6 +8,25 @@ Doxygen - create html documentation based on your codebase
 
 \section{Unit Testing}
 
+\subsection{On Testing Libraries in General}
+
+The specific words (Test\_case, require, etc.) may vary a bit,
+but they all have the same logic. When you are familiar with one, 
+you will be able to use another testing library.
+
+\begin{verbatim}
+You have a test case, 
+
+TEST_CASE()
+
+You can give it a name and a short-name(abbriviated)
+
+TEST_CASE( "Factorials are computed", "[factorial]" )
+
+you can test a function with a keyword like require, or require_equal. Giving an input, the result should be. 
+REQUIRE( factorial(0) == 0)
+\end{verbatim}
+
 \subsection{Catch2}
 
 \section{Code Coverage}

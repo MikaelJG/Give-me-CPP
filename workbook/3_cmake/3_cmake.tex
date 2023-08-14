@@ -356,7 +356,7 @@ cmake -S .. -B . -G "Visual Studio 16 2019" # Option 1
 cmake .. -G "Visual Studio 16 2019" # Option 2
 \end{verbatim}
 
-\subsection{Specify the Build Type}
+\section{Builds Type}
 
 Per default, the standard type is in most cases the debug type.
 If you want to generate the project, for example, in release mode you have to set the build type.
@@ -390,7 +390,6 @@ Note: All dependent targets will be built beforehand.
 
 \subsection{Specify the Build Target (Option 2)}
 
-
 Besides setting the target within the cmake build command, you could also run the previously generated Makefile (from the generating step).
 If you want to build the ExternalLibraries\_Executable, you could do the following.
 
@@ -399,18 +398,15 @@ cd build
 make ExternalLibraries_Executable
 \end{verbatim}
 
-
 \section{Run the Executable}
 
-After generating the project and building a specific target you might want to run the executable.
-In the default case, the executable is stored in build/5\_ExternalLibraries/app/ExternalLibraries\_Executable, assuming that you are building the project 5\_ExternalLibraries and the main file of the executable is in the app dir.
+After generating the project and building a specific target, run the executable.
+The main.cpp file of the executable is in the app dir. 
 
 \begin{verbatim}
-cd build
-./bin/ExternalLibraries_Executable
+cd root/build/app
+./program_executable
 \end{verbatim}
-
-
 
 \section{Configuration - Precompiling Information}
 
@@ -542,22 +538,26 @@ git repo in our external directory.
 Now we create a AddGitSubmodule.cmake file. Inside, we define our function.
 
 \begin{verbatim}
-function(add_git_submodule dir) # our function takes one argument called dir
-                                # this dir, is where the submodule is located
-                                # making the add_ action possible.
+function(add_git_submodule dir)    # our function takes one argument called dir
+                                   # this dir, is where the submodule is located
+                                   # making the add_ action possible.
+
         find_package(Git REQUIRED) # Git must be on your computer, or it
                                    # Error's out.
+
         if (NOT EXISTS ${dir}/CMakeLists.txt)
             execute_process (COMMAND ${GIT_EXECUTABLE}}
             submodule update --init --recursive -- ${dir}
-                                                     # recursive is essential here
-                                                     # If someone clones your project, 
-                                                     # It automatically clones this submodules,
-                                                     # It clones auto repos, inside your repo.
+
+                                   # recursive is essential here
+                                   # If someone clones your project, 
+                                   # It automatically clones this submodules,
+                                   # It clones auto repos, inside your repo.
                                                             
-            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}) # cmake saves some variable
-                                                     # including the source dir
-                                                     # of our project.
+            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}) 
+                                   # cmake saves some variable
+                                   # including the source dir
+                                   # of our project.
         endif()
         
         if (EXISTS ${dir}/CMakeLists.txt)
@@ -569,23 +569,18 @@ function(add_git_submodule dir) # our function takes one argument called dir
 endfunction(add_git_submodule)
 \end{verbatim}
 
-
 \subsection{Log example}
 
 Here we are using an external library called log, with only two files, log.c and log.h . We have the library in our 
 external directory. Plus, we have a CMakeLists.txt at the root of the external folder, taking care of the log library. 
 
-
 \begin{center}
-    \includegraphics[width=5in]{loge.png}
+    \includegraphics[width=6in]{loge.png}
 \end{center}
-
-
 
 \subsection{Call Your Own Functions}
 
-In the source CMakeFiles.txt, knowing that we have a new git submodule. We add:
-
+In the source CMakeFiles.txt, knowing that we have a new git submodule.
 
 \begin{verbatim}
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
@@ -1165,10 +1160,8 @@ The house symbol is the executable. Rectangle are external libraries. Losanges s
     \includegraphics[width=2in]{graph.png}
 \end{center}
 
-Towards the end of the course, the graph was more complex.
-
 \begin{center}
-    \includegraphics[width=5in]{graph3.png}
+    \includegraphics[width=6in]{graph3.png}
 \end{center}
 
 \section{Doxygen Documentation}
@@ -1297,9 +1290,9 @@ endif()
 
 Now Documentation can be built seperately, independently of the main project app built process.
 
-\section{Catch2 - Unit Testing}
+\section{Unit Testing in CMake}
 
-\subsection{Function Unit Testing}
+\subsection{Catch2 - Function Unit Testing}
 
 Adding Unit test to our codebase, with the catch2 library. Unit tests are useful to test functions from the library.
 
@@ -1314,12 +1307,9 @@ unsigned int factorial( unsigned int number ) {
 
 std::uint32_t factorial(std::unint32_t number)
 {
-
     return number <= 1 ? number : factorial(number-1) * number;
-
 }
 \end{verbatim}
-
 
 \subsection{Unit Test Directory}
 
@@ -1403,25 +1393,6 @@ if (ENABLE_TESTING)
     target_include_directories(${TEST_MAIN} PUBLIC ${TEST_INCLUDES})
     target_link_libraries(${TEST_MAIN} PUBLIC ${LIBA} Catch2::Catch2)
 endfi()
-\end{verbatim}
-
-
-\subsection{On Testing Libraries in General}
-
-The specific words (Test\_case, require, etc.) may vary a bit, but they all have the same logic. When you are familiar with one, 
-you will be able to use another testing library.
-
-\begin{verbatim}
-You have a test case, 
-
-TEST_CASE()
-
-You can give it a name and a short-name(abbriviated)
-
-TEST_CASE( "Factorials are computed", "[factorial]" )
-
-you can test a function with a keyword like require, or require_equal. Giving an input, the result should be. 
-REQUIRE( factorial(0) == 0)
 \end{verbatim}
 
 \section{Linking Types Differences} 
