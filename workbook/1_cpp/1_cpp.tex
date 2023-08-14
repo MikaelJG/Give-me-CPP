@@ -2047,56 +2047,6 @@ static object_3("a","t");
 delete new S *object_4("a","t");
 \end{verbatim}
 
-
-\chapter{Engineering}
-
-\section{Synch}
-\section{Asynch}
-\section{Multithreading - Parallelisation}
-
-\section{Routine}
-\section{Subroutine}
-
-
-\subsection{Allocation Overhead}
-\subsection{Ownership}
-
-std::make\_unique, ensure that the ownership of the dynamically allocated object is well-managed 
-
-
-\begin{verbatim}
-#include <memory>
-
-int main() {
-    std::unique_ptr<int> num_ptr = std::make_unique<int>(42);
-    // num_ptr owns the dynamically allocated integer
-
-    // ...
-    
-    return 0;
-}
-\end{verbatim}
-
-
-\subsection{Turing Complete}
-
-
-\subsection{Guaranteed Copy Elision}
-
-Compilers have "always done copy elision on return values but c++17 guarantees it in some situations:
-
-\begin{verbatim}
-struct S {
-    S() = default;
-    S(S&&) = delete;
-    S(const S &) = delete;
-};
-
-auto s_factory(){
-    return S{}; // compiles in C++17, neither a copy nor a move.
-}
-\end{verbatim}
-
 \chapter{Timeline of Programs}
 
 Where are sanitizers, compiler warnings, clang-tidy? In this timeline?

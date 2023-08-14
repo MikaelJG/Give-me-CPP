@@ -353,36 +353,19 @@ Std::multiset represents a sorted set of elements (duplicates are possible). The
 the elements are automatically sorted.
 
 \begin{verbatim}
-#include <iostream>
 #include <set>
 
 int main() {
     std::multiset<int> myMul;
     myMul.insert(5);
     myMul.insert(2);
-    myMul.insert(2); // Duplicates are allowed in a multiset
+    myMul.insert(2);            // Duplicates are allowed in a multiset
 
-    for (const auto& element : myMul) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-
-    // Check the count of a specific element
     int countE = 2;
-    std::cout << countE << " appears " << myMul.count(countE) << " times" << '\n';
+    myMul.count(countE);        // count
 
-    // Remove specific elements
     int removeElement = 2;
-    myMul.erase(removeElement);
-
-    for (const auto& element : myMul) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-
-        // 2 2 5
-        // 2 appears 2 times
-        // 2 5 
+    myMul.erase(removeElement); // remove
 
     return 0;
 }
@@ -395,11 +378,10 @@ int main() {
 \subsection{Size}
 
 \begin{verbatim}
-empty() - returns true if empty
-max_size() - returns max number of elements to be stocked
-size() - returns the number of elements
+empty()     - returns true if empty
+max_size()  - returns max number of elements to be stocked
+size()      - returns the number of elements
 \end{verbatim}
-
 
 \subsection{Access and Research}
 
@@ -437,21 +419,14 @@ int main() {
 int main() {
     std::multiset<int> numbers = {1, 2, 3, 3, 3};
 
-    // Find the range of elements equal to 3 in the multiset
-    auto range = numbers.equal_range(3);
+    auto range = numbers.equal_range(3); // find range of 3
 
-    std::cout << "Elements equal to 3: ";
     for (auto it = range.first; it != range.second; ++it) {
-        std::cout << *it << " ";
+        std::cout << *it << " ";         // display
     }
-    std::cout << std::endl;
-
-    // Elements equal to 3: 3 3 3
-
     return 0;
 }
 \end{verbatim}
-
 
 \subsection{Modify Maps and Sets}
 
@@ -566,32 +541,17 @@ int main() {
         {"Charlie", 42}
     };
 
-    // Insert a new key-value pair
     ages["Dave"] = 55;
+    ages["Alice"];                   // access with [] operator
 
-    // Access elements using the [] operator
-    std::cout << "Age of Alice: " << ages["Alice"] << std::endl;
-
-    // Check if a key exists
-    if (ages.count("Charlie") > 0) {
-        std::cout << "Charlie's age: " << ages["Charlie"] << std::endl;
+    if (ages.count("Charlie") > 0) { // find in
     }
 
-    // Iterate over the map
-    for (const auto& entry : ages) {
-        std::cout << "Name: " << entry.first << ", Age: " << entry.second << std::endl;
+    for (const auto& entry : ages) { // display
+        std::cout << "Name: " << entry.first << ", Age: " << entry.second;
     }
 
-    // Erase an element
-    ages.erase("Bob");
-
-    // Check if a key exists after erasing
-    if (ages.count("Bob") > 0) {
-        std::cout << "Bob's age: " << ages["Bob"] << std::endl;
-    } else {
-        std::cout << "Bob is not found in the map." << std::endl;
-    }
-
+    ages.erase("Bob"); // erase
     return 0;
 }
 \end{verbatim}
@@ -606,35 +566,19 @@ A map that allows for multiple values associated with the same key.
 int main() {
     std::unordered_multimap<int, std::string> students;
 
-    // Insert multiple key-value pairs with the same key
     students.insert({101, "Alice"});
     students.insert({102, "Bob"});
-    students.insert({101, "Charlie"});
-    students.insert({103, "Dave"});
-    students.insert({101, "Eve"});
+    students.insert({101, "Charlie"});   // same key
 
-    // Iterate over the multimap
-    for (const auto& entry : students) {
-        std::cout << "ID: " << entry.first << ", Name: " << entry.second << std::endl;
+    for (const auto& entry : students) { // iterate 
+        std::cout << "ID: " << entry.first << ", Name: " << entry.second;
     }
 
-    // Find all students with ID 101
-    int targetId = 101;
+    int targetId = 101;                  // find a key
     auto range = students.equal_range(targetId);
-    std::cout << "Students with ID " << targetId << ":" << std::endl;
-    for (auto it = range.first; it != range.second; ++it) {
+    for (auto it = range.first; it != range.second; ++it) { 
         std::cout << it->second << std::endl;
     }
-
-        // ID: 101, Name: Alice
-        // ID: 103, Name: Dave
-        // ID: 101, Name: Charlie
-        // ID: 102, Name: Bob
-        // ID: 101, Name: Eve
-        // Students with ID 101:
-        // Alice
-        // Charlie
-        // Eve
 
     return 0;
 }
@@ -665,7 +609,7 @@ linear time (O(n))
 
 \subsection{Unordered Sets}
 
-A container storing unique elements with unordered access and efficient search operations.
+A container storing \textbf{unique} elements.
 
 \begin{verbatim}
 #include <unordered_set>
@@ -674,22 +618,12 @@ int main() {
     std::unordered_set<int> numbers;
     numbers.insert(5);
     numbers.insert(2);
-    numbers.insert(10);
-    numbers.insert(7);
-    numbers.insert(3);
+    numbers.insert(10); // unique
 
-    for (const auto& number : numbers) {
-        std::cout << number << " ";
-    }
-    std::cout << std::endl;
-
-    // Check if a value exists in the set
-    int target = 7;
+    int target = 7;     // find target
     if (numbers.find(target) != numbers.end()) {
         std::cout << target << " is found in the set." << std::endl;
-    } else {
-        std::cout << target << " is not found in the set." << std::endl;
-    }
+    } else {}
 
     // Remove an element from the set
     int toRemove = 2;
