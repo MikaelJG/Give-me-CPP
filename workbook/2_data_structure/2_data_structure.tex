@@ -1,13 +1,8 @@
-
-
 \chapter{Data Structures}
-
 
 \section{Time Complexity}
 
 \section{Space Complexity}
-
-
 
 \section{Containers}
 
@@ -659,23 +654,11 @@ int main() {
     numbers.insert(2);
     numbers.insert(5); // Duplicate element
 
-    for (const auto& number : numbers) {
-        std::cout << number << " ";
-    }
-    std::cout << std::endl;
+    int target = 5;    // count  
+    int count = numbers.count(target); 
 
-    // Count occurrences of a value in the multiset
-    int target = 5;
-    int count = numbers.count(target);
-    std::cout << "Occurrences of " << target << ": " << count << std::endl;
-
-    // Remove specific occurrences of a value from the multiset
-    int toRemove = 5;
+    int toRemove = 5;  // erase
     numbers.erase(numbers.find(toRemove));
-    
-        // 2 5 5
-        // Occurrences of 5: 2
-        // 2 5
 
     return 0;
 }
@@ -724,17 +707,17 @@ and pop\_back().
 std::stack is a LIFO (last in, first out). Important functions are back(), front(), push\_back().
 
 \begin{center}
-    \includegraphics[width=2in]{stack_functions.png}
+    \includegraphics[width=5in]{stack_functions.png}
 \end{center}
 
 \section{Tries - Retrieval Trees - AutoComplete}
 
-`std::queue` and `std::stack` containers as part of the standard library, but tries (retrieval trees) are not implemented. 
-
-Here, and example with `std::unordered\_map` or `std::map` for the children nodes,
-and custom classes or structs to represent the nodes.
-
+`std::queue` and `std::stack` containers as part of the standard library,
+but tries (retrieval trees) are not implemented. 
 Yet, third-party libraries have implementions of trie data structures.
+
+Example, `std::unordered\_map` or `std::map` for the children nodes,
+and custom classes or structs to represent the nodes.
 
 \begin{verbatim}
 #include <unordered_map>
@@ -782,19 +765,8 @@ public:
 int main() {
     Trie trie;
     
-    // Insert words into the trie
-    trie.insert("apple");
-    trie.insert("banana");
-    trie.insert("cat");
-    trie.insert("dog");
-    
-    // Search for words in the trie
-    std::cout << trie.search("apple") << std::endl;  // Output: 1 (true)
-    std::cout << trie.search("banana") << std::endl; // Output: 1 (true)
-    std::cout << trie.search("cat") << std::endl;    // Output: 1 (true)
-    std::cout << trie.search("dog") << std::endl;    // Output: 1 (true)
-    std::cout << trie.search("car") << std::endl;    // Output: 0 (false)
-
+    trie.insert("apple"); // insert
+    trie.search("apple"); // search
     return 0;
 }
 \end{verbatim}
@@ -1119,35 +1091,6 @@ T sum_data(const std::vector<T> &d) {
 }
 
 int main() {
-    return sum)data(get_data(1,2,3));
+    return sum_data(get_data(1,2,3));
 }
-
-// But we know the amount of data at compile-time. 
-// If only there was some fixed-size container available!
-
-\end{verbatim}
-
-\subsection{Prefer Algorithms Over Loops}
-
-Algorithms communicate meaning and help "const all the things".
-
-Taking a functional approach and using algorithms, we can write cleaner c++.
-
-\begin{verbatim}
-// Algorithms end game (before C++20)
-
-const auto has_value
-    = std::any_of(begin(container), end(container), 
-            greater_than(12));
-
-// Algorithm end game (c++20)
-
-const auto has_value
-    = std::any_of(container, greater_than(12));
-
-Next time you are reading through a loop in your codebase,
-cross-reference it with the C++ <algorithm> header²
-and try to find an algorithm that applies instead.
-
-https://en.cppreference.com/w/cpp/algorithm
 \end{verbatim}

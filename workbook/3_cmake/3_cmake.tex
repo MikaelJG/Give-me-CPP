@@ -2,11 +2,11 @@
 
 \section{Overview}
 
-Cmake is super old. It has more than 300 functions to use, but 250 should not be used in modern cmake projects. 
-This makes it particularly difficult to learn. Many older tutorials are confusing, out-of-date.
+Cmake is super old. It has more than 300 functions.
+Yet, modern cmake only need 50. 250 should not be used, increasing difficulty.
+Older tutorials are confusing.
 
-Moreover, modern cmake makes it as readable as possible with modern functions. Thus, way easier to read than older
-functions.
+Modern cmake emphases readability, older functions complexify.
 
 \section{Compilers}
 
@@ -173,19 +173,10 @@ Flawed programming's logical thinking.
 
 No errors, but output is wrong. 
 
-
-
 \section{Project Structure}
-
-See basic project and intermediate project examples, in cmake udemy.
 
 \begin{center}
     \includegraphics[width=2in]{cpp_tree1.png}
-\end{center}
-
-
-\begin{center}
-    \includegraphics[width=2in]{cpp_tree2.png}
 \end{center}
 
 \subsection{App Directory}
@@ -214,22 +205,15 @@ Cmake has built-in paths to use. We use many in these notes.
 
 \begin{verbatim}
 # CMAKE_SOURCE_DIR is always the directory of the
-# root CMakeLIsts.txt file
+# root CMakeLists.txt file
 # our root directory
 
 # CMAKE_BINARY_DIR is always our build directory
 \end{verbatim}
 
-
-
-\subsection{Template for Projects is Intermediate project}
-
-Create a project builder based on the architecture of the intermediate project.
-
-
 \section{Variables}
 
-You can create variables for you executable or your libraries in the root CMakeLists.txt. The variables
+You can create variables for your executable or your libraries in the root CMakeLists.txt. Variables
 will be usable in all add\_subdirectory chain at the end of the same document.
 
 \begin{verbatim}
@@ -257,9 +241,9 @@ add_subdirectory(app)
 
 \subsection{Standard for cpp}
 
-This is essential to have in your program. Otherwise, the compiler's default config will take the lead, with huge
-variability between compiler versions!
-In your root CMakeLists.txt file as well. This defines a variable and sets the standard to 17.
+Specify your C++ standard. Essential to overwrite the compiler defaults
+(with huge variability between compiler versions!).
+In your root CMakeLists.txt file define a variable and sets the standard to 17.
 
 \begin{verbatim}
 set(CMAKE_CXX_STANDARD 17)
@@ -277,18 +261,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 \subsection{Compiler Extensions}
 
-Some compilers have features that are not implemented in the Cpp standard. These features are extensions.
-Some compilers allow you to use non-standard c code into a cpp program, even if they are not in the cpp standard.
-
 \begin{verbatim}
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 \end{verbatim}
 
-\subsection{If Statement}
-
-Cmake has if statement. It even has string comparaison functions, to compare variable and create conditions.
+\subsection{Conditional - If Statement}
 
 \begin{verbatim}
 option(COMPILE_EXECUTABLE "Whether to compile the executable" OFF)
@@ -300,22 +279,32 @@ if (COMPILE_EXECUTABLE)
 else()
     message("Without executable compiling")
 endif()
-
 \end{verbatim}
 
 
-\subsection{Options}
+\section{Makefile Shell Scripting}
 
-You can set an option, the second argument is a simple comment for the reader (with no impact).
+Make is Cmake's ancestor. You can automate folder creation and files,
+like any shell script.
+\textbf{Make do not support spaces, use tabs}.
 
 \begin{verbatim}
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+prepare:
+    rm -rf build
+    mkdir build
+    cd build
 
-set(LIBA Library)
-set(HE Hello)
+$ make prepare # execute 
+\end{verbatim}
 
+\section{Command Line Options}
+
+\subsection{Custom Command Line Options}
+
+You can set an option,
+the second argument is a simple comment for the reader (with no impact).
+
+\begin{verbatim}
 option(COMPILE_EXECUTABLE "Whether to compile the executable" OFF)
 
 add_subdirectory(src)
@@ -324,78 +313,12 @@ if (COMPILE_EXECUTABLE)
     add_subdirectory(app)
 endif()
 
-
 # to call the option from the command line
 
 #$ cmake .. -DCOMPILE_EXECUTABLE=ON
-
-# then you can switch it back OFF later
-
 #$ cmake .. -DCOMPILE_EXECUTABLE=OFF
 \end{verbatim}
 
-
-\section{Makefile Shell Scripting}
-
-Make is Cmake's ancestor. You can automate folder creation and files, just like any shell script would do. 
-
-Make do not support space, use tabs.
-
-\begin{verbatim}
-prepare:
-    rm -rf build
-    mkdir build
-    cd build
-
-# to execute it
-
-# $ make prepare
-\end{verbatim}
-
-
-
-\section{Project Software Toolkit}
-
-\begin{verbatim}
-Doxygen - create html documentation based on your codebase
-Conan/VCPKG Packaging - How to install and use external libraries
-Unit Testing
-Code Coverage
-CI Testing -- use all these tools in continuous integration, Github actions
-
-
-We'll see how to create an html documentation based on your codebase
-\end{verbatim}
-
-\section{Installation Commands}
-
-\begin{verbatim}
-sudo apt-get update
-sudo apt-get upgrade
-
-# Mandatory
-sudo apt-get install gcc g++ gdb
-sudo apt-get install make cmake
-sudo apt-get install git
-sudo apt-get install doxygen
-sudo apt-get install python3 python3-pip
-
-# Optional
-sudo apt-get install lcov gcovr
-sudo apt-get install ccache
-sudo apt-get install cppcheck
-sudo apt-get install llvm clang-format clang-tidy
-sudo apt-get install curl zip unzip tar
-
-# for VSCODE
-
-in extension, download franneck94 c/c++ extension pack
-And the coding tools extension pack
-Then, with command palette (in view), Config: generate C config file. It configures all tools the same as the
-teacher's
-\end{verbatim}
-
-\section{Command Line Options}
 
 \subsection{Generating a Project}
 
