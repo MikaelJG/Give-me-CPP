@@ -1884,19 +1884,11 @@ if(${ENABLE_LTO})
 endif()
 \end{verbatim}
 
-\chapter{Cpp Project Engineering}
+\chapter{Clang Tools}
 
-A project template was included in the course. 
+\section{Clang Tools.cmake}
 
-
-\section{Clang Tools}
-
-
-
-\subsection{Clang Tools.cmake}
-
-This content was seen at the end of the course. The instructor configured the tools in a new Tools.cmake file.
-
+Configure the tools in a new Tools.cmake file.
 
 \begin{center}
     \includegraphics[width=2in]{tools_cm.png}
@@ -2033,7 +2025,7 @@ The previous tool.cmake file references two python files, one for clang-format a
 Both are part of the LLVM package, no need to inspect those, it is part of the programs.
 
 \begin{center}
-    \includegraphics[width=2in]{runclang.png}
+    \includegraphics[width=6in]{runclang.png}
 \end{center}
 
 \subsection{Clang-Tidy}
@@ -2115,7 +2107,7 @@ To activate it with the microsoft compiler, you need to use the Visual Studio Co
 Some filters, defined in .clang-tidy config file may not work on Windows, but will work on Unix systems.
 
 \begin{center}
-    \includegraphics[width=2in]{ms_tidy.png}
+    \includegraphics[width=5in]{ms_tidy.png}
 \end{center}
 
  
@@ -2193,9 +2185,8 @@ Check .cmake-format.yaml file in root directory.
 
 Plus, these tools were configured in the root CMakeLists.txt file.
 
-
 \begin{center}
-    \includegraphics[width=2in]{tools4.png}
+    \includegraphics[width=5in]{tools4.png}
 \end{center}
 
 
@@ -2377,7 +2368,7 @@ lcov generates a code Coverage directory, with information in an html.
 
 
 \begin{center}
-    \includegraphics[width=2in]{cov2.png}
+    \includegraphics[width=5in]{cov2.png}
 \end{center}
 
 
@@ -2615,13 +2606,13 @@ You can have great icons to see versions of the project passing on your github p
 In Ubuntu, it is possible to upload the code coverage online, for free, automatically with github actions.
 
 \begin{center}
-    \includegraphics[width=2in]{codecov.png}
+    \includegraphics[width=5in]{codecov.png}
 \end{center}
 
 It is based on the Ubuntu.yaml configuration file.
 
 \begin{center}
-    \includegraphics[width=2in]{codecov2.png}
+    \includegraphics[width=5in]{codecov2.png}
 \end{center}
 
 
@@ -2722,18 +2713,6 @@ $ sudo cmake --build . --target install
     \includegraphics[width=2in]{inst.png}
 \end{center}
 
-\subsection{Install any CMake Program on the Internet}
-
-Logically, you could clone any Cmake project from github, build it and use the executable as a regular
-program on your machine. This is how pros do it, I guess.
-
-
-\begin{verbatim}
-Clone the repo
-Generate the Cmake project (cmake --build ...)
-and
-Run the install function we just seen.
-\end{verbatim}
 
 \section{Jason Turner's Template}
 
