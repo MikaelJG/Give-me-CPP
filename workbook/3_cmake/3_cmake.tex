@@ -91,44 +91,6 @@ g++ main.cpp my_functions.cpp // link both files
     .h (ex: std_lib_facilities.h).
 \end{verbatim}
 
-\section{Builds}
-
-\subsection{Build Configuration (build target)}
-
-\begin{verbatim}
-    Project settings determining how your project will be built. 
-    Build configuration includes executable name, project arch and library files. 
-    It specifies keepings or strippings of debugging info, compiler optimization details 
-\end{verbatim}
-
-\subsection{Debug Config}
-
-\begin{verbatim}
-    Debug configuations turns off all optimizations, includes debugging information,
-    Jason Turner would say "with as much information as possible"
-    Such configs makes your programs larger and slower, but much easier to debug. 
-\end{verbatim}
-
-\subsection{Release Config}
-
-\begin{verbatim}
-    Optimized for size and performance, no debugging information.
-    With all optimization, now testing for code performance.
-
-    When the Hello World program (from lesson 0.7) was built using Visual Studio,
-    Executable produced in the debug configuration was 65kb, 
-    Executable built in the release version was 12kb. 
-    The difference is largely due to the extra debugging information kept in the debug build.
-\end{verbatim}
-
-\subsection{G++ Builds}
-\begin{verbatim}
-GCC / Clang? 
-    -ggdb  // cmd line debugging
-           // This is the GNU Debugger !?
-    -ggdb O2 -DNDEBUG for release builds. ??
-    -g++ O2 -DNDEBUG for release builds. ??
-\end{verbatim}
 
 \section{Compiler Extensions (compiler-specific behavior)}
 
