@@ -191,6 +191,25 @@ int main() {
 }
 \end{verbatim}
 
+\section{Streams}
+
+\begin{verbatim}
+    std::cin            : Standard input stream for reading user input.
+    std::cout           : Standard output stream for writing output.
+    std::cerr           : Standard error stream for writing error messages (unbuffered).
+    std::clog           : Standard error stream for writing log messages (buffered).
+    std::ifstream       : Input file stream for reading from files.
+    std::ofstream       : Output file stream for writing to files.
+    std::fstream        : File stream for reading from and writing to files.
+    std::istringstream  : Input string stream for reading from strings.
+    std::ostringstream  : Output string stream for writing to strings.
+    std::stringstream   : String stream for reading from and writing to strings.
+    std::wcin           : Wide character version of std::cin for reading wide characters.
+    std::wcout          : Wide character version of std::cout for writing wide characters.
+    std::wcerr          : Wide character version of std::cerr for writing wide error messages.
+    std::wclog          : Wide character version of std::clog for writing wide log messages.
+\end{verbatim}
+
 \subsection{Sstream}
 
 `std::stringstream` is a C++ class. It handling string-based input and output operations,
@@ -201,9 +220,8 @@ allowing you to read from and write to strings as if they were input/output stre
 #include <sstream>
 
 int main() {
-    std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    std::string text = "lorem";
 
-    // convert text to lowercase
     for (char& c : text) {
         c = std::tolower(c);
     }
@@ -212,14 +230,12 @@ int main() {
     std::istringstream iss(text);
     std::string word;
 
-    // count the frequency of each word in the text
-    while (iss >> word) {
+    while (iss >> word) { // count frequency
         wordfreq[word]++;
     }
 
-    // display the word frequencies
-    for (const auto& pair : wordfreq) {
-        std::cout << pair.first << ": " << pair.second << std::endl;
+    for (const auto& pair : wordfreq) { // display
+        std::cout << pair.first << ": " << pair.second;
     }
 
     return 0; // return success
@@ -2191,36 +2207,6 @@ std::string s = fmt::format("I'd rathe be {1} than {0}.", "right", "happy");
 Standard C++20
 \end{verbatim}
 
-\subsection{All Combined (algorithms, text formatting, concepts, etc.)}
-
-\begin{verbatim}
-#include <format>
-#include <string_view>
-
-void print_map(const auto &map, const std::string_view &key_desc = "key",
-                                const std::string_view &value_desc = "value")
-{
-    const auto print_key_value = [&](const auto &data) { 
-        const auto &[key, value] = data;
-        std::puts(std::format("{}: '{}' {}: '{}'",
-                         key_desc, key, value_desc, value).c_str());
-    };
-
-    for_each(begin(map), end(map), print_key_value);
-}
-
-// if only there was some way to not have to do this begin(map) and end(map)!!!
-
-Auto Concept in c++20
-
-#include <array>
-
-auto get_data(const auto & ... params)
-{
-    return std::array{params...};
-}
-\end{verbatim}
-
 \section{Structured Bindings}
 
 Used to decompose a structure or array into a set of identifiers.
@@ -2308,16 +2294,6 @@ int main() {
 \begin{verbatim}
   std::exit(0) (success)
   std::exit(1) (failure)
-
-  int isPrime(int x) {
-    if (x % 2 == 1) {
-        return 0; // is considered as false
-                  // Yet, is it not the same as the boolean false
-                  // In a boolean context, 
-                  // 0 is implicitly converted to false,
-                  // However, not equivalent in all contexts.
-    }
-  }
 
 Void, Also refered as subroutine.
 
@@ -2585,17 +2561,32 @@ int main() {
 \end{verbatim}
 
 \chapter{Compilers}
+
 \section{Compiler GNU GCC}
 
 \begin{verbatim}
 alias g++="g++ -Wall -Werror -Wextra -pedantic -std=c++17"
 \end{verbatim}
 
-\section{Compiler Clang}
+\subsection{GNU GCC Enable Precompiled Headers}
+\subsection{GNU GCC Enable Warning as Errors}
+\subsection{GNU GCC Disable Extensions}
 
-\chapter{Program Timeline}
+
+\section{Compiler LLVM Clang}
+
+\subsection{Clang Enable Precompiled Headers}
+\subsection{Clang Enable Warning as Errors}
+\subsection{Clang Disable Extensions}
+
+\subsection{Clang-Format}
+
+\subsection{Clang-tidy}
 
 
-\section{Sanitizers (before compiling), link-time, compile-time, runtime).
+\section{Compiler MSVC}
 
+\subsection{MSVC Enable Precompiled Headers}
+\subsection{MSVC Enable Warning as Errors}
+\subsection{MSVC Disable Extensions}
 

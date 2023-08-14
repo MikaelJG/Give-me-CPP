@@ -22,10 +22,23 @@ After all object files were compiled, the linker starts.
 \end{center}
 
 \begin{verbatim}
-MVSC // Microsoft Compiler
-GCC // Gnu C Compiler
-LLVM Clang // LLVM Compiler
+MVSC        // Microsoft Compiler
+GCC         // Gnu C Compiler
+LLVM Clang  // LLVM Compiler
 \end{verbatim}
+
+\subsection{Compile}
+\begin{verbatim}
+g++ hello.cpp -o hello
+
+Compiling translates C++ programs into machine code.
+It is stored on disk as a file with the .o extension (hello.o). 
+\end{verbatim}
+
+A linker then links the object code with standard library routines
+that the program may use and creates an executable image which is also saved on disk,
+
+usually as a file with the file name without any extension (e.g. hello).
 
 \section{Linkers}
 
@@ -38,6 +51,45 @@ LLVM Clang // LLVM Compiler
 \begin{center}
 \includegraphics[width=4in]{linker.png}
 \end{center}
+
+\subsection{Link Header Files}
+
+\begin{verbatim}
+-- main.cpp --
+#include "my_function.hpp"
+
+$ g++ main.cpp my_function.cpp -o program
+
+-- fun.hpp / fun.h --
+double average(double num1, double num2);
+
+-- fun.cpp --
+double average(double num1, double num2) {
+  return (num1 + num2) / 2;
+}
+\end{verbatim}
+
+\subsection{Standard Library Headers}
+
+\begin{verbatim}
+Some standard library headers are included by others. 
+
+<cstdlib> is included by <iostream>, since it relies on its functionalities,
+such as the declaration of the system() function. 
+\end{verbatim}
+
+\section{Command Line Linking and Compiling}
+
+\begin{verbatim}
+g++ main.cpp my_functions.cpp // link both files
+\end{verbatim}
+
+\subsection{Source Code Files Suffix}
+
+\begin{verbatim}
+    .cpp (ex: hello.cpp) or
+    .h (ex: std_lib_facilities.h).
+\end{verbatim}
 
 \section{Builds}
 
@@ -80,19 +132,16 @@ GCC / Clang?
 
 \section{Compiler Extensions (compiler-specific behavior)}
 
-    many compilers implement their own changes to the language,
-    \begin{verbatim}
-    Using compiler extension allows you to write programs that are incompatible
-    with the C++ standard.
-    \end{verbatim}
 
-    Programs using non-standard extensions generally will not compile on other compilers (lacking same extensions support)
-    , or if they do, they may not run correctly.
+\textbf{This should not be in cmake, but in engineering}
 
-    Compiler extensions are often enabled by default. Overpermissive compilers.
 
-    Compiler extensions are optional, cause programs non-compliancy with C++ standards,
-    Turn compiler extensions off.
+Many compilers change the language through extentions. Non compliant c++ code is possible with them.
+Extension are overpermissive and enabled by default.
+
+
+Programs using non-standard extensions generally will not compile on other compilers 
+(lacking same extensions support). If they do, they may not run correctly.
 
 \begin{verbatim}
 GCC
@@ -123,79 +172,12 @@ GCC 8 or 9
 g++ -std=c++17 myfile.cpp -o output // cmd line
 \end{verbatim}
 
-\section{Dear ImGui}
+\section{Precompiled Headers (PCH)}
 
-\section{PCH - Precompiling Headers}
+Speed compilation in larger projects. A PCH file make subsequent compilations faster.
 
-Some compilers' feature to speed compilation of large projects. 
-It generates a precompiled version of commonly included header files, 
 
-This version is known as the PCH file.
-It is used during subsequent compilations. Avoids reparse and re-process of header files.
 
-Great for large projects: numerous headers, included in multiple source files.
-
-\subsection{Enable PCH}
-
-PCH usage is compiler-specific, the enabling and configuring method varies. 
-
-It typically involves specifying which headers should be precompiled and how the precompiled information should be stored.
-
-\subsection{Include Header Files}
-
-\begin{verbatim}
-// Main.cpp
-// #include "my_function.hpp"
-
-//then
-// g++ main.cpp my_function.cpp -o program
-\end{verbatim}
-
-\subsection{Header Files 2.0}
-
-\begin{verbatim}
-// Declare in header, fun.hpp or fun.h
-double average(double num1, double num2);
-
-// Define in fun.cpp
-double average(double num1, double num2) {
-  return (num1 + num2) / 2;
-}
-\end{verbatim}
-
-\subsection{Standard Library Headers}
-
-\begin{verbatim}
-Some standard library headers are included by others. 
-
-<cstdlib> is included by <iostream>, since it relies on its functionalities,
-such as the declaration of the system() function. 
-\end{verbatim}
-
-\section{Command Line Linking and Compiling}
-
-\begin{verbatim}
-g++ main.cpp my_functions.cpp // link both files
-\end{verbatim}
-
-\subsection{Source Code Files Suffix}
-
-\begin{verbatim}
-    .cpp (ex: hello.cpp) or
-    .h (ex: std_lib_facilities.h).
-\end{verbatim}
-
-\subsection{Compile}
-\begin{verbatim}
-g++ hello.cpp -o hello
-
-Compiling translates C++ programs into machine code.
-It is stored on disk as a file with the .o extension (hello.o). 
-\end{verbatim}
-
-A linker then links the object code with standard library routines that the program may use and creates an executable image which is also saved on disk,
-
-usually as a file with the file name without any extension (e.g. hello).
 
 \section{Debugg and Error Type}
 
