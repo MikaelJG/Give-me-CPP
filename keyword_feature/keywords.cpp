@@ -567,12 +567,42 @@ int main() {
         {"fac", home + "/code/cpp/examples/factories.cpp"}, 
         // {"", home + "/code/cpp/examples/factories.cpp"},
         //
+        // virtual factories 
+        {"virtual factories", home + "/code/cpp/examples/virtual_factories.cpp"}, 
+        {"virtualfactories", home + "/code/cpp/examples/virtual_factories.cpp"}, 
+        {"virtual factory", home + "/code/cpp/examples/virtual_factories.cpp"}, 
+        {"virtualfactory", home + "/code/cpp/examples/virtual_factories.cpp"}, 
+        {"virtualfac", home + "/code/cpp/examples/virtual_factories.cpp"}, 
+        {"virtfac", home + "/code/cpp/examples/virtual_factories.cpp"}, 
+        {"virt", home + "/code/cpp/examples/virtual_factories.cpp"}, 
+        // {"", home + "/code/cpp/examples/virtual_factories.cpp"},
+        //
+        // constructors 
+        {"constructing", home + "/code/cpp/examples/constructors.cpp"}, 
+        {"construction", home + "/code/cpp/examples/constructors.cpp"}, 
+        {"constructed", home + "/code/cpp/examples/constructors.cpp"}, 
+        {"constructor", home + "/code/cpp/examples/constructors.cpp"}, 
+        {"construct", home + "/code/cpp/examples/constructors.cpp"}, 
+        // {"", home + "/code/cpp/examples/constructors.cpp"},
+        //
+        // destructors
+        {"destruction", home + "/code/cpp/examples/destructors.cpp"}, 
+        {"destructing", home + "/code/cpp/examples/destructors.cpp"}, 
+        {"destructor", home + "/code/cpp/examples/destructors.cpp"}, 
+        {"destruct", home + "/code/cpp/examples/destructors.cpp"}, 
+        {"destroy", home + "/code/cpp/examples/destructors.cpp"}, 
+        // {"", home + "/code/cpp/examples/destructors.cpp"},
+        //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
+        // insert
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
