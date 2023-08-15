@@ -518,11 +518,54 @@ int main() {
         {"genlamb", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
         // {"", home + "/code/cpp/examples/generic_lambdas.cpp"},
         //
-        // insert
+        // variadic lambdas 
+        {"variadic lambdas", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"variadiclambdas", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"variadic lambda", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"variadiclambda", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"varia lambda", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"varialambda", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"varia lamb", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"varialamb", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"var lambdas", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"varlambdas", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"varlambda", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"var lambda", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"varlamb", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        {"var lamb", home + "/code/cpp/examples/variadic_lambdas.cpp"}, 
+        // {"", home + "/code/cpp/examples/variadic_lambdas.cpp"},
+        //
+        // const lambdas 
+        {"const lambdas", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"constlambdas", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"const lambda", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"constlambda", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"const lamb", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"constlamb", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"lambdas const", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"lambdasconst", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"lambda const", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"lambdaconst", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"lamb const", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        {"lambconst", home + "/code/cpp/examples/const_lambdas.cpp"}, 
+        // {"", home + "/code/cpp/examples/const_lambdas.cpp"},
+        //
+        // concepts 
+        {"conc", home + "/code/cpp/examples/concepts.cpp"}, 
+        {"concept", home + "/code/cpp/examples/concepts.cpp"}, 
+        // {"", home + "/code/cpp/examples/concepts.cpp"},
+        //
+        // constants 
+        {"constant", home + "/code/cpp/examples/constants.cpp"}, 
+        {"const", home + "/code/cpp/examples/constants.cpp"},
+        {"cons", home + "/code/cpp/examples/constants.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // factories 
+        {"factory", home + "/code/cpp/examples/factories.cpp"}, 
+        {"fact", home + "/code/cpp/examples/factories.cpp"}, 
+        {"fac", home + "/code/cpp/examples/factories.cpp"}, 
+        // {"", home + "/code/cpp/examples/factories.cpp"},
         //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
