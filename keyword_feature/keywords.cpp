@@ -328,24 +328,76 @@ int main() {
         {"leak", home + "/code/cpp/examples/leaking_memory.cpp"},
         // {"", home + "/code/cpp/examples/leaking_memory.cpp"},
         //
-        //  
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // classes 
+        {"class", home + "/code/cpp/examples/classes.cpp"}, 
+        {"clas", home + "/code/cpp/examples/classes.cpp"}, 
+        {"cla", home + "/code/cpp/examples/classes.cpp"}, 
+        // {"", home + "/code/cpp/examples/classes.cpp"},
         //
+        // class components 
+        {"classcomponents", home + "/code/cpp/examples/class_components.cpp"}, 
+        {"class components", home + "/code/cpp/examples/class_components.cpp"}, 
+        {"classcomponent", home + "/code/cpp/examples/class_components.cpp"}, 
+        {"clascomponent", home + "/code/cpp/examples/class_components.cpp"}, 
+        {"clacomponent", home + "/code/cpp/examples/class_components.cpp"}, 
+        {"classcomp", home + "/code/cpp/examples/class_components.cpp"}, 
+        {"components", home + "/code/cpp/examples/class_components.cpp"}, 
+        {"component", home + "/code/cpp/examples/class_components.cpp"}, 
+        // {"", home + "/code/cpp/examples/class_components.cpp"},
+        //
+        // span 
+        {"spans", home + "/code/cpp/examples/span.cpp"}, 
+        {"spa", home + "/code/cpp/examples/span.cpp"}, 
+        // {"", home + "/code/cpp/examples/span.cpp"},
+        //
+        // templates
+        {"template", home + "/code/cpp/examples/templates.cpp"}, 
+        {"templat", home + "/code/cpp/examples/templates.cpp"}, 
+        {"temps", home + "/code/cpp/examples/templates.cpp"}, 
+        {"temp", home + "/code/cpp/examples/templates.cpp"}, 
+        // {"", home + "/code/cpp/examples/templates.cpp"},
+        //
+        // template basics 
+        {"template basics", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"template basic", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"basic template", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"basictemplate", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"templatebasics", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"temp basics", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"temp basic", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"tempbasics", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"basicstemp", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        {"basictemp", home + "/code/cpp/examples/templates_basics.cpp"}, 
+        // {"", home + "/code/cpp/examples/templates_basics.cpp"},
+        //
+        // variadic templates
+        {"variadic template", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"variadictemplates", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"variadictemplate", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"variatemplates", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"variatemplate", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"variadictemp", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"variatemp", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"variadic", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        {"varia", home + "/code/cpp/examples/variadic_templates.cpp"}, 
+        // {"", home + "/code/cpp/examples/variadic_templates.cpp"},
+        //
+        // class template argument deduction 
+        {"classtemplates", home + "/code/cpp/examples/class_template_argument_deduction.cpp"}, 
+        {"classtemplate", home + "/code/cpp/examples/class_template_argument_deduction.cpp"}, 
+        {"classtemp", home + "/code/cpp/examples/class_template_argument_deduction.cpp"}, 
+        {"ctad", home + "/code/cpp/examples/class_template_argument_deduction.cpp"},
+        // {"", home + "/code/cpp/examples/class_template_argument_deduction.cpp"},
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
