@@ -15,6 +15,7 @@ cp ${script_dir}/2_data_structure/*.tex "${script_dir}"
 cp ${script_dir}/3_cmake/*.tex "${script_dir}"
 cp ${script_dir}/4_gdb/*.tex "${script_dir}"
 cp ${script_dir}/5_engineering/*.tex "${script_dir}"
+cp ${script_dir}/6_timeline/*.tex "${script_dir}"
 
 
 # Refact possible,
@@ -63,5 +64,5 @@ done
 rm *.png ; 
 rm *.aux ; rm *.log ; rm *.toc
 mv *.pdf complete ; mv cpp_$date.tex complete
-rm *.tex 
+rm *.tex
 
