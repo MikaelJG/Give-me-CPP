@@ -388,16 +388,148 @@ int main() {
         {"classtemp", home + "/code/cpp/examples/class_template_argument_deduction.cpp"}, 
         {"ctad", home + "/code/cpp/examples/class_template_argument_deduction.cpp"},
         // {"", home + "/code/cpp/examples/class_template_argument_deduction.cpp"},
+        //
+        // templates auto return types 
+        {"auto templates", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"autotemplates", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"auto template", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"autotemplate", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"templates auto", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"template auto", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"templateauto", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"autotemp", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        {"tempauto", home + "/code/cpp/examples/templates_auto_return_types.cpp"}, 
+        // {"", home + "/code/cpp/examples/templates_auto_return_types.cpp"},
+        //
+        // return value optimization 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        //
+        // structs 
+        {"struct", home + "/code/cpp/examples/structs.cpp"}, 
+        {"s", home + "/code/cpp/examples/structs.cpp"}, 
+        // {"", home + "/code/cpp/examples/structs.cpp"},
+        //
+        // structs against classes 
+        {"structs vs classes", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structsvsclasses", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structs and classes", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structsandclasses", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"classes and structs", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"classesandstructs", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structsandclasses", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structsclasses", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structs classes", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structclasses", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structvsclass", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"structclass", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"classesvsstructs", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"classesvsstruct", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        {"classstruct", home + "/code/cpp/examples/structs_against_classes.cpp"}, 
+        // {"", home + "/code/cpp/examples/structs_against_classes.cpp"},
+        //
+        // lambdas
+        {"lambda", home + "/code/cpp/examples/lambdas.cpp"}, 
+        {"lambd", home + "/code/cpp/examples/lambdas.cpp"}, 
+        {"lamb", home + "/code/cpp/examples/lambdas.cpp"}, 
+        {"lam", home + "/code/cpp/examples/lambdas.cpp"}, 
+        // {"", home + "/code/cpp/examples/lambdas.cpp"},
+        //
+        // lambdas captures
+        {"lambda captures", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"lambda capture", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"lambdacapture", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"lambdascaptures", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"lambdas captures", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"lambdas capture", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"lambdascapture", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"lambdascaptures", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"capturing", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        {"capture", home + "/code/cpp/examples/lambdas_captures.cpp"}, 
+        // {"", home + "/code/cpp/examples/lambdas_captures.cpp"},
+        //
+        // lambdas captures by value
+        {"capture by value", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capture by val", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturebyvalue", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturebyval", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturing by value", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturing by val", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturingbyvalue", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturingbyval", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturingval", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"capturevalue", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        {"captureval", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"}, 
+        // {"", home + "/code/cpp/examples/lambdas_captures_by_value.cpp"},
+        //
+        // lambdas captures by reference 
+        {"capture by reference", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturebyreferences", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturebyreference", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturereferences", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturereference", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturerefs", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"captureref", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturing by reference", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturingbyreferences", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturingbyreference", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturingreferences", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturingreference", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturingrefs", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        {"capturingref", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"}, 
+        // {"", home + "/code/cpp/examples/lamdas_captures_by_reference.cpp"},
+        //
+        // lambdas captures by values and references 
+        {"capturing both", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"capturingboth", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"captures both", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"capturesboth", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"capture both", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"captureboth", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"both captures", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"bothcaptures", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"both capture", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        {"bothcapture", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"}, 
+        // {"", home + "/code/cpp/examples/lambdas_captures_by_values_and_references.cpp"},
+        //
+        // lambda auto
+        {"lambdas auto", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"lambda auto", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"lambdasauto", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"lambdaauto", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"lamb auto", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"lambauto", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"auto lambdas", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"auto lambda", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"autolambdas", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"autolambda", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        {"autolamb", home + "/code/cpp/examples/lambda_auto.cpp"}, 
+        // {"", home + "/code/cpp/examples/lambda_auto.cpp"},
+        //
+        // generic lambdas
+        {"generic lambdas", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"genericlambdas", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"generic lambda", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"genericlambda", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"genericlamb", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"gen lambdas", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"genlambdas", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"gen lambda", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"gen lamb", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        {"genlamb", home + "/code/cpp/examples/generic_lambdas.cpp"}, 
+        // {"", home + "/code/cpp/examples/generic_lambdas.cpp"},
+        //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
