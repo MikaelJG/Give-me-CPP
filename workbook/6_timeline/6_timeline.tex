@@ -1,0 +1,68 @@
+\chapter{Timeline of Programs}
+
+Where are sanitizers, compiler warnings, clang-tidy? In this timeline?
+
+
+\textbf{Linting tools, also known as static analyzers. Clang-tidy}.
+
+
+\section{Static}
+
+\begin{verbatim}
+With static (see object lifetimes), the variable lasts for the lifetime of the program.
+It will be initialized only once. 
+
+    the size of the array is now known at compile time
+    We've removed dynamic allocations
+    We no longer pay the cost of accessing a static
+
+    " when you see a const, always ask yourself: "is this value known at compile time? 
+    If it is, what would it take to make the value constexpr?" 
+\end{verbatim}
+
+\section{Before Compilation}
+
+\subsection{Before Compilation Tools}
+
+
+\section{Compile Time}
+
+\subsection{Compile Time Tools}
+
+
+\subsection{Compile Time Maps Explication}
+
+Yes, in your current code,
+the keywords_map is created at compile time as part of the initialization process.
+It's not recreated at runtime each time the code is executed.
+
+
+When you initialize an std::unordered_map using such static data at compile time,
+the map is constructed and populated with the specified key-value pairs during the compilation phase.
+This initialization is done only once and is part of the executable's data section.
+Therefore, when you run your program,
+the keywords_map will already be fully populated and ready to use without any runtime construction.
+
+This approach is efficient as it saves the runtime overhead of creating the map
+and populating it with values each time the program is run.
+
+
+\subsection{Constexpr}
+
+`constexpr` is used for compile-time evaluation.
+It ensures that an expression or function can be computed at compile time.
+It reduces runtime overhead.
+The program avoids the need to perform those computations at runtime. 
+
+The computations are already done during the compilation process, 
+The program doesn't incur the additional time and resources required
+to perform them during runtime execution.
+
+\section{Runtime}
+
+\subsection{Runtime Tools}
+
+
+\section{Overhead}
+
+

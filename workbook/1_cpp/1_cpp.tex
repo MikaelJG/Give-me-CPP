@@ -2047,50 +2047,6 @@ static object_3("a","t");
 delete new S *object_4("a","t");
 \end{verbatim}
 
-\chapter{Timeline of Programs}
-
-Where are sanitizers, compiler warnings, clang-tidy? In this timeline?
-
-
-\textbf{Linting tools, also known as static analyzers. Clang-tidy}.
-
-
-\section{Static}
-
-\begin{verbatim}
-With static (see object lifetimes), the variable lasts for the lifetime of the program.
-It will be initialized only once. 
-
-    the size of the array is now known at compile time
-    We've removed dynamic allocations
-    We no longer pay the cost of accessing a static
-
-    " when you see a const, always ask yourself: "is this value known at compile time? 
-    If it is, what would it take to make the value constexpr?" 
-\end{verbatim}
-
-\section{Before Compilation}
-
-\subsection{Before Compilation Tools}
-
-
-\subsection{Compile Time Tools}
-
-\subsubsection{Constexpr}
-
-`constexpr` is used for compile-time evaluation.
-It ensures that an expression or function can be computed at compile time.
-It reduces runtime overhead.
-The program avoids the need to perform those computations at runtime. 
-
-The computations are already done during the compilation process, 
-The program doesn't incur the additional time and resources required
-to perform them during runtime execution.
-
-\section{Runtime}
-
-\subsection{Runtime Tools}
-
 
 \chapter{Libraries}
 
