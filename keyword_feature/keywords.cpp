@@ -265,11 +265,16 @@ int main() {
         // {"", home + "/code/cpp/examples/nullptr.cpp"},
         //
         // unique pointer
-        // {"", home + "/code/cpp/examples/unique_pointer.cpp"}, 
-        // {"", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        {"unique pointers", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        {"uniquepointers", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        {"unique pointer", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        {"uniquepointer", home + "/code/cpp/examples/unique_pointer.cpp"},
+        {"uniquepoint", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        {"make unique", home + "/code/cpp/examples/unique_pointer.cpp"},
+        {"makeunique", home + "/code/cpp/examples/unique_pointer.cpp"},
+        {"uniqueptr", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        {"unique", home + "/code/cpp/examples/unique_pointer.cpp"}, 
         // {"", home + "/code/cpp/examples/unique_pointer.cpp"},
-        // {"", home + "/code/cpp/examples/unique_pointer.cpp"},
-        // {"makeunique", home + "/code/cpp/examples/unique_pointer.cpp"},
         //
         // pointer of pointer
         {"pointer of pointer", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
@@ -282,6 +287,60 @@ int main() {
         // {"", home + "/code/cpp/examples/pointer_of_pointer.cpp"},
         //
         // smart pointer
+        {"", home + "/code/cpp/examples/smart_pointer.cpp"}, 
+        {"smart pointers", home + "/code/cpp/examples/smart_pointer.cpp"}, 
+        {"smart pointer", home + "/code/cpp/examples/smart_pointer.cpp"}, 
+        {"smartpointers", home + "/code/cpp/examples/smart_pointer.cpp"}, 
+        {"smartpointer", home + "/code/cpp/examples/smart_pointer.cpp"}, 
+        {"smart ptr", home + "/code/cpp/examples/smart_pointer.cpp"},
+        {"smartptr", home + "/code/cpp/examples/smart_pointer.cpp"},
+        {"smart", home + "/code/cpp/examples/smart_pointer.cpp"},
+        // {"", home + "/code/cpp/examples/smart_pointer.cpp"},
+        //
+        // allocation 
+        {"allocations", home + "/code/cpp/examples/allocation.cpp"}, 
+        {"allocating", home + "/code/cpp/examples/allocation.cpp"}, 
+        {"allocate", home + "/code/cpp/examples/allocation.cpp"}, 
+        {"allo", home + "/code/cpp/examples/allocation.cpp"}, 
+        // {"", home + "/code/cpp/examples/allocation.cpp"},
+        //
+        // deallocation 
+        {"deallocating", home + "/code/cpp/examples/deallocation.cpp"}, 
+        {"deallocations", home + "/code/cpp/examples/deallocation.cpp"}, 
+        {"deallocate", home + "/code/cpp/examples/deallocation.cpp"}, 
+        {"deal", home + "/code/cpp/examples/deallocation.cpp"},
+        // {"", home + "/code/cpp/examples/deallocation.cpp"},
+        //
+        // freeing memory 
+        {"freeing memory", home + "/code/cpp/examples/freeing_memory.cpp"}, 
+        {"freeingmemory", home + "/code/cpp/examples/freeing_memory.cpp"}, 
+        {"free memory", home + "/code/cpp/examples/freeing_memory.cpp"}, 
+        {"freememory", home + "/code/cpp/examples/freeing_memory.cpp"}, 
+        {"freeing", home + "/code/cpp/examples/freeing_memory.cpp"},
+        {"free", home + "/code/cpp/examples/freeing_memory.cpp"},
+        // {"", home + "/code/cpp/examples/freeing_memory.cpp"},
+        //
+        // leaking memory 
+        {"leaking memory", home + "/code/cpp/examples/leaking_memory.cpp"},
+        {"leakingmemory", home + "/code/cpp/examples/leaking_memory.cpp"},
+        {"leaking", home + "/code/cpp/examples/leaking_memory.cpp"},
+        {"leaks", home + "/code/cpp/examples/leaking_memory.cpp"},
+        {"leak", home + "/code/cpp/examples/leaking_memory.cpp"},
+        // {"", home + "/code/cpp/examples/leaking_memory.cpp"},
+        //
+        //  
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // insert
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
