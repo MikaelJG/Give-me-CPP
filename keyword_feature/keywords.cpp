@@ -2,7 +2,6 @@
 #include <array>
 #include <unordered_map>
 #include <vector>
-#include <filesystem>
 
 int main() {
 
@@ -11,14 +10,68 @@ int main() {
     const auto home = std::string(tmp);
 
     std::unordered_map<std::string, std::string> keywords_map{ 
+
+        // refer to Table of Content
         // section name, path
         
+        // format 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        
+        // variables
+        {"var", home + "/code/cpp/examples/variables.cpp"}, 
+        {"vars", home + "/code/cpp/examples/variables.cpp"}, 
+        {"variable", home + "/code/cpp/examples/variables.cpp"},
+        {"variables", home + "/code/cpp/examples/variables.cpp"},
+
+        
+        // touples
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        
+        // enums
+        {"", home + "/code/cpp/examples/enums.cpp"}, 
+        {"", home + "/code/cpp/examples/enums.cpp"}, 
+        {"", home + "/code/cpp/examples/enums.cpp"},
+        {"", home + "/code/cpp/examples/enums.cpp"},
+        
+        // arrays
+        {"arr", home + "/code/cpp/examples/arrays.cpp"}, 
+        {"array", home + "/code/cpp/examples/arrays.cpp"}, 
+        {"arra", home + "/code/cpp/examples/arrays.cpp"},
+
+        // vector
+        {"vec", home + "/code/cpp/examples/vectors.cpp"}, 
+        {"vect", home + "/code/cpp/examples/vectors.cpp"}, 
+        {"vectors", home + "/code/cpp/examples/vectors.cpp"},
+
+        // size_t 
+        {"sizet", home + "/code/cpp/examples/size_t.cpp"}, 
+        {"sizt", home + "/code/cpp/examples/size_t.cpp"}, 
+        {"st", home + "/code/cpp/examples/size_t.cpp"},
+        
         // conditional
-        {"if", home + "/code/cpp/examples/if.cpp"}, // ./path/to/if.cpp
-        {"else", home + "/code/cpp/examples/if.cpp"},
-        {"elsif", home + "/code/cpp/examples/if.cpp"},
-        {"elseif", home + "/code/cpp/examples/if.cpp"},
-        {"else if", home + "/code/cpp/examples/if.cpp"},
+        {"if", home + "/code/cpp/examples/conditionals.cpp"}, 
+        {"elseif", home + "/code/cpp/examples/conditionals.cpp"}, 
+        {"else if", home + "/code/cpp/examples/conditionals.cpp"},
+        {"elsif", home + "/code/cpp/examples/conditionals.cpp"},
+        {"con", home + "/code/cpp/examples/conditionals.cpp"},
+        {"cond", home + "/code/cpp/examples/conditionals.cpp"},
+        {"condition", home + "/code/cpp/examples/conditionals.cpp"}, 
+        {"conditions", home + "/code/cpp/examples/conditionals.cpp"},
+        {"conditional", home + "/code/cpp/examples/conditionals.cpp"}, 
+
+        // switch
+        {"case", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"casestatement", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"case statement", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"switch", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"switchstatement", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"switch statement", home + "/code/cpp/examples/switch_statements.cpp"},
 
         // loop
         {"iteration", home + "/code/cpp/examples/loop.cpp"},
@@ -27,18 +80,9 @@ int main() {
         {"iterators", home + "code/cpp/examples/loop.cpp"},
         {"iterating", home + "code/cpp/examples/loop.cpp"},
 
-        // switch
-        {"case", home + "path/to/switch.cpp"},
-        {"switch statement", home + "path/to/switch.cpp"},
-        {"case statement", home + "path/to/switch.cpp"},
-        {"switchstatement", home + "path/to/switch.cpp"},
-        {"casestatement", home + "path/to/switch.cpp"},
+        // range
+        // range pipes
 
-        // variables
-        // touples
-        // enums
-        // array
-        // vector
         // insert
         // size
         // push_back
@@ -46,8 +90,6 @@ int main() {
         // iteration over a container
         // size_t
         // user input
-        // range
-        // range pipes
         // function
         // inline function
         // member function
