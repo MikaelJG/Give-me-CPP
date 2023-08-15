@@ -202,7 +202,90 @@ int main() {
         {"defaultarg", home + "/code/cpp/examples/parameters_default_values.cpp"}, 
         {"default", home + "/code/cpp/examples/parameters_default_values.cpp"}, 
         // {"", home + "/code/cpp/examples/parameters_default_values.cpp"},
-        // {"", home + "/code/cpp/examples/parameters_default_values.cpp"},
+        //
+        // references 
+        {"reference", home + "/code/cpp/examples/references.cpp"}, 
+        {"refer", home + "/code/cpp/examples/references.cpp"}, 
+        {"ref", home + "/code/cpp/examples/references.cpp"}, 
+        // {"", home + "/code/cpp/examples/references.cpp"},
+        //
+        // dereference 
+        {"dereferencing", home + "/code/cpp/examples/dereference.cpp"}, 
+        {"deref", home + "/code/cpp/examples/dereference.cpp"}, 
+        {"unreference", home + "/code/cpp/examples/dereference.cpp"}, 
+        {"unref", home + "/code/cpp/examples/dereference.cpp"}, 
+        // {"", home + "/code/cpp/examples/dereference.cpp"},
+        //
+        // references const 
+        {"references const", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"referencesconst", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"reference const", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"referenceconst", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"const references", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"const reference", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"constreference", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"const ref", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"constref", home + "/code/cpp/examples/references_const.cpp"}, 
+        // {"", home + "/code/cpp/examples/references_const.cpp"},
+        //
+        // reference operator 
+        {"ref operator", home + "/code/cpp/examples/reference_operator.cpp"}, 
+        {"refoperator", home + "/code/cpp/examples/reference_operator.cpp"}, 
+        {"refop", home + "/code/cpp/examples/reference_operator.cpp"}, 
+        // {"", home + "/code/cpp/examples/reference_operator.cpp"},
+        //
+        // address operator 
+        {"address operator", home + "/code/cpp/examples/address_operator.cpp"}, 
+        {"addressoperator", home + "/code/cpp/examples/address_operator.cpp"}, 
+        {"addressop", home + "/code/cpp/examples/address_operator.cpp"}, 
+        {"address", home + "/code/cpp/examples/address_operator.cpp"}, 
+        {"add", home + "/code/cpp/examples/address_operator.cpp"}, 
+        // {"", home + "/code/cpp/examples/address_operator.cpp"},
+        //
+        // pointer
+        {"pointer", home + "/code/cpp/examples/pointers.cpp"}, 
+        {"point", home + "/code/cpp/examples/pointers.cpp"}, 
+        // {"", home + "/code/cpp/examples/pointers.cpp"},
+        //
+        // null pointer
+        {"null pointers", home + "/code/cpp/examples/null_pointer.cpp"}, 
+        {"nullpointers", home + "/code/cpp/examples/null_pointer.cpp"}, 
+        {"null pointer", home + "/code/cpp/examples/null_pointer.cpp"}, 
+        {"nullpointer", home + "/code/cpp/examples/null_pointer.cpp"}, 
+        {"nullpoint", home + "/code/cpp/examples/null_pointer.cpp"}, 
+        {"point null", home + "/code/cpp/examples/null_pointer.cpp"}, 
+        {"pointnull", home + "/code/cpp/examples/null_pointer.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // nullptr
+        {"null ptr", home + "/code/cpp/examples/nullptr.cpp"}, 
+        {"nulptr", home + "/code/cpp/examples/nullptr.cpp"}, 
+        {"nullp", home + "/code/cpp/examples/nullptr.cpp"},
+        {"null", home + "/code/cpp/examples/nullptr.cpp"},
+        // {"", home + "/code/cpp/examples/nullptr.cpp"},
+        //
+        // unique pointer
+        // {"", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        // {"", home + "/code/cpp/examples/unique_pointer.cpp"}, 
+        // {"", home + "/code/cpp/examples/unique_pointer.cpp"},
+        // {"", home + "/code/cpp/examples/unique_pointer.cpp"},
+        // {"makeunique", home + "/code/cpp/examples/unique_pointer.cpp"},
+        //
+        // pointer of pointer
+        {"pointer of pointer", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
+        {"pointerofpointer", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
+        {"pointerpointer", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
+        {"point to pointer", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
+        {"pointtopointer", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
+        {"pointtopoint", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
+        {"pointpoint", home + "/code/cpp/examples/pointer_of_pointer.cpp"}, 
+        // {"", home + "/code/cpp/examples/pointer_of_pointer.cpp"},
+        //
+        // smart pointer
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
         //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
@@ -247,31 +330,6 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // auto
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // pointer
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // null pointer
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // nullptr
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // pointer or pointer
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // smart pointer
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
