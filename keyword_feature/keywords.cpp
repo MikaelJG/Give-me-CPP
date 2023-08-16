@@ -1100,35 +1100,73 @@ int main() {
         {"listfun", home + "/code/cpp/examples/lists_functions.cpp"}, 
         // {"", home + "/code/cpp/examples/lists_functions.cpp"},
         // 
-        // time complexity
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // hash maps 
+        {"hash maps", home + "/code/cpp/examples/hash_maps.cpp"}, 
+        {"hashmaps", home + "/code/cpp/examples/hash_maps.cpp"}, 
+        {"hash map", home + "/code/cpp/examples/hash_maps.cpp"}, 
+        {"hashmap", home + "/code/cpp/examples/hash_maps.cpp"}, 
+        {"hashes", home + "/code/cpp/examples/hash_maps.cpp"}, 
+        {"hashs", home + "/code/cpp/examples/hash_maps.cpp"}, 
+        {"hash", home + "/code/cpp/examples/hash_maps.cpp"}, 
+        // {"", home + "/code/cpp/examples/hash_maps.cpp"},
         //
-        // time complexity
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // time complexity
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // unordered map 
+        // {"", home + "/code/cpp/examples/unordered_map.cpp"}, 
+        // {"", home + "/code/cpp/examples/unordered_map.cpp"}, 
+        // {"", home + "/code/cpp/examples/unordered_map.cpp"},
+        // {"", home + "/code/cpp/examples/unordered_map.cpp"},
+        // 
+        // unordered multimap 
+        // {"", home + "/code/cpp/examples/unordered_multimap.cpp"}, 
+        // {"", home + "/code/cpp/examples/unordered_multimap.cpp"}, 
+        // {"", home + "/code/cpp/examples/unordered_multimap.cpp"},
+        // {"", home + "/code/cpp/examples/unordered_multimap.cpp"},
         //
-        // time complexity
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // unordered lists 
+        // {"unordered lists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unorderedlists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unordered list", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unorderedlist", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unorder lists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unorderlists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unorder list", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unorderlist", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"no order lists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"noorderlists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"no order list", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"noorderlist", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"un lists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unlists", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"un list", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"unlist", home + "/code/cpp/examples/unordered_lists.cpp"},
+        // {"", home + "/code/cpp/examples/unordered_lists.cpp"},
         //
-        // time complexity
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // time complexity
+        // unordered sets
+        // {"unordered sets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unorderedsets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unordered set", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unorderedset", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unorder sets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unordersets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unorder set", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unorderset", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"no order sets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"noordersets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"no order set", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"noorderset", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"un sets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unsets", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"un set", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"unset", home + "/code/cpp/examples/unordered_sets.cpp"},
+        // {"", home + "/code/cpp/examples/unordered_sets.cpp"},
+        //
+        // unordered multisets
+        // {"", home + "/code/cpp/examples/unordered_multisets.cpp"}, 
+        // {"", home + "/code/cpp/examples/unordered_multisets.cpp"}, 
+        // {"", home + "/code/cpp/examples/unordered_multisets.cpp"},
+        // {"", home + "/code/cpp/examples/unordered_multisets.cpp"},
+        //
+        // unordered multisets
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
