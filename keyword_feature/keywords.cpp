@@ -622,12 +622,125 @@ int main() {
         {"new", home + "/code/cpp/examples/new_keyword.cpp"}, 
         {"", home + "/code/cpp/examples/new_keyword.cpp"},
         //
-        // insert
+        // thread_local
+        {"thread local", home + "/code/cpp/examples/thread_local.cpp"}, 
+        {"threadlocal", home + "/code/cpp/examples/thread_local.cpp"}, 
+        {"local thread", home + "/code/cpp/examples/thread_local.cpp"}, 
+        {"localthread", home + "/code/cpp/examples/thread_local.cpp"}, 
+        {"thread", home + "/code/cpp/examples/thread_local.cpp"}, 
+        // {"", home + "/code/cpp/examples/thread_local.cpp"},
+        //
+        // static 
+        {"static objects", home + "/code/cpp/examples/static.cpp"}, 
+        {"staticobjects", home + "/code/cpp/examples/static.cpp"}, 
+        {"static object", home + "/code/cpp/examples/static.cpp"}, 
+        {"staticobject", home + "/code/cpp/examples/static.cpp"}, 
+        {"stat", home + "/code/cpp/examples/static.cpp"}, 
+        {"", home + "/code/cpp/examples/static.cpp"},
+        
+        // dynamic 
+        {"dynamic objects", home + "/code/cpp/examples/dynamic.cpp"}, 
+        {"dynamicobjects", home + "/code/cpp/examples/dynamic.cpp"}, 
+        {"dynamic object", home + "/code/cpp/examples/dynamic.cpp"}, 
+        {"dynamicobject", home + "/code/cpp/examples/dynamic.cpp"}, 
+        {"dynam", home + "/code/cpp/examples/dynamic.cpp"}, 
+        {"dyn", home + "/code/cpp/examples/dynamic.cpp"}, 
+        // {"", home + "/code/cpp/examples/dynamic.cpp"},
+        //
+        // fmt format library
+        {"fmt format", home + "/code/cpp/examples/fmt_format_library.cpp"},
+        {"fmtformat", home + "/code/cpp/examples/fmt_format_library.cpp"},
+        {"fmt library", home + "/code/cpp/examples/fmt_format_library.cpp"},
+        {"fmtlibrary", home + "/code/cpp/examples/fmt_format_library.cpp"},
+        {"fmt lib", home + "/code/cpp/examples/fmt_format_library.cpp"},
+        {"fmtlib", home + "/code/cpp/examples/fmt_format_library.cpp"},
+        {"fmt", home + "/code/cpp/examples/fmt_format_library.cpp"},
+        // {"", home + "/code/cpp/examples/fmt_format_library.cpp"}, 
+        //  
+        // string_view
+        {"string view", home + "/code/cpp/examples/string_view.cpp"}, 
+        {"stringview", home + "/code/cpp/examples/string_view.cpp"}, 
+        {"view string", home + "/code/cpp/examples/string_view.cpp"}, 
+        {"viewstring", home + "/code/cpp/examples/string_view.cpp"}, 
+        // {"", home + "/code/cpp/examples/string_view.cpp"},
+        //
+        // structured bindings
+        {"structured bindings", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structuredbindings", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structured binding", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structuredbinding", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structure bindings", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structurebindings", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structure binding", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structurebinding", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"struct bindings", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structbindings", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"struct binding", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"structbinding", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"bindings", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        {"binding", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        // {"", home + "/code/cpp/examples/structured_bindings.cpp"}, 
+        //
+        // arguments 
+        {"arguments", home + "/code/cpp/examples/arguments.cpp"},
+        {"argument", home + "/code/cpp/examples/arguments.cpp"},
+        {"args", home + "/code/cpp/examples/arguments.cpp"},
+        {"arg", home + "/code/cpp/examples/arguments.cpp"},
+        // {"", home + "/code/cpp/examples/arguments.cpp"}, 
+        //
+        // flags 
+        {"options", home + "/code/cpp/examples/flags.cpp"},
+        {"option", home + "/code/cpp/examples/flags.cpp"},
+        {"flag", home + "/code/cpp/examples/flags.cpp"},
+        //
+        // user input 
+        {"prompt user", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"promptuser", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"askuser", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"ask user", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"user response", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"userresponse", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"user answer", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"useranswer", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"prompt", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"answer", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"user", home + "/code/cpp/examples/user_input.cpp"}, 
+        // {"", home + "/code/cpp/examples/user_input.cpp"}, 
+        // {"", home + "/code/cpp/examples/user_input.cpp"},
+        // {"", home + "/code/cpp/examples/user_input.cpp"},
+        // size
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // size
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
         //
+        // size
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // size
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // size
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // size
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
         // size
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
@@ -650,51 +763,6 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // user input
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // const
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // constexpr
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // auto
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // class
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // constructor
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // destructor
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // automatic destructor
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // object lifetime
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // automatic
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
