@@ -833,11 +833,24 @@ int main() {
         {"pch gcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
         // {"", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"},
         //
-        // gnu gcc
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        // gnu gcc enable warnings as errors
+        {"gcc warnings as errors", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gcc warnings as error", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccwarningsaserror", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccwarningsaserrors", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccwarningserrors", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gcc warnings error", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccwarningserror", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gcc warnings", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccwarnings", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccwarnings", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gcc as errors", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccaserrors", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gcc as error", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccaserror", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gcc errors", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        {"gccerrors", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
+        // {"", home + "/code/cpp/examples/gnu_gcc_enable_warnings_as_errors.cpp"},
         //
         // llvm clang 
         // {"", home + "/code/cpp/examples/llvm_clang.cpp"}, 
@@ -867,6 +880,25 @@ int main() {
         {"clang pch", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
         {"pch clang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // clang enable warnings as errors
+        {"clang warnings as errors", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clang warnings as error", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangwarningsaserror", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangwarningsaserrors", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangwarningserrors", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clang warnings error", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangwarningserror", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clang warnings", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangwarnings", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangwarnings", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clang as errors", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangaserrors", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clang as error", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangaserror", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clang errors", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        {"clangerrors", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
+        // {"", home + "/code/cpp/examples/clang_enable_warnings_as_errors.cpp"},
         //
         // size
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
