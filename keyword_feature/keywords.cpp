@@ -1011,12 +1011,85 @@ int main() {
         {"msvc disabl ext", home + "/code/cpp/examples/msvc_disable_extensions.cpp"},
         {"msvcdisablext", home + "/code/cpp/examples/msvc_disable_extensions.cpp"},
 
-        // size
+        // time complexity
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
         //
+        // space complexity
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // containers
+        // {"", home + "/code/cpp/examples/containers.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers.cpp"},
+        // {"", home + "/code/cpp/examples/containers.cpp"},
+        //
+        // containers functions
+        // {"", home + "/code/cpp/examples/containers_functions.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers_functions.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers_functions.cpp"},
+        // {"", home + "/code/cpp/examples/containers_functions.cpp"},
+        //
+        // containers iterations
+        // {"", home + "/code/cpp/examples/containers_iterations.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers_iterations.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers_iterations.cpp"},
+        // {"", home + "/code/cpp/examples/containers_iterations.cpp"},
+        //
+        // containers size functions 
+        // {"", home + "/code/cpp/examples/containers_size_functions.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers_size_functions.cpp"}, 
+        // {"", home + "/code/cpp/examples/containers_size_functions.cpp"},
+        // {"", home + "/code/cpp/examples/containers_size_functions.cpp"},
+        //
+        // access and research functions 
+        // {"", home + "/code/cpp/examples/access_and_research_functions.cpp"}, 
+        // {"", home + "/code/cpp/examples/access_and_research_functions.cpp"}, 
+        // {"", home + "/code/cpp/examples/access_and_research_functions.cpp"},
+        // {"", home + "/code/cpp/examples/access_and_research_functions.cpp"},
+        //
+        // static_cast 
+        // {"static cast", home + "/code/cpp/examples/static_cast.cpp"}, 
+        // {"staticcast", home + "/code/cpp/examples/static_cast.cpp"}, 
+        // {"", home + "/code/cpp/examples/static_cast.cpp"},
+        //
+        // maps
+        // {"map", home + "/code/cpp/examples/maps.cpp"}, 
+        // {"", home + "/code/cpp/examples/maps.cpp"}, 
+        //
+        // maps
+        // {"map", home + "/code/cpp/examples/maps.cpp"}, 
+        //
+        // {"", home + "/code/cpp/examples/maps.cpp"}, 
+        // {"", home + "/code/cpp/examples/maps.cpp"},
+        // {"", home + "/code/cpp/examples/maps.cpp"},
+        // time complexity
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // time complexity
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // time complexity
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // time complexity
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
         // size
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
@@ -1131,14 +1204,14 @@ int main() {
         std::cout << "value: " << pair.second << '\n'; 
     }
 
-    if (keywords_map.count("iterate") > 0) {
-        std::cout << "found elseif\n";
+    // if (keywords_map.count("iterate") > 0) {
+    //     std::cout << "found elseif\n";
 
-        // open nvim
-        const std::string tmp = "nvim " + keywords_map["iterate"];
-        const auto open_nvim = tmp.c_str();
+    //     // open nvim
+    //     const std::string tmp = "nvim " + keywords_map["iterate"];
+    //     const auto open_nvim = tmp.c_str();
 
-        std::system(open_nvim);
-    }
+    //     std::system(open_nvim);
+    // }
 
 }
