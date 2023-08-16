@@ -1062,12 +1062,55 @@ int main() {
         // {"map", home + "/code/cpp/examples/maps.cpp"}, 
         // {"", home + "/code/cpp/examples/maps.cpp"}, 
         //
-        // maps
-        // {"map", home + "/code/cpp/examples/maps.cpp"}, 
+        // multimaps
+        {"multi maps", home + "/code/cpp/examples/multimaps.cpp"}, 
+        {"multimaps", home + "/code/cpp/examples/multimaps.cpp"}, 
+        {"multimap", home + "/code/cpp/examples/multimaps.cpp"}, 
+        {"multi map", home + "/code/cpp/examples/multimaps.cpp"}, 
+        // {"map", home + "/code/cpp/examples/multimaps.cpp"}, 
         //
-        // {"", home + "/code/cpp/examples/maps.cpp"}, 
-        // {"", home + "/code/cpp/examples/maps.cpp"},
-        // {"", home + "/code/cpp/examples/maps.cpp"},
+        // forward lists singly linked lists
+        {"forward list", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"forwardlist", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"forward", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"single list", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"singlelist", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"singly list", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"singlylist", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"single lists", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"singlelists", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"singly lists", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"singlylists", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        {"singly", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"}, 
+        // {"", home + "/code/cpp/examples/forward_lists_singly_linked_lists.cpp"},
+        //
+        // lists functions 
+        {"lists functions", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"listsfunctions", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"list functions", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"listfunctions", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"list function", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"listfunction", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"listsfunctions", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"lists funs", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"listsfuns", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"lists fun", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"listsfun", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"list fun", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        {"listfun", home + "/code/cpp/examples/lists_functions.cpp"}, 
+        // {"", home + "/code/cpp/examples/lists_functions.cpp"},
+        // 
+        // time complexity
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // time complexity
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
         // time complexity
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
