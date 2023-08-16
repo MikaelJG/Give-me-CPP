@@ -593,16 +593,35 @@ int main() {
         {"destroy", home + "/code/cpp/examples/destructors.cpp"}, 
         // {"", home + "/code/cpp/examples/destructors.cpp"},
         //
-        // insert
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // insert
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // automatic destructors 
+        {"automatic destructor", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"automaticdestructor", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"automatic destruction", home + "/code/cpp/examples/automatic_destructors.cpp"},
+        {"automaticdestruction", home + "/code/cpp/examples/automatic_destructors.cpp"},
+        {"auto destruction", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"autodestruction", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"auto destructor", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"autodestructor", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"auto destruct", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"autodestruct", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"auto destroy", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        {"autodestroy", home + "/code/cpp/examples/automatic_destructors.cpp"}, 
+        // {"", home + "/code/cpp/examples/automatic_destructors.cpp"},
+        //
+        // deterministic object lifetime and destruction
+        {"deterministic", home + "/code/cpp/examples/deterministic_object_lifetime_and_destruction.cpp"}, 
+        {"determinism", home + "/code/cpp/examples/deterministic_object_lifetime_and_destruction.cpp"}, 
+        {"deter", home + "/code/cpp/examples/deterministic_object_lifetime_and_destruction.cpp"}, 
+        // {"", home + "/code/cpp/examples/deterministic_object_lifetime_and_destruction.cpp"},
+        //
+        // RAII 
+        {"", home + "/code/cpp/examples/raii.cpp"}, 
+        {"", home + "/code/cpp/examples/raii.cpp"},
+        //
+        // new keyword 
+        {"new", home + "/code/cpp/examples/new_keyword.cpp"}, 
+        {"", home + "/code/cpp/examples/new_keyword.cpp"},
+        //
         // insert
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
