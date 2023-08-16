@@ -705,15 +705,24 @@ int main() {
         {"prompt", home + "/code/cpp/examples/user_input.cpp"}, 
         {"answer", home + "/code/cpp/examples/user_input.cpp"}, 
         {"user", home + "/code/cpp/examples/user_input.cpp"}, 
-        // {"", home + "/code/cpp/examples/user_input.cpp"}, 
         // {"", home + "/code/cpp/examples/user_input.cpp"},
-        // {"", home + "/code/cpp/examples/user_input.cpp"},
+        //
+        // type 
+        {"types", home + "/code/cpp/examples/type.cpp"}, 
+        {"typ", home + "/code/cpp/examples/type.cpp"}, 
+        {"", home + "/code/cpp/examples/type.cpp"},
+        //
+        // return type 
+        {"return types", home + "/code/cpp/examples/return_type.cpp"}, 
+        {"returntypes", home + "/code/cpp/examples/return_type.cpp"}, 
+        {"return type", home + "/code/cpp/examples/return_type.cpp"}, 
+        {"returntype", home + "/code/cpp/examples/return_type.cpp"}, 
+        {"returns", home + "/code/cpp/examples/return_type.cpp"}, 
+        {"return", home + "/code/cpp/examples/return_type.cpp"}, 
+        // {"", home + "/code/cpp/examples/return_type.cpp"},
+        //
         // size
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // size
+        //
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
