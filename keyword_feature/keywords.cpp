@@ -721,11 +721,151 @@ int main() {
         {"return", home + "/code/cpp/examples/return_type.cpp"}, 
         // {"", home + "/code/cpp/examples/return_type.cpp"},
         //
-        // size
+        // filesystem library
+        {"filesystem library", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"filesystemlibrary", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"file library", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"filelibrary", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"file lib", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"filelib", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"filesystem", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"filesys", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"file sys", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        {"fs", home + "/code/cpp/examples/filesystem_library.cpp"}, 
+        // {"", home + "/code/cpp/examples/filesystem_library.cpp"},
+        // 
+        // file creation 
+        {"file creation", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"filecreation", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"create files", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"createfiles", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"create a file", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"createafile", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"create file", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"createfile", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"new file", home + "/code/cpp/examples/file_creation.cpp"}, 
+        {"newfile", home + "/code/cpp/examples/file_creation.cpp"}, 
+        // {"", home + "/code/cpp/examples/file_creation.cpp"},
         //
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // file deletion 
+        {"file deletions", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"filedeletions", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"file deletion", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"filedeletion", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"remove files", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"removefiles", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"remove file", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"removefile", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"rm file", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"delete file", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"delete file", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"deletefile", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"delete a file", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"deleteafile", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        {"rm", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        // {"", home + "/code/cpp/examples/file_deletion.cpp"}, 
+        //
+        // paths 
+        {"path", home + "/code/cpp/examples/paths.cpp"}, 
+        {"pat", home + "/code/cpp/examples/paths.cpp"}, 
+        // {"", home + "/code/cpp/examples/paths.cpp"},
+        //
+        // directories
+        {"remove directory", home + "/code/cpp/examples/directories.cpp"}, 
+        {"removedirectory", home + "/code/cpp/examples/directories.cpp"}, 
+        {"remove dir", home + "/code/cpp/examples/directories.cpp"}, 
+        {"removedir", home + "/code/cpp/examples/directories.cpp"}, 
+        {"directory", home + "/code/cpp/examples/directories.cpp"}, 
+        {"rmdir", home + "/code/cpp/examples/directories.cpp"}, 
+        {"dir", home + "/code/cpp/examples/directories.cpp"}, 
+
+        // directory creation
+        {"createdirectory", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"create directory", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"createdirectory", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"create dir", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"createdir", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"new directory", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"newdirectory", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"new dir", home + "/code/cpp/examples/directory_creations.cpp"}, 
+        {"newdir", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        {"mkdir", home + "/code/cpp/examples/directory_creation.cpp"}, 
+        // {"", home + "/code/cpp/examples/directories.cpp"},
+        //
+        // directory iterators 
+        // {"", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        // {"", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        // {"", home + "/code/cpp/examples/directory_iterators.cpp"},
+        // {"", home + "/code/cpp/examples/directory_iterators.cpp"},
+        //
+        // compilers 
+        // {"", home + "/code/cpp/examples/compilers.cpp"}, 
+        // {"", home + "/code/cpp/examples/compilers.cpp"}, 
+        // {"", home + "/code/cpp/examples/compilers.cpp"},
+        // {"", home + "/code/cpp/examples/compilers.cpp"},
+        //
+        // gnu gcc
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        //
+        // gnu gcc enable precompiled headers
+        {"gcc precompile headers", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gccprecompileheaders", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gcc precompile header", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gccprecompileheader", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gcc precompile", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gccprecompile", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompile headers gcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompileheadersgcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompile header gcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompileheadergcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompile gcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompilegcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gcc enable pch", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gccenablepch", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"enable gcc pch", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"enablegccpch", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"enable pch gcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"enablepchgcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"gcc pch", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        {"pch gcc", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
+        // {"", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"},
+        //
+        // gnu gcc
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        //
+        // llvm clang 
+        // {"", home + "/code/cpp/examples/llvm_clang.cpp"}, 
+        // {"", home + "/code/cpp/examples/llvm_clang.cpp"}, 
+        // {"", home + "/code/cpp/examples/llvm_clang.cpp"},
+        // {"", home + "/code/cpp/examples/llvm_clang.cpp"},
+        //
+        // llvm clang enable precompiled headers 
+        {"clang precompile headers", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clangprecompileheaders", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clang precompile header", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clangprecompileheader", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clang precompile", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clangprecompile", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompile headers clang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompileheadersclang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompile header clang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompileheaderclang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompile clang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"precompileclang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clang enable pch", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clangenablepch", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"enable clang pch", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"enableclangpch", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"enable pch clang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"enablepchclang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"clang pch", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
+        {"pch clang", home + "/code/cpp/examples/clang_gcc_enable_precompiled_headers.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         //
         // size
@@ -739,6 +879,7 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
         // size
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
