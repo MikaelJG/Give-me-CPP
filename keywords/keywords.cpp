@@ -1458,6 +1458,7 @@ int main(int argc, const char* argv[]) {
         // max heap
         {"max heaps", home + "/code/cpp/examples/max_heap.cpp"}, 
         {"maxheaps", home + "/code/cpp/examples/max_heap.cpp"}, 
+        {"max heap", home + "/code/cpp/examples/max_heap.cpp"}, 
         {"maxheap", home + "/code/cpp/examples/max_heap.cpp"}, 
         {"heapsmax", home + "/code/cpp/examples/max_heap.cpp"}, 
         {"heapmax", home + "/code/cpp/examples/max_heap.cpp"}, 
@@ -1877,15 +1878,15 @@ int main(int argc, const char* argv[]) {
 //     }
     };
 
-    const auto key = arguments[0];
-    if (keywords_map.count(key) > 0) {
-        std::cout << "found: " << key << '\n';
+    const auto search = arguments[0];
+    if (keywords_map.count(search) > 0) {
+        std::cout << "found: " << search << '\n';
 
         // open nvim
-        // const std::string tmp = "nvim " + keywords_map["iterate"];
-        // const auto open_nvim = tmp.c_str();
+        const auto tmp = "nvim " + keywords_map[search];
+        const auto open_nvim = tmp.c_str();
 
-        // std::system(open_nvim);
+        std::system(open_nvim);
     } else {
         std::cout << "Keyword not found in hash\n";
     }

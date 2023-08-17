@@ -1,14 +1,12 @@
 
-  std::vector<double> subway_adult; // value is 0.0 is default
-  std::vector<double> location(2); // initialize two elements! 
-}
+std::vector<double> subway_adult; // value is 0.0 is default
+std::vector<double> location(2); // initialize two elements! 
 
 std::vector<char> vowels = {'a', 'e', 'i', 'o', 'u'};
 std::vector vec{1,2,3}; // now possible! 
 
 int main(int argc, char* argv[]) {
     std::vector<std::string> arguments(argv + 1, argv + argc);
-
 }
 
 #include <vector>
