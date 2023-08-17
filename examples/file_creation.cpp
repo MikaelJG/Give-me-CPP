@@ -1,13 +1,12 @@
 
 #include <filesystem>
-#include <iostream>
 #include <fstream> // Add this header for std::ofstream
 namespace fs = std::filesystem;
 
 int main() {
     fs::create_directories("sandbox/a");
 
-    std::ofstream("sandbox/file.1.txt");     // is simplest,
+    std::ofstream("sandbox/file.1.txt");     // is simplest, deletes instantly
 
     std::ofstream file("sandbox/file1.txt"); // initialize the variable on top!
 

@@ -1,12 +1,10 @@
 
 #include <map>
 #include <sstream>
-#include <string>
 
 int main() {
-    std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    std::string text = "lorem";
 
-    // convert text to lowercase
     for (char& c : text) {
         c = std::tolower(c);
     }
@@ -15,16 +13,14 @@ int main() {
     std::istringstream iss(text);
     std::string word;
 
-    // count the frequency of each word in the text
-    while (iss >> word) {
+    while (iss >> word) { // count frequency
         wordfreq[word]++;
     }
 
-    // display the word frequencies
-    for (const auto& pair : wordfreq) {
-        std::cout << pair.first << ": " << pair.second << std::endl;
+    for (const auto& pair : wordfreq) { // display
+        std::cout << pair.first << ": " << pair.second;
     }
 
-    return 0;
+    return 0; // return success
 }
 

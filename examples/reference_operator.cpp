@@ -1,5 +1,5 @@
 
-int soda = 99; // in a declaration
-int &pop = soda; // reference operator
+int soda = 99; 
+int &pop = soda;
 pop++;
 

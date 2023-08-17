@@ -11,7 +11,7 @@ int main(int argc, const char* argv[]) {
     const char* tmp = std::getenv("HOME");
     const auto home = std::string(tmp);
 
-    std::unordered_map<std::string, std::string> keywords_map{ 
+    std::unordered_map<std::string, std::string> keywords{ 
 
         // refer to Table of Content
         // section name, path
@@ -1524,16 +1524,16 @@ int main(int argc, const char* argv[]) {
         {"tre", home + "/code/cpp/examples/trees.cpp"}, 
         // {"", home + "/code/cpp/examples/trees.cpp"},
         //
-        // breadth first search 
-        {"breadth first search", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
+        // breadth first word_search 
+        {"breadth first word_search", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadthfirstsearch", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadth first", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadthfirst", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
-        {"breadth search", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
+        {"breadth word_search", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadthsearch", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"bread first", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadfirst", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
-        {"bread search", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
+        {"bread word_search", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadsearch", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadthf", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         {"breadths", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
@@ -1542,20 +1542,20 @@ int main(int argc, const char* argv[]) {
         {"bfs", home + "/code/cpp/examples/breadth_first_search.cpp"}, 
         // {"", home + "/code/cpp/examples/breadth_first_search.cpp"},
         //
-        // depth first search 
-        {"depth first search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
+        // depth first word_search 
+        {"depth first word_search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depthfirstsearch", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depth first", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depthfirst", home + "/code/cpp/examples/depth_first_search.cpp"}, 
-        {"depth search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
+        {"depth word_search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depthsearch", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"dept first", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"deptfirst", home + "/code/cpp/examples/depth_first_search.cpp"}, 
-        {"dept search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
+        {"dept word_search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"deptsearch", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"dep first", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depfirst", home + "/code/cpp/examples/depth_first_search.cpp"}, 
-        {"dep search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
+        {"dep word_search", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depsearch", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depthf", home + "/code/cpp/examples/depth_first_search.cpp"}, 
         {"depf", home + "/code/cpp/examples/depth_first_search.cpp"}, 
@@ -1770,10 +1770,6 @@ int main(int argc, const char* argv[]) {
         {"conanconf", home + "/code/cpp/examples/cpm_cmake_package_manager.cpp"}, 
         {"conan", home + "/code/cpp/examples/cpm_cmake_package_manager.cpp"}, 
         // {"", home + "/code/cpp/examples/cpm_cmake_package_manager.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
         //
         // ternary operator
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
@@ -1781,109 +1777,13 @@ int main(int argc, const char* argv[]) {
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
         //
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        //
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // library
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // linker
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // build
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // warning
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // standard
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // PCH (precompiled headers)
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // filesystem
-        // paths
-        // files
-        // directory
-        // queue
-        // priority queue (heap)
-        // stack
-        // trie
-        // algorithm
-        // accumulate
-        // puts
-        //
-        //
-//     std::string keyword = "else";
-//     if (keywordToFilePath.find(keyword) != keywordToFilePath.end()) {
-//         std::string filePath = keywordToFilePath[keyword];
-//         std::cout << "Opening: " << filePath << std::endl;
-//     } else {
-//         std::cout << "Keyword not found!" << std::endl;
-//     }
     };
 
-    const auto search = arguments[0];
-    if (keywords_map.count(search) > 0) {
-        std::cout << "found: " << search << '\n';
+    const auto word_search = arguments[0];
+    if (keywords.count(word_search) > 0) {
 
         // open nvim
-        const auto tmp = "nvim " + keywords_map[search];
+        const auto tmp = "nvim " + keywords[word_search];
         const auto open_nvim = tmp.c_str();
 
         std::system(open_nvim);

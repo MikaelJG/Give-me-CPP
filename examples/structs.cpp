@@ -1,5 +1,21 @@
 
+struct Double_Data {
+    Double_Data(const std::size_t size) : data(new double[size] { }
+    ~Double_Data() { delete [] data; }
+    double *data;
+   };
 
-The only difference between a struct and a class is
-With structs, all properties are public by default
+// I want one for ints!
+struct Int_Data {
+    Int_Data(const std::size_t size) : data(new int[size] { }
+    ~Int_Data() { delete [] data; }
+    int *data;
+   };
+
+// I want one for floats!
+struct Float_Data {
+    Float_Data(const std::size_t size) : data(new float[size] { }
+    ~Float_Data() { delete [] data; }
+    float *data;
+   };
 

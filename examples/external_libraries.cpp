@@ -1,3 +1,0 @@
-
-Popular C++ external libraries:
-

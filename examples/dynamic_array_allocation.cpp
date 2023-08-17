@@ -32,7 +32,7 @@ int main() {
 
     delete[] dyn_ar;
 
-    return 1;
+    return 0; // return success
 }
 
 

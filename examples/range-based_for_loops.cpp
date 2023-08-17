@@ -1,15 +1,10 @@
 
 
-for (const auto &element : container) {
-    // eliminates both other problems
-}
+for (const auto &element : container) {}
 
-for (int element : first_three_multiples(8)) {
- std::cout << element << "\n";
-}
 std::string str = "Hello";
 for (char character : str) {
-    std::cout << character << std::endl;
+    std::cout << character << '\n';
 }
 
 template<typename Map>
@@ -25,10 +20,7 @@ void print_map(const Map &map, const std::string &key_desc = "key",
 
 for (const auto &value : container) {} // for each element in the container
 
-standard c++11
-
-Never mutate the container itself while iterating inside of a ranged-for loop. 
-Use clang-tidy's modernize-loop-convert check. Not using auto eases silent mistakes in your code.
+Use clang-tidy's modernize-loop-convert check.
 
 template<typename Map>
 void print_map(const Map &map, const std::string &key_desc = "key",
@@ -40,6 +32,4 @@ void print_map(const Map &map, const std::string &key_desc = "key",
                   << value_desc << ": '" << data.second << "'\n";
     }
 }
-
-// if only there was some way to make this data.first, data.second nonsense more readable!!
 

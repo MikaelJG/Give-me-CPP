@@ -2,8 +2,6 @@
 std::cout << "Enter your password: ";
 std::cin >> password;
 
-#include <iostream>
-#include <string>
 #include <cstdlib>
 
 int main() {

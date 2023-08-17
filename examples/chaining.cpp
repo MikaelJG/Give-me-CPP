@@ -27,6 +27,6 @@ int main() {
     MathOperation<int> operation(5);
     operation.add(3).multiply(2).print();
 
-    return 0;
+    return 0; // return success
 }
 

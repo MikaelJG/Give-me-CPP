@@ -11,7 +11,7 @@ int main() {
     if (today == Day::Saturday || today == Day::Wednesday) {
     } else {}
 
-    return 0;
+    return 0; // return success
 }
 
 enum Color {
@@ -35,6 +35,6 @@ int main() {
     Color favoriteColor = Color::Green;
     printColor(favoriteColor);
 
-    return 0;
+    return 0; // return success
 }
 
