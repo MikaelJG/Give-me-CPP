@@ -16,6 +16,7 @@ cp ${script_dir}/3_cmake/*.tex "${script_dir}"
 cp ${script_dir}/4_gdb/*.tex "${script_dir}"
 cp ${script_dir}/5_engineering/*.tex "${script_dir}"
 cp ${script_dir}/6_timeline/*.tex "${script_dir}"
+cp ${script_dir}/7_good_practices/*.tex "${script_dir}"
 
 
 # Refact possible,

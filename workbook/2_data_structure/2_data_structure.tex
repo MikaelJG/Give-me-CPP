@@ -252,8 +252,6 @@ for (const element_type & : get_map())
 \end{verbatim}
 
  
-\subsection{Maps Overview (Strengths, Weaknesses, Sorting and Uniqueness)}
-
 \subsection{Maps Operations (Create Read Update Delete)}
 
 \begin{verbatim}
@@ -366,8 +364,6 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Sets Overview (Strengths, Weaknesses, Sorting and Uniqueness)}
-
 \section{Maps and Sets Functions}
 
 \subsection{Size}
@@ -473,8 +469,6 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{List Overview (Strengths, Weaknesses, Sorting and Uniqueness)}
-
 \section{Forward Lists (Singly Linked Lists)}
 
 std::forward\_list store elements as a singly linked list.
@@ -497,8 +491,6 @@ int main() {
 }
 \end{verbatim}
 
-\subsection{Forward Lists Overview (Strengths, Weaknesses, Sorting and Uniqueness)}
-
 \subsection{Lists and Functions}
 
 \begin{verbatim}
@@ -517,8 +509,6 @@ unique()            - replaces consecutive duplicates by one value.
 \section{Hash Maps}
 
 Hash maps are the answer to every interview. They are containers with fast elements inserts.
-
-\subsection{Hash Maps Overview (Strengths, Weaknesses, Sorting and Uniqueness)}
 
 \subsection{Unordored Map}
 
@@ -597,11 +587,6 @@ constant time (O(1))
 linear time (O(n))
 \end{verbatim}
 
-\subsection{Strengths}
-\subsection{Weaknesses}
-\subsection{Sorted?}
-\subsection{Uniqueness?}
-
 \subsection{Unordered Sets}
 
 A container storing \textbf{unique} elements.
@@ -636,10 +621,6 @@ int main() {
     return 0;
 }
 \end{verbatim}
-\subsection{Strengths}
-\subsection{Weaknesses}
-\subsection{Sorted?}
-\subsection{Uniqueness?}
 
 \subsection{Unordered Multisets}
 
@@ -691,10 +672,7 @@ I need definition and example for these.
 \section{Queue}
 std::queue is a FIFO (first in, first out). Important functions are back(), front(), push\_back(), pop\_front().
 
-\subsection{Queue Overview (Strengths, Weaknesses, Sorting and Uniqueness)}
-
 \section{Priority Queue (Heap)}
-\subsection{Priority Queue Overview (Strengths, Weaknesses, Sorting and Uniqueness)}
 
 std::priority\_queue can only be modified from the back, not from the front. Important functions are front(), push\_back(), 
 and pop\_back().
@@ -1034,7 +1012,7 @@ T sum_data(const std::vector<T> &d) {
 }
 \end{verbatim}
 
-\subsection{Std::Puts}
+\subsection{Puts}
 
 Generating a null-terminated string,  a sequence of characters stored in an array
 where the end of the string is marked by a null character ('\0'). 
@@ -1057,40 +1035,4 @@ void print_map(const auto &map, const std::string_view &key_desc = "key",
 }
 
 Standard c++20
-\end{verbatim}
-\subsection{Algorithms and Standard Template Library}
-
-\begin{verbatim}
-set<>
-vector<>
-for_each<>
-any_of<>
-etc.
-
-A generic set of composable tools
-
-// now, here we are
-
-#include <numeric>
-#include <vector>
-
-template<typename Value_Type>
-std::vector<Value_Type> get_data(const Value_Type &v1, const Value_type &v2,
-                                 const Value_type &v3)
-{
-    std::vector<Value_Type> data;
-    data.push_back(v1);
-    data.push_back(v2);
-    data.push_back(v3);
-    return data;
-}
-
-template<typename T>
-T sum_data(const std::vector<T> &d) {
-    return std::accumulate(d.begin(), d.end(), T());
-}
-
-int main() {
-    return sum_data(get_data(1,2,3));
-}
 \end{verbatim}

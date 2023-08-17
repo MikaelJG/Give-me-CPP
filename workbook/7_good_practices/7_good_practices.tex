@@ -1,0 +1,211 @@
+\chapter{Good Practices}
+
+\section{Proper Design}
+
+\begin{verbatim}
+    if a component is hard to test, it is not properly designed. 
+    if a component is easy to test, it indicates proper design. 
+    Approval tests ressource : https://cppcast.com/clare-macrae/ 
+\end{verbatim}
+
+\section{Warnings}
+
+Enable as many compiler warnings as you can. 
+Fix new warning generated. 
+
+\textbf{It will feel tedious and meaningless}
+\textbf{But this is the c++ way to catch real bugs.}
+
+\section{Slow Down!}
+
+\begin{verbatim}
+Copy and pasting is easy. 
+Forging ahead in comfort is too easy.
+Plan ahead, don't get caught off guard. 
+\end{verbatim}
+
+\subsection{Ponder for solutions}
+
+\begin{verbatim}
+If the solution seems large or complex, stop. 
+Walk and ponder for the solution. 
+discuss the design with a rubber duck. 
+spend less time programming, more thinking.
+\end{verbatim}
+
+\section{C++ is not magic nor Object-Oriented}
+
+\begin{verbatim}
+It's not magic, construct to test your doubts.
+It is multi-disciplinary, supports all programming paradigms.
+
+    Procedural
+    Functional
+    Object-Oriented
+    Generic
+    Compile-Time(contexpr and template metaprogramming)
+
+Knowing when paradims are needed is the key to good C++.
+Using appropriate techniques takes time and appropriate technique. 
+\end{verbatim}
+
+\subsection{Overcomplicated Constexpr}
+
+\begin{verbatim}
+
+// static const data known at compile time. 
+static const std::vector<int> angles{-90,-45,0,45,90};
+\end{verbatim}
+
+\subsection{Useful Constexpr}
+
+\begin{verbatim}
+// Moving static const to static constexpr.
+static constexpr std::array<int, 5> angles{-90,45,0,45,90};
+
+Here static constexpr makes sure the object
+is not reinitialized each time the function is encountered.
+
+\end{verbatim}
+
+\subsection{Auto Expensive Conversion}
+
+Avoid potential expensive conversions. Same as ranged-for loops. 
+
+Auto requires initialization, same as const. 
+
+\begin{verbatim}
+const std::string value = get_string_value();
+
+// What is the return type of get_string_value()? 
+
+If its std::string_view or const char *,
+we'll get costly conversion on all compilers with no diagnostic. 
+
+// avoids conversion
+const auto value = get_string_value();
+\end{verbatim}
+
+\subsection{Accidental Conversions}
+
+\begin{verbatim}
+for (const int value : container_of_double) {
+    // accidental conversion, possible warning
+}
+\end{verbatim}
+
+\subsection{Accidental Slicing}
+
+\begin{verbatim}
+for (const base value : container_of_derived) {
+    // accidental silent slicing
+}
+
+If container_of_derived holds objects of a derived class. 
+Base is the base class.
+The loop is iterating over the container and assigning each
+derived object to a base object (value) due to object slicing.
+
+Object slicing occurs because the base object can only store
+the base class's attributes and behavior. Additional defined 
+class attributes will be lost during the assignment or copy.
+
+To avoid accidental slicing, you use pointers or references.
+
+// no problem
+for (const auto &value : container) {
+    // no possible accidental conversion
+}
+
+Using pointers or references ensures that 
+the derived objects retain their specific attributes and behavior.
+
+const auto & for non-mutating loops
+auto & for mutating loops
+auto && 
+// only when you have to with weird types like std::vector<bool>,
+// or if moving elements out of the container
+\end{verbatim}
+
+\section{DRY (Don't Repeat Yourself)}
+
+Principle aimed at reducing repetition of code and reusability. 
+We have more tools today, concepts, generic lambdas, etc. to help with templates.
+
+\begin{verbatim}
+// divide doubles
+double divide(double numerator, double denominator) {
+    return numerator / denominator;
+}
+
+//But you don't want all of your divisions to be promoted to double. 
+
+// Divide floats
+float divide(float numerator, float denominator) {
+    return numerator / denominator;
+}
+
+// You want to handle some kind of int values. 
+
+//divide ints
+int divide(int numerator, int denominator) {
+    return numerator / denominator;
+}
+
+// Templates were designed for just this scenario. 
+\end{verbatim}
+
+\subsection{Auto Deduction Practice}
+
+\begin{verbatim}
+const int *get();
+
+int main() {
+    const auto val = get();
+}
+
+const int &get();
+
+int main() {
+    const auto val = get();
+}
+
+The function get() returns a const int& (a ref to a const int),
+
+get() returns a const int&, val is also const int&.
+
+Const int *get();
+
+int main() {
+    const auto *val = get();
+}
+
+The function get() returns a const int* (a pointer to a const int),
+
+Since get() returns a const int*,
+val is also const int*.
+
+The const qualifier applies to the integer pointed to by val,
+not to the pointer val itself. Therefore, val is a non-constant pointer to a constant integer.
+If you wanted a constant pointer to a constant integer,
+you would need to declare val as const int * const val = get();
+
+const int &get();
+
+int main() {
+    const auto &val = get();
+}
+
+const int *get();
+
+int main() {
+    const auto &val = get();
+}
+
+const int &get();
+
+int main() {
+    const auto &&val = get();
+}
+\end{verbatim}
+

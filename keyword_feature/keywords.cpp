@@ -21,16 +21,18 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"},
         //
         // variables
-        {"var", home + "/code/cpp/examples/variables.cpp"}, 
-        {"vars", home + "/code/cpp/examples/variables.cpp"}, 
-        {"variable", home + "/code/cpp/examples/variables.cpp"},
         {"variables", home + "/code/cpp/examples/variables.cpp"},
+        {"variable", home + "/code/cpp/examples/variables.cpp"},
+        {"vars", home + "/code/cpp/examples/variables.cpp"}, 
+        {"var", home + "/code/cpp/examples/variables.cpp"}, 
 
         // auto
+        {"auto", home + "/code/cpp/examples/auto.cpp"}, 
         {"aut", home + "/code/cpp/examples/auto.cpp"}, 
         // {"", home + "/code/cpp/examples/.cpp"},
         //
         // constexpr 
+        {"constexpr", home + "/code/cpp/examples/constexpr.cpp"}, 
         {"constexp", home + "/code/cpp/examples/constexpr.cpp"}, 
         {"constex", home + "/code/cpp/examples/constexpr.cpp"}, 
         {"constex", home + "/code/cpp/examples/constexpr.cpp"}, 
@@ -42,14 +44,15 @@ int main() {
         // {"", home + "/code/cpp/examples/constexpr.cpp"},
         //
         // ternary operator
-        {"ternary", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"ternary operator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"ternaryoperator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"ternary op", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"ternaryop", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"tern operator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"ternoperator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"ternary", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"tern op", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"tern", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         {"ternop", home + "/code/cpp/examples/ternary_operator.cpp"}, 
         // {"", home + "/code/cpp/examples/ternary_operator.cpp"},
         //
@@ -61,37 +64,49 @@ int main() {
         {"in scope", home + "/code/cpp/examples/scope.cpp"}, 
         {"inscope", home + "/code/cpp/examples/scope.cpp"}, 
         {"scopes", home + "/code/cpp/examples/scope.cpp"}, 
+        {"scope", home + "/code/cpp/examples/scope.cpp"}, 
         {"scop", home + "/code/cpp/examples/scope.cpp"}, 
         // {"", home + "/code/cpp/examples/scope.cpp"},
         //
         // chaining
+        {"chaining", home + "/code/cpp/examples/chaining.cpp"}, 
         {"chains", home + "/code/cpp/examples/chaining.cpp"}, 
         {"chain", home + "/code/cpp/examples/chaining.cpp"}, 
         // {"", home + "/code/cpp/examples/chaining.cpp"},
         //
         // streams 
+        {"streams", home + "/code/cpp/examples/streams.cpp"}, 
         {"stream", home + "/code/cpp/examples/streams.cpp"}, 
         {"strea", home + "/code/cpp/examples/streams.cpp"}, 
         //{"", home + "/code/cpp/examples/streams.cpp"},
         //
         // sstream 
-        {"sstreams", home + "/code/cpp/examples/stream.cpp"}, 
-        {"sstrea", home + "/code/cpp/examples/stream.cpp"}, 
-        {"s streams", home + "/code/cpp/examples/stream.cpp"}, 
-        {"s stream", home + "/code/cpp/examples/stream.cpp"}, 
+        {"sstrea", home + "/code/cpp/examples/sstream.cpp"}, 
+        {"sstreams", home + "/code/cpp/examples/sstream.cpp"}, 
+        {"s streams", home + "/code/cpp/examples/sstream.cpp"}, 
+        {"s stream", home + "/code/cpp/examples/sstream.cpp"}, 
+        {"sstream", home + "/code/cpp/examples/sstream.cpp"}, 
         // {"", home + "/code/cpp/examples/stream.cpp"},
-        
+        //
+        // fstream 
+        // {"sstrea", home + "/code/cpp/examples/sstream.cpp"}, 
+        // {"sstreams", home + "/code/cpp/examples/sstream.cpp"}, 
+        // {"s streams", home + "/code/cpp/examples/sstream.cpp"}, 
+        // {"s stream", home + "/code/cpp/examples/sstream.cpp"}, 
+        // {"sstream", home + "/code/cpp/examples/sstream.cpp"}, 
+        // {"", home + "/code/cpp/examples/stream.cpp"},
 
         // touples
+        {"touples", home + "/code/cpp/examples/touples.cpp"}, 
         {"touple", home + "/code/cpp/examples/touples.cpp"}, 
         {"toup", home + "/code/cpp/examples/touples.cpp"}, 
         // {"", home + "/code/cpp/examples/touples.cpp"},
         
         // enums
+        {"enums", home + "/code/cpp/examples/enums.cpp"}, 
         {"enum", home + "/code/cpp/examples/enums.cpp"}, 
         {"enus", home + "/code/cpp/examples/enums.cpp"}, 
         {"enu", home + "/code/cpp/examples/enums.cpp"}, 
-        //{"", home + "/code/cpp/examples/enums.cpp"},
         //{"", home + "/code/cpp/examples/enums.cpp"},
 
         // enum array mapping
@@ -129,8 +144,9 @@ int main() {
         //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
         
         // arrays
-        {"arr", home + "/code/cpp/examples/arrays.cpp"}, 
+        {"arrays", home + "/code/cpp/examples/arrays.cpp"}, 
         {"array", home + "/code/cpp/examples/arrays.cpp"}, 
+        {"arr", home + "/code/cpp/examples/arrays.cpp"}, 
         {"arra", home + "/code/cpp/examples/arrays.cpp"},
         //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
@@ -152,12 +168,14 @@ int main() {
         //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
         // vectors
-        {"vec", home + "/code/cpp/examples/vectors.cpp"}, 
-        {"vect", home + "/code/cpp/examples/vectors.cpp"}, 
+        {"vectors", home + "/code/cpp/examples/vectors.cpp"},
         {"vector", home + "/code/cpp/examples/vectors.cpp"},
+        {"vect", home + "/code/cpp/examples/vectors.cpp"}, 
+        {"vec", home + "/code/cpp/examples/vectors.cpp"}, 
         //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
         // size_t 
+        {"size t", home + "/code/cpp/examples/size_t.cpp"}, 
         {"sizet", home + "/code/cpp/examples/size_t.cpp"}, 
         {"sizt", home + "/code/cpp/examples/size_t.cpp"}, 
         {"st", home + "/code/cpp/examples/size_t.cpp"},
@@ -167,24 +185,25 @@ int main() {
         //{"", home + "/code/cpp/examples/iterators.cpp"},
         
         // conditional
+        {"conditionals", home + "/code/cpp/examples/conditionals.cpp"}, 
+        {"conditional", home + "/code/cpp/examples/conditionals.cpp"}, 
+        {"conditions", home + "/code/cpp/examples/conditionals.cpp"},
+        {"condition", home + "/code/cpp/examples/conditionals.cpp"}, 
         {"if", home + "/code/cpp/examples/conditionals.cpp"}, 
         {"elseif", home + "/code/cpp/examples/conditionals.cpp"}, 
         {"else if", home + "/code/cpp/examples/conditionals.cpp"},
         {"elsif", home + "/code/cpp/examples/conditionals.cpp"},
         {"con", home + "/code/cpp/examples/conditionals.cpp"},
         {"cond", home + "/code/cpp/examples/conditionals.cpp"},
-        {"condition", home + "/code/cpp/examples/conditionals.cpp"}, 
-        {"conditions", home + "/code/cpp/examples/conditionals.cpp"},
-        {"conditional", home + "/code/cpp/examples/conditionals.cpp"}, 
         //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
         // switch statements
-        {"case", home + "/code/cpp/examples/switch_statements.cpp"},
-        {"casestatement", home + "/code/cpp/examples/switch_statements.cpp"},
-        {"case statement", home + "/code/cpp/examples/switch_statements.cpp"},
-        {"switch", home + "/code/cpp/examples/switch_statements.cpp"},
         {"switchstatement", home + "/code/cpp/examples/switch_statements.cpp"},
         {"switch statement", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"casestatement", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"case statement", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"case", home + "/code/cpp/examples/switch_statements.cpp"},
+        {"switch", home + "/code/cpp/examples/switch_statements.cpp"},
         //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
         // loops
@@ -193,14 +212,22 @@ int main() {
         {"iterator", home + "code/cpp/examples/loops.cpp"},
         {"iterators", home + "code/cpp/examples/loops.cpp"},
         {"iterating", home + "code/cpp/examples/loops.cpp"},
+        {"loops", home + "/code/cpp/examples/loops.cpp"},
+        {"loop", home + "/code/cpp/examples/loops.cpp"},
+        {"lop", home + "/code/cpp/examples/loops.cpp"},
         //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
         // ranges
+        {"ranges", home + "/code/cpp/examples/ranges.cpp"}, 
         {"range", home + "/code/cpp/examples/ranges.cpp"}, 
         {"ran", home + "/code/cpp/examples/ranges.cpp"}, 
         // {"", home + "/code/cpp/examples/ranges.cpp"},
         
         // range pipes
+        {"ranges pipes", home + "/code/cpp/examples/ranges_pipes.cpp"}, 
+        {"rangespipes", home + "/code/cpp/examples/ranges_pipes.cpp"}, 
+        {"ranges pipe", home + "/code/cpp/examples/ranges_pipes.cpp"}, 
+        {"rangespipe", home + "/code/cpp/examples/ranges_pipes.cpp"}, 
         {"range pipe", home + "/code/cpp/examples/ranges_pipes.cpp"}, 
         {"rangepipe", home + "/code/cpp/examples/ranges_pipes.cpp"}, 
         {"rangep", home + "/code/cpp/examples/ranges_pipes.cpp"},
@@ -219,6 +246,7 @@ int main() {
         {"rloop", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
 
         // accidental conversions
+        {"conversions", home + "/code/cpp/examples/accidental_conversions.cpp"},
         {"conversion", home + "/code/cpp/examples/accidental_conversions.cpp"},
         // {"", home + "/code/cpp/examples/accidental_conversions.cpp"},
         //
@@ -230,9 +258,10 @@ int main() {
         // {"", home + "/code/cpp/examples/functions.cpp"},
         //
         // functions
-        {"fun", home + "/code/cpp/examples/functions.cpp"}, 
-        {"func", home + "/code/cpp/examples/functions.cpp"}, 
+        {"functions", home + "/code/cpp/examples/functions.cpp"},
         {"function", home + "/code/cpp/examples/functions.cpp"},
+        {"func", home + "/code/cpp/examples/functions.cpp"}, 
+        {"fun", home + "/code/cpp/examples/functions.cpp"}, 
         // {"", home + "/code/cpp/examples/functions.cpp"},
         //
         // inline functions
@@ -273,12 +302,6 @@ int main() {
         // {"", home + "/code/cpp/examples/public_functions.cpp"},
         //
         // overloading functions
-        {"over", home + "/code/cpp/examples/overloading_functions.cpp"}, 
-        {"overfun", home + "/code/cpp/examples/overloading_functions.cpp"}, 
-        {"overfunction", home + "/code/cpp/examples/overloading_functions.cpp"}, 
-        {"overload", home + "/code/cpp/examples/overloading_functions.cpp"}, 
-        {"overloading", home + "/code/cpp/examples/overloading_functions.cpp"},
-        {"overloaded", home + "/code/cpp/examples/overloading_functions.cpp"}, 
         {"overloading functions", home + "/code/cpp/examples/overloading_functions.cpp"},
         {"overload functions", home + "/code/cpp/examples/overloading_functions.cpp"},
         {"overload function", home + "/code/cpp/examples/overloading_functions.cpp"},
@@ -289,9 +312,16 @@ int main() {
         {"fun overloading", home + "/code/cpp/examples/overloading_functions.cpp"},
         {"funoverload", home + "/code/cpp/examples/overloading_functions.cpp"},
         {"funoverloading", home + "/code/cpp/examples/overloading_functions.cpp"},
+        {"overfunction", home + "/code/cpp/examples/overloading_functions.cpp"}, 
+        {"overload", home + "/code/cpp/examples/overloading_functions.cpp"}, 
+        {"overloading", home + "/code/cpp/examples/overloading_functions.cpp"},
+        {"overloaded", home + "/code/cpp/examples/overloading_functions.cpp"}, 
+        {"overfun", home + "/code/cpp/examples/overloading_functions.cpp"}, 
+        {"over", home + "/code/cpp/examples/overloading_functions.cpp"}, 
         // {"", home + "/code/cpp/examples/overloading_functions.cpp"},
         //
         // parameters
+        {"parameters", home + "/code/cpp/examples/parameters.cpp"}, 
         {"parameter", home + "/code/cpp/examples/parameters.cpp"}, 
         {"params", home + "/code/cpp/examples/parameters.cpp"}, 
         {"param", home + "/code/cpp/examples/parameters.cpp"}, 
@@ -342,6 +372,7 @@ int main() {
         // {"", home + "/code/cpp/examples/parameters_default_values.cpp"},
         //
         // references 
+        {"references", home + "/code/cpp/examples/references.cpp"}, 
         {"reference", home + "/code/cpp/examples/references.cpp"}, 
         {"refer", home + "/code/cpp/examples/references.cpp"}, 
         {"ref", home + "/code/cpp/examples/references.cpp"}, 
@@ -349,19 +380,22 @@ int main() {
         //
         // dereference 
         {"dereferencing", home + "/code/cpp/examples/dereference.cpp"}, 
-        {"deref", home + "/code/cpp/examples/dereference.cpp"}, 
         {"unreference", home + "/code/cpp/examples/dereference.cpp"}, 
+        {"deref", home + "/code/cpp/examples/dereference.cpp"}, 
         {"unref", home + "/code/cpp/examples/dereference.cpp"}, 
         // {"", home + "/code/cpp/examples/dereference.cpp"},
         //
         // references const 
+        {"const references", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"constreferences", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"const reference", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"constreference", home + "/code/cpp/examples/references_const.cpp"}, 
         {"references const", home + "/code/cpp/examples/references_const.cpp"}, 
         {"referencesconst", home + "/code/cpp/examples/references_const.cpp"}, 
         {"reference const", home + "/code/cpp/examples/references_const.cpp"}, 
         {"referenceconst", home + "/code/cpp/examples/references_const.cpp"}, 
-        {"const references", home + "/code/cpp/examples/references_const.cpp"}, 
-        {"const reference", home + "/code/cpp/examples/references_const.cpp"}, 
-        {"constreference", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"const refs", home + "/code/cpp/examples/references_const.cpp"}, 
+        {"constrefs", home + "/code/cpp/examples/references_const.cpp"}, 
         {"const ref", home + "/code/cpp/examples/references_const.cpp"}, 
         {"constref", home + "/code/cpp/examples/references_const.cpp"}, 
         // {"", home + "/code/cpp/examples/references_const.cpp"},
@@ -380,7 +414,8 @@ int main() {
         {"add", home + "/code/cpp/examples/address_operator.cpp"}, 
         // {"", home + "/code/cpp/examples/address_operator.cpp"},
         //
-        // pointer
+        // pointers
+        {"pointers", home + "/code/cpp/examples/pointers.cpp"}, 
         {"pointer", home + "/code/cpp/examples/pointers.cpp"}, 
         {"point", home + "/code/cpp/examples/pointers.cpp"}, 
         // {"", home + "/code/cpp/examples/pointers.cpp"},
@@ -396,6 +431,7 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"},
         //
         // nullptr
+        {"nullptr", home + "/code/cpp/examples/nullptr.cpp"}, 
         {"null ptr", home + "/code/cpp/examples/nullptr.cpp"}, 
         {"nulptr", home + "/code/cpp/examples/nullptr.cpp"}, 
         {"nullp", home + "/code/cpp/examples/nullptr.cpp"},
@@ -437,6 +473,7 @@ int main() {
         //
         // allocation 
         {"allocations", home + "/code/cpp/examples/allocation.cpp"}, 
+        {"allocation", home + "/code/cpp/examples/allocation.cpp"}, 
         {"allocating", home + "/code/cpp/examples/allocation.cpp"}, 
         {"allocate", home + "/code/cpp/examples/allocation.cpp"}, 
         {"allo", home + "/code/cpp/examples/allocation.cpp"}, 
@@ -445,6 +482,8 @@ int main() {
         // deallocation 
         {"deallocating", home + "/code/cpp/examples/deallocation.cpp"}, 
         {"deallocations", home + "/code/cpp/examples/deallocation.cpp"}, 
+        {"deallocation", home + "/code/cpp/examples/deallocation.cpp"}, 
+        {"deallocated", home + "/code/cpp/examples/deallocation.cpp"}, 
         {"deallocate", home + "/code/cpp/examples/deallocation.cpp"}, 
         {"deal", home + "/code/cpp/examples/deallocation.cpp"},
         // {"", home + "/code/cpp/examples/deallocation.cpp"},
@@ -467,6 +506,7 @@ int main() {
         // {"", home + "/code/cpp/examples/leaking_memory.cpp"},
         //
         // classes 
+        {"classes", home + "/code/cpp/examples/classes.cpp"}, 
         {"class", home + "/code/cpp/examples/classes.cpp"}, 
         {"clas", home + "/code/cpp/examples/classes.cpp"}, 
         {"cla", home + "/code/cpp/examples/classes.cpp"}, 
@@ -485,10 +525,12 @@ int main() {
         //
         // span 
         {"spans", home + "/code/cpp/examples/span.cpp"}, 
+        {"span", home + "/code/cpp/examples/span.cpp"}, 
         {"spa", home + "/code/cpp/examples/span.cpp"}, 
         // {"", home + "/code/cpp/examples/span.cpp"},
         //
         // templates
+        {"templates", home + "/code/cpp/examples/templates.cpp"}, 
         {"template", home + "/code/cpp/examples/templates.cpp"}, 
         {"templat", home + "/code/cpp/examples/templates.cpp"}, 
         {"temps", home + "/code/cpp/examples/templates.cpp"}, 
@@ -543,6 +585,7 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         //
         // structs 
+        {"structs", home + "/code/cpp/examples/structs.cpp"}, 
         {"struct", home + "/code/cpp/examples/structs.cpp"}, 
         {"s", home + "/code/cpp/examples/structs.cpp"}, 
         // {"", home + "/code/cpp/examples/structs.cpp"},
@@ -566,6 +609,7 @@ int main() {
         // {"", home + "/code/cpp/examples/structs_against_classes.cpp"},
         //
         // lambdas
+        {"lambdas", home + "/code/cpp/examples/lambdas.cpp"}, 
         {"lambda", home + "/code/cpp/examples/lambdas.cpp"}, 
         {"lambd", home + "/code/cpp/examples/lambdas.cpp"}, 
         {"lamb", home + "/code/cpp/examples/lambdas.cpp"}, 
@@ -689,17 +733,21 @@ int main() {
         // {"", home + "/code/cpp/examples/const_lambdas.cpp"},
         //
         // concepts 
-        {"conc", home + "/code/cpp/examples/concepts.cpp"}, 
+        {"concepts", home + "/code/cpp/examples/concepts.cpp"}, 
         {"concept", home + "/code/cpp/examples/concepts.cpp"}, 
+        {"conc", home + "/code/cpp/examples/concepts.cpp"}, 
         // {"", home + "/code/cpp/examples/concepts.cpp"},
         //
         // constants 
+        {"constants", home + "/code/cpp/examples/constants.cpp"}, 
         {"constant", home + "/code/cpp/examples/constants.cpp"}, 
+        {"consts", home + "/code/cpp/examples/constants.cpp"},
         {"const", home + "/code/cpp/examples/constants.cpp"},
         {"cons", home + "/code/cpp/examples/constants.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         //
         // factories 
+        {"factories", home + "/code/cpp/examples/factories.cpp"}, 
         {"factory", home + "/code/cpp/examples/factories.cpp"}, 
         {"fact", home + "/code/cpp/examples/factories.cpp"}, 
         {"fac", home + "/code/cpp/examples/factories.cpp"}, 
@@ -719,6 +767,7 @@ int main() {
         {"constructing", home + "/code/cpp/examples/constructors.cpp"}, 
         {"construction", home + "/code/cpp/examples/constructors.cpp"}, 
         {"constructed", home + "/code/cpp/examples/constructors.cpp"}, 
+        {"constructors", home + "/code/cpp/examples/constructors.cpp"}, 
         {"constructor", home + "/code/cpp/examples/constructors.cpp"}, 
         {"construct", home + "/code/cpp/examples/constructors.cpp"}, 
         // {"", home + "/code/cpp/examples/constructors.cpp"},
@@ -726,6 +775,7 @@ int main() {
         // destructors
         {"destruction", home + "/code/cpp/examples/destructors.cpp"}, 
         {"destructing", home + "/code/cpp/examples/destructors.cpp"}, 
+        {"destructors", home + "/code/cpp/examples/destructors.cpp"}, 
         {"destructor", home + "/code/cpp/examples/destructors.cpp"}, 
         {"destruct", home + "/code/cpp/examples/destructors.cpp"}, 
         {"destroy", home + "/code/cpp/examples/destructors.cpp"}, 
@@ -753,12 +803,12 @@ int main() {
         // {"", home + "/code/cpp/examples/deterministic_object_lifetime_and_destruction.cpp"},
         //
         // RAII 
-        {"", home + "/code/cpp/examples/raii.cpp"}, 
-        {"", home + "/code/cpp/examples/raii.cpp"},
+        //{"", home + "/code/cpp/examples/raii.cpp"}, 
+        //{"", home + "/code/cpp/examples/raii.cpp"},
         //
         // new keyword 
         {"new", home + "/code/cpp/examples/new_keyword.cpp"}, 
-        {"", home + "/code/cpp/examples/new_keyword.cpp"},
+        // {"", home + "/code/cpp/examples/new_keyword.cpp"},
         //
         // thread_local
         {"thread local", home + "/code/cpp/examples/thread_local.cpp"}, 
@@ -773,8 +823,10 @@ int main() {
         {"staticobjects", home + "/code/cpp/examples/static.cpp"}, 
         {"static object", home + "/code/cpp/examples/static.cpp"}, 
         {"staticobject", home + "/code/cpp/examples/static.cpp"}, 
+        {"statics", home + "/code/cpp/examples/static.cpp"}, 
+        {"static", home + "/code/cpp/examples/static.cpp"}, 
         {"stat", home + "/code/cpp/examples/static.cpp"}, 
-        {"", home + "/code/cpp/examples/static.cpp"},
+        // {"", home + "/code/cpp/examples/static.cpp"},
         
         // dynamic 
         {"dynamic objects", home + "/code/cpp/examples/dynamic.cpp"}, 
@@ -829,6 +881,7 @@ int main() {
         // flags 
         {"options", home + "/code/cpp/examples/flags.cpp"},
         {"option", home + "/code/cpp/examples/flags.cpp"},
+        {"flags", home + "/code/cpp/examples/flags.cpp"},
         {"flag", home + "/code/cpp/examples/flags.cpp"},
         //
         // user input 
@@ -840,6 +893,7 @@ int main() {
         {"userresponse", home + "/code/cpp/examples/user_input.cpp"}, 
         {"user answer", home + "/code/cpp/examples/user_input.cpp"}, 
         {"useranswer", home + "/code/cpp/examples/user_input.cpp"}, 
+        {"prompting", home + "/code/cpp/examples/user_input.cpp"}, 
         {"prompt", home + "/code/cpp/examples/user_input.cpp"}, 
         {"answer", home + "/code/cpp/examples/user_input.cpp"}, 
         {"user", home + "/code/cpp/examples/user_input.cpp"}, 
@@ -847,6 +901,7 @@ int main() {
         //
         // type 
         {"types", home + "/code/cpp/examples/type.cpp"}, 
+        {"type", home + "/code/cpp/examples/type.cpp"}, 
         {"typ", home + "/code/cpp/examples/type.cpp"}, 
         {"", home + "/code/cpp/examples/type.cpp"},
         //
@@ -904,6 +959,7 @@ int main() {
         // {"", home + "/code/cpp/examples/file_deletion.cpp"}, 
         //
         // paths 
+        {"paths", home + "/code/cpp/examples/paths.cpp"}, 
         {"path", home + "/code/cpp/examples/paths.cpp"}, 
         {"pat", home + "/code/cpp/examples/paths.cpp"}, 
         // {"", home + "/code/cpp/examples/paths.cpp"},
@@ -931,22 +987,33 @@ int main() {
         // {"", home + "/code/cpp/examples/directories.cpp"},
         //
         // directory iterators 
-        // {"", home + "/code/cpp/examples/directory_iterators.cpp"}, 
-        // {"", home + "/code/cpp/examples/directory_iterators.cpp"}, 
-        // {"", home + "/code/cpp/examples/directory_iterators.cpp"},
+        {"directory iterators", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        {"directoryiterators", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        {"directory iterator", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        {"directoryiterator", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        {"diriterators", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        {"dir iterators", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        {"diriterator", home + "/code/cpp/examples/directory_iterators.cpp"}, 
+        {"diriterate", home + "/code/cpp/examples/directory_iterators.cpp"}, 
         // {"", home + "/code/cpp/examples/directory_iterators.cpp"},
         //
         // compilers 
-        // {"", home + "/code/cpp/examples/compilers.cpp"}, 
-        // {"", home + "/code/cpp/examples/compilers.cpp"}, 
-        // {"", home + "/code/cpp/examples/compilers.cpp"},
+        {"compilers", home + "/code/cpp/examples/compilers.cpp"}, 
+        {"compiler", home + "/code/cpp/examples/compilers.cpp"}, 
+        {"compile", home + "/code/cpp/examples/compilers.cpp"}, 
         // {"", home + "/code/cpp/examples/compilers.cpp"},
         //
         // gnu gcc
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"}, 
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
-        // {"", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnu compiler", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnucompiler", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnu compile", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnucompile", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnu gcc", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnugcc", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnuc", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gnu", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        {"gcc", home + "/code/cpp/examples/gnu_gcc.cpp"},
+        // {"", home + "/code/cpp/examples/compilers.cpp"},
         //
         // gnu gcc enable precompiled headers
         {"gcc precompile headers", home + "/code/cpp/examples/gnu_gcc_enable_precompiled_headers.cpp"}, 
@@ -1008,9 +1075,7 @@ int main() {
         // {"", h ome + "/code/cpp/examples/gnu_gcc_disable_extensions.cpp"},
         //
         // llvm clang 
-        // {"", home + "/code/cpp/examples/llvm_clang.cpp"}, 
-        // {"", home + "/code/cpp/examples/llvm_clang.cpp"}, 
-        // {"", home + "/code/cpp/examples/llvm_clang.cpp"},
+        {"clang", home + "/code/cpp/examples/llvm_clang.cpp"}, 
         // {"", home + "/code/cpp/examples/llvm_clang.cpp"},
         //
         // llvm clang enable precompiled headers 
@@ -1810,19 +1875,22 @@ int main() {
 //     }
     };
 
-    for (const auto & pair : keywords_map) {
-        std::cout << "key: " << pair.first << '\n';
-        std::cout << "value: " << pair.second << '\n'; 
+    const auto question = "Search for a keyword";
+    std::cout << question << '\n';
+    
+    std::string answer;
+    std::cin >> answer;
+
+    if (keywords_map.count(answer) > 0) {
+        std::cout << "found: " << answer << '\n';
+
+        // open nvim
+        // const std::string tmp = "nvim " + keywords_map["iterate"];
+        // const auto open_nvim = tmp.c_str();
+
+        // std::system(open_nvim);
+    } else {
+        std::cout << "Keyword not found in hash\n";
     }
-
-    // if (keywords_map.count("iterate") > 0) {
-    //     std::cout << "found elseif\n";
-
-    //     // open nvim
-    //     const std::string tmp = "nvim " + keywords_map["iterate"];
-    //     const auto open_nvim = tmp.c_str();
-
-    //     std::system(open_nvim);
-    // }
 
 }
