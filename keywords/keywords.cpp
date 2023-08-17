@@ -3,7 +3,9 @@
 #include <unordered_map>
 #include <vector>
 
-int main() {
+int main(int argc, const char* argv[]) {
+
+    const std::vector<std::string> arguments(argv + 1, argv + argc);
 
     // ~ is not valid for fs::directory iterator(path)) 
     const char* tmp = std::getenv("HOME");
@@ -1875,14 +1877,9 @@ int main() {
 //     }
     };
 
-    const auto question = "Search for a keyword";
-    std::cout << question << '\n';
-    
-    std::string answer;
-    std::cin >> answer;
-
-    if (keywords_map.count(answer) > 0) {
-        std::cout << "found: " << answer << '\n';
+    const auto key = arguments[0];
+    if (keywords_map.count(key) > 0) {
+        std::cout << "found: " << key << '\n';
 
         // open nvim
         // const std::string tmp = "nvim " + keywords_map["iterate"];
