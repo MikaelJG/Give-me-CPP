@@ -45,15 +45,14 @@ int main() {
         // {"", home + "/code/cpp/examples/scope.cpp"},
         //
         // chaining
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        {"chains", home + "/code/cpp/examples/chaining.cpp"}, 
+        {"chain", home + "/code/cpp/examples/chaining.cpp"}, 
+        // {"", home + "/code/cpp/examples/chaining.cpp"},
         //
         // streams 
         {"stream", home + "/code/cpp/examples/streams.cpp"}, 
         {"strea", home + "/code/cpp/examples/streams.cpp"}, 
-        {"", home + "/code/cpp/examples/streams.cpp"},
+        //{"", home + "/code/cpp/examples/streams.cpp"},
         //
         // sstream 
         {"sstreams", home + "/code/cpp/examples/stream.cpp"}, 
@@ -68,18 +67,51 @@ int main() {
         {"variable", home + "/code/cpp/examples/variables.cpp"},
         {"variables", home + "/code/cpp/examples/variables.cpp"},
 
-        
         // touples
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
+        {"touple", home + "/code/cpp/examples/touples.cpp"}, 
+        {"toup", home + "/code/cpp/examples/touples.cpp"}, 
+        // {"", home + "/code/cpp/examples/touples.cpp"},
         
         // enums
-        {"", home + "/code/cpp/examples/enums.cpp"}, 
-        {"", home + "/code/cpp/examples/enums.cpp"}, 
-        {"", home + "/code/cpp/examples/enums.cpp"},
-        {"", home + "/code/cpp/examples/enums.cpp"},
+        {"enum", home + "/code/cpp/examples/enums.cpp"}, 
+        {"enus", home + "/code/cpp/examples/enums.cpp"}, 
+        {"enu", home + "/code/cpp/examples/enums.cpp"}, 
+        //{"", home + "/code/cpp/examples/enums.cpp"},
+        //{"", home + "/code/cpp/examples/enums.cpp"},
+
+        // enum array mapping
+        {"enums arrays", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enumsarrays", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enums array", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enumsarray", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enum arrays", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enumarrays", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enum array", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enumarray", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enum ars", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enum as", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enum ar", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enum a", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enumar", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        {"enuma", home + "/code/cpp/examples/enum_array_mapping.cpp"}, 
+        //{"", home + "/code/cpp/examples/enum_array_mapping.cpp"},
+        
+        // enum vector mapping
+        {"enums vectors", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enumsvectors", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enums vector", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enumsvector", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enum vectors", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enumvectors", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enum vector", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enumvector", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enum vect", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enumvect", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enum vec", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enumvec", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enum v ", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        {"enumv", home + "/code/cpp/examples/enum_vector_mapping.cpp"}, 
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
         
         // arrays
         {"arr", home + "/code/cpp/examples/arrays.cpp"}, 
