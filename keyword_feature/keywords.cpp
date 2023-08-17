@@ -20,6 +20,26 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
         //
+        // variables
+        {"var", home + "/code/cpp/examples/variables.cpp"}, 
+        {"vars", home + "/code/cpp/examples/variables.cpp"}, 
+        {"variable", home + "/code/cpp/examples/variables.cpp"},
+        {"variables", home + "/code/cpp/examples/variables.cpp"},
+
+        // auto
+        {"aut", home + "/code/cpp/examples/auto.cpp"}, 
+        // {"", home + "/code/cpp/examples/.cpp"},
+        //
+        // constexpr 
+        {"constexp", home + "/code/cpp/examples/constexpr.cpp"}, 
+        {"constex", home + "/code/cpp/examples/constexpr.cpp"}, 
+        {"constex", home + "/code/cpp/examples/constexpr.cpp"}, 
+        {"conste", home + "/code/cpp/examples/constexpr.cpp"}, 
+        {"contexp", home + "/code/cpp/examples/constexpr.cpp"}, 
+        {"contex", home + "/code/cpp/examples/constexpr.cpp"}, 
+        {"contex", home + "/code/cpp/examples/constexpr.cpp"}, 
+        {"conte", home + "/code/cpp/examples/constexpr.cpp"}, 
+        // {"", home + "/code/cpp/examples/constexpr.cpp"},
         //
         // ternary operator
         {"ternary", home + "/code/cpp/examples/ternary_operator.cpp"}, 
@@ -61,11 +81,6 @@ int main() {
         {"s stream", home + "/code/cpp/examples/stream.cpp"}, 
         // {"", home + "/code/cpp/examples/stream.cpp"},
         
-        // variables
-        {"var", home + "/code/cpp/examples/variables.cpp"}, 
-        {"vars", home + "/code/cpp/examples/variables.cpp"}, 
-        {"variable", home + "/code/cpp/examples/variables.cpp"},
-        {"variables", home + "/code/cpp/examples/variables.cpp"},
 
         // touples
         {"touple", home + "/code/cpp/examples/touples.cpp"}, 
