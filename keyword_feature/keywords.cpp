@@ -117,16 +117,39 @@ int main() {
         {"arr", home + "/code/cpp/examples/arrays.cpp"}, 
         {"array", home + "/code/cpp/examples/arrays.cpp"}, 
         {"arra", home + "/code/cpp/examples/arrays.cpp"},
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
-        // vector
+        // dynamic arrays allocation
+        {"dynamic array allocation", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dynamicarrayallocation", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"allocate dynamic array", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"allocatedynamicarray", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dynamic arrays", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dynamicarrays", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dynamic array", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dynamicarray", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dyn arrays", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dynarrays", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dyn array", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"dynarray", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"darrays", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        {"darray", home + "/code/cpp/examples/dynamic_arrays_allocation.cpp"}, 
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
+
+        // vectors
         {"vec", home + "/code/cpp/examples/vectors.cpp"}, 
         {"vect", home + "/code/cpp/examples/vectors.cpp"}, 
-        {"vectors", home + "/code/cpp/examples/vectors.cpp"},
+        {"vector", home + "/code/cpp/examples/vectors.cpp"},
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
         // size_t 
         {"sizet", home + "/code/cpp/examples/size_t.cpp"}, 
         {"sizt", home + "/code/cpp/examples/size_t.cpp"}, 
         {"st", home + "/code/cpp/examples/size_t.cpp"},
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
+        
+        // iterators
+        //{"", home + "/code/cpp/examples/iterators.cpp"},
         
         // conditional
         {"if", home + "/code/cpp/examples/conditionals.cpp"}, 
@@ -138,21 +161,24 @@ int main() {
         {"condition", home + "/code/cpp/examples/conditionals.cpp"}, 
         {"conditions", home + "/code/cpp/examples/conditionals.cpp"},
         {"conditional", home + "/code/cpp/examples/conditionals.cpp"}, 
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
-        // switch
+        // switch statements
         {"case", home + "/code/cpp/examples/switch_statements.cpp"},
         {"casestatement", home + "/code/cpp/examples/switch_statements.cpp"},
         {"case statement", home + "/code/cpp/examples/switch_statements.cpp"},
         {"switch", home + "/code/cpp/examples/switch_statements.cpp"},
         {"switchstatement", home + "/code/cpp/examples/switch_statements.cpp"},
         {"switch statement", home + "/code/cpp/examples/switch_statements.cpp"},
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
-        // loop
-        {"iteration", home + "/code/cpp/examples/loop.cpp"},
-        {"iterate", home + "/code/cpp/examples/loop.cpp"},
-        {"iterator", home + "code/cpp/examples/loop.cpp"},
-        {"iterators", home + "code/cpp/examples/loop.cpp"},
-        {"iterating", home + "code/cpp/examples/loop.cpp"},
+        // loops
+        {"iteration", home + "/code/cpp/examples/loops.cpp"},
+        {"iterate", home + "/code/cpp/examples/loops.cpp"},
+        {"iterator", home + "code/cpp/examples/loops.cpp"},
+        {"iterators", home + "code/cpp/examples/loops.cpp"},
+        {"iterating", home + "code/cpp/examples/loops.cpp"},
+        //{"", home + "/code/cpp/examples/enum_vector_mapping.cpp"},
 
         // ranges
         {"range", home + "/code/cpp/examples/ranges.cpp"}, 
@@ -164,6 +190,29 @@ int main() {
         {"rangepipe", home + "/code/cpp/examples/ranges_pipes.cpp"}, 
         {"rangep", home + "/code/cpp/examples/ranges_pipes.cpp"},
         {"ranp", home + "/code/cpp/examples/ranges_pipes.cpp"},
+
+        // range-based for loops
+        {"ranges loops", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"rangesloops", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"ranges loop", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"rangesloop", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"range loops", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"rangeloops", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"range loop", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"rangeloop", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"rloops", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+        {"rloop", home + "/code/cpp/examples/range_based_for_loops.cpp"}, 
+
+        // accidental conversions
+        {"conversion", home + "/code/cpp/examples/accidental_conversions.cpp"},
+        // {"", home + "/code/cpp/examples/accidental_conversions.cpp"},
+        //
+        // accidental slicing 
+        {"slicing", home + "/code/cpp/examples/functions.cpp"},
+        {"sliced", home + "/code/cpp/examples/functions.cpp"},
+        {"slices", home + "/code/cpp/examples/functions.cpp"},
+        {"slice", home + "/code/cpp/examples/functions.cpp"},
+        // {"", home + "/code/cpp/examples/functions.cpp"},
         //
         // functions
         {"fun", home + "/code/cpp/examples/functions.cpp"}, 
