@@ -19,6 +19,48 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        //
+        // ternary operator
+        {"ternary", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"ternary operator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"ternaryoperator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"ternary op", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"ternaryop", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"tern operator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"ternoperator", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"tern op", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        {"ternop", home + "/code/cpp/examples/ternary_operator.cpp"}, 
+        // {"", home + "/code/cpp/examples/ternary_operator.cpp"},
+        //
+        // scope
+        {"out of scope", home + "/code/cpp/examples/scope.cpp"}, 
+        {"outofscope", home + "/code/cpp/examples/scope.cpp"}, 
+        {"out scope", home + "/code/cpp/examples/scope.cpp"}, 
+        {"outscope", home + "/code/cpp/examples/scope.cpp"}, 
+        {"in scope", home + "/code/cpp/examples/scope.cpp"}, 
+        {"inscope", home + "/code/cpp/examples/scope.cpp"}, 
+        {"scopes", home + "/code/cpp/examples/scope.cpp"}, 
+        {"scop", home + "/code/cpp/examples/scope.cpp"}, 
+        // {"", home + "/code/cpp/examples/scope.cpp"},
+        //
+        // chaining
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"}, 
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        // {"", home + "/code/cpp/examples/variables.cpp"},
+        //
+        // streams 
+        {"stream", home + "/code/cpp/examples/streams.cpp"}, 
+        {"strea", home + "/code/cpp/examples/streams.cpp"}, 
+        {"", home + "/code/cpp/examples/streams.cpp"},
+        //
+        // sstream 
+        {"sstreams", home + "/code/cpp/examples/stream.cpp"}, 
+        {"sstrea", home + "/code/cpp/examples/stream.cpp"}, 
+        {"s streams", home + "/code/cpp/examples/stream.cpp"}, 
+        {"s stream", home + "/code/cpp/examples/stream.cpp"}, 
+        // {"", home + "/code/cpp/examples/stream.cpp"},
         
         // variables
         {"var", home + "/code/cpp/examples/variables.cpp"}, 
@@ -1616,26 +1658,6 @@ int main() {
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // {"", home + "/code/cpp/examples/variables.cpp"},
         // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // ternary operator
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // scope
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // chaining
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"}, 
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // {"", home + "/code/cpp/examples/variables.cpp"},
-        // sstream
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"}, 
         // {"", home + "/code/cpp/examples/variables.cpp"},
