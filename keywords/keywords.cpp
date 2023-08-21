@@ -3,6 +3,16 @@
 #include <unordered_map>
 #include <vector>
 
+const std::string get_current_dir(const std::string script_dir) {
+    const auto last_folder = script_dir.find_last_of("/\\");
+
+    if (last_folder != std::string::npos) {
+        const auto current_dir = script_dir.substr(0, last_folder);
+        return current_dir;
+    }
+    return "";
+}
+
 int main(int argc, const char* argv[]) {
 
     const std::vector<std::string> arguments(argv + 1, argv + argc);
@@ -1783,10 +1793,10 @@ int main(int argc, const char* argv[]) {
     if (keywords.count(word_search) > 0) {
 
         // open nvim
-        const auto tmp = "nvim " + keywords[word_search];
-        const auto open_nvim = tmp.c_str();
+        const auto tmp = "cat " + keywords[word_search];
+        const auto read_note = tmp.c_str();
 
-        std::system(open_nvim);
+        std::system(read_note);
     } else {
         std::cout << "Keyword not found in hash\n";
     }
