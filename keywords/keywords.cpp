@@ -2,18 +2,26 @@
 #include <array>
 #include <unordered_map>
 #include <vector>
+#include <filesystem>
 
 const std::string get_current_dir(const std::string script_dir) {
     const auto last_folder = script_dir.find_last_of("/\\");
 
     if (last_folder != std::string::npos) {
-        const auto current_dir = script_dir.substr(0, last_folder);
-        return current_dir;
+        const auto curr_script_dir = script_dir.substr(0, last_folder);
+        return curr_script_dir;
     }
     return "";
 }
 
 int main(int argc, const char* argv[]) {
+
+    const auto script_dir = argv[0];
+    const auto curr_script_dir = get_current_dir(script_dir);
+
+    // this program copies in current dir.
+    const auto curr_user_path = std::filesystem::current_path();
+    const auto curr_user_dir = curr_user_path.c_str();
 
     const std::vector<std::string> arguments(argv + 1, argv + argc);
 
@@ -1792,12 +1800,22 @@ int main(int argc, const char* argv[]) {
     const auto word_search = arguments[0];
     if (keywords.count(word_search) > 0) {
 
-        // open nvim
-        const auto tmp = "cat " + keywords[word_search];
-        const auto read_note = tmp.c_str();
+        const auto cp_tmp = "cp " + keywords[word_search] + " " + curr_user_dir;
+        const auto cp_note = cp_tmp.c_str();
+        
+        // std::cout << "this is cp_tmp: " << cp_tmp << '\n';
+        // std::cout << "this is cp_note: " << cp_note << '\n';
 
-        std::system(read_note);
+        std::system(cp_note);
+
+        // // open nvim
+        // const auto read_tmp = "cat " + keywords[word_search];
+        // const auto read_note = read_tmp.c_str();
+
+        // std::system(read_note);
     } else {
+        std::cout << "this is script directory: " << script_dir << '\n';
+        std::cout << "this is current directory: " << curr_script_dir << '\n';
         std::cout << "Keyword not found in hash\n";
     }
 
