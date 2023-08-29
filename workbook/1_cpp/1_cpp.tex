@@ -112,42 +112,26 @@ operation.add(3).multiply(2).print();
 \end{verbatim}
 
 \subsection{Sstream}
+%keywords:sstrea,sstreams,sstream
 
 `std::stringstream` is a C++ class. It handling string-based input and output operations,
 allowing you to read from and write to strings as if they were input/output streams.
 
 \begin{verbatim}
-#include <map>
-#include <sstream>
+std::map<std::string, int> wordfreq;
+std::istringstream iss(text);
+std::string word;
 
-int main() {
-    std::string text = "lorem";
-
-    for (char& c : text) {
-        c = std::tolower(c);
-    }
-
-    std::map<std::string, int> wordfreq;
-    std::istringstream iss(text);
-    std::string word;
-
-    while (iss >> word) { // count frequency
-        wordfreq[word]++;
-    }
-
-    for (const auto& pair : wordfreq) { // display
-        std::cout << pair.first << ": " << pair.second;
-    }
-
-    return 0; // return success
+while (iss >> word) {
+    wordfreq[word]++;
 }
 \end{verbatim}
 
-
 \section{Touples}
-
+%keywords:touples,touple,toup
 
 \section{Enums}
+%keywords:enums,enum,enus,enu
 
 \begin{verbatim}
 enum class Day {
@@ -156,41 +140,14 @@ enum class Day {
     Wednesday,
 };
 
-int main() {
-    Day today = Day::Tuesday;
+Day today = Day::Tuesday;
 
-    if (today == Day::Saturday || today == Day::Wednesday) {
-    } else {}
-
-    return 0; // return success
-}
-
-enum Color {
-    Red,
-    Green,
-    Blue
-};
-
-void printColor(Color color) {
-    switch (color) {
-        case Red:
-            break;
-        case Green: // ...
-            break;
-        case Blue: // ...
-            break;
-    }
-}
-
-int main() {
-    Color favoriteColor = Color::Green;
-    printColor(favoriteColor);
-
-    return 0; // return success
-}
+if (today == Day::Saturday || today == Day::Wednesday) {
+} else {}
 \end{verbatim}
 
 \subsection{Enum Array Mapping}
+%keywords:enumsarrays,enumsarray,enumarrays,enumarray,enumar,enuma
 
 \begin{verbatim}
 enum class Fruit {
@@ -205,138 +162,60 @@ const std::array<std::string, 3> fruitNames = {
     "Orange"
 }
 
-const std::string fruitNames[] = { // c-style array
-                                   // size by initializer
-    "Apple",
-    "Banana",
-    "Orange"
-};
-
-int main() {
     Fruit selectedFruit = Fruit::Banana;
     int fruitIndex = static_cast<int>(selectedFruit);
-
-    std::cout << "Selected fruit: " << fruitNames[fruitIndex] << std::endl;
-
-    return 0; // return success
-}
+    std::cout << fruitNames[fruitIndex];
 \end{verbatim}
 
 \subsection{Enum Vector Mapping}
+%keywords:enumsvectors,enumsvector,enumvectors,enumvector,enumvect,enumvec,enumv
 
 \begin{verbatim}
 enum class Month {
     January,
     February,
-    March // ...
+    March
 };
 
 const std::vector<std::string> monthNames = {
     "January",
     "February",
-    "March" // ... 
+    "March"
 };
 
-int main() {
     Month currentMonth = Month::May;
     int monthIndex = static_cast<int>(currentMonth);
-
     std::cout << "Current month: " << monthNames[monthIndex] << std::endl;
-
-    return 0; // return success
-}
 \end{verbatim}
 
-
 \section{Arrays}
+%keywords:arrays,array,arr,arra 
 
 A fixed-size stack-based container. Having the size type information gives more optimization oppotunities.
 
 \begin{verbatim}
-#include <array> // c++ 11
     std::array<char, 128> second = {'H', 'e', 'l'} // from library
                             // fixed size of 128
                             // has .begin(), .end(), .at(), .size() 
 
     sint arr[] = {1, 2, 3}; // c-style array 
-                            // size determined by initializer's list
-                            // fixed at compile-time 
-
-std::array<Type, Size> data
-
-#include <numeric>
-#include <array>
-
-template<typename Value_Type>
-std::array<Value_Type, 3> get_data(const Value_Type &v1, const Value_type &v2,
-                                   const Value_type &v3)
-{
-    std::array<Value_Type 3> data;
-    data[0] = v1;
-    data[1] = v2;
-    data[2] = v3;
-    return data;
-}
-
-// no dynamic allocation, 
-// win-win scenario with knowing the size of the data struture at compile time.
-
-template<typename> VT> // takes 3 parameters
-std::array<VT, 3> get_data(const VT &v1, const VT &v2, const VT &v3)
-{
-    return {v1, v2, v3};
-}
-
-template<typename> VT> // takes 4 parameters
-std::array<VT, 4> get_data(const VT &v1, const VT &v2, const VT &v3, const VT &v4))
-{
-    return {v1, v2, v3, v4};
-}
 \end{verbatim}
 
 \subsection{Dynamic Array Allocation}
+%keywords:dynamicarrayallocation,allocatedynamicarray,dynamicarrays,dynamicarray,dynarrays,dynarray,darrays,darray
 
 Achieved using pointers and dynamic memory allocation operators, such as `new` and `delete`. 
 While arrays are considered static containers,
 dynamic arrays allow you to allocate memory at runtime.
 
 \begin{verbatim}
-int size = 5; // desired size of the array
+int size = 5;                      // desired size of the array
 int* dynamicArray = new int[size]; // allocate memory for the array
 
-// Access and modify elements of the dynamic array
-dynamicArray[0] = 10;
-dynamicArray[1] = 20;
-// ...
+std::array<int, 3> ar{1,2,3};
 
-// Deallocate the memory when it's no longer needed
-delete[] dynamicArray;
-
-#include <array>
-
-int main() {
-    std::array<int, 3> ar{1,2,3};
-
-    int* dyn_ar = new int[4];
-
-    dyn_ar[0] = 10;
-    dyn_ar[1] = 20;
-    dyn_ar[2] = 30;
-    dyn_ar[3] = 40;
-    dyn_ar[4] = 50;
-    dyn_ar[5] = 60;
-    dyn_ar[6] = 70;
-
-    for (int i = 0; i < 7; i++) {
-        std::cout << dyn_ar[i] << " ";
-    }
-    std::cout << std::endl; // prints 10, 20, 30, 40.. 70.
-
-    delete[] dyn_ar;
-
-    return 0; // return success
-}
-
+int* dyn_ar = new int[4];
+delete[] dyn_ar;
 \end{verbatim}
 
 `new int[size]` dynamically allocates memory. 
@@ -346,62 +225,31 @@ Alternatively, using smart pointers or container classes like `std::vector` can 
 and provide safer alternatives for dynamic arrays.
 
 \section{Vectors}
+%keywords:vectors,vector,vect,vec
 
 Vectors are \textbf{dynamic array-like container that can grow or shrink.}
 
 \begin{verbatim}
-  std::vector<double> subway_adult; // value is 0.0 is default
-  std::vector<double> location(2); // initialize two elements! 
-}
-
 std::vector<char> vowels = {'a', 'e', 'i', 'o', 'u'};
 std::vector vec{1,2,3}; // now possible! 
-
-int main(int argc, char* argv[]) {
-    std::vector<std::string> arguments(argv + 1, argv + argc);
-}
-
-template<typename Value_Type>
-std::vector<Value_Type> get_data(const Value_Type &v1, const Value_Type &v2,
-                                 const Value_Type &v3)
-
-{
-    std::vector<Value_Type> data;
-    data.push_back(v1);
-    data.push_back(v2);
-    data.push_back(v3);
-    return data;
-}
 \end{verbatim}
 
 \section{Size\_t}
+%keywords:sizetsizt,st
 
 \begin{verbatim}
-template<typename Value_Type>
-struct Data {
-    Data(const std::size_t size)
-      : data(new Value_Type[size]) // constructor
-    {
-    }
-
-    ~Data() { delete [] data; }
-
-    Value_Type *data;
-};
+for (size_t i = 0; i < array.size(); i++) 
 \end{verbatim}
 
-In the `Data` struct, the constructor takes a `std::size\_t` parameter named `size`,
-which specifies the desired size of the `data` array. 
 By using `std::size\_t` as the parameter type, 
 it ensures that the value provided for `size` is appropriate for representing the size of the array.
-
-Inside the constructor, the `data` member is \textbf{allocated dynamically using `new`}.
 
 The size of the array is specified as the value of `size`, which is of type `std::size\_t`. 
 This ensures that the correct amount of memory is allocated for the array based on the given size.
 
 \section{Iterators}
 \subsection{Conditionals}
+%keywords:conditionals,conditional,conditions,condition,if,elseif,elsif,con,cond
 
 \begin{verbatim}
 if (coin == 0) {
@@ -410,68 +258,38 @@ if (coin == 0) {
 \end{verbatim}
 
 \subsection{Switch Statements}
+%keywords:switchstatement,casestatement,case,switch
 
 \begin{verbatim}
-int main() {
   int number = 9;
   switch(number) {
-    case 1 : // ...
+    case 1 :
       std::cout << "case one";
       break;
     case 2 :
       break;
-    default : // ...
+    default :
       break;
   }
-}
 \end{verbatim}
 
 \subsection{Loops}
+%keywords:iteration,iterate,iterator,iterators,iterating,loops,loop,lop
 
 \begin{verbatim}
-while (guess != 8) {
-  std::cout << "Wrong guess, try again: ";
-  std::cin >> guess;
-}
-
 for (int i = 0; i < 20; i++) {}  // incrementing
 for (int i = 20; i > 0; i--) {}  // decrementing
 \end{verbatim}
 
 \section{Ranges}
+%keywords:ranges,range,ran
 
 \begin{verbatim}
-#include <format>
-#include <string_view>
-
-void print_map(const auto &map,
-               const std::string_view &key_desc = "key",
-               const std::string_view &value_desc = "value")
-{
-    const auto print_key_value = [&](const auto &data) { 
-        const auto &[key, value] = data;
-        std::puts(std::format("{}: '{}' {}: '{}'",
-                         key_desc, key, value_desc, value).c_str());
-    };
-
-    for_each(map, print_key_value);
-}
-
-#include <ranges>
-
-int main()
-{
-    std::vector<int> ints{1, 2, 3, 4, 5};
-    auto even = [](int i){ return 0 == i % 2; };
-    auto square = [](int i){ return i * i; };
-                                              
-    for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
-        std::cout << i << ' ';
-    }
-}
+for (const auto &element : container) {}
 \end{verbatim}
 
 \subsection{Ranges Pipes}
+%keywords:rangespipes,rangespipe,rangepipe,rangep,ranp
 
 I are operators for composing ranges in C++20.
 
@@ -486,61 +304,24 @@ auto square = [](int i){ return i * i; };
 for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
     std::cout << i << ' ';
 }
-
-`ints`: The input range of integers.
-`std::view::filter(even)`: Filters the `ints` range, keeping only the even numbers.
-`std::view::transform(square)`: Transforms the filtered range by squaring each element.
-`int i : ...`: Iterates over the resulting transformed range and assigns each element to `i`.
-`std::cout << i << ' ';`: Prints each element `i` separated by a space.
 \end{verbatim}
 
 \subsection{Range-Based for Loops}
-
+%keywords:rangesloops,rangesloop,rangeloops,rangeloop,rloops,rloop  
 
 Iterate over container elements (array, vector or std::list). It doesn't work for forward\_list.
-
 
 Works with anything that has begin()
 and end() members/functions, C-Style arrays and initializer lists.
 
 \begin{verbatim}
-
 for (const auto &element : container) {}
-
-std::string str = "Hello";
-for (char character : str) {
-    std::cout << character << '\n';
-}
-
-template<typename Map>
-void print_map(const Map &map, const std::string &key_desc = "key",
-                               const std::string &value_desc = "value")
-{
-    for (const auto &data : map)
-    {
-        std::cout << key_desc << ": '" << data_itr->first << "' "
-                  << value_desc << ": '" << data_itr->second << "'\n";
-    }
-}
-
+for (char character : str) {}
 for (const auto &value : container) {} // for each element in the container
-
-Use clang-tidy's modernize-loop-convert check.
-
-template<typename Map>
-void print_map(const Map &map, const std::string &key_desc = "key",
-                               const std::string &value_desc = "value")
-{
-    for (const auto &data : map)
-    {
-        std::cout << key_desc << ": '" << data.first << "' "
-                  << value_desc << ": '" << data.second << "'\n";
-    }
-}
 \end{verbatim}
 
-
 \section{Functions}
+%keywords:functions,function,func,fun
 
 \begin{verbatim}
 void eat() {
@@ -549,38 +330,27 @@ void eat() {
 
 bool even(int num) {
   return ( num % 2 == 0 ? true : false );
-  // this should be tested
 }
 \end{verbatim}
 
 \subsection{Inline Functions}
+%keywords:inlinefunctions,inlinefunction,inlinefun,inlinef,inline,inli,inl
 
 The compiler inserts the function’s body on the function call.
 
 \begin{verbatim}
+-- in .hpp -- 
 inline 
 void eat() {
   std::cout << "nom nom\n";
 }
 
--- single line in header file is slower --
-void Cookie::eat() {std::cout << "nom nom\n";}
-
--- goodnight.cpp --
-std::string goodnight1(std::string thing1) {
-  return "Goodnight, " + thing1 + ".\n";
-}
--- goodnight.h --
-std::string goodnight1(std::string thing1);
-
--- night.hpp -- 
 inline
-std::string goodnight1(std::string thing1) {
-  return "Goodnight, " + thing1 + ".\n";
-}
+std::string goodnight1(std::string thing1) {}
 \end{verbatim}
 
 \subsection{Member Functions}
+%keywords:memberfunction,memfunction,member,mem,member,memfun,classfunction,classfunctions,classfunc,classfun,publicfunction,publicfun,pubfunc,pubfun,public,pub
 
 Functions inside of classes.
 
@@ -598,19 +368,13 @@ public:
         myVariable = newValue;
     }
 };
-
-int main() {
-    MyClass obj;
-    obj.setMyVariable(42);
-
-    int value = obj.getMyVariable();
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Public Functions}
+%keywords:publicfunction,publicfun,pubfunc,pubfun,public,pub
 
 \begin{verbatim}
+-- in .h --
 class City {
   int population; 
  
@@ -618,135 +382,7 @@ public:         // accessible outside of the class
   void add_resident() { 
     population++;
   }
-
-private:        // private to this class
-  bool is_capital;
 };
-
--- song.h --
-class Song {
-  std::string title;
-  std::string artist;
-
-public:
-  void add_title(std::string new_title);
-  std::string get_title();
-  
-  void add_artist(std::string new_artist);
-  std::string get_artist();
-};
-
--- song.cpp --
-#include "song.hpp"
-
-void Song::add_title(std::string new_title) {
-  title = new_title;
-}
-
-std::string Song::get_title() {
-  return title;
-}
-
-void Song::add_artist(std::string new_artist) {
-  artist = new_artist;
-}
-
-std::string Song::get_artist() {
-  return artist;
-}
-
--- city.h -- 
-#include "city.hpp"
- 
-class City {
-  std::string name;
-  int population;
- 
-public:
-  City(std::string new_name, int new_pop);
- 
-};
-
--- city.cpp --
-City::City(std::string new_name, int new_pop)
-  : name(new_name), population(new_pop) {} 
-
--- main.cpp --
-City ankara("Ankara", 5445000);
-
--- song.h -- 
-class Song {
-  std::string title;
-  std::string artist;
-
-public:
-  Song(std::string new_title, std::string new_artist);
-
-  void add_title(std::string new_title);
-  std::string get_title();
-
-  void add_artist(std::string new_artist);
-  std::string get_artist();
-};
-
--- song.cpp --
-#include "song.hpp"
-
-Song::Song(std::string new_title, std::string new_artist)
-  : title(new_title), artist(new_artist) {}
-
-void Song::add_title(std::string new_title) {
-  title = new_title;
-}
-
-std::string Song::get_title() {
-  return title;
-}
-
-void Song::add_artist(std::string new_artist) {
-  artist = new_artist;
-}
-
-std::string Song::get_artist() {
-  return artist;
-}
-
--- song.h --
-
-class Song {
-  std::string title;
-  std::string artist;
-
-public:
-  Song(std::string new_title, std::string new_artist);
-
-  std::string get_title();
-  std::string get_artist();
-};
-
--- song.cpp --
-#include "song.hpp"
-
-Song::Song(std::string new_title, std::string new_artist)
-  : title(new_title), artist(new_artist) {}
-
-std::string Song::get_title() {
-  return title;
-}
-
-std::string Song::get_artist() {
-  return artist;
-}
-
--- main.cpp --
-#include "song.hpp"
-
-int main() { 
-  Song back_to_black("Back to Black", "Amy Winehouse");
-
-  std::cout << back_to_black.get_title() << "\n";
-  std::cout << back_to_black.get_artist() << "\n";
-}
 \end{verbatim}
 
 \subsection{Overloading Functions}
