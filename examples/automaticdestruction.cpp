@@ -1,0 +1,1 @@
+/home/tiike/code/cpp/examples//automatic_destructors.cpp

@@ -1,10 +1,3 @@
 
-void useless_function(int val) {
-    val = val * 2;
-}
-
-
-void useless_function(int val) {
-    val = val * 2;
-}
+void useless_fun(int val) {} // not modifiable
 

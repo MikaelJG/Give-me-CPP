@@ -1,7 +1,7 @@
 \chapter{C++ Basics}
 
 \section{Variables}
-%keywords:variables,variable,vars,var
+%keywords:variable,vars,var
 
 \begin{verbatim}
     int: integers                   // 4 bytes
@@ -18,7 +18,7 @@ std::cout << "Size of int: " << sizeof(numInt);
 \end{verbatim}
 
 \section{Auto}
-%keywords:auto,aut
+%keywords:aut
 
 Automatic deduction of value types. Standard c++11
 
@@ -73,7 +73,7 @@ std::string chapOnePath = parentDirectory + "/chap_1";
 \end{verbatim}
 
 \subsection{Scope}
-%keywords:outofscope,outscope,inscope,scopes,scope,scop
+%keywords:outofscope,outscope,inscope,scopes,scop
 
 \begin{verbatim}
 run() {
@@ -85,7 +85,7 @@ run() {
 \end{verbatim}
 
 \subsection{Chaining}
-%keywords:chaining,chains,chain streams
+%keywords:chains,chain streams
 
 \begin{verbatim}
 operation.add(3).multiply(2).print();
@@ -112,7 +112,7 @@ operation.add(3).multiply(2).print();
 \end{verbatim}
 
 \subsection{Sstream}
-%keywords:sstrea,sstreams,sstream
+%keywords:sstrea,sstreams
 
 `std::stringstream` is a C++ class. It handling string-based input and output operations,
 allowing you to read from and write to strings as if they were input/output streams.
@@ -128,10 +128,10 @@ while (iss >> word) {
 \end{verbatim}
 
 \section{Touples}
-%keywords:touples,touple,toup
+%keywords:touple,toup
 
 \section{Enums}
-%keywords:enums,enum,enus,enu
+%keywords:enum,enus,enu
 
 \begin{verbatim}
 enum class Day {
@@ -189,7 +189,7 @@ const std::vector<std::string> monthNames = {
 \end{verbatim}
 
 \section{Arrays}
-%keywords:arrays,array,arr,arra 
+%keywords:array,arr,arra 
 
 A fixed-size stack-based container. Having the size type information gives more optimization oppotunities.
 
@@ -225,7 +225,7 @@ Alternatively, using smart pointers or container classes like `std::vector` can 
 and provide safer alternatives for dynamic arrays.
 
 \section{Vectors}
-%keywords:vectors,vector,vect,vec
+%keywords:vector,vect,vec
 
 Vectors are \textbf{dynamic array-like container that can grow or shrink.}
 
@@ -235,7 +235,7 @@ std::vector vec{1,2,3}; // now possible!
 \end{verbatim}
 
 \section{Size\_t}
-%keywords:sizetsizt,st
+%keywords:sizet,sizt,st
 
 \begin{verbatim}
 for (size_t i = 0; i < array.size(); i++) 
@@ -249,7 +249,7 @@ This ensures that the correct amount of memory is allocated for the array based 
 
 \section{Iterators}
 \subsection{Conditionals}
-%keywords:conditionals,conditional,conditions,condition,if,elseif,elsif,con,cond
+%keywords:conditional,conditions,condition,if,elseif,elsif,con,cond
 
 \begin{verbatim}
 if (coin == 0) {
@@ -274,7 +274,7 @@ if (coin == 0) {
 \end{verbatim}
 
 \subsection{Loops}
-%keywords:iteration,iterate,iterator,iterators,iterating,loops,loop,lop
+%keywords:iteration,iterate,iterator,iterators,iterating,loop,lop
 
 \begin{verbatim}
 for (int i = 0; i < 20; i++) {}  // incrementing
@@ -282,7 +282,7 @@ for (int i = 20; i > 0; i--) {}  // decrementing
 \end{verbatim}
 
 \section{Ranges}
-%keywords:ranges,range,ran
+%keywords:range,ran
 
 \begin{verbatim}
 for (const auto &element : container) {}
@@ -321,7 +321,7 @@ for (const auto &value : container) {} // for each element in the container
 \end{verbatim}
 
 \section{Functions}
-%keywords:functions,function,func,fun
+%keywords:function,func,fun
 
 \begin{verbatim}
 void eat() {
@@ -405,7 +405,7 @@ int fancy_number(double num1, double num2) {}
 \end{verbatim}
 
 \section{Parameters}
-%keywords:parameters,parameter,params,param,pars,par
+%keywords:parameter,params,param,pars,par
 
 \begin{verbatim}
 void get_emergency_number(std::string emergency_number) {}
@@ -519,7 +519,7 @@ std::cout << &porcupine << "\n";
 
 \chapter{Memory Allocation}
 \section{Pointers}
-%keywords:pointers,pointer,point
+%keywords:pointer,point
 
 \begin{verbatim}
 int* number;         // Declaring
@@ -545,7 +545,7 @@ int* ptr; // declared, not yet initialized
 \end{verbatim}
 
 \subsection{Nullptr}
-%keywords:nullptr,nulptr,nullp,null
+%keywords:nulptr,nullp,null
 
 Type safe pointer since C++14, I think. A replacement for NULL.
 
@@ -577,19 +577,22 @@ int** ptrToPtr = &ptr;
 \end{verbatim}
 
 \subsection{Allocation}
-%keywords:allocations,allocation,allocating,allocate,allo
+%keywords:allocations,allocating,allocate,allo
+
 \begin{verbatim}
 No notes on allocation yet.
 \end{verbatim}
 
 \subsection{Deallocation}
-%keywords:deallocating,deallocations,deallocation,deallocated,deallocate,deal
+%keywords:deallocating,deallocations,deallocated,deallocate,deal
+
 \begin{verbatim}
 No notes on deallocation yet.
 \end{verbatim}
 
 \subsection{Freeing Memory}
-%keywords:deallocating,deallocations,deallocation,deallocated,deallocate,deal
+%keywords:free,freeing
+
 \begin{verbatim}
 No notes on freeing memory yet.
 \end{verbatim}
@@ -601,7 +604,7 @@ No notes on leaking yet.
 \end{verbatim}
 
 \section{Classes}
-%keywords:classes,class,clas,cla
+%keywords:class,clas,cla
 
 \begin{verbatim}
 class City { // user-defined type.
@@ -623,7 +626,7 @@ public:
 \end{verbatim}
 
 \section{Span}
-%keywords:spans,span,spa
+%keywords:spans,spa
 
 A non-owning, lightweight and flexible view over a contiguous sequence of elements.
 A `span` is a pointer to the first element and the number of elements in the sequence.
@@ -644,7 +647,7 @@ void printSpan(std::span<int> sp) {
 \end{verbatim}
 
 \section{Templates}
-%keywords:templates,template,templat,temps,temp
+%keywords:template,templat,temps,temp
 
 The ultimate in the DRY principle. Write a template that has types and values filled in at compile-time.
 template types are generated by the compiler at compile time
@@ -724,7 +727,7 @@ RVO directly constructs the return value object in the memory allocated by the c
 This avoids the temporary object creation and data copy.
 
 \section{Structs}
-%keywords:structs,struct,s
+%keywords:struct,s
 
 The only difference between a struct and a class is public properties. With
 structs, all properties are public by default.
@@ -746,7 +749,7 @@ Using struct makes examples shorter and easier to read.
 \end{verbatim}
 
 \section{Lambdas}
-%keywords:lambdas,lambda,lambd,lamb,lam
+%keywords:lambda,lambd,lamb,lam
 
 Unnamed function objects occasionally capturing.
 
@@ -757,7 +760,7 @@ auto square = [](int i){ return i * i; };
 \end{verbatim}
 
 \subsection{Lambdas Captures}
-%keywords:lambdacapture,lambdascaptures,lambdascapture,lambdascaptures,capturing,capture
+%keywords:lambdacapture,capturing,capture
 
 Access variables from its surrounding scope.
 Used outside variable within their body.
@@ -812,8 +815,8 @@ Create implicit templates by simply using the auto keyword.
 auto lambda = [/*captures*/](auto ... params){}
 \end{verbatim}
 
-\subsection{Lambdas Variadic}
-%keywords:variadiclambdas,variadiclambda,varialambda,varialamb,varlambdas,varlambda,varlamb  
+\subsection{Variadic Lambdas}
+%keywords:variadiclambda,varialambda,varialamb,varlambdas,varlambda,varlamb  
 
 \subsection{Const Lambdas}
 %keywords:constlambdas,constlambda,constlamb,lambdasconst,lambdaconst,lambconst
@@ -823,7 +826,7 @@ const auto data = [](){}(); // immediately invoked
 \end{verbatim}
 
 \section{Concepts}
-%keywords:concepts,concept,conc
+%keywords:concept,conc
 
 I want to have two versions of a function, one takes a Floating Point, the other an Integral value.
 Allows us to specify the requirements for a type, implicitly creating a template
@@ -837,7 +840,7 @@ auto func(std::integral auto i) { return i + 3; }
 \end{verbatim}
 
 \section{Constants}
-%keywords:constants,constant,consts,const,cons
+%keywords:constant,consts,const,cons
 
 The most important tool to write clean code.
 An object declared const or accessed via a const referece or const pointer cannot be modified.
@@ -872,7 +875,7 @@ for (const auto &entry : fs::directory_iterator(path)) {
 \end{verbatim}
 
 \section{Constexpr}
-%keywords:constexpr,constexp,constex,conste,contexp,contex,conte
+%keywords:constexp,constex,conste,contexp,contex,conte
 
 Compile-time generation of code and data. Compile-time constant.
 
@@ -908,7 +911,7 @@ int main() {
 \end{verbatim}
 
 \section{Factories}
-%keywords:factories,factory,fact,fac
+%keywords:factory,fact,fac
 
 Design pattern.
 
@@ -950,7 +953,7 @@ the virtual factory by creating instances of the concrete factories and using th
 \chapter{Object Lifetime}
 
 \section{Constructors}
-%keywords:constructing,construction,constructed,constructors,constructor,construct
+%keywords:constructing,construction,constructed,constructor,construct
 
 \begin{verbatim}
 public:
@@ -960,7 +963,7 @@ public:
 \end{verbatim}
 
 \section{Destructors}
-%keywords:destruction,destructing,destructors,destructor,destruct,destroy
+%keywords:destruction,destructing,destructor,destruct,destroy
 
 \begin{verbatim}
   City(std::string new_name, int new_pop);
@@ -1024,7 +1027,7 @@ thread_local object_2("a","t");
 \end{verbatim}
 
 \subsection{Static}
-%keywords:staticobjects,staticobject,statics,static,stat 
+%keywords:staticobjects,staticobject,statics,stat 
 \begin{verbatim}
 static object_3("a","t");
 \end{verbatim}
@@ -1089,7 +1092,7 @@ void print_map(const Map &map, const std::string &key_desc = "key",
 \end{verbatim}
 
 \section{Arguments}
-%keywords:arguments,argument,args,arg
+%keywords:argument,args,arg
 
 \begin{verbatim}
 int main(int argc, char* argv[]) {
@@ -1098,7 +1101,7 @@ int main(int argc, char* argv[]) {
 \end{verbatim}
 
 \subsection{Flags}
-%keywords:options,option,flags,flag
+%keywords:options,option,flag
 
 \begin{verbatim}
 bool hasFlag(const std::vector<std::string>& arguments, const std::string& flag) {

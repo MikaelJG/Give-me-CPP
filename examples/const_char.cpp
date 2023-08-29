@@ -2,27 +2,10 @@
 #include <filesystem>
 namespace fs = std::filesystem;
 
-int main() {
-    fs::path path = "your_directory_path";
+fs::path path = "your_directory_path";
 
-    for (const auto &entry : fs::directory_iterator(path)) {
-        const char *cstr = entry.path().c_str();
-        std::cout << cstr << '\n';
-    }
-    return 0; // return success
-}
-
-
-#include <filesystem>
-namespace fs = std::filesystem;
-
-int main() {
-    fs::path path = "your_directory_path";
-
-    for (const auto &entry : fs::directory_iterator(path)) {
-        const char *cstr = entry.path().c_str();
-        std::cout << cstr << '\n';
-    }
-    return 0; // return success
+for (const auto &entry : fs::directory_iterator(path)) {
+    const char *cstr = entry.path().c_str();
+    std::cout << cstr << '\n';
 }
 

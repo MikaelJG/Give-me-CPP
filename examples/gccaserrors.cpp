@@ -1,0 +1,1 @@
+/home/tiike/code/cpp/examples//gnu_gcc_enable_warning_as_errors.cpp
