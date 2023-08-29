@@ -724,6 +724,7 @@ RVO directly constructs the return value object in the memory allocated by the c
 This avoids the temporary object creation and data copy.
 
 \section{Structs}
+%keywords:structs,struct,s
 
 The only difference between a struct and a class is public properties. With
 structs, all properties are public by default.
@@ -734,45 +735,29 @@ struct Double_Data {
     ~Double_Data() { delete [] data; }
     double *data;
    };
-
-// I want one for ints!
-struct Int_Data {
-    Int_Data(const std::size_t size) : data(new int[size] { }
-    ~Int_Data() { delete [] data; }
-    int *data;
-   };
-
-// I want one for floats!
-struct Float_Data {
-    Float_Data(const std::size_t size) : data(new float[size] { }
-    ~Float_Data() { delete [] data; }
-    float *data;
-   };
 \end{verbatim}
 
 \subsection{Structs Against Classes}
+%keywords:structsvsclasses,structsandclasses,classesandstructs,structsandclasses,structsclasses,structclasses,structvsclass,structclass,classesvsstructs,classesvsstruct,classstruct
+
 \begin{verbatim}
 The only difference between them is that struct has all members by default public.
 Using struct makes examples shorter and easier to read. 
 \end{verbatim}
 
 \section{Lambdas}
+%keywords:lambdas,lambda,lambd,lamb,lam
 
 Unnamed function objects occasionally capturing.
 
 \begin{verbatim}
 auto lambda = [/*captures*/](int param1){ return param1 * 10; };
-
-std::vector<int> ints{1, 2, 3, 4, 5};
 auto even = [](int i){ return 0 == i % 2; };
 auto square = [](int i){ return i * i; }; 
-
-for (int i : ints | std::view::filter(even) | std::view::transform(square)) {
-    std::cout << i << ' ';
-}
 \end{verbatim}
 
 \subsection{Lambdas Captures}
+%keywords:lambdacapture,lambdascaptures,lambdascapture,lambdascaptures,capturing,capture
 
 Access variables from its surrounding scope.
 Used outside variable within their body.
@@ -785,6 +770,7 @@ auto lambda = [/*captures*/](int param1){ return param1 * 10; };
 \end{verbatim}
 
 \subsection{Lambdas Captures by Values}
+%keywords:capturebyvalue,capturebyval,capturingbyvalue,capturingbyval,capturingval,capturevalue,captureval  
 
 A copy of the variable is made.
 
@@ -793,85 +779,57 @@ auto lambda = [param](int param1){ return param1 * 10; };
 \end{verbatim}
 
 \subsection{Lambdas Captures References}
+%keywords:capturebyreferences,capturebyreference,capturereferences,capturereference,capturerefs,captureref,capturingbyreferences,capturingbyreference,capturingreferences,capturingreference,capturingrefs,capturingref
 
 \begin{verbatim}
 auto lambda = [&param](int param1){ return param1 * 10; };
 \end{verbatim}
 
 \subsection{Lambdas Captures by Values and References}
+%keywords:capturingboth,capturesboth,captureboth,bothcaptures,bothcapture  
 
 Capture multiple variables, 
 
 \begin{verbatim}
-int x = 42;
-double y = 3.14;
-
 auto lambda = [x, &y](int param1){ return x * param1 + y; };
-
     // x is captured by value, creating a copy
     // y is captured by reference, with access to original
 \end{verbatim}
 
 \subsection{Lambda Auto}
+%keywords:lambdasauto,lambdaauto,lambauto,autolambdas,autolambda,autolamb
+
 \begin{verbatim}
-template<typename Map>
-void print_map(const Map &map, const std::string key_desc = "key",
-                               const std::string value_desc = "value")
-{
-    for_each(begin(map), end(map),
-        [&](auto &data) { /// Sick !!
-                          /// This makes a generic lambda.
-            std::cout << key_desc << ": '" << data.first << "' "
-                      << value_desc << ": '" << data.second << "'\n";
-            }
-    );
-}
+[&](auto &data) {} // makes a generic lambda, I think
 \end{verbatim}
 
 \subsection{Lambdas Generic Lambdas}
+%keywords:genericlambdas,genericlambda,genericlamb,genlambdas,genlamb  
 
 Create implicit templates by simply using the auto keyword.
 
 \begin{verbatim}
-auto lambda = [/*captures*/](auto ... params){
-    return std::vector<int>{params...};
-}
-
-standard c++14
+auto lambda = [/*captures*/](auto ... params){}
 \end{verbatim}
 
 \subsection{Lambdas Variadic}
+%keywords:variadiclambdas,variadiclambda,varialambda,varialamb,varlambdas,varlambda,varlamb  
 
 \subsection{Const Lambdas}
+%keywords:constlambdas,constlambda,constlamb,lambdasconst,lambdaconst,lambconst
 
 \begin{verbatim}
-const auto data = [](){ // no parameters
-    std::vector<int> result;
-                        // fill result with things. 
-    return result;
-}();                    // immediately invoked
+const auto data = [](){}(); // immediately invoked
 \end{verbatim}
 
 \section{Concepts}
+%keywords:concepts,concept,conc
 
 I want to have two versions of a function, one takes a Floating Point, the other an Integral value.
 Allows us to specify the requirements for a type, implicitly creating a template
 that constrains how a function can be used. Standard: C++20
 
 \begin{verbatim}
-c++17 implementation, using type_traits
-#include <type_traits>
-
-template<typename T,
-         std::enable_if_t<std::is_floating_point_v<T>, int> = 0>
-auto func(T f) { return f * 3; }
-
-template<typename T,
-         std::enable_if_t<std::is_integral_v<T>, int> = 0>
-auto func(T i) { return i + 3; }
-
-C++20 implementation using concepts, 
-
 #include <concepts>
 
 auto func(std::floating_point auto f) { return f * 3; }
@@ -879,6 +837,7 @@ auto func(std::integral auto i) { return i + 3; }
 \end{verbatim}
 
 \section{Constants}
+%keywords:constants,constant,consts,const,cons
 
 The most important tool to write clean code.
 An object declared const or accessed via a const referece or const pointer cannot be modified.
@@ -889,65 +848,37 @@ If a variable is not const, ask why not?
 Would using a lambda or adding a named function allow you to make the value const?
 
 \begin{verbatim}
-int triple(int const i) { // we know parameters won't change
-  return i * 3;
-}
+const double radius = 1.5;
+const double area = pi * radius * radius;
 
-const double pi = 3.141593; // tells the compiler the value can't change
-
-int main()
-{
-    const double radius = 1.5;
-    const double area = pi * radius * radius;
-    std::cout << area;
-
-    // east const or west const, the same
-    const int i = 5;
-    int const j = 6;
-}
-
-Const everything that's not constexpr
+// east const or west const, the same
+const int i = 5;
+int const j = 6;
 \end{verbatim}
 
 \subsection{Const Char}
+%keywords:constchar,charconst
 
 \begin{verbatim}
 #include <filesystem>
 namespace fs = std::filesystem;
 
-int main() {
-    fs::path path = "your_directory_path";
+fs::path path = "your_directory_path";
 
-    for (const auto &entry : fs::directory_iterator(path)) {
-        const char *cstr = entry.path().c_str();
-        std::cout << cstr << '\n';
-    }
-    return 0; // return success
+for (const auto &entry : fs::directory_iterator(path)) {
+    const char *cstr = entry.path().c_str();
+    std::cout << cstr << '\n';
 }
 \end{verbatim}
 
 \section{Constexpr}
+%keywords:constexpr,constexp,constex,conste,contexp,contex,conte
 
 Compile-time generation of code and data. Compile-time constant.
 
 \begin{verbatim}
-const double pi = 3.141593;
-
-int main()
-{
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
-}
-
-constexpr double pi = 3.141593;
-
-int main()
-{
-   const double radius = 1.5;
-   const double area = pi * radius * radius;
-   std::cout << area;
-}
+constexpr double pi = 3.141593; // compile-time generation of code
+                                // compile-time constant
 \end{verbatim}
 
 \section{Memory Allocation}
@@ -977,6 +908,7 @@ int main() {
 \end{verbatim}
 
 \section{Factories}
+%keywords:factories,factory,fact,fac
 
 Design pattern.
 
@@ -990,57 +922,6 @@ struct S {
 auto s_factory(){
     return S{}; // compiles in C++17, neither a copy nor a move.
 }
-
-#include <memory>
-
-class Product {
-public:
-    virtual void use() const = 0;
-};
-
-class ConcreteProductA : public Product {
-public:
-    void use() const override {
-        std::cout << "Using ConcreteProductA" << std::endl;
-    }
-};
-
-class ConcreteProductB : public Product {
-public:
-    void use() const override {
-        std::cout << "Using ConcreteProductB" << std::endl;
-    }
-};
-
-class Factory {
-public:
-    std::unique_ptr<Product> createProduct(const std::string& productType) {
-        if (productType == "A") {
-            return std::make_unique<ConcreteProductA>();
-        } else if (productType == "B") {
-            return std::make_unique<ConcreteProductB>();
-        } else {
-            return nullptr;
-        }
-    }
-};
-
-int main() {
-    Factory factory;
-    
-    std::unique_ptr<Product> productA = factory.createProduct("A");
-    if (productA) {
-        productA->use(); // Output: Using ConcreteProductA
-    }
-    
-    std::unique_ptr<Product> productB = factory.createProduct("B");
-    if (productB) {
-        productB->use(); // Output: Using ConcreteProductB
-    }
-    
-    return 0;
-}
-
 \end{verbatim}
 
 Here, a factory class (`Factory`) that creates different types of products
@@ -1049,67 +930,15 @@ The factory's `createProduct` method takes a product type as input and returns a
 The main function creates instances of `ConcreteProductA` and `ConcreteProductB` through the factory.
 
 \subsection{Virtual Factories}
+%keywords:virtualfactories,virtualfactory,virtualfac,virtfac,virt
+
 A virtual factory is a design pattern that uses virtual functions and 
 polymorphism to create objects of different types through a common interface.
 Polymorphism is the ability of an object to take on many forms
 and behave differently based on the context or the type of object it is being accessed through.
 
 \begin{verbatim}
-#include <memory>
-
-class Product {
-public:
-    virtual void use() const = 0;
-};
-
-class ConcreteProductA : public Product {
-public:
-    void use() const override {
-        std::cout << "Using ConcreteProductA" << std::endl;
-    }
-};
-
-class ConcreteProductB : public Product {
-public:
-    void use() const override {
-        std::cout << "Using ConcreteProductB" << std::endl;
-    }
-};
-
-class AbstractFactory {
-public:
-    virtual std::unique_ptr<Product> createProduct() const = 0;
-};
-
-class ConcreteFactoryA : public AbstractFactory {
-public:
-    std::unique_ptr<Product> createProduct() const override {
-        return std::make_unique<ConcreteProductA>();
-    }
-};
-
-class ConcreteFactoryB : public AbstractFactory {
-public:
-    std::unique_ptr<Product> createProduct() const override {
-        return std::make_unique<ConcreteProductB>();
-    }
-};
-
-int main() {
-    std::unique_ptr<AbstractFactory> factoryA = std::make_unique<ConcreteFactoryA>();
-    std::unique_ptr<Product> productA = factoryA->createProduct();
-    if (productA) {
-        productA->use(); // Output: Using ConcreteProductA
-    }
-    
-    std::unique_ptr<AbstractFactory> factoryB = std::make_unique<ConcreteFactoryB>();
-    std::unique_ptr<Product> productB = factoryB->createProduct();
-    if (productB) {
-        productB->use(); // Output: Using ConcreteProductB
-    }
-    
-    return 0;
-}
+No good examples yet.
 \end{verbatim}
 
 Here, an abstract factory class (`AbstractFactory`) that defines the interface for creating products.
@@ -1121,95 +950,30 @@ the virtual factory by creating instances of the concrete factories and using th
 \chapter{Object Lifetime}
 
 \section{Constructors}
+%keywords:constructing,construction,constructed,constructors,constructor,construct
 
 \begin{verbatim}
-City montreal;
-montreal.population = 20000;
-
-montreal.get_population();
-
-class Song { // header file, song.hpp
-
-  std::string title;
-
 public:
-  void add_title(std::string new_title);
-  std::string get_title();
+  City(std::string new_name, int new_pop); // constructor
+  ~City();  // destructor
 };
-
-void Song::add_title(std::string new_title) {
-  title = new_title; // main file, song.cpp
-}
-
-std::string Song::get_title() {
-  return title;
-}
-int main() {
-  Song electric_relaxation;
-  electric_relaxation.add_title("Electric Relaxation");
-  std::cout << electric_relaxation.get_title();
-}
 \end{verbatim}
 
 \section{Destructors}
+%keywords:destruction,destructing,destructors,destructor,destruct,destroy
 
 \begin{verbatim}
------- city.hpp -------
-
-class City { 
-  std::string name;
-  int population;
- 
-public:
   City(std::string new_name, int new_pop);
   ~City();  // destructor
-};
- 
-City::~City() { // in main, city.cpp
-            // any final cleanup
-}
-
-class Song { // in header, .hpp
-  std::string title;
-  std::string artist;
-
-public:
-  Song(std::string new_title, std::string new_artist);
-  ~Song();
-  
-  std::string get_title();   // getters
-  std::string get_artist();
-};
-
-Song::Song(std::string new_title, std::string new_artist) // .cpp
-  : title(new_title), artist(new_artist) {}
-
-Song::~Song() {              // added destructor
-  std::cout << "Goodbye " << title << "\n";
-}
-
-struct Double_Data {
-
-    Double_Data(const std::size_t size)
-      : data(new double[size] // allocate
-    {
-    }
-
-    ~Double_Data() {          // destructor
-      delete [] data;         // free
-    }
-
-    double *data;
-
-};
 \end{verbatim}
 
 \subsection{Automatic Destructors}
+%keywords:automaticdestructor,automaticdestruction,autodestruction,autodestructor,autodestruct,autodestroy  
 
 \begin{verbatim}
-    The object moves out of scope.
-    The object is explicitly deleted.
-    When the program ends.
+The object moves out of scope.
+The object is explicitly deleted.
+When the program ends.
 
 void some_func() {
     std::string s{"Hello"};     // allocate a string
@@ -1218,6 +982,7 @@ void some_func() {
 \end{verbatim}
 
 \subsection{Deterministic Object Lifetime and Destruction}
+%keywords:deterministic,determinism,deter
 
 Constructor / Destruct pairs (RAII) combined with scoped values give us determinism.
 
@@ -1226,8 +991,6 @@ void some_func() {
     std::string s{"Hello"};     // allocate a string
 }                               // automatically frees it
                                 // when scope exits
-
-Standard: c++ 98
 \end{verbatim}
 
 
@@ -1236,6 +999,7 @@ Standard: c++ 98
 Constructor and Destructor pairs? I need more on this.
 
 \subsection{New Keyword}
+%keywords:new
 
 \begin{verbatim}
 std::array<int, 3> ar{1,2,3};
@@ -1245,6 +1009,7 @@ int* dyn_ar = new int[4];
 
 
 \subsection{Automatic}
+
 \begin{verbatim}
 
 For format see p.44 filetime puzzler book 1
@@ -1253,21 +1018,23 @@ S object_1("a","t");
 \end{verbatim}
 
 \subsection{Thread\_local}
+%keywords:threadlocal,localthread,thread
 \begin{verbatim}
 thread_local object_2("a","t");
 \end{verbatim}
 
 \subsection{Static}
+%keywords:staticobjects,staticobject,statics,static,stat 
 \begin{verbatim}
 static object_3("a","t");
 \end{verbatim}
 
 \subsection{Dynamic}
+%keywords:dynamicobjects,dynamicobject,dynam,dyn
 
 \begin{verbatim}
 delete new S *object_4("a","t");
 \end{verbatim}
-
 
 \chapter{Libraries}
 
@@ -1275,26 +1042,13 @@ A collection of pre-compiled code, providing functionality. Functions, classes a
 that are not part of the standard C++ library.
 
 \section{fmt format library}
+%keywords:fmtformat,fmtlibrary,fmtlib,fmt
 
 \begin{verbatim}
-#include <format>
-#include <string_view>
-
-void print_map(const auto &map, const std::string_view &key_desc = "key",
-                                const std::string_view &value_desc = "value")
-{
-    for (const auto &[key, value] : map) /// strucuted binding
-    {
-        std::puts(std::format("{}: '{}' {}: '{}'",
-                         key_desc, key, value_desc, value).c_str());
-
-        // this is genious spacing for readability
-    }
-}
-
-Standard c++20
+No good example for fmt.
 \end{verbatim}
 \subsection{String\_View}
+%keywords:stringview,viewstring,
 
 Observe string-like things without actually constructing a std::string!
 A non-owning "view" of a string like structure.
@@ -1303,26 +1057,8 @@ A non-owning "view" of a string like structure.
 #include <string_view>
 std::string_view sv{some_string_like_thing}; // no copy
 
-Standard c++17
-
 These are passed-by-value on purpose.
 String_view are cheap to copy. It is recommended to pass them by value.
-The following code doesn't create a string anymore, if doesn't have to.
-
-void print_map(const auto &map, const std::string_view &key_desc = "key",
-                                const std::string_view &value_desc = "value")
-{
-    for (const auto &[key, value] : map) /// strucuted binding
-    {
-        std::cout << key_desc << ": '" << key << "' "
-                  << value_desc << ": '" << value << "'\n";
-    }
-}
-
-int main()
-{
-    print_map(get_some_map(), "index", "location");
-}
 \end{verbatim}
 
 \subsection{Text Formatting}
@@ -1334,11 +1070,10 @@ named and python/printf style formatting options.
 #include <format>
 std::string s = fmt::format("I'd rathe be {1} than {0}.", "right", "happy");
 // "I'd rather be happy than right."
-
-Standard C++20
 \end{verbatim}
 
 \section{Structured Bindings}
+%keywords:structuredbindings,structuredbinding,structurebindings,structurebinding,structbindings,structbinding,bindings,binding,
 
 Used to decompose a structure or array into a set of identifiers.
 You must use auto, and the number of elements must match. There's no way to skip an element.
@@ -1346,21 +1081,15 @@ You must use auto, and the number of elements must match. There's no way to skip
 \begin{verbatim}
 const auto &[elem1, elem2] = some_thing;
 
-Standard c++17
-
 template<typename Map>
 void print_map(const Map &map, const std::string &key_desc = "key",
                                const std::string &value_desc = "value")
 {
     for (const auto &[key, value] : map) // structured binding
-    {
-        std::cout << key_desc << ": '" << key << "' "
-                  << value_desc << ": '" << value << "'\n";
-    }
-}
 \end{verbatim}
 
 \section{Arguments}
+%keywords:arguments,argument,args,arg
 
 \begin{verbatim}
 int main(int argc, char* argv[]) {
@@ -1369,6 +1098,7 @@ int main(int argc, char* argv[]) {
 \end{verbatim}
 
 \subsection{Flags}
+%keywords:options,option,flags,flag
 
 \begin{verbatim}
 bool hasFlag(const std::vector<std::string>& arguments, const std::string& flag) {
@@ -1388,46 +1118,37 @@ int main(int argc, char* argv[]) {
 \end{verbatim}
 
 \subsection{User Input}
+%keywords:promptuser,askuser,userresponse,useranswer,prompting,prompt,answer,user  
 
 \begin{verbatim}
 std::cout << "Enter your password: ";
 std::cin >> password;
 
 #include <cstdlib>
+std::string answer;
+std::cout << "Place the output in" << output_dir << "? [y/yes, n/no]: ";
+std::cin >> answer;
 
-int main() {
-    std::string answer;
-    std::cout << "Place the output in" << output_dir << "? [y/yes, n/no]: ";
-    std::cin >> answer;
-
-    if (answer == "y" || answer == "yes") {
-    } else if (answer == "n" || answer == "no") {
-    } else {
-        std::cout << "Invalid response, exiting";
-        std::exit(1) // (failure)
-    }
-    return 0;
+if (answer == "y" || answer == "yes") {
+} else if (answer == "n" || answer == "no") {
+} else {
+    std::cout << "Invalid response, exiting";
+    std::exit(1) // (failure)
 }
 \end{verbatim}
-
-
 
 \section{Type}
 
 \subsection{Return Types}
+%keywords:returntypes,returntype,returns,return 
 
 \begin{verbatim}
   std::exit(0) (success)
   std::exit(1) (failure)
-
-Void, Also refered as subroutine.
-
-void oscar_wilde_quote() {
-  std::cout << "The highest";
-}
 \end{verbatim}
 
 \chapter{Filesystem Library}
+%keywords:filesystemlibrary,filelibrary,filelib,filesystem,filesys,fs
 
 LOOK AT FILESYSTEM VIDEO IN CODE
 
@@ -1437,6 +1158,7 @@ manipulation of paths, regular files and directories.
 \section{Files}
 
 \subsection{File Creation}
+%keywords:filecreation,createfiles,createafile,createfile,newfile 
 
 Use the fstream header and the ofstream function.
 
@@ -1445,36 +1167,41 @@ Use the fstream header and the ofstream function.
 #include <fstream> // Add this header for std::ofstream
 namespace fs = std::filesystem;
 
-int main() {
-    fs::create_directories("sandbox/a");
+fs::create_directories("sandbox/a");
+std::ofstream("sandbox/file.1.txt");     // is simplest, deletes instantly
+std::ofstream file("sandbox/file1.txt"); // initialize the variable on top!
 
-    std::ofstream("sandbox/file.1.txt");     // is simplest, deletes instantly
-
-    std::ofstream file("sandbox/file1.txt"); // initialize the variable on top!
-
-    // Check if the file was opened successfully
-    if (file.is_open()) {
-
-        file << "This is some content written to the file.\n";
-
-        file.close(); // Close the file after writing if no longer needed
-
-    } else {
-        std::cout << "Failed to open the file.\n";
-    }
-
-    return 0;
+// Check if the file was opened successfully
+if (file.is_open()) {
+    file << "This is some content written to the file.\n";
+    file.close(); // Close the file after writing if no longer needed
+} else {
+    std::cout << "Failed to open the file.\n";
 }
 \end{verbatim}
 
-
 \subsection{File Deletion}
+%keywords:filedeletions,filedeletion,removefiles,removefile,deletefile,deleteafile,rm
+\begin{verbatim}
+No good example for file deletion.
+\end{verbatim}
+
 
 \section{Paths}
 
+\begin{verbatim}
+No good example for paths.
+\end{verbatim}
+
 \section{Directories}
+%keywords:removedirectory,removedir,directory,rmdir,dir
+
+\begin{verbatim}
+No good example for directories.
+\end{verbatim}
 
 \subsection{Directory Creation}
+%keywords:createdirectory,createdirectory,createdir,newdirectory,newdir,mkdir  
 
 Create a directory with fs::create\_directories. This creates both sandbox and a, inside it.
 
@@ -1499,16 +1226,15 @@ fs::remove_all("sandbox");
 \end{verbatim}
 
 \subsection{Directory Iterators}
+%keywords:directoryiterators,directoryiterator,diriterators,diriterator,diriterate  
 
 \begin{verbatim}
 #include <filesystem>
 namespace fs = std::filesystem;
 
-int main() {
-    std::string path = "./foo";
-    for (const auto &entry : fs::directory_iterator(path))
-        std::cout << entry.path();
-}
+std::string path = "./foo";
+for (const auto &entry : fs::directory_iterator(path))
+    std::cout << entry.path();
 \end{verbatim}
 
 \subsection{Chrono, clock time}
