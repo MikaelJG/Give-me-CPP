@@ -1238,50 +1238,119 @@ for (const auto &entry : fs::directory_iterator(path))
 \end{verbatim}
 
 \subsection{Chrono, clock time}
+%keywords:clock,chrono,chron,timesomething,timefunction,functiontime,
 
 \begin{verbatim}
 #include <chrono>
-int main() {
+std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+    // function
+std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
+std::chrono::duration<double, std::milli> time_span = end - start;
 
-  // Measure time taken for goodnight1():
-  std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-
-  std::cout << goodnight1("tulip");
-
-  std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
-  std::chrono::duration<double, std::milli> time_span = end - start;
-
-  // Print time taken for goodnight1():
-  std::cout << "Time taken for goodnight1(): " << time_span.count() << " milliseconds.\n\n";
+std::cout << "Time taken for goodnight1(): " << time_span.count() << " milliseconds.\n\n";
 \end{verbatim}
 
 \chapter{Compilers}
+%keywords:compilers,compiler,compile
+\begin{verbatim}
+No examples for compilers.
+\end{verbatim}
 
 \section{Compiler GNU GCC}
+%keywords:gnucompiler,gnucompile,gnugcc,gnuc,gnu,gcc
 
 \begin{verbatim}
 alias g++="g++ -Wall -Werror -Wextra -pedantic -std=c++17"
 \end{verbatim}
 
 \subsection{GNU GCC Enable Precompiled Headers}
-\subsection{GNU GCC Enable Warning as Errors}
-\subsection{GNU GCC Disable Extensions}
+%keywords:gccprecompileheaders,gccprecompileheader,gccprecompile,precompileheadersgcc,precompileheadergcc,precompilegcc,gccenablepch,enablegccpch,enablepchgcc  
 
+\begin{verbatim}
+no examples yet
+\end{verbatim}
+
+\subsection{GNU GCC Enable Warning as Errors}
+%keywords:gccwarningsaserror,gccwarningsaserrors,gccwarningserrors,gccwarningserror,gccwarnings,gccwarning,gccaserrors,gccaserror,gccerrors 
+
+\begin{verbatim}
+no examples yet
+\end{verbatim}
+
+\subsection{GNU GCC Disable Extensions}
+%keywords:gccdisableextensions,gccnoextensions,gccextensions,gccremoveextensions,gccremoveextension,gccdisablext 
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \section{Compiler LLVM Clang}
+%keywords:clang
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \subsection{Clang Enable Precompiled Headers}
+%keywords:clangprecompileheaders,clangprecompileheader,clangprecompile,precompileheadersclang,precompileheaderclang,precompileclang,clangenablepch,enableclangpch,enablepchclang  
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
+
 \subsection{Clang Enable Warning as Errors}
+%keywords:clangwarningsaserror,clangwarningsaserrors,clangwarningserrors,clangwarningserror,clangwarnings,clangwarning,clangaserrors,clangaserror,clangerrors 
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
+
 \subsection{Clang Disable Extensions}
+%keywords:gccdisableextensions,gccnoextensions,gccextensions,gccremoveextensions,gccremoveextension,gccdisablext 
+
+\begin{verbatim}
+no examples yet
+\end{verbatim}
 
 \subsection{Clang-Format}
+%keywords:clangformat,formatclang
+
+\begin{verbatim}
+no examples yet
+\end{verbatim}
 
 \subsection{Clang-tidy}
+%keywords:clangtid,clangtidy,tidy
+
+\begin{verbatim}
+no examples yet
+\end{verbatim}
 
 
 \section{Compiler MSVC}
+%keywords:microsoftcompiler
+
+\begin{verbatim}
+no examples yet
+\end{verbatim}
 
 \subsection{MSVC Enable Precompiled Headers}
-\subsection{MSVC Enable Warning as Errors}
-\subsection{MSVC Disable Extensions}
+%keywords:msvcprecompileheaders,msvcprecompileheader,msvcprecompile,precompileheadersmsvc,precompileheadermsvc,precompilemsvc,msvcenablepch,enablemsvcpch,enablepchmsvc
 
+\begin{verbatim}
+no examples yet
+\end{verbatim}
+
+\subsection{MSVC Enable Warning as Errors}
+%keywords:msvcdisableextensions,msvcnoextensions,msvcextensions,msvcremoveextensions,msvcremoveextension,msvcdisablext 
+
+\begin{verbatim}
+no examples yet
+\end{verbatim}
+
+\subsection{MSVC Disable Extensions}
+%keywords:msvcdisableextensions,msvcnoextensions,msvcextensions,msvcremoveextensions,msvcremoveextension,msvcdisablext 
+
+\begin{verbatim}
+no examples yet
+\end{verbatim}
