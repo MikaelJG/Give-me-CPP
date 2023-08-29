@@ -396,6 +396,7 @@ unique()            - replaces consecutive duplicates by one value.
 Hash maps are the answer to every interview. They are containers with fast elements inserts.
 
 \subsection{Unordored Map}
+%keywords:unorderedmaps,unorderedmap,unordermaps,unordermap,noordermaps,noordermaps,unmaps,unmap 
 
 A map storing key-value pairs with constant-time average complexity for insertion,
 deletion, and access operations based on the key.
@@ -404,36 +405,31 @@ The elements in the map are not ordered by their keys.
 \begin{verbatim}
 #include <unordered_map>
 
-int main() {
     std::unordered_map<std::string, int> ages = {
         {"Alice", 25},
-        {"Bob", 32},
         {"Charlie", 42}
     };
 
     ages["Dave"] = 55;
     ages["Alice"];                   // access with [] operator
 
-    if (ages.count("Charlie") > 0) { // find in
-    }
+    if (ages.count("Charlie") > 0) {} // find
 
     for (const auto& entry : ages) { // display
         std::cout << "Name: " << entry.first << ", Age: " << entry.second;
     }
 
     ages.erase("Bob"); // erase
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Unordored MultiMap}
+%keywords:unorderedmultimaps,unorderedmultimap,unordermultimaps,unordermultimap,noordermaps,noordermultimap,unmaps,unmap
 
 A map that allows for multiple values associated with the same key. 
 
 \begin{verbatim}
 #include <unordered_map>
 
-int main() {
     std::unordered_multimap<int, std::string> students;
 
     students.insert({101, "Alice"});
@@ -449,12 +445,10 @@ int main() {
     for (auto it = range.first; it != range.second; ++it) { 
         std::cout << it->second << std::endl;
     }
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Unordored Lists}
+%keywords:unorderedlists,unorderedlist,unorderlists,unorderlist,noorderlists,noorderlist,unlists,unlist 
 
 `std::unordered\_map` is a hash table. 
 Unspecific order, with constant-time complexity,for average-case 
@@ -473,13 +467,13 @@ linear time (O(n))
 \end{verbatim}
 
 \subsection{Unordered Sets}
+%keywords:unorderedsets,unorderedset,unordersets,unorderset,noordersets,noorderset,unsets,unset
 
 A container storing \textbf{unique} elements.
 
 \begin{verbatim}
 #include <unordered_set>
 
-int main() {
     std::unordered_set<int> numbers;
     numbers.insert(5);
     numbers.insert(2);
@@ -488,33 +482,25 @@ int main() {
     int target = 7;     // find target
     if (numbers.find(target) != numbers.end()) {
         std::cout << target << " is found in the set." << std::endl;
-    } else {}
+    }
 
-    // Remove an element from the set
     int toRemove = 2;
-    numbers.erase(toRemove);
+    numbers.erase(toRemove); // remove
 
     for (const auto& number : numbers) {
         std::cout << number << " ";
     }
     std::cout << std::endl;
-
-        // 7 5 10 3 2
-        // 7 is found in the set.
-        // 7 5 10 3
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Unordered Multisets}
+%keywords:unorderedmultisets,unorderedmultiset,unordermultisets,unordermultiset,noordermultisets,noordermultiset,unmultisets,unmultiset
 
 A container storing elements with unordered access and efficient search operations.
 
 \begin{verbatim}
 #include <unordered_set>
 
-int main() {
     std::unordered_multiset<int> numbers;
     numbers.insert(5);
     numbers.insert(2);
@@ -525,12 +511,10 @@ int main() {
 
     int toRemove = 5;  // erase
     numbers.erase(numbers.find(toRemove));
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Hash Functions}
+%keywords:hashsfunctions,hashsfunction,hashsfun,hashfunctions,hashfunction,hashfun,hfun,funh
 
 \begin{verbatim}
 hash_function()  - returns a function, unclear
@@ -555,17 +539,36 @@ I need definition and example for these.
 \end{verbatim}
 
 \section{Queue}
+%keywords:aline,line,queues,queu
 std::queue is a FIFO (first in, first out). Important functions are back(), front(), push\_back(), pop\_front().
 
+\begin{verbatim}
+std::queue // no examples
+\end{verbatim}
+
+
 \section{Priority Queue (Heap)}
+%keywords:priorityqueues,priorityqueue,heaps,heap
 
 std::priority\_queue can only be modified from the back, not from the front. Important functions are front(), push\_back(), 
 and pop\_back().
 
 \subsection{Min Heap}
+%keywords:minheap,minh,hmin,heapsmin,heapmin
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
+
 \subsection{Max Heap}
+%keywords:maxheaps,maxheap,heapsmax,heapmax,hmax,maxh
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \section{Stack}
+%keywords:tack,stacks,stac
 
 std::stack is a LIFO (last in, first out). Important functions are back(), front(), push\_back().
 
@@ -573,7 +576,12 @@ std::stack is a LIFO (last in, first out). Important functions are back(), front
     \includegraphics[width=5in]{stack_functions.png}
 \end{center}
 
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
+
 \section{Tries - Retrieval Trees - AutoComplete}
+%keywords:retrievaltrees,retrievaltree,retrievingtrees,retrievingtree,retrievetrees,retrievetree,autocomplete,autocomp,tries,trie
 
 `std::queue` and `std::stack` containers as part of the standard library,
 but tries (retrieval trees) are not implemented. 
@@ -635,6 +643,7 @@ int main() {
 \end{verbatim}
 
 \subsection{Trie Serialization in JSON or XML}
+%keywords:triesserialization,triesserializing,triesserialize,trieserialization,trieserializing,trieserialize,triesjson,triejson,triesxml,triexml,serialization,serializing,serialize 
 
 To save a retrieval tree (trie) and use it later without recreating the tree every time,
 you can serialize the tree data structure to a file and then deserialize it when needed.
@@ -669,13 +678,17 @@ By saving and loading the serialized trie data,
 you avoid the need to recreate the entire trie every time your program runs,
 improving efficiency and performance.
 
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \section{Trees}
+%keywords:trees,tree,tre
 
 \subsection{Breadth First Search}
+%keywords:breadthfirstsearch,breadthfirst,breadthsearch,breadfirst,breadsearch,breadthf,breadths,breadth,bread,bfs
 
 \begin{verbatim}
-#include <iostream>
 #include <vector>
 #include <queue>
 #include <unordered_set>
@@ -707,7 +720,6 @@ void bfs(const Graph& graph, int startNode) {
     }
 }
 
-int main() {
     // Example graph represented as an adjacency list
     Graph graph = {
         {1, 2},      // Node 0 is connected to nodes 1 and 2
@@ -722,16 +734,12 @@ int main() {
 
     std::cout << "BFS traversal starting from node " << startNode << ": ";
     bfs(graph, startNode);
-    std::cout << std::endl;
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Depth First Search}
+%keywords:depthfirstsearch,depthfirst,depthsearch,deptfirst,deptsearch,depfirst,depsearch,depthf,depf,depthsdepth,dfs
 
 \begin{verbatim}
-#include <iostream>
 #include <vector>
 #include <unordered_set>
 
@@ -761,7 +769,6 @@ void dfsWrapper(const Graph& graph) {
     }
 }
 
-int main() {
     // Example graph represented as an adjacency list
     Graph graph = {
         {1, 2},      // Node 0 is connected to nodes 1 and 2
@@ -775,29 +782,49 @@ int main() {
     std::cout << "DFS traversal: ";
     dfsWrapper(graph);
     std::cout << std::endl;
-
-    return 0;
-}
 \end{verbatim}
 
 \section{Graphs}
+%keywords:graphes,graph,grap,gra
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \chapter{Sorting Algorithms}
+%keywords:sortingalgorithms,sortingalgorithm,sortingalgo,sorting,sort
 
 
 \section{Bubble Sort}
+%keywords:bubblesorting,sortbubble,bubblesort,bubble
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \section{Quick Sort}
+%keywords:quicksorting,sortquick,quicksort,quick,quic,fastsorting,sortfast,fastsort,fast
 
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \section{Adjacency Lists}
+%keywords:adjancylists,adjancylist,adjlists,adjlist
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \subsection{Adjacency Matrix}
+%keywords:adjancymatrix,adjmatrix,matrix,mat  
 
-
-
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \section{Dijsktra Shortest Path}
+%keywords:disjkashortestpath,disjkashortest,disjkashort,disjkapath,disjka,diskashortestpath,diskashortest,diskashort,diskapath,diska,djiskashortestpath,djiskashortest,djiskashort,djiskapath,djiska,theshortestpath,theshortest,shortestpath,shortest,short
 
 Below is a C++ implementation of Dijkstra's algorithm for finding the shortest path in a weighted graph.
 This implementation uses an adjacency list representation of the graph
@@ -805,7 +832,6 @@ and a priority queue (min heap) to efficiently select the next node with the sma
 
 
 \begin{verbatim}
-#include <iostream>
 #include <vector>
 #include <queue>
 #include <limits>
@@ -877,18 +903,15 @@ int main() {
         else
             std::cout << shortestDistances[i] << std::endl;
     }
-
-    return 0;
-}
 \end{verbatim}
 
 \section{Algorithms}
+%keywords:algorithmslibrary,algorithmslib,algolibrary,algolib,allibrary,allib,algorithms,algorithm,algo
 
 \subsection{Accumulate}
+%keywords:accumulates,accumulat
 
 \begin{verbatim}
-// the algorithm everybody knows. (For_each and accumulate)
-
 #include <numeric>
 
 template<typename T>
@@ -898,6 +921,7 @@ T sum_data(const std::vector<T> &d) {
 \end{verbatim}
 
 \subsection{Puts}
+%keywords:algorithmput,putalgorithm,putalgo,algoput,putstd,stdput,put,algorithmputs,putsalgorithm,putsalgo,algoputs,putsstd,stdputs,puts
 
 Generating a null-terminated string,  a sequence of characters stored in an array
 where the end of the string is marked by a null character ('\0'). 
@@ -914,10 +938,6 @@ void print_map(const auto &map, const std::string_view &key_desc = "key",
     {
         std::puts(std::format("{}: '{}' {}: '{}'",
                          key_desc, key, value_desc, value).c_str());
-
-        // this is genious spacing for readability
     }
 }
-
-Standard c++20
 \end{verbatim}
