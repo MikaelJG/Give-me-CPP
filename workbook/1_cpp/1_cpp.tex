@@ -386,6 +386,7 @@ public:         // accessible outside of the class
 \end{verbatim}
 
 \subsection{Overloading Functions}
+%keywords:functionoverload,functionoverloading,funoverload,funoverloading,overfunction,overload,overloading,overloaded,overfun,over
 
 Accepts many types as parameters.
 
@@ -393,164 +394,57 @@ Change behavior based on parameter's type.
 
 \begin{verbatim}
 // one must be true
-    Each has different type parameters.
-    Each has a different number of parameters.
+Each has different type parameters.
+Each has a different number of parameters.
     
--- num.cpp --
-int fancy_number(int num1, int num2) {
-  return num1 - num2 + (num1 * num2);
-}
-
-int fancy_number(int num1, int num2, int num3) {
-  return num1 - num2 - num3 + (num1 * num2 * num3);
-} // different number of params.
-
-int fancy_number(double num1, double num2) {
-  return num1 - num2 + (num1 * num2);
-}               // different type of params.
-
--- num.hpp --
-int fancy_number(int num1, int num2);
-int fancy_number(int num1, int num2, int num3);
-int fancy_number(double num1, double num2);
+// different number of params.
+int fancy_number(int num1, int num2) {}
+int fancy_number(int num1, int num2, int num3) {}
+// different type of params.
+int fancy_number(double num1, double num2) {}
 \end{verbatim}
 
 \section{Parameters}
+%keywords:parameters,parameter,params,param,pars,par
 
 \begin{verbatim}
 void get_emergency_number(std::string emergency_number) {}
-
-struct ComplexType {
-    int value;
-    std::vector<int> data;
-};
-
-void processComplexType(const ComplexType& complexParam) {
-    std::cout << "Value: " << complexParam.value << std::endl;
-    std::cout << "Data:";
-    for (int num : complexParam.data) {
-        std::cout << " " << num;
-    }
-    std::cout << std::endl;
-}
-
-int main() {
-    ComplexType complexObj;
-    complexObj.value = 42;
-    complexObj.data = {1, 2, 3, 4, 5};
-
-    processComplexType(complexObj);
-
-    return 0;
-}
-
-Many Parameters
-
-double get_tip(double price, double tip, bool total_included) {
-    get_tip(0.25, true, 45.50); // will not work. Order matters. 
-}
-
-void name_x_times(std::string name, int x){
-  while (x > 0) {
-    std::cout << name << "\n";
-    x--;
-  }
-}
+double get_tip(const MyType& price,bool total_included) {}
 \end{verbatim}
 
 \subsection{Pass-By-Value}
+%keywords:passbyvalue,passvalue,passbyval,byvalue,byval
 
 Passing by value makes modification impossible, since the passed variable is out of scope.
 Pass by reference to modify the passed parameter.
 
 \begin{verbatim}
-void useless_function(int val) {
-    val = val * 2;
-}
+void useless_fun(int val) {} // not modifiable
 \end{verbatim}
 
-
 \subsection{Pass-By-Reference}
+%keywords:passingbyreference,passingreference,passbyreference,passreference,passbyref,passrefs,passref,byreference,byref
 
 Modify the argument's value.
 Avoid making copies of a variable/object for performance reasons.
 
 \begin{verbatim}
-void swap_num(int &i, int &j) {
-  int temp = i;
-  i = j;
-  j = temp;
-}
- 
-int main() {
-  int a = 100;
-  int b = 200;
- 
-  swap_num(a, b);
-}
-
-int triple(int &i) {
-  i = i * 3;
-  return i;
-}
-
-int main() {
-  int num = 1;
-  std::cout << triple(num) << "\n";
-}
-
-template<typename T>
-void modifyVector(std::vector<T>& vec) {
-    for (auto& element : vec) {
-        element *= 2;
-    }
-}
-
-template<typename T>
-void printVector(const std::vector<T>& vec) {
-    for (const auto& element : vec) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-}
-
-int main() {
-    std::vector<int> numbers = {1, 2, 3, 4, 5};
-
-    printVector(numbers);  // Output: Original vector: 1 2 3 4 5
-    modifyVector(numbers);
-
-    printVector(numbers);  // Output: Modified vector: 2 4 6 8 10
-    return 0;
-}
+void swap_num(int &i, int &j) {}
 \end{verbatim}
 
 \subsection{Parameters Default Values}
+%keywords:defaultparameter,defaultparams,defaultarguments,defaultargument,defaultarg,default
 
 \begin{verbatim}
 struct Chapters {
     bool IsToPrint = true;
-};
-
-struct Chapters {
-    bool IsToPrint;
-
+    // or
     Chapters() : IsToPrint(true) {} // with default constructor
 };
-
-int main() {
-    Chapters c1;
-    Chapters c2 = {false}; //  list initialization
-                           // works when only one bool in struct
-
-    // c1.IsToPrint will be true
-    // c2.IsToPrint will be false
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Default Arguments}
+%keywords:defaultarguments,defaultargument,defaultarg,default
 
 \begin{verbatim}
 void intro(std::string name, std::string lang = "C++");
@@ -559,151 +453,53 @@ void intro(std::string name, std::string lang = "C++");
 \section{References}
 
 \subsection{References Variables}
+%keywords:references,reference,refer,ref  
 
-\textbf{A second name for an existing variable}.
-
-\begin{verbatim}
-int &sonny = songqiao; // Sonny, a reference to songqiao;
-
-\\ Changes to the reference happens to the original.
-\\ Aliases cannot be changed to alias something else.
-
-  int soda = 99;
-  int &pop = soda;
-  pop++; // soda and pop equal at 100
-
-Using a reference (&) instead of making a copy of the elements is more efficient,
+Using a reference (\&) instead of making a copy of the elements is more efficient,
 especially when dealing with large objects or containers. 
 
 By using a reference, the loop avoids creating a new copy of each element
 , reducing unnecessary memory usage and improving performance.
 
-struct ComplexStruct {
-    int value1;
-    int value2;
-};
+\textbf{A second name for an existing variable}.
 
-void modifyStruct(ComplexStruct& ref) {
-    ref.value1 = 100;
-    ref.value2 = 200;
-}
-
-int main() {
-    int x = 10;
-    int& ref1 = x;              // Reference variable ref1 refers to x
-    ref1 = 20;                  // Modifying ref1 will also modify x
-
-    ComplexStruct obj;
-    obj.value1 = 50;
-    obj.value2 = 60;
-    ComplexStruct& ref2 = obj;  // Reference variable ref2 refers to obj
-
-    modifyStruct(ref2);         // Modifying ref2 will also modify obj
-    return 0;
-}
+\begin{verbatim}
+int soda = 99;
+int &pop = soda;
+pop++; // soda and pop equal at 100
 \end{verbatim}
 
 \subsection{Dereference}
+%keywords:dereferencing,unreference,deref,unref
 
 Obtain the pointer's pointed value. 
 
 \begin{verbatim}
-Declaration? * creates a pointer.
-Not a declaration? * is a dereference operator.
-
-int main() {
-  int power = 9000;
-  int* ptr = &power;
-  std::cout << *ptr; // prints 9000
-}
+int power = 9000; // in declaration * is a ptr
+                  // else * is memory address
+int* ptr = &power;
 \end{verbatim}
 
 \subsection{Pass-By-Reference}
+%keywords:passingbyreference,passingreference,passbyreference,passreference,passbyref,passrefs,passref,byreference,byref
 
 Now, when called, the function can modify the argument's value.
 Avoid making copies of a variable/object for performance reasons.
 
 \begin{verbatim}
-//Calling swap_num(), variables a and b's value will be modified
-//because they are passed by reference
-
-void swap_num(int &i, int &j) {
-  int temp = i;
-  i = j;
-  j = temp;
-}
- 
-int main() {
-  int a = 100;
-  int b = 200;
- 
-  swap_num(a, b);
- 
-  std::cout << "A is " << a << "\n";
-  std::cout << "B is " << b << "\n";
-}
-
-WHEN? To MODIFY the arguments’ values.
-
-int triple(int &i) {
-  i = i * 3;
-  
-  return i;
-}
-
-int main() {
-  int num = 1;
-  std::cout << triple(num) << "\n";
-}
-
-template<typename T>
-void modifyVector(std::vector<T>& vec) {
-    for (auto& element : vec) {
-        element *= 2;
-    }
-}
-
-template<typename T>
-void printVector(const std::vector<T>& vec) {
-    for (const auto& element : vec) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-}
-
-int main() {
-    std::vector<int> numbers = {1, 2, 3, 4, 5};
-
-    std::cout << "Original vector: ";
-    printVector(numbers);  // Output: Original vector: 1 2 3 4 5
-
-    modifyVector(numbers);
-
-    std::cout << "Modified vector: ";
-    printVector(numbers);  // Output: Modified vector: 2 4 6 8 10
-
-    return 0;
-}
+void swap_num(int &i, int &j) {} // modifiable
 \end{verbatim}
 
 \subsection{References Const}
+%keywords:constreferences,constreference,referencesconst,referenceconst,constrefs,constref 
 
 \begin{verbatim}
-int triple(const int &i) { // save computational cost
-  return i * 3;            // don't make a copy of the argument
-}
-
-int square(const int &i) {
-  return i * i;
-}
-
-int main() {
-  int side = 5;
-  std::cout << square(side) << "\n";
-}
+int triple(const int &i) {} // doesn't copy element
+                            // ref won't change
 \end{verbatim}
 
 \subsection{Reference Operator}
+%keywords:refoperator,refop
 
 \begin{verbatim}
 int soda = 99; 
@@ -712,6 +508,7 @@ pop++;
 \end{verbatim}
 
 \subsection{Address Operator}
+%keywords:addressoperator,addressop,address,add
 
 \begin{verbatim}
 int porcupine = 3; 
@@ -722,20 +519,11 @@ std::cout << &porcupine << "\n";
 
 \chapter{Memory Allocation}
 \section{Pointers}
+%keywords:pointers,pointer,point
 
 \begin{verbatim}
-Declaration? * creates a pointer.
-Not a declaration? * is a dereference operator.
-
-int main() {
-  int power = 9000;
-  int* ptr = &power;
-  std::cout << *ptr; // prints 9000
-}
-
 int* number;         // Declaring
 double* decimal;
-char* character;
 
 int gum = 8;
 int* ptr = &gum;     // int* [declare a pointer]
@@ -745,10 +533,10 @@ int* ptr = &gum;     // int* [declare a pointer]
 int* number;         // Declaration standard
 int *number;
 int * number;        // All Synthaxically valid
-
 \end{verbatim}
 
 \subsection{Null Pointers}
+%keywords:nullpointers,nullpointer,nullpoint,pointnull
 
 Ptr to a yet unknown memory address.
 
@@ -757,6 +545,7 @@ int* ptr; // declared, not yet initialized
 \end{verbatim}
 
 \subsection{Nullptr}
+%keywords:nullptr,nulptr,nullp,null
 
 Type safe pointer since C++14, I think. A replacement for NULL.
 
@@ -764,39 +553,12 @@ Type safe pointer since C++14, I think. A replacement for NULL.
 int* ptr = nullptr;
 \end{verbatim}
 
-
 \subsection{Unique Pointers}
+%keywords:uniquepointers,uniquepointer,uniquepoint,makeunique,uniqueptr,unique
 
 \begin{verbatim}
-class Factory {
-public:
-    std::unique_ptr<Product> createProduct(const std::string& productType) {
-        if (productType == "A") {
-            return std::make_unique<ConcreteProductA>();
-
-            // make unique
-            // create an instance of std::unique_ptr
-
-
-        } else if (productType == "B") {
-            return std::make_unique<ConcreteProductB>();
-        } else {
-            return nullptr;
-        }
-    }
-};
-
-#include <memory>
-
-int main() {
-    std::unique_ptr<int> num_ptr = std::make_unique<int>(42);
-    // num_ptr owns the dynamically allocated integer
-
-    // ...
-    
-    return 0;
-}
-
+std::unique_ptr<int> num_ptr = std::make_unique<int>(42);
+// num_ptr owns the dynamically allocated integer
 \end{verbatim}
 
 \subsection{Smart Pointers}
