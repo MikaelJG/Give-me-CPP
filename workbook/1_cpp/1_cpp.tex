@@ -1,7 +1,7 @@
 \chapter{C++ Basics}
 
 \section{Variables}
-%keywords:var,vars
+%keywords:variables,variable,vars,var
 
 \begin{verbatim}
     int: integers                   // 4 bytes
@@ -18,39 +18,24 @@ std::cout << "Size of int: " << sizeof(numInt);
 \end{verbatim}
 
 \section{Auto}
+%keywords:auto,aut
 
 Automatic deduction of value types. Standard c++11
 
 \begin{verbatim}
-constexpr double calculate_pi() {
-    return 22/7;
-}
-
-constexpr auto pi = calculate_pi();
-
-int main()
-{
-    const auto radius = 1.5;
-    const auto area = pi * radius * radius;
-    std::cout << area;
-
-}
-
-constexpr auto calculate_pi() {
-    return 22/7;
-}
-
-constexpr auto pi = calculate_pi();
+const auto radius = 1.5;
+const auto area = pi * radius * radius;
+std::cout << area;
 
 // east/ west const
 const auto result = std::count( /*stuff */);
 auto const result = std::count( /*stuff*/ );
 \end{verbatim}
 
-
-
 \section{Synthax}
 \subsection{Ternary Operator}
+%keywords:ternary operator,ternaryoperator,ternaryop,ternoperator,ternary,tern,ternop  
+
 \begin{verbatim}
 std::cout << (coin == 0 ? "Heads" : "Tails") << "\n";
 \end{verbatim}
@@ -88,52 +73,26 @@ std::string chapOnePath = parentDirectory + "/chap_1";
 \end{verbatim}
 
 \subsection{Scope}
+%keywords:outofscope,outscope,inscope,scopes,scope,scop
 
 \begin{verbatim}
 run() {
     {
-        Is this in scope? //This variable is out of scope.?
+        this is scope
     {
     
 }
 \end{verbatim}
 
 \subsection{Chaining}
+%keywords:chaining,chains,chain streams
 
 \begin{verbatim}
-int age = 28;
-std::cout << age << "years old.\n";
-
-template <typename T>
-struct MathOperation {
-    T value;
-
-    MathOperation(T val) : value(val) {}
-
-    template <typename U>
-    MathOperation<U> add(U val) {
-        return MathOperation<U>(value + val);
-    }
-
-    template <typename U>
-    MathOperation<U> multiply(U val) {
-        return MathOperation<U>(value * val);
-    }
-
-    void print() {
-        std::cout << "Result: " << value << std::endl;
-    }
-};
-
-int main() {
-    MathOperation<int> operation(5);
-    operation.add(3).multiply(2).print();
-
-    return 0; // return success
-}
+operation.add(3).multiply(2).print();
 \end{verbatim}
 
-\section{Streams}
+\section{Streams} 
+%keywords:streams,stream,strea
 
 \begin{verbatim}
     std::cin            : Standard input stream for reading user input.
