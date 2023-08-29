@@ -1,8 +1,16 @@
 \chapter{Data Structures}
 
 \section{Time Complexity}
+%keywords:time,timecomplexity
+\begin{verbatim}
+No examples yet.
+\end{verbatim}
 
 \section{Space Complexity}
+%keywords:space,spacecomplexity
+\begin{verbatim}
+No examples yet.
+\end{verbatim}
 
 \section{Containers}
 
@@ -10,6 +18,7 @@ Arrays and vectors are the most common containers, I think. Arrays are fixed-siz
 are dynamic containers.
 
 \subsection{Containers Functions}
+%keywords:containerfunctions,containerfunctions,containerfunction,containersfunction,containerfun,containersfun
 
 \begin{verbatim}
 begin()         - returns an iterator on the first element 
@@ -24,9 +33,6 @@ before_begin()  - Only for forward_list!
 cbefore_begin() - Only for forward_list!
                   Constant version of before_begin()
 
-#include <vector>
-
-int main() {
     std::vector<int> numbers{1, 2, 3, 4, 5};
 
     // Using rbegin() to iterate over elements in reverse order
@@ -34,32 +40,12 @@ int main() {
         std::cout << *it << " ";
     }
 
-        // 5 4 3 2 1
-
-    return 0;
-}
-
-#include <forward_list>
-
-int main() {
-    std::forward_list<int> numbers{2, 3, 4};
-
-    // Inserting an element at the beginning using before_begin()
-    numbers.insert_after(numbers.before_begin(), 1);
-
-    for (auto it = numbers.begin(); it != numbers.end(); ++it) {
-        std::cout << *it << " ";
-    }
-        // 1 2 3 4
-
-    return 0;
-}
-
 Forward_list doesn't have support for rbegin() / rend() or
 crbegin() / crend()
 \end{verbatim}
 
 \subsection{Container Iterations}
+%keywords:containeriterator,containeriterators,containersiterations,containeriterate,containersiterate
 
 For Jason Turner, this construct, was one of the most difficult things to learn!
 
@@ -84,6 +70,7 @@ for (auto itr = container.begin();
 \end{verbatim}
 
 \subsection{Container Size functions}
+%keywords:containersize,sizeofcontainer
 
 \begin{verbatim}
 size()     - returns the number of elements
@@ -96,9 +83,9 @@ empty()    - returns true if container is empty, else false
 \end{verbatim}
 
 \subsection{Access and Research functions}
+%keywords:access,research,accessfunction,researchfunction,accessfunctions,researchfunctions,accessfuns,researchfuns
 
 \begin{verbatim}
-
 insert()
     numbers.insert(numbers.begin(), 0); 
     numbers.insert(numbers.begin() + 3, 10);
@@ -108,52 +95,21 @@ push_back() / pop.back()
     std::vector<int> vec = {1, 2, 3, 4, 5};
     int newValue = 6;
     vec.push_back(newValue);
-
-
-#include <list>
-#include <algorithm>
-
-struct Person {
-    std::string name;
-    int age;
-
-    Person(const std::string& n, int a) : name(n), age(a) {}
-};
-
-int main() {
-    std::list<Person> people;
-
-    people.insert(people.begin(), {"Alice", 25});
-    people.insert(people.begin(), {"Bob", 30});
-    people.insert(people.begin(), {"Charlie", 20});
-
-    // Inserting an element after finding a specific person
-    auto it = std::find_if(people.begin(), people.end(), [](const Person& p) {
-        return p.name == "Bob";
-    });
-    if (it != people.end()) {
-        people.insert(std::next(it), {"David", 27});
-    }
 \end{verbatim}
 
 \subsection{static\_cast}
+%keywords:staticcast
 
 Used with enums to convert between different enum types or to convert an enum value to an integer type.
 It allows for explicit and controlled type conversions, providing better type safety
 
 \begin{verbatim}
-int main() {
-    Fruit selectedFruit = Fruit::Banana;
-    int fruitIndex = static_cast<int>(selectedFruit);
-
-    std::cout << "Selected fruit: " << fruitNames[fruitIndex] << std::endl;
-
-    return 0;
-}
+Fruit selectedFruit = Fruit::Banana;
+int fruitIndex = static_cast<int>(selectedFruit);
 \end{verbatim}
 
-
 \section{Maps}
+%keywords:map
 
 Dynamically resizing containers.
 
@@ -169,86 +125,16 @@ The key-value pairs are stored in an unordered, unspecific manner.
 
 \begin{verbatim}
 #include <map>
+std::string str = "hello";
+std::map<char, int> charFreq;
 
-int main() {
-    std::string str = "hello";
-    std::map<char, int> charFreq;
-
-    for (char c : str) {
-        charFreq[c]++;
-    }
-
-    for (const auto& pair : charFreq) { // display
-        std::cout << pair.first << ": " << pair.second << std::endl;
-    }
-
-    return 0;
+for (char c : str) {
+    charFreq[c]++;
 }
 
-#include <map>
-#include <string>
-
-int main() {
-    std::map<std::string, int> studentGrades;
-
-    studentGrades["Alice"] = 90;
-    studentGrades["Bob"] = 85;
-    studentGrades["Charlie"] = 95;
-
-    std::cout << "Charlie's grade: " << studentGrades["Charlie"] << std::endl;
-
-    for (const auto& pair : studentGrades) {
-        std::cout << pair.first << ": " << pair.second << std::endl;
-    }
-    return 0;
+for (const auto& pair : charFreq) { // display
+    std::cout << pair.first << ": " << pair.second << std::endl;
 }
-
-std::map<int, Product> map1 {
-    {1, Product(1, "Item 1")},
-    {2, Product(10, "Item 2")},
-};
-
-map1[3] = Product(30, "Item 3");
-for (std::pair<int, Product> elt : map1)
-{
-    cout << elt.first << " ";
-    cout << elt.second.name << '\n';
-
-}
-
-
-#include <map>
-#include <sstream>
-#include <string>
-
-int main() {
-    std::string text = "lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-    for (char& c : text) {
-
-        c = std::tolower(c);
-    }
-
-    std::map<std::string, int> wordfreq;
-    std::istringstream iss(text);
-    std::string word;
-
-    while (iss >> word) { // count frequency
-        wordfreq[word]++;
-    }
-
-    for (const auto& pair : wordfreq) { // display
-        std::cout << pair.first << ": " << pair.second << std::endl;
-    }
-
-    return 0;
-}
-
-std::map<std::string, int> get_map();
-
-using element_type = std::pair<std::string, int>;
-
-for (const element_type & : get_map())
-{}
 \end{verbatim}
 
  
@@ -293,6 +179,7 @@ int main() {
 \end{verbatim}
 
 \subsection{Multimaps}
+%keywords:multimaps,multimap
 
 A multimap allows multiple values to be associated with the same key. 
 
@@ -470,6 +357,7 @@ int main() {
 \end{verbatim}
 
 \section{Forward Lists (Singly Linked Lists)}
+%keywords:forwardlist,forward,singlelist,singlylist,singlelists,singlylists,singly
 
 std::forward\_list store elements as a singly linked list.
 
@@ -480,18 +368,14 @@ std::forward\_list does not have a begin() and end() member function that return
 \begin{verbatim}
 #include <forward_list>
 
-int main() {
     std::forward_list<int> mylist{20, 30, 40};
-
     for (auto it = mylist.begin(); it != mylist.end(); ++it) {
         std::cout << *it << '\n';
     }
-
-    return 0;
-}
 \end{verbatim}
 
 \subsection{Lists and Functions}
+%keywords:listsfunctions,listfunctions,listfunction,listsfunctions,listsfuns,listsfun,listfun  
 
 \begin{verbatim}
 merge()             - merges two sorted lists. The merged list is emptied.
@@ -507,6 +391,7 @@ unique()            - replaces consecutive duplicates by one value.
 \end{verbatim}
 
 \section{Hash Maps}
+%keywords:hashmaps,hashmap,hashes,hashs,hash
 
 Hash maps are the answer to every interview. They are containers with fast elements inserts.
 
