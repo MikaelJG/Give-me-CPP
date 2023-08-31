@@ -1,5 +1,14 @@
 
 \section{Iostream}
+%keywords:for,fori,forint,forloop
+
+\begin{verbatim}
+for (size_t i = 0; i < .size(); i++) {
+    
+}
+\end{verbatim}
+
+\section{Iostream}
 %keywords:io,ios
 
 \begin{verbatim}
@@ -17,8 +26,15 @@
 
 int main(int argc, char* argv[]) {
 
-    std::vector<std::string> arguments(argv + 1, argv + argc);
-    const auto first_argument = arguments[0];
+    const std::vector<std::string> arguments(argv + 1, argv + argc);
+    const auto number_of_arguments = arguments.size();
+    
+    if (number_of_arguments == 0) {
+        std::cout << "No arg provided\n"; 
+    } else {
+        const auto first_argument = arguments[0];
+    }
+
     return 0;
 }
 \end{verbatim}
