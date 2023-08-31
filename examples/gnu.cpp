@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//compiler_gnu_gcc.cpp
+/home/tiike/code/cpp/examples/compiler_gnu_gcc.cpp

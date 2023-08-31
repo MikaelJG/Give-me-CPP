@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//structs.cpp
+/home/tiike/code/cpp/examples/structs.cpp

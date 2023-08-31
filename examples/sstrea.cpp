@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//sstream.cpp
+/home/tiike/code/cpp/examples/sstream.cpp

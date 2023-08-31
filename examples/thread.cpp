@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//thread\_local.cpp
+/home/tiike/code/cpp/examples/thread\_local.cpp

@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//ctad_-_class_template_argument_deduction.cpp
+/home/tiike/code/cpp/examples/ctad_-_class_template_argument_deduction.cpp

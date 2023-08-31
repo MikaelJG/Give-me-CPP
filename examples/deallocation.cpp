@@ -1,1 +1,3 @@
-/home/tiike/code/cpp/examples//deallocation.cpp
+
+No notes on deallocation yet.
+

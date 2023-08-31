@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//virtual_factories.cpp
+/home/tiike/code/cpp/examples/virtual_factories.cpp

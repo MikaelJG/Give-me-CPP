@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//arrays.cpp
+/home/tiike/code/cpp/examples/arrays.cpp

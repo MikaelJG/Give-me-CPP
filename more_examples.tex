@@ -1,0 +1,23 @@
+
+\section{Iostream}
+%keywords:io,ios
+
+\begin{verbatim}
+#include <iostream>
+\end{verbatim}
+
+\section{Regular Includes}
+%keywords:include,includes,incl
+
+\begin{verbatim}
+#include <iostream>
+#include <fstream>
+#include <filesystem>
+
+int main(int argc, char* argv[]) {
+
+    std::vector<std::string> arguments(argv + 1, argv + argc);
+    const auto first_argument = arguments[0];
+    return 0;
+}
+\end{verbatim}

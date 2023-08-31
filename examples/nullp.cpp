@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//nullptr.cpp
+/home/tiike/code/cpp/examples/nullptr.cpp

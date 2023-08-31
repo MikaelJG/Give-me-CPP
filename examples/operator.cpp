@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//ternary_operator.cpp
+/home/tiike/code/cpp/examples/ternary_operator.cpp

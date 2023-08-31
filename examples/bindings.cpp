@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//structured_bindings.cpp
+/home/tiike/code/cpp/examples/structured_bindings.cpp

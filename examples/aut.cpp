@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//auto.cpp
+/home/tiike/code/cpp/examples/auto.cpp

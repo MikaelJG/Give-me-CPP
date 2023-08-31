@@ -1,1 +1,6 @@
-/home/tiike/code/cpp/examples//constructors.cpp
+
+public:
+  City(std::string new_name, int new_pop); // constructor
+  ~City();  // destructor
+};
+

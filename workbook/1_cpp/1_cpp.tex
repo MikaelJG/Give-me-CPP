@@ -130,6 +130,11 @@ while (iss >> word) {
 \section{Touples}
 %keywords:touple,toup
 
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
+
+
 \section{Enums}
 %keywords:enum,enus,enu
 
@@ -678,7 +683,7 @@ T divide(T numerator, T denominator) {
 \end{verbatim}
 
 \subsection{Variadic Templates}
-%keywords:variadictemplates,variadictemplate,variatemplates,variatemplate,variadictemp,variatemp,variadic,varia  
+%keywords:variadictemplate,variatemplates,variatemplate,variadictemp,variatemp,variadic,varia  
 
 Drastic simplification of code needing to match a variable number of parameters.
 
@@ -759,19 +764,6 @@ auto even = [](int i){ return 0 == i % 2; };
 auto square = [](int i){ return i * i; }; 
 \end{verbatim}
 
-\subsection{Lambdas Captures}
-%keywords:lambdacapture,capturing,capture
-
-Access variables from its surrounding scope.
-Used outside variable within their body.
-
-The captures section can be left empty if
-the lambda does not need to access any external variables.
-
-\begin{verbatim}
-auto lambda = [/*captures*/](int param1){ return param1 * 10; };
-\end{verbatim}
-
 \subsection{Lambdas Captures by Values}
 %keywords:capturebyvalue,capturebyval,capturingbyvalue,capturingbyval,capturingval,capturevalue,captureval  
 
@@ -817,6 +809,10 @@ auto lambda = [/*captures*/](auto ... params){}
 
 \subsection{Variadic Lambdas}
 %keywords:variadiclambda,varialambda,varialamb,varlambdas,varlambda,varlamb  
+
+\begin{verbatim}
+no examples yet.
+\end{verbatim}
 
 \subsection{Const Lambdas}
 %keywords:constlambdas,constlambda,constlamb,lambdasconst,lambdaconst,lambconst
@@ -1096,6 +1092,10 @@ void print_map(const Map &map, const std::string &key_desc = "key",
 
 \begin{verbatim}
 int main(int argc, char* argv[]) {
+    std::vector<std::string> arguments(argv + 1, argv + argc);
+    
+    const auto first_argument = arguments[0];
+
     return 0;
 }
 \end{verbatim}

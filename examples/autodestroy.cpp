@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//automatic_destructors.cpp
+/home/tiike/code/cpp/examples/automatic_destructors.cpp

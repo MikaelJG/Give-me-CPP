@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//static.cpp
+/home/tiike/code/cpp/examples/static.cpp

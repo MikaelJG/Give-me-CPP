@@ -1,1 +1,4 @@
-/home/tiike/code/cpp/examples//classes.cpp
+
+class City { // user-defined type.
+};
+

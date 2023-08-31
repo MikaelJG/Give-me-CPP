@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//const_char.cpp
+/home/tiike/code/cpp/examples/const_char.cpp

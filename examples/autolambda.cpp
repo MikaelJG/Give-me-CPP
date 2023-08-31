@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//lambda_auto.cpp
+/home/tiike/code/cpp/examples/lambda_auto.cpp

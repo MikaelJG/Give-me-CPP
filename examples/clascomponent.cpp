@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//class_components.cpp
+/home/tiike/code/cpp/examples/class_components.cpp

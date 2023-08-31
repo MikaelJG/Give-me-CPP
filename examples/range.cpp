@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//ranges.cpp
+/home/tiike/code/cpp/examples/ranges.cpp

@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//clang-format.cpp
+/home/tiike/code/cpp/examples/clang-format.cpp

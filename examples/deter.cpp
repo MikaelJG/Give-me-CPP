@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//deterministic_object_lifetime_and_destruction.cpp
+/home/tiike/code/cpp/examples/deterministic_object_lifetime_and_destruction.cpp

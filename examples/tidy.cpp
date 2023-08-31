@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//clang-tidy.cpp
+/home/tiike/code/cpp/examples/clang-tidy.cpp

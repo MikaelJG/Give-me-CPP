@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//directories.cpp
+/home/tiike/code/cpp/examples/directories.cpp

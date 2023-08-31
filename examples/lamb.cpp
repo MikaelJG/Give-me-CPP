@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//lambdas.cpp
+/home/tiike/code/cpp/examples/lambdas.cpp

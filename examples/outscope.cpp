@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//scope.cpp
+/home/tiike/code/cpp/examples/scope.cpp

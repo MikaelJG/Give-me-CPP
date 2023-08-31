@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//dynamic.cpp
+/home/tiike/code/cpp/examples/dynamic.cpp

@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//dynamic_array_allocation.cpp
+/home/tiike/code/cpp/examples/dynamic_array_allocation.cpp

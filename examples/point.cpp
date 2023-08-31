@@ -1,1 +1,1 @@
-/home/tiike/code/cpp/examples//pointers.cpp
+/home/tiike/code/cpp/examples/pointers.cpp
